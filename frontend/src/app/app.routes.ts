@@ -1,15 +1,26 @@
 import { RouterModule, Routes } from '@angular/router';
-import { LoginSignUp } from './pages/login-sign-up/sign-up.component';
+import { LoginSignIn } from './pages/login-sign-in/login-sign-in.component';
 import { LoginPageComponent } from './shared/component-login/login-component.component';
 import { NgModule } from '@angular/core';
 import { LoginForgetPassword } from './pages/login-forget-password/forget-password.component';
+import { LoginConfirmCode } from './pages/login-confirm-code/confirm-code.component';
+import { LoginEnterNewPassword } from './pages/login-enter-new-password/login-enter-new-password.component';
+import { LoginSignUp } from './pages/login.sign-up/login-sign-up.component';
 
 export const routes: Routes = [
     {
         path: "login", component: LoginPageComponent, children: [
-            { path: "", redirectTo: "sign-up", pathMatch: "full" },
-            { path: "sign-up", component: LoginSignUp },            
-            { path: "forget-password", component: LoginForgetPassword },   
+            { path: "", redirectTo: "sign-in", pathMatch: "full" },
+            { path: "sign-in", component: LoginSignIn },            
+            { path: "sign-up", component: LoginSignUp },
+            { path: "forget-password", children: [
+                { path: "", component: LoginForgetPassword },
+                {path: "confirm-code", children: [
+                    { path: "", component: LoginConfirmCode },
+                    { path: "enter-new-password", component: LoginEnterNewPassword },
+                ]
+                },
+            ]},
         ]
     }
 ];

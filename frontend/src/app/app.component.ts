@@ -1,7 +1,5 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LoginPageComponent } from './shared/component-login/login-component.component';
-import { LoginSignUp } from './pages/login-sign-up/sign-up.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app.routes';
 

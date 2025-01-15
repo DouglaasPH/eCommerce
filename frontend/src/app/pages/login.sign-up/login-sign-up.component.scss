@@ -1,0 +1,124 @@
+@use '../../../variables.scss';
+
+.container-component-sign-up {
+    height: 100%;
+    width: 100%;
+}
+
+.component-sign-up {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+};
+
+.description {
+    @extend %font-volkhov;
+    font-weight: 400;
+}
+
+.button-create-with-google-or-gmail {
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button-create-with-google, .button-create-with-gmail {
+    width: 45%;
+    height: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4%;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    border: 0.1rem solid #5b86e5;
+}
+
+.google-mark, .gmail-mark {
+    height: 65%;
+} 
+
+.button-description-google, .button-description-gmail {
+    @extend %font-poppins;
+    font-size: 80%;
+}
+
+.container-or {
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.or {
+    @extend %font-poppins;
+    color: #838383;
+    font-weight: 600;
+}
+
+.container-row-data-entry {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.first-row-inputs, .second-row-inputs, .three-row-inputs {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.input-first-name, .input-last-name, .input-email, .input-phone-number, .input-password, .input-confirm-password {
+    @extend %font-poppins;
+    font-size: 70%;
+    width: 48%;
+    border: none;
+    border-bottom: 0.1rem solid #838383;
+    background-color: #ffffff;
+}
+
+.container-redirect-buttons {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.button-sign-up {
+    @extend %font-poppins;
+    font-size: 75%;
+    height: 50%;
+    width: 90%;
+    background-color: black;
+    border: none;
+    border-radius: 0.4rem;
+    color: #ffffff;
+}
+
+.paragraph-login {
+    @extend %font-poppins;
+    font-size: 70%;
+    font-weight: 400;
+}
+
+.link-login {
+    text-decoration: none;
+    color: #5b86e5;
+}
+
+.link-login:hover {
+    text-decoration: underline;
+}
+
+button:hover {
+    cursor: pointer;
+}

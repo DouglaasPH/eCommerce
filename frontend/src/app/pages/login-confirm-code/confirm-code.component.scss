@@ -1,6 +1,6 @@
 @use '../../../variables.scss';
 
-.container-component-forget-password {
+.container-component-confirm-code {
     height: 100%;
     width: 100%;
     display: flex;
@@ -8,12 +8,17 @@
     align-items: center;
 }
 
-.component-forget-password {
+.component-confirm-code {
+    height: 50%;
     width: 100%;
-    height: 70%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
+}
+
+.container-description {
+    width: 100%;
 }
 
 .description {
@@ -21,53 +26,54 @@
     font-weight: 500;
 }
 
-.first-line-for-data-entry, .second-line-for-data-entry {
-    height: 15%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.container-input {
+    background-color: red;
+    height: 20%;
+    width: 100%;
 }
 
-.input-first-name, .input-last-name, .input-email, .input-phone-number {
+.input-confirmation-code {
     @extend %font-poppins;
-    width: 48%;
+    font-size: 75%;
+    height: 100%;
+    width: 100%;
     border: none;
-    border-bottom: 0.1rem solid #9D9D9D;
-    color: #9D9D9D;
+    border-bottom: 0.1rem solid #9d9d9d;
+    color: #9d9d9d;
 }
 
-.redirect-buttons {
-    height: 30%;
+.container-buttons-for-redirects {
+    width: 100%;
+    height: 40%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    justify-content: space-between;
+    align-items: center
 }
 
-.button-send-confirmation-code {
+.button-recover-account {
     @extend %font-poppins;
-    font-weight: 500;
-    font-size: 75%;
-    height: 50%;
-    width: 85%;
+    height: 48%;
+    width: 90%;
     border-radius: 0.4rem;
     border: none;
     background-color: #000000;
     color: #ffffff;
+    font-size: 80%;
 }
 
-.paragraph-login {
+.paragraph-resend-code {
     @extend %font-poppins;
     font-weight: 500;
     font-size: 70%;
 }
 
-.link-login {
+.link-resend-now {
     color: #5B86E5;
     text-decoration: none;
 }
 
-.link-login:hover {
+.link-resend-now:hover {
     text-decoration: underline;
 }
 

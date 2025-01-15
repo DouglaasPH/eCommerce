@@ -1,11 +1,11 @@
 @use '../../../variables.scss';
 
-.container-component-sign-up, .component-sign-up {
+.container-component-sign-in, .component-sign-in {
     height: 100%;
     width: 100%;
 }
 
-.component-sign-up {
+.component-sign-in {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
