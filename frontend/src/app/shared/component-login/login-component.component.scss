@@ -1,0 +1,49 @@
+@use '../../../variables.scss';
+
+.login-page-container {
+    display: flex;
+}
+
+.image-login-page {
+    width: 100%;
+    height: 100%;
+}
+
+.image-container {
+    display: flex;
+    width: 50%;
+    height: 100%;
+}
+
+.login-content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.container-router-outlet {
+    height: 60%;
+    width: 60%;
+}
+
+.container-mark {
+    width: 60%;
+}
+
+.mark {
+    @extend %font-volkhov;
+    @extend %logo-brand-style;
+}
+
+.container-terms-and-conditions {
+    width: 78%;
+    display: flex;
+    justify-content: end;
+}
+
+.terms-and-conditions {
+    @extend %font-poppins;
+    font-size: 75%;
+}

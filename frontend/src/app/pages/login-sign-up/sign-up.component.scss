@@ -1,0 +1,131 @@
+@use '../../../variables.scss';
+
+.container-component-sign-up, .component-sign-up {
+    height: 100%;
+    width: 100%;
+}
+
+.component-sign-up {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.description {
+    @extend %font-volkhov;
+    font-weight: 100;
+    font-size: 1.2rem;
+    color: #0a0a0a;
+}
+
+.button-log-in-with-google-or-gmail {
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.button-log-in-with-google, .button-log-in-with-gmail {
+    border: 0.1rem solid #5b86e5;
+    width: 45%;
+    height: 48%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4%;
+    border-radius: 0.5rem;
+    background-color: #FFFFFF;
+}
+
+.button-description-google, .button-description-gmail {
+    @extend %font-poppins;
+    font-size: 0.64rem;
+}
+
+.google-mark, .gmail-mark {
+    height: 60%;
+}
+
+.container-or {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.or {
+    @extend %font-poppins;
+    font-weight: 600;
+    color: #838383;
+}
+
+.data-entry-container {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.input-email, .input-password {
+    @extend %font-poppins;
+    font-weight: 400;
+    font-size: 70%;
+    color: #9d9d9d;
+    height: 50%;
+    border: none;
+    border-bottom: 1px solid #9d9d9d;
+    padding: 1%;
+}
+
+.container-redirect-buttons {
+    height: 30%;
+    display: flex;
+    flex-direction: column;    
+    justify-content: space-between;
+}
+
+.button-sign-in, .button-register-now {
+    @extend %font-poppins;
+    font-weight: 400;
+    font-size: 75%;
+    height: 30%;
+    border-radius: 0.4rem;
+}
+
+.button-sign-in {
+    background-color: #000000;
+    color: #FFFFFF;
+    border: none;    
+}
+
+.button-register-now {
+    background-color: #FFFFFF;
+    color: #5b86e5;
+    border: 0.1rem solid #5b86e5;
+
+}
+
+.container-button-forget-password {
+    height: 30%;
+    display: flex;
+    justify-content: end;
+}
+
+.button-forget-password {
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size: 70%;
+    text-align: start;
+    border: none;
+    background-color: #FFFFFF;
+    color: #1e51c0;
+}
+
+.button-forget-password:hover {
+    text-decoration: underline;
+}
+
+button:hover {
+    cursor: pointer;
+}

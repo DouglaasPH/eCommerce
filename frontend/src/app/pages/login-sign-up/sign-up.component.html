@@ -1,16 +1,23 @@
 <router-outlet></router-outlet>
 
-<div class="component-sign-up">
+<div class="container-component-sign-up">
+    <div class="component-sign-up">
     <div class="container-description">
         <p class="description">Sign In To FASCO</p>
     </div>    
-    <div class="button-log-in-with-google-and-or">
+    <div class="button-log-in-with-google-or-gmail">
         <button class="button-log-in-with-google">
-            <img src="" alt="Google mark">
-            <p>Sign up with Google </p>
+            <img class="google-mark" src="../../../assets/images/google-logo.svg" alt="Google mark">
+            <p class="button-description-google">Sign up with Google </p>
         </button>
-        <h3 class="or">- OR -</h3>
+        <button class="button-log-in-with-gmail">
+            <img class="gmail-mark" src="../../../assets/images/gmail-logo.svg" alt="Google mark">
+            <p class="button-description-gmail">Sign up with Gmail </p>
+        </button>        
     </div>    
+        <div class="container-or">
+            <h2 class="or">— OR —</h2>
+        </div>    
     <div class="data-entry-container">
         <input type="text" class="input-email" placeholder="Email" required>
         <input type="text" class="input-password" placeholder="Password" required>
@@ -18,8 +25,9 @@
     <div class="container-redirect-buttons">
         <button class="button-sign-in">Sign In</button>
         <button class="button-register-now">Register Now</button>
-        <div class="container-button-forget-password-">
+        <div class="container-button-forget-password">
             <button class="button-forget-password">Forget Password?</button>
         </div>
+    </div>
     </div>
 </div>
