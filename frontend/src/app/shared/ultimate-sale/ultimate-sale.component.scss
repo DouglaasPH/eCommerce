@@ -1,0 +1,162 @@
+@use '../../../variables.scss';
+
+.container-ultimate-sale {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.ultimate-sale {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.first-block, .third-block {
+    background-color: #E0E0E0;
+    border-radius: 0.6rem;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    width: 31%;
+}
+
+.image-1, .image-4 {
+    height: 80%;
+}
+
+.second-block {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.group-1 {
+    background-color: #E0E0E0;
+    border-radius: 0.6rem;
+    height: 21.2%;
+}
+
+.group-2 {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-title-ultimate {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-ultimate {
+    text-align: center;
+    @extend %font-poppins;
+    font-weight: 400;
+    color: #484848;
+    font-size: 4.7rem
+}
+
+.container-title-sale {
+    height: 50%;
+    width: 100%;
+}
+
+
+.title-sale {
+    @extend %font-poppins;
+    font-weight: 400;
+    color: transparent;
+    -webkit-text-stroke: 0.05rem #484848;    
+    font-size: 9.6rem;
+    top: 46%;
+    position: absolute;
+}
+
+.container-title-new-collection {
+    height: 15%;
+    display: flex;
+    align-items: center;
+}
+
+.title-new-collection {
+    @extend %font-poppins;
+    font-weight: 400;
+    font-size: 100%;
+    color: #484848;
+}
+
+.container-button-shop-now {
+    height: 14%;
+    width: 40%;
+}
+
+.button-shop-now {
+    @extend %font-poppins;
+    font-weight: 400;
+    font-size: 70%;
+    color: #ffffff;
+    background-color: #000000;
+    border: none;
+    border-radius: 0.6rem;
+    height: 100%;
+    width: 100%;
+}
+
+.button-shop-now:hover {
+    cursor: pointer;
+}
+
+.group-3 {
+    height: 20.6%;
+}
+
+.image-3, .image-2 {
+    height: 100%;
+}
+
+.absolute-block {
+    position: absolute;
+    top: 104%;
+    right: 1%;
+    width: 6%;
+    height: 4.8%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.button-cart {
+    background-color: #000000;
+    border: none;
+    border-radius: 0.5rem;    
+    width: 45%;
+}
+
+.image-cart {
+    height: 43%;
+}
+
+.button-arrow {
+    width: 38%;
+    border-radius: 100%;
+    border: 0.1rem solid #484848;
+    background-color: #ffffff;
+    font-size: 1.3rem;
+}
+
+.image-arrow {
+    height: 48%;
+}
+
+.button-arrow:hover, .button-cart:hover {
+    cursor: pointer;
+}

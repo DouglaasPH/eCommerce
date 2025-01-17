@@ -1,0 +1,232 @@
+@use '../../../variables.scss';
+
+.container-component-deals-of-the-month {
+    height: 70vh;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.component-deals-of-the-month {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 87.5%;
+    height: 100%;
+}
+
+.first-block {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.title {
+    @extend %font-volkhov;
+    @extend %logo-brand-style;
+    font-size: 2.1rem;
+}
+
+.paragraph {
+    @extend %font-poppins;
+    font-size: 75%;
+    font-weight: 500;
+    color: #484848;
+}
+
+.button-buy-now {
+    @extend %font-poppins;
+    font-size: 70%;
+    width: 40%;
+    height: 8%;
+    border: none;
+    border-radius: 0.6rem;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.group-timer {
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.title-group-timer {
+    @extend %font-poppins;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: #484848;
+}
+
+.container-timer {
+    display: flex;
+    flex-direction: row;
+    width: 82%;
+    height: 60%;
+    justify-content: space-between;
+}
+
+.container-days, .container-hours, .container-minutes, .container-seconds {
+    height: 100%;
+    width: 17%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.time {
+    @extend %font-russo-one;
+    color: #666666;
+    font-weight: 100;
+    font-size: 1.3rem;
+    height: 50%;
+    width: 100%;
+    text-align: center;
+    padding-top: 25%;
+    background-color: #ebebeb;
+    border-radius: 20%;
+}
+
+.description-time {
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size: 85%;
+    color: #666666;
+}
+
+.absolute-block {
+    position: absolute;
+    left: 42%;
+    top: 189%;
+    height: 5%;
+    width: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.left-arrow, .right-arrow {
+    @extend %font-poppins;
+    font-size: 1.3rem;
+    color: #484848;
+    width: 45%;
+    border: none;
+    background-color: #ebebeb;
+    border-radius: 100%;
+}
+
+.left-arrow:hover, .right-arrow:hover {
+    cursor: pointer;
+}
+
+.second-block {
+    width: 60%;
+    height: 85%;
+    position: relative;
+    overflow: hidden;
+}
+
+.container-images {
+    height: 100%;
+    width: 115%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition: transform 0.5s ease-in-out;
+}
+
+.image-1, .image-2, .image-3 {
+    height: 100%;
+    transition: height 0.5s ease-in-out, width 0.5s ease-in-out;
+}
+
+.image-2, .image-3 {
+    height: 80%;
+}
+
+.about-the-discount {
+    position: absolute;
+    left: 4%;
+    top:70%;
+    background-color: #FFFFFF;
+    height: 25%;
+    width: 23%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.type-of-promotion {
+    @extend %font-poppins;
+    font-size: 80%;
+    font-weight: 500;
+    color: #484848;
+}
+
+.discount-percentage {
+    @extend %font-poppins;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #484848;    
+}
+
+
+.group-current-image-flag {
+    height: 5%;
+    width: 20%;    
+    position: absolute;
+    left: 43%;
+    top: 92%;    
+    display: flex;
+    justify-content: space-between;
+    z-index: 11111;
+}
+
+.container-on-display {
+    width: 12%;
+    border-radius: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000000; 
+    transition: transform 0.5s ease-in-out;
+}
+
+.container-off-display {
+    width: 12%;
+    border-radius: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.5s ease-in-out;
+}
+
+.image-on-display {
+    display: inline-block;
+    text-align: center;
+    font-size: 3rem;
+    color: #000000;
+    margin-bottom: 1.6rem;
+}
+
+.image-off-display {
+    display: inline-block;
+    text-align: center;
+    font-size: 3rem;
+    color: #b6b6b6;   
+    margin-bottom: 1.6rem; 
+}
+
+img {
+    height: 10rem;
+}
+
+button:hover {
+    cursor: pointer;
+}

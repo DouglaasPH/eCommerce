@@ -1,0 +1,139 @@
+@use '../../../variables.scss';
+
+.container-women-collection {
+    margin-top: 15vh;
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.group-background-image {
+    height: 80%;
+    width: 65%;
+    background-image: url('../../../assets/women-collection/backgorund.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-color: #f8f8f8;
+}
+
+.container-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background-color: #DADADA;
+    clip-path: polygon(100% 100%, 100% -410%, 50% 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: end;
+}
+
+.container-title, .fashion-description, .paragraph-size, .size, .value, .redirect-button, .specification-tittle, .specification-paragraph {
+    @extend %font-poppins;
+}
+
+.type-of-fashion {
+    @extend %font-volkhov;
+}
+
+.content {
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    margin-left: 63%;
+}
+
+.container-title {
+    width: 100%;
+    color: #767676;
+    font-weight: 400;
+    font-size: 85%;
+}
+
+.type-of-fashion {
+    width: 100%;
+    color: #484848;
+    font-weight: 500;
+}
+
+.fashion-description {
+    width: 100%;
+    font-size: 80%;
+    color: #767676;
+}
+
+.container-size {
+    width: 15%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.paragraph-size {
+    color: #484848;
+    font-size: 80%;
+}
+
+.size {
+    background-color: #000000;
+    color: #ffffff;
+    width: 50%;
+    height: 100%;
+    font-size: 80%;
+    text-align: center;
+    border-radius: 0.6rem
+}
+
+.value {
+    font-weight: 500;
+}
+
+.redirect-button {
+    width: 30%;
+    height: 10%;
+    background-color: #000000;
+    border: none;
+    border-radius: 0.6rem;
+    color: #ffffff;
+    font-size: 70%;
+    font-weight: 300;
+}
+
+.container-specifications {
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.container-high-quality, .container-warrany-protection, .container-free-shipping, .container-247-support {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    gap: 5%;
+}
+
+.specification-tittle {
+    font-weight: 600;
+    font-size: 75%;
+    color: #484848;
+}
+
+.specification-paragraph {
+    font-weight: 500;
+    font-size: 70%;
+    color: #484848;
+}
+
+.icon {
+    height: 27%;
+}

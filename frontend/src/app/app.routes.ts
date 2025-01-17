@@ -6,6 +6,7 @@ import { LoginForgetPassword } from './pages/login-forget-password/forget-passwo
 import { LoginConfirmCode } from './pages/login-confirm-code/confirm-code.component';
 import { LoginEnterNewPassword } from './pages/login-enter-new-password/login-enter-new-password.component';
 import { LoginSignUp } from './pages/login.sign-up/login-sign-up.component';
+import { HomePage } from './pages/home-page/home-page.component';
 
 export const routes: Routes = [
     {
@@ -22,7 +23,9 @@ export const routes: Routes = [
                 },
             ]},
         ]
-    }
+    },
+    { path: "home", component: HomePage }
+
 ];
 
 @NgModule({
