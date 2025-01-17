@@ -1,0 +1,53 @@
+<div class="container-this-is-what-our-customers-say">
+    <div class="container-title-and-description">
+        <h1 class="title">This Is What Our Customers Say</h1>
+        <p class="description">Hear it straight from our customers—real stories, real experiences, and why they love shopping with us!</p>
+    </div>
+
+    <div class="container-customer-wall">
+        <div class="container-first-customer-feedback" [ngStyle]="{ 'left': (containerOrder[0] === 'first') ? '26%' : (containerOrder[1] === 'first') ? '7%' : '50%', 'height': (containerOrder[0] === 'first') ? '50%' : '40%', 'z-index': (containerOrder[0] === 'first') ? '1' : '0' }">
+            <div class="first-group">
+                <img src="../../../assets/this-is-what-our-customers-say/james-k.png" class="client-image" alt="client">
+            </div>
+            <div class="second-group">
+                <p class="report">"You won't regret it. I would like to personally thank you for your outstanding product. Absolutely wonderful!"</p>  
+                <img src="../../../assets/this-is-what-our-customers-say/stars.svg" class="five-stars" alt="five stars">
+                <div class="gray-line-style"></div>
+                <h2 class="customer-name">James K.</h2>
+                <p class="profession">Travaler</p>
+            </div>
+        </div>
+
+        <div class="container-second-customer-feedback" [ngStyle]="{ 'left': (containerOrder[0] === 'second') ? '26%' : (containerOrder[1] === 'second') ? '7%' : '50%', 'height': (containerOrder[0] === 'second') ? '50%' : '40%', 'z-index': (containerOrder[0] === 'second') ? '1' : '0'  }">
+            <div class="first-group">
+                <img src="../../../assets/this-is-what-our-customers-say/suzan-b.png" class="client-image" alt="client">
+            </div>
+            <div class="second-group">
+                <p class="report">“Items That I ordered were the best investment I ever made. I can't say enough about your quality service."</p>  
+                <img src="../../../assets/this-is-what-our-customers-say/stars.svg" class="five-stars" alt="five stars">
+                <div class="gray-line-style"></div>
+                <h2 class="customer-name">Suzan B.</h2>
+                <p class="profession">UI Designer</p>
+            </div>
+        </div>
+
+        <div class="container-third-customer-feedback" [ngStyle]="{ 'left': (containerOrder[0] === 'third') ? '26%' : (containerOrder[1] === 'third') ? '7%' : '50%', 'height': (containerOrder[0] === 'third') ? '50%' : '40%', 'z-index': (containerOrder[0] === 'third') ? '1' : '0'  }">
+            <div class="first-group">
+                <img src="../../../assets/this-is-what-our-customers-say/megan-w.png" class="client-image" alt="client">
+            </div>
+            <div class="second-group">
+                <p class="report">“Just what I was looking for. Thank you for making it painless, pleasant and most of all hassle free! All products are great.”</p>  
+                <img src="../../../assets/this-is-what-our-customers-say/stars.svg" class="five-stars" alt="five stars">
+                <div class="gray-line-style"></div>
+                <h2 class="customer-name">Megan W.</h2>
+                <p class="profession">UI Designer</p>
+            </div>
+        </div>        
+    </div>
+
+    <div class="container-buttons">
+        <button class="button-left" (click)="onLeftDirection()"><</button>
+        <button class="button-right" (click)="onRightDirection()">></button>
+    </div>
+    
+</div>
