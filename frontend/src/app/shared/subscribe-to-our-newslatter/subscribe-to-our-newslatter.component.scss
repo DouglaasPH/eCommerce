@@ -1,0 +1,72 @@
+@use '../../../variables.scss';
+
+.container-subscribe-to-our-newslatter {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.image {
+    width: 18%;
+}
+
+.main {
+    height: 40vh;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.group {
+    background-color: #ebebeb;
+    height: 70%;
+    width: 100%;
+    border-radius: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.title {
+    @extend %font-volkhov;
+    color: #484848;
+    font-weight: 300;
+}
+
+.description {
+    @extend %font-poppins;
+    font-size: 80%;
+    font-weight: 400;
+    width: 82%;
+    color: #8A8A8A
+}
+
+.input {
+    width: 82%;
+    height: 20%;
+    font-size: 110%;
+    border: none;
+    background-color: #ebebeb;
+}
+
+.button-subscribe-now {
+    @extend %font-poppins;
+    font-weight: 400;
+    font-size: 75%;
+    color: #ffffff;
+    background-color: black;
+    border: none;
+    width: 30%;
+    height: 17%;
+    border-radius: 0.6rem;
+}
+
+button:hover {
+    cursor: pointer;
+}
