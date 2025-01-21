@@ -9,6 +9,7 @@ import { LoginSignUp } from './pages/login.sign-up/login-sign-up.component';
 import { HomePage } from './pages/home-page/home-page.component';
 
 export const routes: Routes = [
+    { path: "", component: HomePage },    
     {
         path: "login", component: LoginPageComponent, children: [
             { path: "", redirectTo: "sign-in", pathMatch: "full" },
@@ -24,8 +25,6 @@ export const routes: Routes = [
             ]},
         ]
     },
-    { path: "home", component: HomePage }
-
 ];
 
 @NgModule({
