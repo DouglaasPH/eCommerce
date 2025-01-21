@@ -183,6 +183,7 @@
 .brand {
     border: none;
     width: 29%;
+    font-size: 78%;
 }
 
 .container-collections {
@@ -207,7 +208,7 @@
 }
 
 .container-tags {
-    height: 15%;
+    height: 12%;
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -215,7 +216,7 @@
 }
 
 .container-chose-tags {
-    height: 80%;
+    height: 65%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
