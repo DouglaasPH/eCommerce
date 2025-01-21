@@ -7,6 +7,7 @@ import { LoginConfirmCode } from './pages/login-confirm-code/confirm-code.compon
 import { LoginEnterNewPassword } from './pages/login-enter-new-password/login-enter-new-password.component';
 import { LoginSignUp } from './pages/login.sign-up/login-sign-up.component';
 import { HomePage } from './pages/home-page/home-page.component';
+import { ShopPage } from './pages/shop/shop-page.component';
 
 export const routes: Routes = [
     { path: "", component: HomePage },    
@@ -25,6 +26,7 @@ export const routes: Routes = [
             ]},
         ]
     },
+    { path: 'shop', component:ShopPage },
 ];
 
 @NgModule({

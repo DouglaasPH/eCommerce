@@ -1,0 +1,74 @@
+@use '../../../../variables.scss';
+
+.container-nav-bar-component {
+    height: 20vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container-logo {
+    display: flex;
+    align-items: center
+}
+
+.logo {
+    @extend %font-volkhov;
+    @extend %logo-brand-style;
+    font-size: 2.5rem;
+}
+
+.container-redirect-buttons {
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.redirect-button {
+    @extend %font-poppins;
+    font-weight: 400;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #484848; 
+}
+
+.special-redirect-button {
+    @extend %font-poppins;
+    font-weight: 400;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #484848; 
+    width: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;    
+}
+
+.redirect-button:hover {
+    text-decoration: underline;
+}
+
+.up-arrow {
+    transform: rotate(90deg); display: inline-block;    
+}
+
+.container-user {
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    height: 20%;
+}
+
+.redirect-user > img {
+    height: 100%;
+    width: 100%;
+}
+
+.redirect-user {
+    height: 75%;
+}

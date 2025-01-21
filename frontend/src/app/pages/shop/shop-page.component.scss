@@ -1,0 +1,39 @@
+@use '../../../variables.scss';
+
+.container-title-and-route {
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-title-and-route-specification {
+    width: 20%;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    @extend %font-volkhov;
+    @extend %logo-brand-style;
+    color: #000000;
+}
+
+.container-route-specification{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.parent-route, .separation, .current-route {
+    @extend %font-poppins;
+    font-size: 75%;
+}
+
+.content {
+    height: 200vh;
+    width: 100%;
+}

@@ -40,13 +40,17 @@
 
 .special-redirect-button {
     @extend %font-poppins;
+    text-decoration: none;
+    text-align: center;
+    padding: 2% 0% 2% 0%;
+    justify-content: center;
     background-color: #000000;
     color: #ffffff;
     font-size: 0.7rem;
     border: none;
     border-radius: 0.6rem;
-    width: 22%;    
-    height: 30%;
+    width: 20%;    
+
 }
 
 .special-redirect-button:hover {
