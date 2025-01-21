@@ -34,6 +34,19 @@
 }
 
 .content {
-    height: 200vh;
+    height: 250vh;
     width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container-component-filters {
+    width: 23%;
+    height: 63%;
+}
+
+.container-component-shop {
+    width: 75%;
+    height: 100%;
 }

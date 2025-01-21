@@ -1,0 +1,24 @@
+<div class="container-shop">
+    <div class="container-sales">
+        <div class="sale" *ngFor="let sale of sales.slice((currentPage * 9) - 9, currentPage * 9)">
+            <div class="container-image">
+                <img src="{{ sale.images }}" alt="image" class="image">
+            </div>
+            <div class="container-description">
+                <h5 class="item">{{ sale.item }}</h5>
+                <p class="price">{{ sale.price }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="container-others-pages">
+        <div class="others-pages">
+            <button class="button-double-back-arrow" (click)="backPage()"  [ngStyle]="{ 'opacity': currentPage !== 1 ? '1' : '0' }">
+                <img src="../../../../../assets/shop/others-pages/double-arrow.svg" alt="double arrow" class="double-arrow">
+            </button>
+            <button class="page-number" (click)="changePage(page)" *ngFor="let page of displayPages" >{{ page }}</button>
+            <button class="button-double-next-arrow" (click)="passPage()" [ngStyle]="{ 'opacity': numberOfPages.length > 3  && numberOfPages.length - currentPage >= 3 ? '1' : '0' }">
+                <img src="../../../../../assets/shop/others-pages/double-arrow.svg" alt="double arrow" class="double-arrow">
+            </button>
+        </div>
+    </div>
+</div>

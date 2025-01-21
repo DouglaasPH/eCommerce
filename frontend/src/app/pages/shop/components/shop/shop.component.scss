@@ -1,0 +1,84 @@
+@use '../../../../../variables.scss';
+
+.container-shop {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container-sales {
+    height: 95%;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2%;
+}
+
+.image {
+    width: 100%;
+}
+
+.sale {
+    width: 32%;
+    height: 28%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sale:hover {
+    cursor: pointer;
+}
+
+.container-description {
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;    
+}
+
+.item {
+    @extend %font-volkhov;
+    font-weight: 300;
+}
+
+.price {
+    @extend %font-poppins;
+    font-weight: 400;
+    font-size: 80%;
+}
+
+.container-others-pages {
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.others-pages {
+    height: 40%;
+    width: 18%;
+    display: flex;
+    gap: 7%;
+}
+
+.page-number, .button-double-next-arrow, .button-double-back-arrow {
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size:  70%;    
+    width: 20%;
+    background-color: #F3F3F3;
+    border: none;
+    border-radius: 100%;
+}
+
+.button-double-back-arrow {
+    rotate: 180deg;
+}
+
+button:hover {
+    cursor: pointer;
+}
