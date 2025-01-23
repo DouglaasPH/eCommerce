@@ -1,11 +1,10 @@
 import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
-import { RouterOutlet } from "@angular/router";
 
 @Component({
     selector: 'this-is-what-our-customers-say',
     standalone: true,
-    imports: [RouterOutlet, CommonModule],
+    imports: [CommonModule],
     templateUrl: './this-is-what-our-customers-say.component.html',
     styleUrl: './this-is-what-our-customers-say.component.scss',
 })

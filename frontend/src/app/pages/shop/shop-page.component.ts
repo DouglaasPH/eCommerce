@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { RouterOutlet } from "@angular/router";
 import { NavBarWithLogin } from "../../shared/nav-bar/with-login/nav-bar-with-login.component";
 import { FiltersComponent } from "./components/filters/filters-component.component";
 import { WomenCollection } from "../../shared/women-collection/women-collection.component";
@@ -11,7 +10,7 @@ import { Shop } from "./components/shop/shop.component";
 @Component({
     selector: 'shop-page',
     standalone: true,
-    imports: [RouterOutlet, NavBarWithLogin, FiltersComponent, Shop, WomenCollection, FollowUsOnInstagram, SubscribeToOurNewslatter, FooterBar],
+    imports: [NavBarWithLogin, FiltersComponent, Shop, WomenCollection, FollowUsOnInstagram, SubscribeToOurNewslatter, FooterBar],
     templateUrl: './shop-page.component.html',
     styleUrl: './shop-page.component.scss',
 })

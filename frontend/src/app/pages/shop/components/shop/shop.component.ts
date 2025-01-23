@@ -1,11 +1,10 @@
 import { CommonModule, NgFor } from "@angular/common";
 import { Component } from "@angular/core";
-import { RouterOutlet } from "@angular/router";
 
 @Component({
     selector: 'shop',
     standalone: true,
-    imports: [RouterOutlet, NgFor, CommonModule],
+    imports: [NgFor, CommonModule],
     templateUrl: './shop.component.html',
     styleUrl: './shop.component.scss',
 })

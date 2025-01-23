@@ -1,0 +1,62 @@
+<div *ngIf="addToCart">
+    <shopping-cart></shopping-cart>
+</div>
+
+<nav-bar-with-login></nav-bar-with-login>
+
+<div class="container-product">
+    <div class="product">
+        <div class="container-images">
+            <div class="container-choose-images">
+                <div class="div-choose-image" *ngFor="let image of product.images">
+                    <img src="{{image}}" alt="choose image" class="choose-image">
+                </div>
+            </div>
+            <div class="container-see-image">
+                <img src="{{ product.images[1] }}" alt="" class="current-image">
+            </div>
+        </div>
+        <div class="container-details">
+            <div class="details">
+                <div class="container-titles">
+                    <p class="website-brand">FASCO</p>
+                    <div class="container-product-name-and-favorite-button">
+                        <h2 class="product-name">{{ product.item}}</h2>
+                        <button class="favorite-button">
+                            <img src="../../../assets/login/icons/favorites.svg" alt="favorites" class="favorite-image">
+                        </button>
+                    </div>
+                </div>
+                <div class="container-size">
+                   <h4 class="size-title">Size:</h4>
+                    <div class="container-buttons-of-all-sizes">
+                        <button class="size" *ngFor="let size of product.sizes" [ngStyle]="{ 'background-color': this.currentSize === size ? '#000000' : '#ffffff', 'color': this.currentSize === size ? '#ffffff' : '#8A8A8A' }" (click)="changeSize(size)" > {{ size }} </button>
+                    </div>
+                </div>
+                <div class="container-quantity">
+                    <h4 class="quantity-title">Quantity</h4>
+                    <div class="container-select-quantity-and-add-to-cart">
+                        <div class="container-select-quantity">
+                            <button class="decrease-quantity" (click)="decreaseQuantity()">-</button>
+                            <button class="quantity">{{ currentQuantity }}</button>
+                            <button class="increase-quantity" (click)="increaseQuantity()">+</button>
+                        </div>
+                        <button class="button-add-to-cart" (click)="viewCart()">Add to cart</button>
+                    </div>
+                </div>
+                <div class="container-carts">
+                    <img src="../../../assets/icons/carts.svg" alt="" class="carts-image">
+                    <p class="carts-description">Guarantee safe & secure checkout</p>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+
+<women-collection></women-collection>
+
+<deals-of-the-month></deals-of-the-month>
+
+<subscribe-to-our-newslatter></subscribe-to-our-newslatter>
+
+<footer-bar></footer-bar>

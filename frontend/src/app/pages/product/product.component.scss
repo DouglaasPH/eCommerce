@@ -1,0 +1,200 @@
+@use '../../../variables.scss';
+
+.container-product {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product {
+    height: 100%;
+    width: 83%;
+    display: flex;
+    flex-direction: row;
+}
+
+.container-images {
+    width: 46%;
+    height: 90%;
+    display: flex;
+}
+
+.container-details {
+    width: 52%;
+    display: flex;
+    justify-content: end;
+}
+
+.details {
+    width: 88%;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+} 
+
+.container-choose-images {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3%;
+}
+
+.div-choose-image {
+    height: 12%;
+    width: 48%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.choose-image {
+    height: 90%;
+    width: 90%;
+}
+
+.container-see-image {
+    width: 80%;
+    height: 85%;
+}
+
+.current-image {
+    width: 100%;
+    height: 100%;
+}
+
+.container-titles {
+    height: 6%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.website-brand {
+    @extend %font-volkhov;
+    font-size: 75%;
+    color: #666666;
+}
+
+.container-product-name-and-favorite-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-name {
+    @extend %font-volkhov;
+    font-weight: 100;
+}
+
+.favorite-button {
+    background-color: #ffffff;
+    border: none;
+    height: 100%;
+    width: 3.5%;
+}
+
+.favorite-image {
+    width: 100%;
+}
+
+.container-size {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 9%;
+}
+
+.container-buttons-of-all-sizes {
+    height: 55%;
+    display: flex;
+    gap: 2%;
+    padding-left: 1%;
+}
+
+.size-title {
+    @extend %font-volkhov;
+    font-weight: 600;
+}
+
+.size {
+    @extend %font-poppins;
+    font-weight: 400;
+    color: #8A8A8A;
+    height: 100%;
+    width: 7%;
+    background-color: #ffffff;
+    border: 0.1rem solid #EEEEEE;
+    border-radius: 0.3rem;
+}
+
+.container-quantity {
+    height: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.quantity-title {
+    @extend %font-volkhov;
+    font-weight: 500;
+    font-size: 90%;
+}
+
+.container-select-quantity-and-add-to-cart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 55%;
+}
+
+.container-select-quantity {
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 0.1rem solid #EEEEEE;    
+    border-radius: 0.3rem;    
+}
+
+.decrease-quantity, .increase-quantity, .quantity {
+    @extend %font-poppins;
+    width: 29%;
+    color: #000000;    
+    background-color: #ffffff;
+    border-radius: 0.3rem;
+    border: none;
+}
+
+.button-add-to-cart {
+    @extend %font-volkhov;
+    background-color: #ffffff;
+    border: 0.1rem solid #000000;
+    border-radius: 0.3rem;
+    width: 70%;
+}
+
+.container-carts {
+    background-color: #F8F8F8;
+    border-radius: 0.6rem;
+    height: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.carts-description {
+    @extend %font-volkhov;
+    font-weight: 200;
+    font-size: 80%;
+}
+
+button:hover {
+    cursor: pointer;
+}

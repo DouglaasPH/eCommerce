@@ -8,6 +8,8 @@ import { LoginEnterNewPassword } from './pages/login-enter-new-password/login-en
 import { LoginSignUp } from './pages/login.sign-up/login-sign-up.component';
 import { HomePage } from './pages/home-page/home-page.component';
 import { ShopPage } from './pages/shop/shop-page.component';
+import { ProductPage } from './pages/product/product.component';
+import { ShoppingCart } from './shared/shopping-cart/shopping-cart.component';
 
 export const routes: Routes = [
     { path: "", component: HomePage },    
@@ -26,7 +28,11 @@ export const routes: Routes = [
             ]},
         ]
     },
-    { path: 'shop', component:ShopPage },
+    { path: 'shop', component: ShopPage },
+    {
+        path: 'shop/product', component: ProductPage, children: [
+            { path: 'shopping-cart', component: ShoppingCart }
+    ] },    
 ];
 
 @NgModule({
