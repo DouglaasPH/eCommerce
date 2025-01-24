@@ -1,0 +1,41 @@
+# Ignorar dependências de pacotes
+node_modules/
+
+# Ignorar arquivos de build
+dist/
+build/
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos de banco de dados local (se você usar SQLite ou outro banco local)
+*.db
+
+# Ignorar arquivos de cache
+.cache/
+
+# Ignorar arquivos de configuração do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos de IDEs
+.idea/
+.vscode/
+
+# Ignorar arquivos de ambiente
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Ignorar arquivos temporários de editores
+*.swp
+*~
+
+# Ignorar arquivos de dump do MySQL (caso você crie backups locais)
+*.sql
+*.sql.gz
+
+# Ignorar arquivos temporários do MySQL (caso esteja usando localmente)
+mysql_data/
