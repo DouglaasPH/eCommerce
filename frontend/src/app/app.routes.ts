@@ -10,6 +10,8 @@ import { HomePage } from './pages/home-page/home-page.component';
 import { ShopPage } from './pages/shop/shop-page.component';
 import { ProductPage } from './pages/product/product.component';
 import { ShoppingCart } from './shared/shopping-cart/shopping-cart.component';
+import { MyShoppingCart } from './pages/my-shopping-cart/my-shopping-cart.component';
+import { Checkout } from './pages/checkout/checkout.component';
 
 export const routes: Routes = [
     { path: "", component: HomePage },    
@@ -32,7 +34,10 @@ export const routes: Routes = [
     {
         path: 'shop/product', component: ProductPage, children: [
             { path: 'shopping-cart', component: ShoppingCart }
-    ] },    
+        ]
+    },
+    { path: 'my-shopping-cart', component: MyShoppingCart },
+    { path: 'checkout', component: Checkout },
 ];
 
 @NgModule({

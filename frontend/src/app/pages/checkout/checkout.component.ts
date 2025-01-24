@@ -4,12 +4,12 @@ import { SubscribeToOurNewslatter } from "../../shared/subscribe-to-our-newslatt
 import { FooterBar } from "../../shared/footer-bar/footer-bar.component";
 
 @Component({
-    selector: 'my-shopping-cart',
+    selector: 'checkout',
     standalone: true,
     imports: [NavBarWithLogin, SubscribeToOurNewslatter, FooterBar],
-    templateUrl: './my-shopping-cart.component.html',
-    styleUrl: './my-shopping-cart.component.scss',
+    templateUrl: './checkout.component.html',
+    styleUrl: './checkout.component.scss',
 })
-export class MyShoppingCart {
+export class Checkout {
 
 };
