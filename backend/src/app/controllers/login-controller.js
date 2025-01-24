@@ -1,3 +1,4 @@
+import { verifyToken } from "../jwt/jwt.js";
 import loginRepository from "../repositories/login-repository.js";
 
 class LoginController {
@@ -12,6 +13,8 @@ class LoginController {
         const { name, password } = req.query;
         const row = await loginRepository.confirmLogin(name, password);
         res.json(row);
+        const result = verifyToken(row.token);
+        console.log(result)
     }
 
     async newPassword(req, res) {

@@ -1,4 +1,4 @@
-import { consulta } from "../database/conection.js";
+import { checkLogin, consulta } from "../database/conection.js";
 
 class LoginRepository {
     create(datas) {
@@ -7,7 +7,7 @@ class LoginRepository {
     }
     confirmLogin(name, password) {
         const sql = "SELECT * FROM users WHERE name =? AND password =?";
-        return consulta(sql, [name, password], "Unable to confirm login!");
+        return checkLogin(sql, [name, password], "Unable to confirm login!");
     }
     updatePassword(password, email) {
         const sql = "UPDATE users SET password=? WHERE email =?";

@@ -1,4 +1,5 @@
 import mysql from 'mysql';
+import { generateToken } from '../jwt/jwt.js';
 
 const conexao = mysql.createConnection({
     host: 'localhost',
@@ -23,6 +24,24 @@ export const consulta = (sql, valores = "", mensagemReject) => {
             if (error) return reject(mensagemReject);
             const row = JSON.parse(JSON.stringify(result));
             return resolve(row);
+        });
+    });
+};
+
+export const checkLogin = (sql, valores = "", mensagemReject) => {
+    return new Promise((resolve, reject) => {
+        conexao.query(sql, valores, (error, result) => {
+            if (error) return reject(mensagemReject);
+            const row = JSON.parse(JSON.stringify(result));            
+            if (row.length > 0) {
+                const token = generateToken({
+                    id: row[0].id,
+                    username: row[0].name,
+                    email: row[0].email,
+                    phoneNumber: row[0].phone_number,
+                });
+                return resolve({ token });
+            } else return resolve({ token: "undefined" });
         });
     });
 };
