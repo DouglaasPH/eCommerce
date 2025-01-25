@@ -1,14 +1,14 @@
 import jwt from 'jsonwebtoken';
 
 
-// Chave secreta
+// Secret key
 const secretKey = process.env.JWT_SECRET || 'tWOhy77qJST+VfLxe/85bpPIUwI2xB+ke8fjZ5QYfwyLiICiAMKLKB/iWfxCuGdjJUrUTL26HpwA1/GQWwMbgg==';
 
 /**
- * Gera um token JWT
- * @param {Object} payload - Dados a serem armazenados no token.
- * @param {string} expiresIn - Tempo de expiração (ex.: '1h', '7d').
- * @returns {string} = Token JWT gerado.
+ * Generates a JWT token
+ * @param {Object} payload - Data to be stored in the token.
+ * @param {string} expiresIn - Expiration time (ex.: '1h', '7d').
+ * @returns {string} = Generated JWT token.
  */
 
 function generateToken(payload, expiresIn = '1h') {
@@ -16,10 +16,10 @@ function generateToken(payload, expiresIn = '1h') {
 };
 
 /**
- * Verifica e decodifica um token JWT
- * @param {string} token - Token JWT recebido.
- * @returns {Object} - Dados decodificados do token.
- * @throws {Error} - Erro caso o token seja inválido ou expirado.
+ * verify and decodes a JWT token
+ * @param {string} token - Received JWT token.
+ * @returns {Object} - Decode JWT token datas.
+ * @throws {Error} - Error if the o token is invalid or expired.
  */
 
 function verifyToken(token) {
