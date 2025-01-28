@@ -5,9 +5,9 @@ class LoginRepository {
         const sql = "INSERT INTO users SET ?";
         return consulta(sql, datas, "Unable to register account!");
     }
-    confirmLogin(name, password) {
-        const sql = "SELECT * FROM users WHERE name =? AND password =?";
-        return checkLogin(sql, [name, password], "Unable to confirm login!");
+    confirmLogin(email, password) {
+        const sql = "SELECT * FROM users WHERE email =? AND password =?";
+        return checkLogin(sql, [email, password], "Unable to confirm login!");
     }
     updatePassword(password, email) {
         const sql = "UPDATE users SET password=? WHERE email =?";

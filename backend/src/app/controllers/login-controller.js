@@ -1,4 +1,3 @@
-import { verifyToken } from "../jwt/jwt.js";
 import loginRepository from "../repositories/login-repository.js";
 
 class LoginController {
@@ -10,17 +9,36 @@ class LoginController {
     }
 
     async login(req, res) {
-        const { name, password } = req.query;
-        const row = await loginRepository.confirmLogin(name, password);
-        res.json(row);
-        const result = verifyToken(row.token);
-        console.log(result)
+        const { email, password } = req.query;
+        const row = await loginRepository.confirmLogin(email, password);    
+    
+        if (row.login) {
+            res.cookie('user_token', row.token, {
+                httpOnly: true,
+                secure: false,
+                sameSite: 'Strict',
+                maxAge: 24 * 60 * 60 * 1000,
+                path: '/',
+            });
+            res.json({ message: 'successfully logged in', loginned: true });            
+        } else {
+            res.json({ mesasge: 'not logged in', loginned: false });
+        }
     }
 
     async newPassword(req, res) {
         const { password, email } = req.body;
         const row = await loginRepository.updatePassword(password, email);
         res.json(row);
+    }
+
+    async checkUserToken(req, res) {
+        const userToken = req.cookies['user_token'];
+        if (userToken) {
+            res.json({ message: 'successfully logged in', isLogginned: true });
+        } else {
+            res.json({ message: 'not logged in', isLogginned: false })
+        }
     }
 }
 

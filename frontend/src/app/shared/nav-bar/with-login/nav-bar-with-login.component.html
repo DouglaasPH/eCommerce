@@ -1,12 +1,13 @@
 <div class="container-nav-bar-component">
+
+<div class="nav-bar-component">
     <div class="container-logo">
         <h1 class="logo">FASCO</h1>
     </div>
     <div class="container-redirect-buttons">
-            <a href="" class="redirect-button">Home</a>
-            <a href="" class="redirect-button">Shop</a>
+            <a href="/" class="redirect-button" [ngClass]="{ 'currentPage': currentRoute === '/' }">Home</a>
+            <a href="/shop" class="redirect-button" [ngClass]="{ 'currentPage': currentRoute === '/shop' }">Shop</a>
             <a href="" class="redirect-button">Products</a>
-            <a href="" class="special-redirect-button">Pages <p class="up-arrow">&gt;</p></a>
     </div>
     <div class="container-user">
         <a href="" class="redirect-user">
@@ -22,4 +23,6 @@
             <img src="../../../../assets/login/icons/my-purchases.svg" alt="my purchases">
         </a>
     </div>
+</div>
+
 </div>

@@ -19,23 +19,23 @@
 
         <div class="container-row-data-entry">
             <div class="first-row-inputs">
-                <input type="text" class="input-first-name" placeholder="First Name" required>
-                <input type="text" class="input-last-name" placeholder="Last Name" required>
+                <input type="text" class="input-first-name" placeholder="First Name" [(ngModel)]="firstName" required>
+                <input type="text" class="input-last-name" placeholder="Last Name" [(ngModel)]="lastName" required>
             </div>
             <div class="second-row-inputs">
-                <input type="text" class="input-email" placeholder="Email" required>
-                <input type="text" class="input-phone-number" placeholder="Phone Number" required>
+                <input type="text" class="input-email" placeholder="Email" [(ngModel)]="email" required>
+                <input type="text" class="input-phone-number" placeholder="Phone Number" (input)="onInputPhoneNumber($event)" [value]="phoneNumber" maxlength="15" required>
             </div>
             <div class="three-row-inputs">
-                <input type="text" class="input-password" placeholder="Password" required>
-                <input type="text" class="input-confirm-password" placeholder="Confirm Password" required>
+                <input type="text" class="input-password" placeholder="Password" [(ngModel)]="password" required>
+                <input type="text" class="input-confirm-password" placeholder="Confirm Password" [(ngModel)]="confirmPassword" required>
             </div>                        
         </div>
 
         <div class="container-redirect-buttons">
-            <button class="button-sign-up">Create Account</button>
+            <button class="button-sign-up" (click)="onSubmit()">Create Account</button>
             <div class="container-paragraph-login">
-                <p class="paragraph-login">Already have an account? <a href="" class="link-login">Login</a></p>
+                <p class="paragraph-login">Already have an account? <a class="link-login" routerLink="/login/sign-in">Login</a></p>
             </div>            
         </div>
     </div>

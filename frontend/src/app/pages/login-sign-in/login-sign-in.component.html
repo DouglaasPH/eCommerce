@@ -13,18 +13,18 @@
             <p class="button-description-gmail">Sign up with Gmail </p>
         </button>        
     </div>    
-        <div class="container-or">
-            <h2 class="or">— OR —</h2>
-        </div>    
+    <div class="container-or">
+        <h2 class="or">— OR —</h2>
+    </div>    
     <div class="data-entry-container">
-        <input type="text" class="input-email" placeholder="Email" required>
-        <input type="text" class="input-password" placeholder="Password" required>
+        <input type="text" class="input-email" placeholder="Email" [(ngModel)]="datas.email" required>
+        <input type="text" class="input-password" placeholder="Password" [(ngModel)]="datas.password" required>
     </div>
     <div class="container-redirect-buttons">
-        <button class="button-sign-in">Sign In</button>
-        <button class="button-register-now">Register Now</button>
+        <button class="button-sign-in" type="submit" (click)="onSubmit()">Sign In</button>
+        <button class="button-register-now" [routerLink]="['/login/sign-up']">Register Now</button>
         <div class="container-button-forget-password">
-            <button class="button-forget-password">Forget Password?</button>
+            <button class="button-forget-password" routerLink="/login/forget-password">Forget Password?</button>
         </div>
     </div>
     </div>

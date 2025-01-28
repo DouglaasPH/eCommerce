@@ -1,4 +1,6 @@
-<nav-bar-without-login></nav-bar-without-login>
+<nav-bar-without-login *ngIf="isLogginned"></nav-bar-without-login>
+
+<nav-bar-with-login *ngIf="!isLogginned"></nav-bar-with-login>
 
 <ultimate-sale></ultimate-sale>
 

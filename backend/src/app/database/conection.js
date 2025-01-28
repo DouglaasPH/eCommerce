@@ -40,8 +40,9 @@ export const checkLogin = (sql, valores = "", mensagemReject) => {
                     email: row[0].email,
                     phoneNumber: row[0].phone_number,
                 });
-                return resolve({ token });
-            } else return resolve({ token: "undefined" });
+                
+                return resolve({ token, login: true });
+            } else return resolve({ token: "undefined", login: false });
         });
     });
 };

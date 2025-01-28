@@ -3,9 +3,16 @@
 .container-nav-bar-component {
     height: 20vh;
     display: flex;
+    justify-content: center;
+}
+
+.nav-bar-component {
+    height: 100%;
+    width: 75%;
+    display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
+    justify-content: space-between;
 }
 
 .container-logo {
@@ -21,6 +28,7 @@
 
 .container-redirect-buttons {
     width: 25%;
+    height: 21%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -28,41 +36,49 @@
 }
 
 .redirect-button {
-    @extend %font-poppins;
-    font-weight: 400;
-    font-size: 0.8rem;
-    text-decoration: none;
-    color: #484848; 
-}
-
-.special-redirect-button {
-    @extend %font-poppins;
-    font-weight: 400;
-    font-size: 0.8rem;
-    text-decoration: none;
-    color: #484848; 
-    width: 15%;
+    height: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;    
+    align-items: center;
+    justify-content: center;
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: #484848; 
+    border-bottom: 0.1rem solid #ffffff;
 }
 
 .redirect-button:hover {
-    text-decoration: underline;
+    color: #212121;  
 }
 
-.up-arrow {
-    transform: rotate(90deg); display: inline-block;    
-    z-index: 0;
+.currentPage {
+    border-bottom: 0.1rem solid #484848;
+}
+
+.currentPage:hover {
+    border-bottom: 0.1rem solid #212121;
+}
+
+.redirect-button:nth-of-type(1) {
+    width: 18%;
+}
+
+.redirect-button:nth-of-type(2) {
+    width: 17%;
+}
+
+.redirect-button:nth-of-type(3) {
+    width: 26%;
 }
 
 .container-user {
-    width: 10%;
+    width: 12%;
     display: flex;
     justify-content: center;
     align-items: center;
     justify-content: space-between;
-    height: 20%;
+    height: 18%;
 }
 
 .redirect-user > img {

@@ -69,13 +69,17 @@
 
 .input-email, .input-password {
     @extend %font-poppins;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 70%;
-    color: #9d9d9d;
+    color: #000000;
     height: 50%;
     border: none;
     border-bottom: 1px solid #9d9d9d;
     padding: 1%;
+}
+
+input::placeholder {
+    color: #9d9d9d;
 }
 
 .container-redirect-buttons {

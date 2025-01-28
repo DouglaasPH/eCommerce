@@ -12,23 +12,24 @@ import { ProductPage } from './pages/product/product.component';
 import { ShoppingCart } from './shared/shopping-cart/shopping-cart.component';
 import { MyShoppingCart } from './pages/my-shopping-cart/my-shopping-cart.component';
 import { Checkout } from './pages/checkout/checkout.component';
+import { AuthGuard } from './auth.guard';
 
 export const routes: Routes = [
     { path: "", component: HomePage },    
     {
         path: "login", component: LoginPageComponent, children: [
             { path: "", redirectTo: "sign-in", pathMatch: "full" },
-            { path: "sign-in", component: LoginSignIn },            
-            { path: "sign-up", component: LoginSignUp },
+            { path: "sign-in", component: LoginSignIn, canActivate: [AuthGuard] },            
+            { path: "sign-up", component: LoginSignUp, canActivate: [AuthGuard] },
             { path: "forget-password", children: [
-                { path: "", component: LoginForgetPassword },
+                { path: "", component: LoginForgetPassword, canActivate: [AuthGuard] },
                 {path: "confirm-code", children: [
-                    { path: "", component: LoginConfirmCode },
-                    { path: "enter-new-password", component: LoginEnterNewPassword },
+                    { path: "", component: LoginConfirmCode, canActivate: [AuthGuard] },
+                    { path: "enter-new-password", component: LoginEnterNewPassword, canActivate: [AuthGuard] },
                 ]
                 },
             ]},
-        ]
+        ], canActivate: [AuthGuard]
     },
     { path: 'shop', component: ShopPage },
     {

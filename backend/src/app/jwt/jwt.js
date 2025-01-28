@@ -27,3 +27,8 @@ function verifyToken(token) {
 };
 
 export { generateToken, verifyToken };
+
+/*
+        const result = verifyToken(row.token);
+        console.log(result)
+*/
