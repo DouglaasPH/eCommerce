@@ -17,6 +17,7 @@ export class LoginConfirmCode {
         const condition = await this.enternewpasswordguard.canActivate();
 
         if (condition) {
+            // TODO unknown knowledge is required at the moment. You can later add the sending of an email to confirm the code and user by email..
             this.router.navigate(['/login/forget-password/confirm-code/enter-new-password']);
         } else return;
     }
