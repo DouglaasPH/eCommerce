@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { RouterModule } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
+import { ForgetPasswordSingletonService } from "../../services/auth.service";
+import { updatePassword } from "../../requests/loginRequests";
 
 @Component({
     selector: 'login-enter-new-password',
@@ -8,15 +10,24 @@ import { RouterModule } from "@angular/router";
     imports: [FormsModule, RouterModule],
     templateUrl: './login-enter-new-password.component.html',
     styleUrl: './login-enter-new-password.component.scss'
-})
+})      
 export class LoginEnterNewPassword {
+    constructor(private forgetpasswordsingletonservice: ForgetPasswordSingletonService, private router: Router) {}
+
     newPassword = '';
     confirmPassword = '';
 
-    onSubmi() {
+    async onSubmit() {
         if (this.newPassword === this.confirmPassword) {
-            console.log("enviar requisição");
-            
+            this.forgetpasswordsingletonservice.setDataPassword(this.confirmPassword);
+            const emailAndPassword = this.forgetpasswordsingletonservice.getDatas();
+            const requestUpdatePassword = await updatePassword(emailAndPassword);
+
+            if (requestUpdatePassword.updatedPassword) {
+                this.router.navigate(['/login/sign-in']);
+            } else {
+                this.router.navigate(['/']);
+            }
         }
     }
 }

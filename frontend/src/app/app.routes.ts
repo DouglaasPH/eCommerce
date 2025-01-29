@@ -12,7 +12,9 @@ import { ProductPage } from './pages/product/product.component';
 import { ShoppingCart } from './shared/shopping-cart/shopping-cart.component';
 import { MyShoppingCart } from './pages/my-shopping-cart/my-shopping-cart.component';
 import { Checkout } from './pages/checkout/checkout.component';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { ConfirmCodeGuard } from './guards/confirmCode.guard';
+import { EnterNewPasswordGuard } from './guards/enterNewPassword.guard';
 
 export const routes: Routes = [
     { path: "", component: HomePage },    
@@ -24,8 +26,8 @@ export const routes: Routes = [
             { path: "forget-password", children: [
                 { path: "", component: LoginForgetPassword, canActivate: [AuthGuard] },
                 {path: "confirm-code", children: [
-                    { path: "", component: LoginConfirmCode, canActivate: [AuthGuard] },
-                    { path: "enter-new-password", component: LoginEnterNewPassword, canActivate: [AuthGuard] },
+                    { path: "", component: LoginConfirmCode, canActivate: [ConfirmCodeGuard] },
+                    { path: "enter-new-password", component: LoginEnterNewPassword, canActivate: [EnterNewPasswordGuard] },
                 ]
                 },
             ]},

@@ -2,8 +2,10 @@ import loginRepository from "../repositories/login-repository.js";
 
 class LoginController {
     async createAccount(req, res) {
-        const { name, email, password, phone_number, } = req.body;
+        const { name, email, password, phone_number, } = req.body.params;
         const valuesObject = { name, email, password, phone_number };
+        console.log(req.body);
+        console.log(valuesObject);
         const row = await loginRepository.create(valuesObject);
         res.json(row);
     }
@@ -25,6 +27,12 @@ class LoginController {
             res.json({ mesasge: 'not logged in', loginned: false });
         }
     }
+
+    async checkEmail(req, res) {
+        const { email } = req.query;
+        const row = await loginRepository.validateEmail(email);
+        res.json(row);
+    }    
 
     async newPassword(req, res) {
         const { password, email } = req.body;

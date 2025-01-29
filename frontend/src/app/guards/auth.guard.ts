@@ -14,9 +14,12 @@ export class AuthGuard implements CanActivate {
         const loginStatus = await checkLoggined();
         this.isLogginned = loginStatus.isLogginned;
 
+        // not logged in
         if (!this.isLogginned) {
             return true;
-        } else {
+        }
+        // is logginned
+        else {
             this.router.navigate(['/']);
             return false;
         }
@@ -25,4 +28,5 @@ export class AuthGuard implements CanActivate {
     setAuthentication(status: boolean) {
         this.isLogginned = status;
     }
+
 };

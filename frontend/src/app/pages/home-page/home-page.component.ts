@@ -9,7 +9,7 @@ import { ThisIsWhatOurCustomersSay } from "../../shared/this-is-what-our-custome
 import { SubscribeToOurNewslatter } from "../../shared/subscribe-to-our-newslatter/subscribe-to-our-newslatter.component";
 import { FooterBar } from "../../shared/footer-bar/footer-bar.component";
 import { NavBarWithLogin } from "../../shared/nav-bar/with-login/nav-bar-with-login.component";
-import { AuthGuard } from "../../auth.guard";
+import { AuthGuard } from "../../guards/auth.guard";
 import { CommonModule } from "@angular/common";
 
 @Component({

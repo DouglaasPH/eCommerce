@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
-import { requestSignIn } from "../../../requests/loginRequests";
-import { AuthGuard } from "../../auth.guard";
+import { requestSignIn } from "../../requests/loginRequests";
+import { AuthGuard } from "../../guards/auth.guard";
 
 @Component({
     selector: 'login-sign-in',

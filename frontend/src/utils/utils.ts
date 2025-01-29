@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
-import { AuthGuard } from "../app/auth.guard";
-import { checkLoggined } from "../requests/loginRequests";
+import { AuthGuard } from "../app/guards/auth.guard";
+import { checkLoggined } from "../app/requests/loginRequests";
 
 @Injectable({
     providedIn: "root",

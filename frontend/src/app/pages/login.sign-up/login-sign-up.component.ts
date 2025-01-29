@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { RouterModule } from "@angular/router";
+import { Router, RouterModule } from "@angular/router";
+import { createAccount } from "../../requests/loginRequests";
 
 @Component({
     selector: 'login-sign-up',
@@ -10,9 +11,10 @@ import { RouterModule } from "@angular/router";
     styleUrl: './login-sign-up.component.scss'
 })
 export class LoginSignUp {
+    constructor(private router: Router) { }
+    
     firstName = '';
     lastName = '';
-    fullName = this.firstName + this.lastName;
     email = '';
     phoneNumber = '';
     password = '';
@@ -22,7 +24,6 @@ export class LoginSignUp {
     onInputPhoneNumber(event: Event): void {
         const inputValue = (event.target as HTMLInputElement).value;
         // CONDITIONS TO ADD NEW VALUE
-        console.log(inputValue.length, inputValue)
         if (inputValue.length === 1 && this.phoneNumber.length === 0) {
             this.phoneNumber = '(' + inputValue;
         } else if (inputValue.length === 3 && this.phoneNumber.length === 2) {
@@ -44,12 +45,17 @@ export class LoginSignUp {
         }
     }
 
-    onSubmit() {
+    async onSubmit() {
         const regexForEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         const regexForPhoneNumber = /^\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$/;
 
         if (regexForEmail.test(this.email) && regexForPhoneNumber.test(this.phoneNumber) && this.firstName !== '' && this.lastName !== '' && this.email !== '' && this.password === this.confirmPassword) {
-            console.log('enviar requisição');
+            const request = await createAccount({ name: this.firstName + ' ' + this.lastName, email: this.email, phone_number: this.phoneNumber, password: this.password });
+            
+            if (request.accountCreate) {
+                this.router.navigate(['/login/sign-in']);
+            } else return;
+
         } else return;
     }
-}
+};

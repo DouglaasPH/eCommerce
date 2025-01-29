@@ -28,11 +28,12 @@ export const consulta = (sql, valores = "", mensagemReject) => {
     });
 };
 
-export const checkLogin = (sql, valores = "", mensagemReject) => {
+export const checkLogin = (sql, values = "", rejectionMessage) => {
     return new Promise((resolve, reject) => {
-        conexao.query(sql, valores, (error, result) => {
-            if (error) return reject(mensagemReject);
+        conexao.query(sql, values, (error, result) => {
+            if (error) return reject(rejectionMessage);
             const row = JSON.parse(JSON.stringify(result));            
+
             if (row.length > 0) {
                 const token = generateToken({
                     id: row[0].id,
@@ -46,5 +47,44 @@ export const checkLogin = (sql, valores = "", mensagemReject) => {
         });
     });
 };
+
+export const createAccount = (sql, values = "", rejectionMessage) => {
+    return new Promise((resolve, reject) => {
+        conexao.query(sql, values, (error, result) => {
+            if (error) return reject(rejectionMessage);
+            const row = JSON.parse(JSON.stringify(result));
+
+            if (row.affectedRows > 0) {
+                return resolve({ message: 'Account created sucessfully', accountCreate: true });
+            } else return resolve({ message: 'Account was not created', accountCreate: false });
+        })
+    })
+}
+
+export const validateEmail = (sql, values = "", rejectionMessage) => {
+    return new Promise((resolve, reject) => {
+        conexao.query(sql, values, (error, result) => {
+            if (error) return reject(rejectionMessage);
+            const row = JSON.parse(JSON.stringify(result));
+
+            if (row.length > 0) {
+                return resolve({ message: 'The email is already registered in the database', registeredEmail: true });
+            } else return resolve({ message: 'The email is not registered in the database', registeredEmail: false });
+        })
+    })
+}
+
+export const updatePassword = (sql, values = "", rejectionMessage) => {
+    return new Promise((resolve, reject) => {
+        conexao.query(sql, values, (error, result) => {
+            if (error) return reject(rejectionMessage);
+            const row = JSON.parse(JSON.stringify(result));
+
+            if (row.affectedRows > 0) {
+                return resolve({ message: 'Password updated succesfully', updatedPassword: true });
+            } else return resolve({ message: 'Unable to update password', updatedPassword: false });
+        })
+    })
+}
 
 export default conexao;

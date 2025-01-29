@@ -1,17 +1,22 @@
-import { checkLogin, consulta } from "../database/conection.js";
+import { checkLogin, consulta, createAccount, updatePassword, validateEmail } from "../database/conection.js";
 
 class LoginRepository {
     create(datas) {
         const sql = "INSERT INTO users SET ?";
-        return consulta(sql, datas, "Unable to register account!");
+        return createAccount(sql, datas, "Unable to request account registration!");
     }
     confirmLogin(email, password) {
         const sql = "SELECT * FROM users WHERE email =? AND password =?";
-        return checkLogin(sql, [email, password], "Unable to confirm login!");
+        return checkLogin(sql, [email, password], "Unable to request login confirmaton!");
     }
     updatePassword(password, email) {
         const sql = "UPDATE users SET password=? WHERE email =?";
-        return consulta(sql, [password, email], "Unable to update password!");
+        return updatePassword(sql, [password, email], "Unable to request password update!");
+    }
+
+    validateEmail(email) {
+        const sql = "SELECT * FROM users WHERE email =?";
+        return validateEmail(sql, [email], "Unable to request email validation!");
     }
 }
 
