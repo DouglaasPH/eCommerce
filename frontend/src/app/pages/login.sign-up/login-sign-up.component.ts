@@ -53,7 +53,7 @@ export class LoginSignUp {
 
         if (regexForEmail.test(this.email) && regexForPhoneNumber.test(this.phoneNumber) && this.firstName !== '' && this.lastName !== '' && this.email !== '' && this.password === this.confirmPassword) {
             const requestValidateEmail = await validateEmail(this.email);            
-            
+            console.log('passou')
             if (!requestValidateEmail.registeredEmail) {
                 const request = await createAccount({ name: this.firstName + ' ' + this.lastName, email: this.email, phone_number: this.phoneNumber, password: this.password });
             
