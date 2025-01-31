@@ -27,7 +27,8 @@
 }
 
 .button-log-in-with-google, .button-log-in-with-gmail {
-    border: 0.1rem solid #5b86e5;
+    background-color: #d7d7d7;
+    border: none;
     width: 45%;
     height: 48%;
     display: flex;
@@ -36,12 +37,12 @@
     justify-content: center;
     gap: 4%;
     border-radius: 0.5rem;
-    background-color: #FFFFFF;
 }
 
 .button-description-google, .button-description-gmail {
     @extend %font-poppins;
-    font-size: 0.64rem;
+    font-size: 80%;
+    font-weight: 500;
 }
 
 .google-mark, .gmail-mark {
@@ -70,11 +71,12 @@
 .input-email, .input-password {
     @extend %font-poppins;
     font-weight: 500;
-    font-size: 70%;
+    font-size: 75%;
     color: #000000;
     height: 50%;
     border: none;
-    border-bottom: 1px solid #9d9d9d;
+    background-color: transparent;
+    border-bottom: 0.1rem solid #9d9d9d;
     padding: 1%;
 }
 
@@ -99,15 +101,15 @@ input::placeholder {
 
 .button-sign-in {
     background-color: #000000;
-    color: #FFFFFF;
+    color: #ffffff;
     border: none;    
 }
 
 .button-register-now {
-    background-color: #FFFFFF;
-    color: #5b86e5;
-    border: 0.1rem solid #5b86e5;
-
+    background-color: transparent;
+    color: #ffffff;
+    background-color: #2861dd;
+    border: none;
 }
 
 .container-button-forget-password {
@@ -118,11 +120,11 @@ input::placeholder {
 
 .button-forget-password {
     @extend %font-poppins;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 70%;
     text-align: start;
     border: none;
-    background-color: #FFFFFF;
+    background-color: transparent;
     color: #1e51c0;
 }
 

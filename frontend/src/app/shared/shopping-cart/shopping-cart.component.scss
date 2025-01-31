@@ -12,7 +12,7 @@
 }
 
 .container-shopping-cart {
-    background-color: #ffffff;
+    background-color: #ebebeb;
     height: 96%;
     width: 34%;
     display: flex;
@@ -40,7 +40,7 @@
     width: 2.5%;
     height: 100%;
     border: none;
-    background-color: #ffffff;
+    background-color: transparent;
 }
 
 .img-close-cart {
@@ -127,7 +127,7 @@ strong {
 
 .button-checkout {
     @extend %font-poppins;
-    color: #ffffff;
+    color: #ebebeb;
     font-size: 70%;
     height: 38%;
     width: 100%;

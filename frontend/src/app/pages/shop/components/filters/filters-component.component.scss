@@ -6,8 +6,16 @@
 
 .size, .price, .brand, .collection, .tag {
     @extend %font-poppins;
+}
+
+.selected {
+    font-weight: 500;
+    color: #141414;
+}
+
+.unselected {
     font-weight: 400;
-    color: #8A8A8A;
+    color: #8a8a8a;    
 }
 
 .title-filters {
@@ -45,7 +53,7 @@
 
 .container-chose-sizes {
     height: 65%;
-    width: 50%;
+    width: 55%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -55,10 +63,22 @@
 .size {
     width: 30%;
     height: 40%;
-    background-color: #ffffff;
+    background-color: transparent;
     border: 0.1rem solid #8A8A8A;
     color: #8A8A8A;
     border-radius: 0.2rem;
+}
+
+.sizeSelected {
+    background-color: #000000;
+    border: 0.1rem solid #000000;
+    color: #ffffff;    
+}
+
+.sizeUnselected {
+    background-color: transparent;
+    border: 0.1rem solid #8A8A8A;
+    color: #8A8A8A;    
 }
 
 .container-prices {
@@ -77,14 +97,15 @@
 }
 
 .price, .brand {
-    background-color: #ffffff;
+    background-color: transparent;
     border: none;
-    width: 40%;
+    width: 50%;
+    height: 25%;
     text-align: start;
 }
 
 .container-brands {
-    height: 8%;
+    height: 10%;
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -92,7 +113,7 @@
 }
 
 .container-chose-brands {
-    height: 65%;
+    height: 70%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -101,7 +122,7 @@
 
 .brand {
     border: none;
-    width: 29%;
+    width: 45%;
     font-size: 78%;
 }
 
@@ -121,7 +142,7 @@
 }
 
 .collection {
-    background-color: #ffffff;
+    background-color: transparent;
     border: none;
     text-align: start;
 }
@@ -143,7 +164,7 @@
 }
 
 .tag {
-    background-color: #ffffff;
+    background-color: transparent;
     border: none;
     height: 20%;
     font-size: 78%;
