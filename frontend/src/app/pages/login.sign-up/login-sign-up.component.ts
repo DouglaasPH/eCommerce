@@ -1,12 +1,13 @@
 import { Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { Router, RouterModule } from "@angular/router";
-import { createAccount } from "../../requests/loginRequests";
+import { createAccount, validateEmail } from "../../requests/loginRequests";
+import { CommonModule } from "@angular/common";
 
 @Component({
     selector: 'login-sign-up',
     standalone: true,
-    imports: [FormsModule, RouterModule],
+    imports: [FormsModule, RouterModule, CommonModule],
     templateUrl: './login-sign-up.component.html',
     styleUrl: './login-sign-up.component.scss'
 })
@@ -19,6 +20,7 @@ export class LoginSignUp {
     phoneNumber = '';
     password = '';
     confirmPassword = '';
+    invalidEmail = false;
 
 
     onInputPhoneNumber(event: Event): void {
@@ -50,12 +52,24 @@ export class LoginSignUp {
         const regexForPhoneNumber = /^\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$/;
 
         if (regexForEmail.test(this.email) && regexForPhoneNumber.test(this.phoneNumber) && this.firstName !== '' && this.lastName !== '' && this.email !== '' && this.password === this.confirmPassword) {
-            const request = await createAccount({ name: this.firstName + ' ' + this.lastName, email: this.email, phone_number: this.phoneNumber, password: this.password });
+            const requestValidateEmail = await validateEmail(this.email);            
             
-            if (request.accountCreate) {
-                this.router.navigate(['/login/sign-in']);
-            } else return;
+            if (!requestValidateEmail.registeredEmail) {
+                const request = await createAccount({ name: this.firstName + ' ' + this.lastName, email: this.email, phone_number: this.phoneNumber, password: this.password });
+            
+                if (request.accountCreate) {
+                    this.router.navigate(['/login/sign-in']);
+                } else return;   
+            } else {
+                this.invalidEmail = true;
+            }
 
         } else return;
     }
+
+    changeInvalidEmailState() {
+        if (this.invalidEmail) {
+            this.invalidEmail = false;
+        } else return;
+    }    
 };

@@ -20,7 +20,6 @@ export class ForgetPasswordSingletonService {
             password: '',
             email: email,
         };
-        console.log(this.data);
     }
 
     setDataPassword(password: string) {
@@ -28,7 +27,6 @@ export class ForgetPasswordSingletonService {
             ...this.data,
             password: password,
         };
-        console.log(this.data);
     }    
 
     getDatas() {

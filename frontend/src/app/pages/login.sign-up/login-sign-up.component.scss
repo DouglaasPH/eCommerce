@@ -63,7 +63,7 @@
 }
 
 .container-row-data-entry {
-    height: 30%;
+    height: 35%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -85,6 +85,21 @@
     border: none;
     border-bottom: 0.1rem solid #838383;
     background-color: #ffffff;
+}
+
+.invalid-email-warning {
+    @extend %font-poppins;
+    font-weight: 600;
+    color: #ff1414;
+    font-size: 69%;
+}
+
+.seeWarning {
+    opacity: 1;
+}
+
+.doNotSeeWarning {
+    opacity: 0;
 }
 
 .container-redirect-buttons {
