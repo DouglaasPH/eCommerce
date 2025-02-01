@@ -1,16 +1,16 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { WomenCollection } from "../../shared/women-collection/women-collection.component";
 import { DealsOfTheMonth } from "../../shared/deals-of-the-month/deals-of-the-month.component";
 import { SubscribeToOurNewslatter } from "../../shared/subscribe-to-our-newslatter/subscribe-to-our-newslatter.component";
 import { FooterBar } from "../../shared/footer-bar/footer-bar.component";
-import { NavBarWithLogin } from "../../shared/nav-bar/with-login/nav-bar-with-login.component";
 import { CommonModule, NgFor } from "@angular/common";
 import { ShoppingCart } from "../../shared/shopping-cart/shopping-cart.component";
+import { navBar } from "../../shared/nav-bar/nav-bar.component";
 
 @Component({
     selector: 'product',
     standalone: true,
-    imports: [CommonModule, NgFor, NavBarWithLogin, WomenCollection, DealsOfTheMonth, SubscribeToOurNewslatter, FooterBar, ShoppingCart],
+    imports: [CommonModule, NgFor, navBar, WomenCollection, DealsOfTheMonth, SubscribeToOurNewslatter, FooterBar, ShoppingCart],
     templateUrl: './product.component.html',
     styleUrl: './product.component.scss',
 })
