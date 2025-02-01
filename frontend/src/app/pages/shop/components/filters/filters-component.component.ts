@@ -1,5 +1,14 @@
 import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
+import { ShoppingFilterService } from "../../../../services/shoppingFilter.service";
+
+interface myFiltersInterface {
+    size: string,
+    price: string,
+    brand: string,
+    collection: string,
+    tag: string,    
+};
 
 @Component({
     selector: 'filters',
@@ -9,76 +18,61 @@ import { Component } from "@angular/core";
     styleUrl: './filters-component.component.scss',
 })
 export class FiltersComponent {
-    size = '';
-    price = '';
-    brand = '';
-    collection = '';
-    tags: string[] = [];
+    constructor(private shoppingfilterservice: ShoppingFilterService) {}
+
+    myFilters = {
+        size: '',
+        price: '',
+        brand: '',
+        collection: '',
+        tag: '',
+    };
 
     filterStatus = {
-        sizeOn: false,
-        priceOn: false,
-        brandOn: false,
-        collectionOn: false,
-        tagsOn: false,        
-    }
+        chosenSize: false,
+        chosenPrice: false,
+        chosenBrand: false,
+        chosenCollection: false,
+        chosenTag: false,
+    };
 
-    changeSize(newSize: string) {
-        if (this.size === newSize) {
-            this.size = '';
-            this.filterStatus.sizeOn = false;
+    changeNewFilter(datas: Partial<myFiltersInterface>) {
+        const filterType = Object.keys(datas);
+        const key = filterType[0] as keyof myFiltersInterface;
+        
+        if (this.myFilters[key] === '') {
+            this.myFilters = {
+                ...this.myFilters,
+                [key]: datas[key],
+            };            
+            this.shoppingfilterservice.setFilter({ [key]: datas[key] });                                    
         } else {
-            this.size = newSize;
-            this.filterStatus.sizeOn = true;
+            this.myFilters = {
+                ...this.myFilters,
+                [key]: '',
+            };                        
+            this.shoppingfilterservice.setFilter({ [key]: '' });                                    
         }
-        console.log(this.size);        
-    }
 
-    changePrice(newPrice: string) {
-        if (this.price === newPrice) {
-            this.price = '';
-            this.filterStatus.priceOn = false;
-        } else {
-            this.price = newPrice;
-            this.filterStatus.priceOn = true;
-        }
-        console.log(this.price);
-    }
-
-    changeBrand(newBrand: string) {
-        if (this.brand === newBrand) {
-            this.brand = '';
-            this.filterStatus.brandOn = false;
-        } else {
-            this.brand = newBrand;
-            this.filterStatus.brandOn = true;
-        }        
-        console.log(this.brand);        
-    }
-
-    changeCollection(newCollection: string) {
-        if (this.collection === newCollection) {
-            this.collection = '';
-            this.filterStatus.collectionOn = false;
-        } else {
-            this.collection = newCollection;
-            this.filterStatus.collectionOn = true;
-        }
-        console.log(this.collection);        
-    }
-
-    changeTags(newTag: string) {
-        if (this.tags.includes(newTag)) {
-            this.tags = this.tags.filter(tag => tag !== newTag);
-            if (this.tags.length > 0) {
-                this.filterStatus.tagsOn = true;                
-            } else {
-                this.filterStatus.tagsOn = false;
-            };
-        } else {
-            this.tags.push(newTag);
-            this.filterStatus.tagsOn = true;
-        }        
-        console.log(this.tags);
+        switch (key) {
+            case 'size':
+                this.filterStatus.chosenSize = !this.filterStatus.chosenSize;
+                break;
+            case 'price':
+                this.filterStatus.chosenPrice = !this.filterStatus.chosenPrice;
+                break;
+            case 'brand':
+                this.filterStatus.chosenBrand = !this.filterStatus.chosenBrand;
+                break;
+            case 'collection':
+                this.filterStatus.chosenCollection = !this.filterStatus.chosenCollection;
+                break;
+            case 'tag':
+                this.filterStatus.chosenTag = !this.filterStatus.chosenTag;
+                break;            
+        
+            default:
+                break;
+        }   
     }
 }

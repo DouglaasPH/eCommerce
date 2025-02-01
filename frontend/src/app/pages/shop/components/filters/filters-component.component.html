@@ -7,10 +7,10 @@
             <h4 class="title-size">Size</h4>
         </div>
         <div class="container-chose-sizes">
-            <button class="size" (click)="changeSize('S')" *ngIf="!filterStatus.sizeOn || size === 'S'" [ngClass]="{ 'sizeSelected': filterStatus.sizeOn, 'sizeUnselected': !filterStatus.sizeOn, }">S</button>
-            <button class="size" (click)="changeSize('M')" *ngIf="!filterStatus.sizeOn || size === 'M'" [ngClass]="{ 'sizeSelected': filterStatus.sizeOn, 'sizeUnselected': !filterStatus.sizeOn, }">M</button>
-            <button class="size" (click)="changeSize('L')" *ngIf="!filterStatus.sizeOn || size === 'L'" [ngClass]="{ 'sizeSelected': filterStatus.sizeOn, 'sizeUnselected': !filterStatus.sizeOn, }">L</button>
-            <button class="size" (click)="changeSize('XL')" *ngIf="!filterStatus.sizeOn || size === 'XL'" [ngClass]="{ 'sizeSelected': filterStatus.sizeOn, 'sizeUnselected': !filterStatus.sizeOn, }">XL</button>
+            <button class="size" (click)="changeNewFilter({ size: 'S' })" *ngIf="!filterStatus.chosenSize || myFilters.size === 'S'" [ngClass]="{ 'sizeSelected': filterStatus.chosenSize, 'sizeUnselected': !filterStatus.chosenSize, }">S</button>
+            <button class="size" (click)="changeNewFilter({ size: 'M' })" *ngIf="!filterStatus.chosenSize || myFilters.size === 'M'" [ngClass]="{ 'sizeSelected': filterStatus.chosenSize, 'sizeUnselected': !filterStatus.chosenSize, }">M</button>
+            <button class="size" (click)="changeNewFilter({ size: 'L' })" *ngIf="!filterStatus.chosenSize || myFilters.size === 'L'" [ngClass]="{ 'sizeSelected': filterStatus.chosenSize, 'sizeUnselected': !filterStatus.chosenSize, }">L</button>
+            <button class="size" (click)="changeNewFilter({ size: 'XL' })" *ngIf="!filterStatus.chosenSize || myFilters.size === 'XL'" [ngClass]="{ 'sizeSelected': filterStatus.chosenSize, 'sizeUnselected': !filterStatus.chosenSize, }">XL</button>
         </div>
     </div>
     <div class="container-prices">
@@ -18,11 +18,11 @@
             <h4 class="title-price">Prices</h4>
         </div>
         <div class="container-chose-prices">
-            <button class="price" (click)="changePrice('$0-$50')" *ngIf="!filterStatus.priceOn || price === '$0-$50'" [ngClass]="{ 'selected': filterStatus.priceOn, 'unselected': !filterStatus.priceOn, }">$0-$50</button>
-            <button class="price" (click)="changePrice('$50-$100')" *ngIf="!filterStatus.priceOn || price === '$50-$100'"  [ngClass]="{ 'selected': filterStatus.priceOn, 'unselected': !filterStatus.priceOn, }">$50-$100</button>
-            <button class="price" (click)="changePrice('$100-$150')" *ngIf="!filterStatus.priceOn || price === '$100-$150'"  [ngClass]="{ 'selected': filterStatus.priceOn, 'unselected': !filterStatus.priceOn, }">$100-$150</button>
-            <button class="price" (click)="changePrice('$150-$200')" *ngIf="!filterStatus.priceOn || price === '$150-$200'"  [ngClass]="{ 'selected': filterStatus.priceOn, 'unselected': !filterStatus.priceOn, }">$150-$200</button>        
-            <button class="price" (click)="changePrice('$300-$400')" *ngIf="!filterStatus.priceOn || price === '$300-$400'"  [ngClass]="{ 'selected': filterStatus.priceOn, 'unselected': !filterStatus.priceOn, }">$300-$400</button>
+            <button class="price" (click)="changeNewFilter({ price: '$0-$50' })" *ngIf="!filterStatus.chosenPrice || myFilters.price === '$0-$50'" [ngClass]="{ 'selected': filterStatus.chosenPrice, 'unselected': !filterStatus.chosenPrice, }">$0-$50</button>
+            <button class="price" (click)="changeNewFilter({ price: '$50-$100' })" *ngIf="!filterStatus.chosenPrice || myFilters.price === '$50-$100'"  [ngClass]="{ 'selected': filterStatus.chosenPrice, 'unselected': !filterStatus.chosenPrice, }">$50-$100</button>
+            <button class="price" (click)="changeNewFilter({ price: '$100-$150' })" *ngIf="!filterStatus.chosenPrice || myFilters.price === '$100-$150'"  [ngClass]="{ 'selected': filterStatus.chosenPrice, 'unselected': !filterStatus.chosenPrice, }">$100-$150</button>
+            <button class="price" (click)="changeNewFilter({ price: '$150-$200' })" *ngIf="!filterStatus.chosenPrice || myFilters.price === '$150-$200'"  [ngClass]="{ 'selected': filterStatus.chosenPrice, 'unselected': !filterStatus.chosenPrice, }">$150-$200</button>        
+            <button class="price" (click)="changeNewFilter({ price: '$300-$400' })" *ngIf="!filterStatus.chosenPrice || myFilters.price === '$300-$400'"  [ngClass]="{ 'selected': filterStatus.chosenPrice, 'unselected': !filterStatus.chosenPrice, }">$300-$400</button>
         </div>
     </div>
     <div class="container-brands">
@@ -30,12 +30,12 @@
             <h4 class="title-brand">Brands</h4>
         </div>
         <div class="container-chose-brands">
-            <button class="brand" (click)="changeBrand('Minimog')" *ngIf="!filterStatus.brandOn || brand === 'Minimog'" [ngClass]="{ 'selected': filterStatus.brandOn, 'unselected': !filterStatus.brandOn, }">Minimog</button>
-            <button class="brand" (click)="changeBrand('Retrolie')" *ngIf="!filterStatus.brandOn || brand === 'Retrolie'" [ngClass]="{ 'selected': filterStatus.brandOn, 'unselected': !filterStatus.brandOn, }">Retrolie</button>
-            <button class="brand" (click)="changeBrand('Brook')" *ngIf="!filterStatus.brandOn || brand === 'Brook'" [ngClass]="{ 'selected': filterStatus.brandOn, 'unselected': !filterStatus.brandOn, }">Brook</button>
-            <button class="brand" (click)="changeBrand('Learts')" *ngIf="!filterStatus.brandOn || brand === 'Learts'" [ngClass]="{ 'selected': filterStatus.brandOn, 'unselected': !filterStatus.brandOn, }">Learts</button>        
-            <button class="brand" (click)="changeBrand('Vagabond')" *ngIf="!filterStatus.brandOn || brand === 'Vagabond'" [ngClass]="{ 'selected': filterStatus.brandOn, 'unselected': !filterStatus.brandOn, }">Vagabond</button>
-            <button class="brand" (click)="changeBrand('Abby')" *ngIf="!filterStatus.brandOn || brand === 'Abby'" [ngClass]="{ 'selected': filterStatus.brandOn, 'unselected': !filterStatus.brandOn, }">Abby</button>            
+            <button class="brand" (click)="changeNewFilter({ brand: 'Minimog' })" *ngIf="!filterStatus.chosenBrand || myFilters.brand === 'Minimog'" [ngClass]="{ 'selected': filterStatus.chosenBrand, 'unselected': !filterStatus.chosenBrand, }">Minimog</button>
+            <button class="brand" (click)="changeNewFilter({ brand: 'Retrolie' })" *ngIf="!filterStatus.chosenBrand || myFilters.brand === 'Retrolie'" [ngClass]="{ 'selected': filterStatus.chosenBrand, 'unselected': !filterStatus.chosenBrand, }">Retrolie</button>
+            <button class="brand" (click)="changeNewFilter({ brand: 'Brook' })" *ngIf="!filterStatus.chosenBrand || myFilters.brand === 'Brook'" [ngClass]="{ 'selected': filterStatus.chosenBrand, 'unselected': !filterStatus.chosenBrand, }">Brook</button>
+            <button class="brand" (click)="changeNewFilter({ brand: 'Learts' })" *ngIf="!filterStatus.chosenBrand || myFilters.brand === 'Learts'" [ngClass]="{ 'selected': filterStatus.chosenBrand, 'unselected': !filterStatus.chosenBrand, }">Learts</button>        
+            <button class="brand" (click)="changeNewFilter({ brand: 'Vagabond' })" *ngIf="!filterStatus.chosenBrand || myFilters.brand === 'Vagabond'" [ngClass]="{ 'selected': filterStatus.chosenBrand, 'unselected': !filterStatus.chosenBrand, }">Vagabond</button>
+            <button class="brand" (click)="changeNewFilter({ brand: 'Abby' })" *ngIf="!filterStatus.chosenBrand || myFilters.brand === 'Abby'" [ngClass]="{ 'selected': filterStatus.chosenBrand, 'unselected': !filterStatus.chosenBrand, }">Abby</button>            
         </div>
     </div>
     <div class="container-collections">
@@ -43,10 +43,10 @@
             <h4 class="title-collection">Collections</h4>
         </div>
         <div class="container-chose-collections">
-            <button class="collection" (click)="changeCollection('All products')" *ngIf="!filterStatus.collectionOn || collection === 'All products'" [ngClass]="{ 'selected': filterStatus.collectionOn, 'unselected': !filterStatus.collectionOn, }">All products</button>
-            <button class="collection" (click)="changeCollection('Best sellers')" *ngIf="!filterStatus.collectionOn || collection === 'Best sellers'" [ngClass]="{ 'selected': filterStatus.collectionOn, 'unselected': !filterStatus.collectionOn, }">Best sellers</button>
-            <button class="collection" (click)="changeCollection('New arrivals')" *ngIf="!filterStatus.collectionOn || collection === 'New arrivals'" [ngClass]="{ 'selected': filterStatus.collectionOn, 'unselected': !filterStatus.collectionOn, }">New arrivals</button>
-            <button class="collection" (click)="changeCollection('Acessories')" *ngIf="!filterStatus.collectionOn || collection === 'Acessories'" [ngClass]="{ 'selected': filterStatus.collectionOn, 'unselected': !filterStatus.collectionOn, }">Acessories</button>        
+            <button class="collection" (click)="changeNewFilter({ collection: 'All products' })" *ngIf="!filterStatus.chosenCollection || myFilters.collection === 'All products'" [ngClass]="{ 'selected': filterStatus.chosenCollection, 'unselected': !filterStatus.chosenCollection, }">All products</button>
+            <button class="collection" (click)="changeNewFilter({ collection: 'Best sellers' })" *ngIf="!filterStatus.chosenCollection || myFilters.collection === 'Best sellers'" [ngClass]="{ 'selected': filterStatus.chosenCollection, 'unselected': !filterStatus.chosenCollection, }">Best sellers</button>
+            <button class="collection" (click)="changeNewFilter({ collection: 'New arrivals' })" *ngIf="!filterStatus.chosenCollection || myFilters.collection === 'New arrivals'" [ngClass]="{ 'selected': filterStatus.chosenCollection, 'unselected': !filterStatus.chosenCollection, }">New arrivals</button>
+            <button class="collection" (click)="changeNewFilter({ collection: 'Acessories' })" *ngIf="!filterStatus.chosenCollection || myFilters.collection === 'Acessories'" [ngClass]="{ 'selected': filterStatus.chosenCollection, 'unselected': !filterStatus.chosenCollection, }">Acessories</button>        
         </div>
     </div>
     <div class="container-tags">
@@ -54,17 +54,17 @@
             <h4 class="title-tag">Tags</h4>
         </div>
         <div class="container-chose-tags">
-            <button class="tag" (click)="changeTags('Fashion')" *ngIf="!filterStatus.tagsOn || tags.includes('Fashion')" [ngClass]="{ 'selected': filterStatus.tagsOn, 'unselected': !filterStatus.tagsOn, }">Fashion</button>
-            <button class="tag" (click)="changeTags('Hats')" *ngIf="!filterStatus.tagsOn || tags.includes('Hats')" [ngClass]="{ 'selected': filterStatus.tagsOn, 'unselected': !filterStatus.tagsOn, }">Hats</button>
-            <button class="tag" (click)="changeTags('Sandal')" *ngIf="!filterStatus.tagsOn || tags.includes('Sandal')" [ngClass]="{ 'selected': filterStatus.tagsOn, 'unselected': !filterStatus.tagsOn, }">Sandal</button>
-            <button class="tag" (click)="changeTags('Belt')" *ngIf="!filterStatus.tagsOn || tags.includes('Belt')" [ngClass]="{ 'selected': filterStatus.tagsOn, 'unselected': !filterStatus.tagsOn, }">Belt</button>        
-            <button class="tag" (click)="changeTags('Bags')" *ngIf="!filterStatus.tagsOn || tags.includes('Bags')" [ngClass]="{ 'selected': filterStatus.tagsOn, 'unselected': !filterStatus.tagsOn, }">Bags</button>
-            <button class="tag" (click)="changeTags('Snacker')" *ngIf="!filterStatus.tagsOn || tags.includes('Snacker')" [ngClass]="{ 'selected': filterStatus.tagsOn, 'unselected': !filterStatus.tagsOn, }">Snacker</button>
-            <button class="tag" (click)="changeTags('Denim')" *ngIf="!filterStatus.tagsOn || tags.includes('Denim')" [ngClass]="{ 'selected': filterStatus.tagsOn, 'unselected': !filterStatus.tagsOn, }">Denim</button>
-            <button class="tag" (click)="changeTags('Minimog')" *ngIf="!filterStatus.tagsOn || tags.includes('Minimog')" [ngClass]="{ 'selected': filterStatus.tagsOn, 'unselected': !filterStatus.tagsOn, }">Minimog</button>
-            <button class="tag" (click)="changeTags('Vagabond')" *ngIf="!filterStatus.tagsOn || tags.includes('Vagabond')" [ngClass]="{ 'selected': filterStatus.tagsOn, 'unselected': !filterStatus.tagsOn, }">Vagabond</button>
-            <button class="tag" (click)="changeTags('Sunglases')" *ngIf="!filterStatus.tagsOn || tags.includes('Sunglases')" [ngClass]="{ 'selected': filterStatus.tagsOn, 'unselected': !filterStatus.tagsOn, }">Sunglases</button>
-            <button class="tag" (click)="changeTags('Beachwear')" *ngIf="!filterStatus.tagsOn || tags.includes('Beachwear')" [ngClass]="{ 'selected': filterStatus.tagsOn, 'unselected': !filterStatus.tagsOn, }">Beachwear</button>                                                                        
+            <button class="tag" (click)="changeNewFilter({ tag: 'Fashion' })" *ngIf="!filterStatus.chosenTag || myFilters.tag === 'Fashion'" [ngClass]="{ 'selected': filterStatus.chosenTag, 'unselected': !filterStatus.chosenTag, }">Fashion</button>
+            <button class="tag" (click)="changeNewFilter({ tag: 'Hats' })" *ngIf="!filterStatus.chosenTag || myFilters.tag === 'Hats'" [ngClass]="{ 'selected': filterStatus.chosenTag, 'unselected': !filterStatus.chosenTag, }">Hats</button>
+            <button class="tag" (click)="changeNewFilter({ tag: 'Sandal' })" *ngIf="!filterStatus.chosenTag || myFilters.tag === 'Sandal'" [ngClass]="{ 'selected': filterStatus.chosenTag, 'unselected': !filterStatus.chosenTag, }">Sandal</button>
+            <button class="tag" (click)="changeNewFilter({ tag: 'Belt' })" *ngIf="!filterStatus.chosenTag || myFilters.tag === 'Belt'" [ngClass]="{ 'selected': filterStatus.chosenTag, 'unselected': !filterStatus.chosenTag, }">Belt</button>        
+            <button class="tag" (click)="changeNewFilter({ tag: 'Bags' })" *ngIf="!filterStatus.chosenTag || myFilters.tag === 'Bags'" [ngClass]="{ 'selected': filterStatus.chosenTag, 'unselected': !filterStatus.chosenTag, }">Bags</button>
+            <button class="tag" (click)="changeNewFilter({ tag: 'Snacker' })" *ngIf="!filterStatus.chosenTag || myFilters.tag === 'Snacker'" [ngClass]="{ 'selected': filterStatus.chosenTag, 'unselected': !filterStatus.chosenTag, }">Snacker</button>
+            <button class="tag" (click)="changeNewFilter({ tag: 'Denim' })" *ngIf="!filterStatus.chosenTag || myFilters.tag === 'Denim'" [ngClass]="{ 'selected': filterStatus.chosenTag, 'unselected': !filterStatus.chosenTag, }">Denim</button>
+            <button class="tag" (click)="changeNewFilter({ tag: 'Minimog' })" *ngIf="!filterStatus.chosenTag || myFilters.tag === 'Minimog'" [ngClass]="{ 'selected': filterStatus.chosenTag, 'unselected': !filterStatus.chosenTag, }">Minimog</button>
+            <button class="tag" (click)="changeNewFilter({ tag: 'Vagabond' })" *ngIf="!filterStatus.chosenTag || myFilters.tag === 'Vagabond'" [ngClass]="{ 'selected': filterStatus.chosenTag, 'unselected': !filterStatus.chosenTag, }">Vagabond</button>
+            <button class="tag" (click)="changeNewFilter({ tag: 'Sunglases' })" *ngIf="!filterStatus.chosenTag || myFilters.tag === 'Sunglases'" [ngClass]="{ 'selected': filterStatus.chosenTag, 'unselected': !filterStatus.chosenTag, }">Sunglases</button>
+            <button class="tag" (click)="changeNewFilter({ tag: 'Beachwear' })" *ngIf="!filterStatus.chosenTag || myFilters.tag === 'Beachwear'" [ngClass]="{ 'selected': filterStatus.chosenTag, 'unselected': !filterStatus.chosenTag, }">Beachwear</button>                                                                        
         </div>
     </div>    
 </div>

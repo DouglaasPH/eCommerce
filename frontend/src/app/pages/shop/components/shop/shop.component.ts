@@ -7,7 +7,7 @@ import { Component } from "@angular/core";
     imports: [NgFor, CommonModule],
     templateUrl: './shop.component.html',
     styleUrl: './shop.component.scss',
-})
+})  
 export class Shop {
     sales = [
         { item: "Rounded Red Hat", images: ['../../../../../assets/shop/sales/Rounded Red Hat/rounded-red-hat-01.png'], price: '$8.00' },
@@ -23,7 +23,6 @@ export class Shop {
     ];
     numberOfOtherPagesInTotal = Math.ceil(this.sales.length / 9);
     numberOfPages = Array.from({ length: this.numberOfOtherPagesInTotal }, (_, i) => i + 1);
-    //numberOfPages = [1, 2, 3, 4, 5, 6, 7];
     currentPage = 1;
     displayPages = Array.from(this.numberOfPages, (_, i) => this.numberOfPages[i] >= this.currentPage && this.numberOfPages[i] - this.currentPage < 3 ? this.numberOfPages[i] : null).filter(page => page !== null);     
 
