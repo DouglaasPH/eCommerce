@@ -1,43 +1,58 @@
+import { generateToken } from "../jwt/jwt.js";
 import loginRepository from "../repositories/login-repository.js";
 
 class LoginController {
     async createAccount(req, res) {
-        const { name, email, password, phone_number, } = req.body.params;
+        const { name, email, password, phone_number, } = req.body;
         const valuesObject = { name, email, password, phone_number };
-        console.log(req.body);
-        console.log(valuesObject);
         const row = await loginRepository.create(valuesObject);
-        res.json(row);
+
+        if (row.affectedRows > 0) {
+            return res.json({ message: 'Account created sucessfully', accountCreate: true });
+        } else return res.json({ message: 'Account was not created', accountCreate: false });
     }
 
     async login(req, res) {
         const { email, password } = req.query;
         const row = await loginRepository.confirmLogin(email, password);    
-    
-        if (row.login) {
-            res.cookie('user_token', row.token, {
+
+        if (row.length > 0) {
+            const token = generateToken({
+                id: row[0].id,
+                username: row[0].name,
+                email: row[0].email,
+                phoneNumber: row[0].phone_number,
+            });
+            res.cookie('user_token', token, {
                 httpOnly: true,
                 secure: false,
                 sameSite: 'Strict',
                 maxAge: 24 * 60 * 60 * 1000,
                 path: '/',
             });
-            res.json({ message: 'successfully logged in', loginned: true });            
+                
+            return res.json({ message: 'successfully logged in', loginned: true });
         } else {
-            res.json({ mesasge: 'not logged in', loginned: false });
-        }
+            return res.json({ mesasge: 'not logged in', loginned: false });
+        };
     }
 
     async checkEmail(req, res) {
         const { email } = req.query;
         const row = await loginRepository.validateEmail(email);
-        res.json(row);
+
+        if (row.length > 0) {
+            return res.json({ message: 'The email is already registered in the database', registeredEmail: true });
+        } else return res.json({ message: 'The email is not registered in the database', registeredEmail: false });        
     }    
 
     async newPassword(req, res) {
         const { password, email } = req.body;
         const row = await loginRepository.updatePassword(password, email);
-        res.json(row);
+
+        if (row.affectedRows > 0) {
+            return res.json({ message: 'Password updated succesfully', updatedPassword: true });
+        } else return res.json({ message: 'Unable to update password', updatedPassword: false });
     }
 
     async checkUserToken(req, res) {
