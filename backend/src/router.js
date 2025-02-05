@@ -21,7 +21,7 @@ router.get('/queryCookieUserToken', loginController.checkUserToken);
 router.get('/getDatasForProductGrid', shopController.productGrid);
 router.get('/getDatasForProductGridWithFilters', shopController.productGridWithFilters);
 router.get('/getAllFilters', shopController.allFilters);
-router.get('/getFilterOptions', shopController.FilterOptions);
+router.get('/getAllFilterOptions', shopController.FilterOptions);
 router.get('/getTotalNumberOfPages', shopController.totalPages);
 
 

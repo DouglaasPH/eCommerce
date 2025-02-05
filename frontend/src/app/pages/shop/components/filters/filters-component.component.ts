@@ -1,14 +1,7 @@
 import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ShoppingFilterService } from "../../../../services/shoppingFilter.service";
-
-interface myFiltersInterface {
-    size: string,
-    price: string,
-    brand: string,
-    collection: string,
-    tag: string,    
-};
+import { getAllFilterOptions, getAllFilters } from "../../../../requests/shopRequests";
 
 @Component({
     selector: 'filters',
@@ -17,35 +10,52 @@ interface myFiltersInterface {
     templateUrl: './filters-component.component.html',
     styleUrl: './filters-component.component.scss',
 })
-export class FiltersComponent {
-    constructor(private shoppingfilterservice: ShoppingFilterService) {}
+export class FiltersComponent implements OnInit {
+    constructor(private shoppingfilterservice: ShoppingFilterService) { }
 
-    myFilters = {
-        size: '',
-        price: '',
-        brand: '',
-        collection: '',
-        tag: '',
+    allFilters: string[] = [];
+    allFilterOptions: object = {}; 
+
+    myFilters: { [key: string]: string } = {
+        sizes: '',
+        price_range: '',
+        product_category: '',
+        promotions: '',
+        styles: '',
     };
 
-    filterStatus = {
-        chosenSize: false,
-        chosenPrice: false,
-        chosenBrand: false,
-        chosenCollection: false,
-        chosenTag: false,
+    filterStatus: { [key: string]: boolean } = {
+        sizes: false,
+        price_range: false,
+        product_category: false,
+        promotions: false,
+        styles: false,
     };
 
-    changeNewFilter(datas: Partial<myFiltersInterface>) {
-        const filterType = Object.keys(datas);
-        const key = filterType[0] as keyof myFiltersInterface;
-        
+    filtersName: { [key: string]: string } = {
+        price_range: 'Price Range',
+        product_category: 'Product Category',
+        promotions: 'Promotions',
+        sizes: 'Sizes',
+        styles: 'Styles'
+    };
+
+    async ngOnInit() {
+        try {
+            this.allFilters = await getAllFilters();
+            this.allFilterOptions = await getAllFilterOptions(this.allFilters);            
+        } catch (error) {
+            window.location.reload();
+        }
+    }
+
+    changeNewFilter(key: keyof { [key: string]: string } | string, value: string) {        
         if (this.myFilters[key] === '') {
             this.myFilters = {
                 ...this.myFilters,
-                [key]: datas[key],
+                [key]: value,
             };            
-            this.shoppingfilterservice.setFilter({ [key]: datas[key] });                                    
+            this.shoppingfilterservice.setFilter({ [key]: key });
         } else {
             this.myFilters = {
                 ...this.myFilters,
@@ -54,25 +64,6 @@ export class FiltersComponent {
             this.shoppingfilterservice.setFilter({ [key]: '' });                                    
         }
 
-        switch (key) {
-            case 'size':
-                this.filterStatus.chosenSize = !this.filterStatus.chosenSize;
-                break;
-            case 'price':
-                this.filterStatus.chosenPrice = !this.filterStatus.chosenPrice;
-                break;
-            case 'brand':
-                this.filterStatus.chosenBrand = !this.filterStatus.chosenBrand;
-                break;
-            case 'collection':
-                this.filterStatus.chosenCollection = !this.filterStatus.chosenCollection;
-                break;
-            case 'tag':
-                this.filterStatus.chosenTag = !this.filterStatus.chosenTag;
-                break;            
-        
-            default:
-                break;
-        }   
+        this.filterStatus[key] = !this.filterStatus[key];
     }
 }

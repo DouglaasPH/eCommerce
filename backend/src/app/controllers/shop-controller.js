@@ -30,12 +30,13 @@ class ShopController {
 
     async allFilters(req, res) {
         const row = await shoppingRepository.getAllFilters();
-        const filters = row[0].filters;        
+        const filters = JSON.parse(row[0].filters);        
         return res.json(filters);
     }
 
     async FilterOptions(req, res) {
-        const { options } = req.body;
+        const { options } = req.query;
+
         let result = {};
         for (let i = 0; i < options.length; i++) {
             const currentOption = options[i];

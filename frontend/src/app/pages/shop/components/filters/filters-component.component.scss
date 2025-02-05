@@ -1,30 +1,5 @@
 @use '../../../../../variables.scss';
 
-.title-filters, .title-size, .title-price, .title-brand, .title-collection, .title-tag {
-    @extend %font-volkhov;
-}
-
-.size, .price, .brand, .collection, .tag {
-    @extend %font-poppins;
-}
-
-.selected {
-    font-weight: 500;
-    color: #141414;
-}
-
-.unselected {
-    font-weight: 400;
-    color: #8a8a8a;    
-}
-
-.title-filters {
-    font-weight: 300;
-}
-
-.title-size, .title-price, .title-brand, .title-collection, .title-tag {
-    font-weight: 300;
-}
 
 .container-filters {
     height: 100%;
@@ -43,137 +18,78 @@
     justify-content: start;
 }
 
-.container-size {
-    height: 9%;
+.title-filters {
+    @extend %font-volkhov;
+    font-weight: 400;
+    color: #141414;
+}
+
+.filter-title {
+    @extend %font-poppins;
+    font-weight: 600;
+    text-align: start;
+    color: #292929;
+    font-size: 1.05vw;
+}
+
+
+
+.container-choose-sizes, .container-choose-price_range, .container-choose-product_category, .container-choose-promotions, .container-choose-styles {
     width: 60%;
+    height: 18%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.container-chose-sizes {
-    height: 65%;
-    width: 55%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 5%;
-}
-
-.size {
-    width: 30%;
-    height: 40%;
-    background-color: transparent;
-    border: 0.1rem solid #8A8A8A;
-    color: #8A8A8A;
-    border-radius: 0.2rem;
-}
-
-.sizeSelected {
-    background-color: #000000;
-    border: 0.1rem solid #000000;
-    color: #ffffff;    
-}
-
-.sizeUnselected {
-    background-color: transparent;
-    border: 0.1rem solid #8A8A8A;
-    color: #8A8A8A;    
-}
-
-.container-prices {
-    height: 15%;
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.container-chose-prices {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+.container-options-price_range, .container-options-product_category, .container-options-promotions, .container-options-styles {
     height: 80%;
-}
-
-.price, .brand {
-    background-color: transparent;
-    border: none;
-    width: 50%;
-    height: 25%;
-    text-align: start;
-}
-
-.container-brands {
-    height: 10%;
-    width: 60%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 4%;
 }
 
-.container-chose-brands {
-    height: 70%;
+.container-options-sizes {
+    height: 85%;
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
-    gap: 5%;
+    gap: 2%;
 }
 
-.brand {
+.sizes {
+    @extend %font-poppins;
+    font-size: 0.8vw;
+    font-weight: 500;
+    color: #5c5c5c;
+    height: 16%;
+    width: 16%;
     border: none;
-    width: 45%;
-    font-size: 78%;
-}
-
-.container-collections {
-    width: 60%;
-    height: 13%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.container-chose-collections {
-    height: 72%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.collection {
+    border: 0.1rem solid #5c5c5c;
+    border-radius: 0.3rem;
     background-color: transparent;
+}
+
+.price_range, .product_category, .promotions, .styles {
+    @extend %font-poppins;
+    font-size: 0.85vw;
+    font-weight: 600;
+    color: #5c5c5c;    
     border: none;
     text-align: start;
-}
-
-.container-tags {
-    height: 12%;
-    width: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.container-chose-tags {
-    height: 65%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 8%;
-}
-
-.tag {
     background-color: transparent;
-    border: none;
-    height: 20%;
-    font-size: 78%;
 }
 
 button:hover {
     cursor: pointer;
 }
 
-.price:hover, .brand:hover, .collection:hover, .tag:hover {
-        text-decoration: underline;
+.selected {
+    color: #292929;
+}
+
+.sizeSelected {
+    font-weight: 600;
+    color: #ebebeb;
+    background-color: #292929;
+    border: 0.1rem solid #141414;
 }
