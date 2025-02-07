@@ -11,7 +11,7 @@ class ShoppingRepository {
     getDataWithFiltersForTheProductGrid(options) {
         const optionName = Object.keys(options)[0];
         const currentOption = options[optionName];
-        let sql = `SELECT id, description, images_path, price, discount_percentage, number_of_interest_free_installments, filters FROM sale_items WHERE JSON_CONTAINS(filters, '["${currentOption}"]', '$.${optionName}')`;
+        let sql = `SELECT id, description, images_path, price, discount_percentage, number_of_interest_free_installments FROM sale_items WHERE JSON_CONTAINS(filters, '["${currentOption}"]', '$.${optionName}')`;
         
         const numberOfFilters = Object.keys(options).length;
         
