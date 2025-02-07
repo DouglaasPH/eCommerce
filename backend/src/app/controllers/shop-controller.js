@@ -52,9 +52,33 @@ class ShopController {
     }
 
     async FiltersWithSelectedFilters(req, res) {
-        const { filters } = req.body;
+        const { filters } = req.query;
         const row = await shoppingRepository.getFiltersWithSelectedFilters(filters);
-        return res.json(row);
+        const nameFilters = Object.keys(row[0]);
+        let result = {};
+        nameFilters.map(filter => {
+            const object = row[0];
+            if (object[filter] !== null) {
+                if (object[filter].includes(',')) {
+                    const array = object[filter].split(', ');
+                    result = {
+                        ...result,
+                        [filter]: array,
+                    };
+                } else {
+                    result = {
+                        ...result,
+                        [filter]: [object[filter]],
+                    };
+                };
+            } else {
+                result = {
+                    ...result,
+                    [filter]: [''],
+                };
+            };
+        })
+        return res.json(result);
     }
 }
 

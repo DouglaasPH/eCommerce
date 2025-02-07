@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
 
 interface myFiltersInterface {
-        size: string,
-        price: string,
-        brand: string,
-        collection: string,
-        tag: string,    
+    price_range: string,
+    product_category: string,
+    promotions: string,
+    sizes: string,
+    styles: string,    
 }
 
 @Injectable({
@@ -13,12 +13,12 @@ interface myFiltersInterface {
 })
 export class ShoppingFilterService {
     private myFilters: myFiltersInterface = {
-        size: '',
-        price: '',
-        brand: '',
-        collection: '',
-        tag: '',
-    };
+        price_range: '',
+        product_category: '',
+        promotions: '',
+        sizes: '',
+        styles: '',
+};
 
     setFilter(datas: Partial<myFiltersInterface>) {
         const filterType = Object.keys(datas);

@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { ShoppingFilterService } from "../../../../services/shoppingFilter.service";
-import { getAllFilterOptions, getAllFilters } from "../../../../requests/shopRequests";
+import { getAllFilterOptions, getAllFilters, getFiltersWithSelectedFilters } from "../../../../requests/shopRequests";
 
 @Component({
     selector: 'filters',
@@ -15,35 +15,41 @@ export class FiltersComponent implements OnInit {
 
     allFilters: string[] = [];
     allFilterOptions: object = {}; 
+    myFilters: { [key: string]: string } = {};
+    filterStatus: { [key: string]: boolean } = {};
+    filtersName: { [key: string]: string } = {};
+    selectedOptions: { [key: string]: string }  = {}
 
-    myFilters: { [key: string]: string } = {
-        sizes: '',
-        price_range: '',
-        product_category: '',
-        promotions: '',
-        styles: '',
-    };
-
-    filterStatus: { [key: string]: boolean } = {
-        sizes: false,
-        price_range: false,
-        product_category: false,
-        promotions: false,
-        styles: false,
-    };
-
-    filtersName: { [key: string]: string } = {
-        price_range: 'Price Range',
-        product_category: 'Product Category',
-        promotions: 'Promotions',
-        sizes: 'Sizes',
-        styles: 'Styles'
-    };
 
     async ngOnInit() {
         try {
             this.allFilters = await getAllFilters();
-            this.allFilterOptions = await getAllFilterOptions(this.allFilters);            
+            this.allFilterOptions = await getAllFilterOptions(this.allFilters);     
+            console.log(this.allFilterOptions)
+            this.allFilters.map(filter => {
+                this.myFilters = {
+                    ...this.myFilters,
+                    [filter]: ''
+                };
+                this.filterStatus = {
+                    ...this.filterStatus,
+                    [filter]: false,
+                }
+
+                if (filter.indexOf('_') !== -1) {
+                    const filterName = filter.charAt(0).toUpperCase() + filter.slice(1, filter.indexOf('_')) + " " + filter.charAt(filter.indexOf('_') + 1).toUpperCase() + filter.slice(filter.indexOf('_') + 2, filter.length);
+                    this.filtersName = {
+                        ...this.filtersName,
+                        [filter]: filterName
+                    };
+                } else {
+                    const filterName = filter.charAt(0).toUpperCase() + filter.slice(1, filter.length);
+                    this.filtersName = {
+                        ...this.filtersName,
+                        [filter]: filterName
+                    };
+                }
+            })
         } catch (error) {
             window.location.reload();
         }
@@ -54,8 +60,8 @@ export class FiltersComponent implements OnInit {
             this.myFilters = {
                 ...this.myFilters,
                 [key]: value,
-            };            
-            this.shoppingfilterservice.setFilter({ [key]: key });
+            };          
+            this.shoppingfilterservice.setFilter({ [key]: value });
         } else {
             this.myFilters = {
                 ...this.myFilters,
@@ -65,5 +71,22 @@ export class FiltersComponent implements OnInit {
         }
 
         this.filterStatus[key] = !this.filterStatus[key];
+        this.newOptions();
+    }
+
+    async newOptions() {
+        const response = await getFiltersWithSelectedFilters(this.myFilters);   
+        this.allFilterOptions = response;
+        const objKeys = Object.keys(response);
+        const objKeysB = Object.keys(this.myFilters);
+        objKeysB.filter(key => {
+            if (!objKeys.includes(key)) {
+                this.allFilterOptions = {
+                    ...this.allFilterOptions,
+                    [key]: [this.myFilters[key]],
+                };
+                console.log(this.allFilterOptions)
+            }
+        })
     }
 }

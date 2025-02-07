@@ -24,4 +24,17 @@ async function getAllFilterOptions(datas: string[]) {
     }
 }
 
-export { getAllFilters, getAllFilterOptions };
+async function getFiltersWithSelectedFilters(datas: { [key: string]: string}) {
+    try {
+        const response = await axios.get(`${API_URL}/getFiltersWithSelectedFilters`, {
+            params: {
+                filters: datas
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export { getAllFilters, getAllFilterOptions, getFiltersWithSelectedFilters };
