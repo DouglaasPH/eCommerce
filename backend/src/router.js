@@ -23,6 +23,7 @@ router.get('/getDatasForProductGridWithFilters', shopController.productGridWithF
 router.get('/getAllFilters', shopController.allFilters);
 router.get('/getAllFilterOptions', shopController.FilterOptions);
 router.get('/getTotalNumberOfPages', shopController.totalPages);
+router.get('/getFiltersWithSelectedFilters', shopController.FiltersWithSelectedFilters);
 
 
 export default router;

@@ -50,6 +50,12 @@ class ShopController {
         }
         return res.json(result);
     }
+
+    async FiltersWithSelectedFilters(req, res) {
+        const { filters } = req.body;
+        const row = await shoppingRepository.getFiltersWithSelectedFilters(filters);
+        return res.json(row);
+    }
 }
 
 export default new ShopController();
