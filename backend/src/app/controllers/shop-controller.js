@@ -3,21 +3,12 @@ import shoppingRepository from "../repositories/shop-repository.js";
 class ShopController {
     async productGrid(req, res) {
         const { page } = req.query;
-        const row = await shoppingRepository.getDatasForProductGrid(page);
-        let products = [];
-        row.forEach(data => {
-            const dataP = JSON.parse(data.filters);
-            const product = {
-                ...data,
-                filters: dataP
-            }; 
-            products.push(product);
-        });
-        return res.json(products);
+            const row = await shoppingRepository.getDatasForProductGrid(page);
+        return res.json(row);
     }
 
     async productGridWithFilters(req, res) {
-        let { filters }  = req.body;
+        let { filters } = req.query;
         const row = await shoppingRepository.getDataWithFiltersForTheProductGrid(filters);
         return res.json(row);
     }    

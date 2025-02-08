@@ -37,4 +37,29 @@ async function getFiltersWithSelectedFilters(datas: { [key: string]: string}) {
     }
 }
 
-export { getAllFilters, getAllFilterOptions, getFiltersWithSelectedFilters };
+async function getDatasForProductGridWithFilters(datas: any) {
+    console.log(datas);
+    try {
+        const response = await axios.get(`${API_URL}/getDatasForProductGridWithFilters`, {
+            params: {
+                filters: datas
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function getDatasForProductGrid(datas: any) {
+    try {
+        const response = await axios.get(`${API_URL}/getDatasForProductGrid`, {
+            params: datas
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export { getAllFilters, getAllFilterOptions, getFiltersWithSelectedFilters, getDatasForProductGridWithFilters, getDatasForProductGrid };

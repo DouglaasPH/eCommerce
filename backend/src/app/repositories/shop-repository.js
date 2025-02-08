@@ -4,7 +4,7 @@ class ShoppingRepository {
     getDatasForProductGrid(page) {
         const offset = page * 9;
         const limit = offset + 9;
-        const sql = 'SELECT id, description, images_path, price, discount_percentage, number_of_interest_free_installments, filters FROM sale_items LIMIT ? OFFSET ?';
+        const sql = 'SELECT id, description, images_path, price, discount_percentage, number_of_interest_free_installments FROM sale_items LIMIT ? OFFSET ?';
         return consult(sql, [limit, offset], 'It is not possible to query data for each product for the product grid');
     }
 

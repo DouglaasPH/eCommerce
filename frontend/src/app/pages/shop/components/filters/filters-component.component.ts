@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
-import { ShoppingFilterService } from "../../../../services/shoppingFilter.service";
+import { shopService } from "../../../../services/shop.service";
 import { getAllFilterOptions, getAllFilters, getFiltersWithSelectedFilters } from "../../../../requests/shopRequests";
 
 @Component({
@@ -11,7 +11,7 @@ import { getAllFilterOptions, getAllFilters, getFiltersWithSelectedFilters } fro
     styleUrl: './filters-component.component.scss',
 })
 export class FiltersComponent implements OnInit {
-    constructor(private shoppingfilterservice: ShoppingFilterService) { }
+    constructor(private shopservice: shopService) { }
 
     allFilters: string[] = [];
     allFilterOptions: object = {}; 
@@ -25,7 +25,6 @@ export class FiltersComponent implements OnInit {
         try {
             this.allFilters = await getAllFilters();
             this.allFilterOptions = await getAllFilterOptions(this.allFilters);     
-            console.log(this.allFilterOptions)
             this.allFilters.map(filter => {
                 this.myFilters = {
                     ...this.myFilters,
@@ -61,13 +60,13 @@ export class FiltersComponent implements OnInit {
                 ...this.myFilters,
                 [key]: value,
             };          
-            this.shoppingfilterservice.setFilter({ [key]: value });
+            this.shopservice.setFilter({ [key]: value });
         } else {
             this.myFilters = {
                 ...this.myFilters,
                 [key]: '',
             };                        
-            this.shoppingfilterservice.setFilter({ [key]: '' });                                    
+            this.shopservice.setFilter({ [key]: '' });                                    
         }
 
         this.filterStatus[key] = !this.filterStatus[key];
@@ -85,7 +84,6 @@ export class FiltersComponent implements OnInit {
                     ...this.allFilterOptions,
                     [key]: [this.myFilters[key]],
                 };
-                console.log(this.allFilterOptions)
             }
         })
     }

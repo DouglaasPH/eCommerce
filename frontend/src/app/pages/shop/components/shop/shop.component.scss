@@ -5,11 +5,12 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 1vw;
+
 }
 
 .container-sales {
-    height: 95%;
+    height: 80%;
     width: 90%;
     display: flex;
     flex-direction: row;
@@ -17,39 +18,70 @@
     gap: 2%;
 }
 
-.image {
-    width: 100%;
-}
-
 .sale {
-    width: 32%;
-    height: 28%;
+    width: 19.9vw;
+    height: 30vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 0.2vw;    
 }
-
 .sale:hover {
     cursor: pointer;
 }
 
-.container-description {
-    height: 10%;
+.container-image {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;    
+    align-items: center;
 }
 
-.item {
-    @extend %font-volkhov;
-    font-weight: 300;
+.image {
+    width: 100%;
+} 
+
+.container-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.description {
+    @extend %font-poppins;
+    font-weight: 450;
+    font-size: 0.8vw;
+    text-align: center;
+    width: 90%;
+    color: #292929;
+}
+
+.cash-price-plus-discount {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+.price-without-discount {
+    @extend %font-poppins;
+    font-weight: 400;
+    font-size: 0.8vw;
+    text-decoration: line-through;
 }
 
 .price {
     @extend %font-poppins;
-    font-weight: 400;
-    font-size: 80%;
+    font-size: 0.9vw;
+    font-weight: 600;
+    color: #ff1414;
 }
+
+.price-with-installments {
+    @extend %font-poppins;
+    font-size: 0.8vw;
+    font-weight: 500;
+    color: #666666;    
+}
+
 
 .container-others-pages {
     height: 5%;
@@ -67,10 +99,12 @@
 
 .page-number, .button-double-next-arrow, .button-double-back-arrow {
     @extend %font-poppins;
-    font-weight: 500;
+    font-weight: 600;
     font-size:  70%;    
-    width: 20%;
-    background-color: #F3F3F3;
+    width: 2vw;
+    height: 2vw;
+    background-color: #666666;
+    color: white;
     border: none;
     border-radius: 100%;
 }
