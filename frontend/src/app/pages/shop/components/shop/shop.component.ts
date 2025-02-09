@@ -1,6 +1,7 @@
 import { CommonModule, DecimalPipe, NgFor } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { shopService } from "../../../../services/shop.service";
+import { Router } from "@angular/router";
 
 interface salesInterface {
     id: number,
@@ -19,7 +20,7 @@ interface salesInterface {
     styleUrl: './shop.component.scss',
 })  
 export class Shop implements OnInit {
-    constructor(private shopservice: shopService) { }
+    constructor(private shopservice: shopService, private router: Router) { }
     
     sales: salesInterface[] = [];
 
@@ -45,6 +46,7 @@ export class Shop implements OnInit {
 
     clickOnTheProduct(productId: number) {
         this.shopservice.setProductId(productId);
+        this.router.navigate(['/shop/product'])
     }
 
     changePage(nextPage: number) {

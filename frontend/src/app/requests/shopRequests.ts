@@ -62,4 +62,17 @@ async function getDatasForProductGrid(datas: any) {
     }
 }
 
-export { getAllFilters, getAllFilterOptions, getFiltersWithSelectedFilters, getDatasForProductGridWithFilters, getDatasForProductGrid };
+async function getProductData(datas: any) {
+    try {
+        const response = await axios.get(`${API_URL}/getProductData`, {
+            params: {
+                productId: datas
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+export { getAllFilters, getAllFilterOptions, getFiltersWithSelectedFilters, getDatasForProductGridWithFilters, getDatasForProductGrid, getProductData };

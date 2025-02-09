@@ -85,6 +85,11 @@ class ShoppingRepository {
         const sql = 'SELECT COUNT(*) AS total_rows FROM sale_items';
         return consult(sql, 'Unable to check the total number of pages for the product grid');
     }    
+
+    getProductData(productId) {
+        const sql = `SELECT id, description, price, discount_percentage, number_of_interest_free_installments, images_path FROM sale_items WHERE id = ${productId}`;
+        return consult(sql, 'Unable to check data for the selected product');
+    }    
 }
 
 export default new ShoppingRepository();

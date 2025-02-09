@@ -24,6 +24,7 @@ router.get('/getAllFilters', shopController.allFilters);
 router.get('/getAllFilterOptions', shopController.FilterOptions);
 router.get('/getTotalNumberOfPages', shopController.totalPages);
 router.get('/getFiltersWithSelectedFilters', shopController.FiltersWithSelectedFilters);
+router.get('/getProductData', shopController.productData);
 
 
 export default router;

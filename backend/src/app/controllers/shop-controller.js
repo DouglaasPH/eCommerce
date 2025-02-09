@@ -71,6 +71,12 @@ class ShopController {
         })
         return res.json(result);
     }
+
+    async productData(req, res) {
+        const { productId } = req.query;
+        const row = await shoppingRepository.getProductData(productId);
+        return res.json(row);
+    }
 }
 
 export default new ShopController();
