@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { getDatasForProductGrid, getDatasForProductGridWithFilters } from "../requests/shopRequests";
+import { BehaviorSubject, Observable } from "rxjs";
 
 interface myFiltersInterface {
     price_range: string,
@@ -7,6 +8,15 @@ interface myFiltersInterface {
     promotions: string,
     sizes: string,
     styles: string,    
+}
+
+interface Product {
+    id: number,
+    description: string,
+    discount_percentage: number,
+    images_path: string,
+    number_of_interest_free_installments: number,
+    price: number,
 }
 
 @Injectable({
@@ -20,18 +30,22 @@ export class shopService {
         sizes: "",
         styles: "",
 };
-    private displayProducts: [] = [];
+    private displayProducts = new BehaviorSubject<Product[]>([]);
+    displayProducts$ = this.displayProducts.asObservable();
     private productId: number | undefined = undefined; 
+
+    constructor() {        
+        this.loadProducts();
+    }
 
     private async loadProducts() {
         const products = await getDatasForProductGrid({ page: 0 });
-        this.displayProducts = products;
-        console.log("products: ", this.displayProducts)
+        this.displayProducts.next(products);
     }
 
-    constructor() {
-        this.loadProducts();
-    }    
+    setDisplayProducts(newProduct: Product[]) {
+        this.displayProducts.next(newProduct);
+    }
 
     setProductId(data: number | undefined) {
         this.productId = data;
@@ -63,10 +77,10 @@ export class shopService {
 
         if (Object.keys(selectedFilters).length > 0) {
             const newDisplay = await getDatasForProductGridWithFilters(selectedFilters);
-            this.displayProducts = newDisplay;
+            this.setDisplayProducts(newDisplay);
         } else {
             const newDisplay = await getDatasForProductGrid({ page: 0 });
-            this.displayProducts = newDisplay;            
+            this.setDisplayProducts(newDisplay);
         }
     }
 
@@ -74,7 +88,7 @@ export class shopService {
         return this.myFilters;
     }
 
-    getDisplayProducts() {
+    getDisplayProducts(): Observable<Product[]> {
         return this.displayProducts;
     }
 }

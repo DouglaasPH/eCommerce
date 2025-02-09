@@ -29,13 +29,18 @@ export class Shop implements OnInit {
     displayPages = Array.from(this.numberOfPages, (_, i) => this.numberOfPages[i] >= this.currentPage && this.numberOfPages[i] - this.currentPage < 3 ? this.numberOfPages[i] : null).filter(page => page !== null);     
 
     async ngOnInit() {
-        this.sales = this.shopservice.getDisplayProducts();
-        console.log(this.sales)
+        this.shopservice.displayProducts$.subscribe(
+            (data) => {
+                this.sales = data;
+            }
+        );
 
-        this.numberOfOtherPagesInTotal = Math.ceil(this.sales.length / 9);
-        this.numberOfPages = Array.from({ length: this.numberOfOtherPagesInTotal }, (_, i) => i + 1);
-        this.currentPage = 1;
-        this.displayPages = Array.from(this.numberOfPages, (_, i) => this.numberOfPages[i] >= this.currentPage && this.numberOfPages[i] - this.currentPage < 3 ? this.numberOfPages[i] : null).filter(page => page !== null);     
+        setTimeout(() => {
+            this.numberOfOtherPagesInTotal = Math.ceil(this.sales.length / 9);
+            this.numberOfPages = Array.from({ length: this.numberOfOtherPagesInTotal }, (_, i) => i + 1);            
+            this.displayPages = Array.from(this.numberOfPages, (_, i) => this.numberOfPages[i] >= this.currentPage && this.numberOfPages[i] - this.currentPage < 3 ? this.numberOfPages[i] : null).filter(page => page !== null);
+        }, 1);
+
     }
 
     clickOnTheProduct(productId: number) {
