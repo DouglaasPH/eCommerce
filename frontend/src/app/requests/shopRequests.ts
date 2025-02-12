@@ -38,7 +38,6 @@ async function getFiltersWithSelectedFilters(datas: { [key: string]: string}) {
 }
 
 async function getDatasForProductGridWithFilters(datas: any) {
-    console.log(datas);
     try {
         const response = await axios.get(`${API_URL}/getDatasForProductGridWithFilters`, {
             params: {
@@ -51,11 +50,9 @@ async function getDatasForProductGridWithFilters(datas: any) {
     }
 }
 
-async function getDatasForProductGrid(datas: any) {
+async function getDatasForProductGrid() {
     try {
-        const response = await axios.get(`${API_URL}/getDatasForProductGrid`, {
-            params: datas
-        });
+        const response = await axios.get(`${API_URL}/getDatasForProductGrid`);
         return response.data;
     } catch (error) {
         console.log(error);
@@ -63,6 +60,7 @@ async function getDatasForProductGrid(datas: any) {
 }
 
 async function getProductData(datas: any) {
+    console.log(datas);
     try {
         const response = await axios.get(`${API_URL}/getProductData`, {
             params: {

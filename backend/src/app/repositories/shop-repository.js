@@ -1,17 +1,15 @@
 import { consult } from "../database/connection.js";
 
 class ShoppingRepository {
-    getDatasForProductGrid(page) {
-        const offset = page * 9;
-        const limit = offset + 9;
-        const sql = 'SELECT id, description, images_path, price, discount_percentage, number_of_interest_free_installments FROM sale_items LIMIT ? OFFSET ?';
-        return consult(sql, [limit, offset], 'It is not possible to query data for each product for the product grid');
+    getDatasForProductGrid() {
+        const sql = `SELECT id, description, images_path->> '$[0]' AS images_path, price, discount_percentage, number_of_interest_free_installments FROM sale_items`;
+        return consult(sql, 'It is not possible to query data for each product for the product grid');
     }
 
     getDataWithFiltersForTheProductGrid(options) {
         const optionName = Object.keys(options)[0];
         const currentOption = options[optionName];
-        let sql = `SELECT id, description, images_path, price, discount_percentage, number_of_interest_free_installments FROM sale_items WHERE JSON_CONTAINS(filters, '["${currentOption}"]', '$.${optionName}')`;
+        let sql = `SELECT id, description, images_path->> '$[0]' AS images_path, price, discount_percentage, number_of_interest_free_installments FROM sale_items WHERE JSON_CONTAINS(filters, '["${currentOption}"]', '$.${optionName}')`;
         
         const numberOfFilters = Object.keys(options).length;
         
@@ -23,7 +21,6 @@ class ShoppingRepository {
                 sql = sql + increment;
             }
         }
-        console.log(sql);
         return consult(sql, 'Unable to query data with filters for product grid');
     }    
 
@@ -87,7 +84,7 @@ class ShoppingRepository {
     }    
 
     getProductData(productId) {
-        const sql = `SELECT id, description, price, discount_percentage, number_of_interest_free_installments, images_path FROM sale_items WHERE id = ${productId}`;
+        const sql = `SELECT id, description, mark, size_by_quantity, price, discount_percentage, number_of_interest_free_installments, JSON_UNQUOTE(images_path) AS images_path FROM sale_items WHERE id = ${productId}`;
         return consult(sql, 'Unable to check data for the selected product');
     }    
 }

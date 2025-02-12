@@ -7,30 +7,46 @@
 <div class="container-product">
     <div class="product">
         <div class="container-images">
-            <div class="container-choose-images">
-                <div class="div-choose-image" *ngFor="let image of product.images">
-                    <img src="{{image}}" alt="choose image" class="choose-image">
+            <div class="container-choose-images-and-buttons">
+                <div class="container-return-image">
+                    <button class="return-image" (click)="onScroll('up')">&gt;</button>
                 </div>
+                <div class="container-choose-images" #scrollDiv>
+                    <div class="div-choose-image" *ngFor="let image of product.images_path" (click)="changeMainImage(image)">
+                        <img src="../../../assets{{ image }}" alt="{{ image }}" class="choose-image" [ngClass]=" mainImage === image ? 'image-selected' : 'image-unselected' ">
+                    </div>
+                </div>
+                <div class="container-next-image">
+                    <button class="next-image" (click)="onScroll('down')">&gt;</button>
+                </div>                
             </div>
             <div class="container-see-image">
-                <img src="{{ product.images[1] }}" alt="" class="current-image">
+                <img src="../../../assets{{ mainImage }}" alt="" class="current-image">
             </div>
         </div>
         <div class="container-details">
             <div class="details">
                 <div class="container-titles">
-                    <p class="website-brand">FASCO</p>
                     <div class="container-product-name-and-favorite-button">
-                        <h2 class="product-name">{{ product.item}}</h2>
+                        <h2 class="product-name">{{ product.description}}</h2>
                         <button class="favorite-button">
                             <img src="../../../assets/login/icons/favorites.svg" alt="favorites" class="favorite-image">
                         </button>
                     </div>
                 </div>
+                <div class="container-price">
+                    <div class="container-price-discount">
+                        <p class="previous-price" *ngIf="product.discount_percentage !== 0">Of $ {{product.price}}</p>
+                        <p class="discount" *ngIf="product.discount_percentage !== 0">- {{product.discount_percentage}}%</p>
+                    </div>
+                    <p class="current-price">For $ {{(product.discount_percentage !== 0 ? product.price * (1 - product.discount_percentage / 100) : product.price) | number: '1.2-2'}}</p>
+                    <p class="interest-free-installments">{{ product.number_of_interest_free_installments }}x of $ {{(product.discount_percentage !== 0 ? product.price * (1 - product.discount_percentage / 100) / product.number_of_interest_free_installments : product.price / product.number_of_interest_free_installments) | number: '1.2-2' }} interest free</p>                    
+                </div>
+
                 <div class="container-size">
-                   <h4 class="size-title">Size:</h4>
+                   <h4 class="size-title">Size</h4>
                     <div class="container-buttons-of-all-sizes">
-                        <button class="size" *ngFor="let size of product.sizes" [ngStyle]="{ 'background-color': this.currentSize === size ? '#000000' : '#ffffff', 'color': this.currentSize === size ? '#ffffff' : '#8A8A8A' }" (click)="changeSize(size)" > {{ size }} </button>
+                        <button class="size" *ngFor="let size of sizes" [ngStyle]="{ 'background-color': this.currentSize === size ? '#010101' : '#ebebeb', 'color': this.currentSize === size ? '#ebebeb' : '#8A8A8A' }" (click)="changeSize(size)" > {{ size }} </button>
                     </div>
                 </div>
                 <div class="container-quantity">

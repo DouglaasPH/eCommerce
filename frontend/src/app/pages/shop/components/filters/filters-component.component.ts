@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
-import { shopService } from "../../../../services/shop.service";
 import { getAllFilterOptions, getAllFilters, getFiltersWithSelectedFilters } from "../../../../requests/shopRequests";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
     selector: 'filters',
@@ -11,15 +11,14 @@ import { getAllFilterOptions, getAllFilters, getFiltersWithSelectedFilters } fro
     styleUrl: './filters-component.component.scss',
 })
 export class FiltersComponent implements OnInit {
-    constructor(private shopservice: shopService) { }
+    constructor(private router: Router, private activatedroute: ActivatedRoute) { }
 
     allFilters: string[] = [];
     allFilterOptions: object = {}; 
     myFilters: { [key: string]: string } = {};
     filterStatus: { [key: string]: boolean } = {};
     filtersName: { [key: string]: string } = {};
-    selectedOptions: { [key: string]: string }  = {}
-
+    selectedOptions: { [key: string]: string } = {}
 
     async ngOnInit() {
         try {
@@ -55,21 +54,24 @@ export class FiltersComponent implements OnInit {
     }
 
     changeNewFilter(key: keyof { [key: string]: string } | string, value: string) {        
+        this.filterStatus[key] = !this.filterStatus[key];
+
         if (this.myFilters[key] === '') {
             this.myFilters = {
                 ...this.myFilters,
                 [key]: value,
             };          
-            this.shopservice.setFilter({ [key]: value });
-        } else {
+        } else {            
             this.myFilters = {
                 ...this.myFilters,
                 [key]: '',
             };                        
-            this.shopservice.setFilter({ [key]: '' });                                    
         }
 
-        this.filterStatus[key] = !this.filterStatus[key];
+        this.router.navigate([], {
+            queryParams: this.myFilters,
+        });        
+
         this.newOptions();
     }
 

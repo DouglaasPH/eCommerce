@@ -1,7 +1,7 @@
 import { CommonModule, DecimalPipe, NgFor } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
-import { shopService } from "../../../../services/shop.service";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { getDatasForProductGrid, getDatasForProductGridWithFilters } from "../../../../requests/shopRequests";
 
 interface salesInterface {
     id: number,
@@ -20,33 +20,43 @@ interface salesInterface {
     styleUrl: './shop.component.scss',
 })  
 export class Shop implements OnInit {
-    constructor(private shopservice: shopService, private router: Router) { }
+    constructor(private router: Router, private activatedroute: ActivatedRoute) { }
     
     sales: salesInterface[] = [];
-
-    numberOfOtherPagesInTotal = Math.ceil(this.sales.length / 9);
-    numberOfPages = Array.from({ length: this.numberOfOtherPagesInTotal }, (_, i) => i + 1);
+    numberOfOtherPagesInTotal = 0;
+    numberOfPages: number[] = [];
     currentPage = 1;
-    displayPages = Array.from(this.numberOfPages, (_, i) => this.numberOfPages[i] >= this.currentPage && this.numberOfPages[i] - this.currentPage < 3 ? this.numberOfPages[i] : null).filter(page => page !== null);     
+    displayPages: number[] = [];
 
     async ngOnInit() {
-        this.shopservice.displayProducts$.subscribe(
-            (data) => {
-                this.sales = data;
+        this.sales = await getDatasForProductGrid();
+        this.activatedroute.queryParams.subscribe(async allFilters => {
+            const filterType = Object.keys(allFilters);
+            let filtersWithOptions = filterType.reduce((acc: { [key: string]: any }, currentFilter: string) => {
+                if (allFilters[currentFilter]) {
+                    acc[currentFilter] = allFilters[currentFilter];
+                }
+                return acc;
+            }, {});
+            if (Object.keys(filtersWithOptions).length > 0) {
+                this.sales = await getDatasForProductGridWithFilters(filtersWithOptions);
+            } else {
+                this.sales = await getDatasForProductGrid();                
             }
-        );
+            this.loading();
+        });             
+        this.loading();
+    }
 
-        setTimeout(() => {
-            this.numberOfOtherPagesInTotal = Math.ceil(this.sales.length / 9);
-            this.numberOfPages = Array.from({ length: this.numberOfOtherPagesInTotal }, (_, i) => i + 1);            
-            this.displayPages = Array.from(this.numberOfPages, (_, i) => this.numberOfPages[i] >= this.currentPage && this.numberOfPages[i] - this.currentPage < 3 ? this.numberOfPages[i] : null).filter(page => page !== null);
-        }, 1);
-
+    loading() {
+        console.log(this.numberOfOtherPagesInTotal, this.numberOfPages, this.displayPages)        
+        this.numberOfOtherPagesInTotal = Math.ceil(this.sales.length / 9);
+        this.numberOfPages = Array.from({ length: this.numberOfOtherPagesInTotal }, (_, i) => i + 1);            
+        this.displayPages = Array.from(this.numberOfPages, (_, i) => this.numberOfPages[i] >= this.currentPage && this.numberOfPages[i] - this.currentPage < 3 ? this.numberOfPages[i] : null).filter(page => page !== null);
     }
 
     clickOnTheProduct(productId: number) {
-        this.shopservice.setProductId(productId);
-        this.router.navigate(['/shop/product'])
+        this.router.navigate(['/shop/product', productId]);
     }
 
     changePage(nextPage: number) {

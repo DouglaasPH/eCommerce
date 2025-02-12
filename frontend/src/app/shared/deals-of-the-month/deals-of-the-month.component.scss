@@ -99,14 +99,13 @@
 }
 
 .absolute-block {
-    position: absolute;
-    left: 42%;
-    top: 189%;
-    height: 5%;
+    height: 100%;
     width: 5%;
+    padding-bottom: 5%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: end;
 }
 
 .left-arrow, .right-arrow {

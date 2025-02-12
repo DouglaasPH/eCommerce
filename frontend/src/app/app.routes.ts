@@ -35,7 +35,7 @@ export const routes: Routes = [
     },
     { path: 'shop', component: ShopPage },
     {
-        path: 'shop/product', component: ProductPage, children: [
+        path: 'shop/product/:productId', component: ProductPage, children: [
             { path: 'shopping-cart', component: ShoppingCart }
         ]
     },

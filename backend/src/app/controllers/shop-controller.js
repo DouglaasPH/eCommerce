@@ -2,8 +2,7 @@ import shoppingRepository from "../repositories/shop-repository.js";
 
 class ShopController {
     async productGrid(req, res) {
-        const { page } = req.query;
-            const row = await shoppingRepository.getDatasForProductGrid(page);
+        const row = await shoppingRepository.getDatasForProductGrid();
         return res.json(row);
     }
 
@@ -74,7 +73,14 @@ class ShopController {
 
     async productData(req, res) {
         const { productId } = req.query;
-        const row = await shoppingRepository.getProductData(productId);
+        let row = await shoppingRepository.getProductData(productId);
+        const images_path = JSON.parse(row[0].images_path);  
+        const size_by_quantity = JSON.parse(row[0].size_by_quantity);  
+        row = {
+            ...row[0],
+            images_path,
+            size_by_quantity
+        };
         return res.json(row);
     }
 }

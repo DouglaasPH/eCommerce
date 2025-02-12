@@ -2,7 +2,7 @@
     <div class="container-sales">
         <div class="sale" *ngFor="let sale of sales.slice((currentPage * 9) - 9, currentPage * 9)" (click)="clickOnTheProduct(sale.id)">
             <div class="container-image">
-                <img src="../../../../../assets{{ sale.images_path }}/1.webp" alt="image" class="image">
+                <img src="../../../../../assets{{ sale.images_path }}" alt="image" class="image">
             </div>
             <div class="container-description">
                 <h5 class="description">{{ sale.description }}</h5>
@@ -10,7 +10,7 @@
                     <p class="price-without-discount" *ngIf="sale.discount_percentage !== 0">R$ {{ sale.price }}</p>
                     <p class="price">R$ {{ (sale.discount_percentage !== 0 ? sale.price * (1 - sale.discount_percentage / 100) : sale.price) | number: '1.2-2' }}</p>
                 </div>
-                <p class="price-with-installments">{{ sale.number_of_interest_free_installments }}x of R$ {{(sale.discount_percentage !== 0 ? sale.price * (1 - sale.discount_percentage / 100) / sale.number_of_interest_free_installments : sale.price / sale.number_of_interest_free_installments) | number: '1.2-2' }}</p>
+                <p class="price-with-installments">{{ sale.number_of_interest_free_installments }}x of $ {{(sale.discount_percentage !== 0 ? sale.price * (1 - sale.discount_percentage / 100) / sale.number_of_interest_free_installments : sale.price / sale.number_of_interest_free_installments) | number: '1.2-2' }}</p>
             </div>
         </div>
     </div>

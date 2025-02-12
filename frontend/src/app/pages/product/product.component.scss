@@ -33,28 +33,88 @@
     gap: 5%;
 } 
 
-.container-choose-images {
-    height: 100%;
+.container-choose-images-and-buttons {
+    height: 85%;
     width: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
+    gap: 1vw;
+}
+
+.container-return-image, .container-next-image {
+    width: 30%;
+    height: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.return-image, .next-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    @extend %font-poppins;
+    font-size: 1.7vw;
+    font-size: 100;
+    color: #4f4f4f;
+    height: 100%;
+    width: 100%;
+    border-radius: 10vw;
+    border: none;
+    background-color: #e2e2e2;
+}
+
+.next-image {
+    transform: rotate(90deg);    
+}
+
+.return-image {
+    transform: rotate(-90deg);
+}
+
+.container-choose-images {
+    height: 110%;
+    width: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 3%;
+    position: relative;
+    overflow: scroll;
+    scroll-behavior: smooth;    
+}
+
+.container-choose-images::-webkit-scrollbar {
+    display: none;
 }
 
 .div-choose-image {
-    height: 10%;
-    width: 50%;
+    height: 5.5vw;
+    width: 5.5vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 2%;
     border: 0.1rem solid #ebebeb;
+}
+
+.image-unselected {
+    border: 0.1rem solid #ebebeb;    
+}
+
+.image-selected {
+    border: 0.1rem solid #3c3c3c;    
+}
+
+.div-choose-image:hover {
+    cursor: pointer;
 }
 
 .choose-image {
     height: 100%;
     width: 100%;
+    object-fit: cover;
 }
 
 .container-see-image {
@@ -65,20 +125,14 @@
 .current-image {
     width: 100%;
     height: 100%;
+    object-fit: cover;    
 }
 
 .container-titles {
-    height: 6%;
+    height: 10%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-}
-
-.website-brand {
-    @extend %font-volkhov;
-    font-size: 75%;
-    color: #666666;
 }
 
 .container-product-name-and-favorite-button {
@@ -89,15 +143,63 @@
 }
 
 .product-name {
-    @extend %font-volkhov;
-    font-weight: 100;
+    @extend %font-poppins;
+    font-weight: 300;
+    width: 65%;
+    font-size: 1.1vw;
+    color: #1f1f1f;
 }
 
 .favorite-button {
     background-color: #ebebeb;
     border: none;
     height: 100%;
-    width: 3.5%;
+    width: 3vw;
+    padding-left: 1.5vw;
+    border-left: 0.1vw solid #adadad;
+}
+
+.container-price {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-price-discount {
+    display: flex;
+    flex-direction: row;    
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+}
+
+.previous-price {
+    @extend %font-poppins;
+    text-decoration: line-through;
+    color: #adadad;
+    font-size: 0.9vw;
+}
+
+.discount {
+    @extend %font-poppins;
+    font-size: 0.8vw;
+    font-weight: 500;
+    padding: 0.2vw 0.4vw 0.2vw 0.4vw;
+    background-color: #d80000;
+    color: #ebebeb;
+}
+
+.current-price {
+    @extend %font-poppins;
+    font-size: 1.2vw;
+    font-weight: 600;
+    color: #1f1f1f;    
+}
+
+.interest-free-installments {
+    @extend %font-poppins;
+    font-size: 0.8vw;
+    font-weight: 500;
+    color: #1f1f1f;    
 }
 
 .favorite-image {
@@ -115,12 +217,13 @@
     height: 55%;
     display: flex;
     gap: 2%;
-    padding-left: 1%;
 }
 
 .size-title {
-    @extend %font-volkhov;
-    font-weight: 600;
+    @extend %font-poppins;
+    font-size: 0.8vw;
+    font-weight: 500;
+    color: #1f1f1f;
 }
 
 .size {
@@ -142,9 +245,10 @@
 }
 
 .quantity-title {
-    @extend %font-volkhov;
+    @extend %font-poppins;
+    font-size: 0.8vw;
     font-weight: 500;
-    font-size: 90%;
+    color: #1f1f1f;
 }
 
 .container-select-quantity-and-add-to-cart {
@@ -159,18 +263,18 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    border: 0.1rem solid #EEEEEE;    
+    border: 0.1vw solid #adadad;    
     border-radius: 0.3rem;    
 }
 
 .decrease-quantity, .increase-quantity, .quantity {
     @extend %font-poppins;
     font-weight: 500;
-    font-size: 80%;     
+    font-size: 0.9vw;     
     width: 29%;
     color: #000000;    
     background-color: #ebebeb;
-    border-radius: 0.3rem;
+    border-radius: 0.3vw;
     border: none;
     display: flex;
     align-items: center;
@@ -180,17 +284,17 @@
 .button-add-to-cart {
     @extend %font-poppins;
     font-weight: 400;
-    font-size: 75%;
-    background-color: #000000;
+    font-size: 0.9vw;
+    background-color: #4f4f4f;
     color: #ebebeb;
-    border: 0.1rem solid #000000;
-    border-radius: 0.3rem;
+    border: 0.1vw solid #4f4f4f;
+    border-radius: 0.3vw;
     width: 70%;
 }
 
 .container-carts {
-    background-color: #F8F8F8;
-    border-radius: 0.6rem;
+    background-color: #e2e2e2;
+    border-radius: 0.6vw;
     height: 15%;
     display: flex;
     flex-direction: column;
@@ -200,8 +304,8 @@
 
 .carts-description {
     @extend %font-poppins;
-    font-weight: 500;
-    font-size: 80%;
+    font-weight: 400;
+    font-size: 0.8vw;
 }
 
 button:hover {
