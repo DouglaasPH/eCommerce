@@ -3,7 +3,6 @@ import shoppingCartRepository from "../repositories/shopping-cart-repository.js"
 class ShoppingCartController {
     async getAllUserItem(req, res) {
         const { user_id } = req.query;
-        console.log(user_id)
         const row = await shoppingCartRepository.getAllUserItem(user_id); 
         return res.json(row);
     }
@@ -21,8 +20,8 @@ class ShoppingCartController {
     }
 
     async removeItem(req, res) {
-        const { user_id, product_id } = req.query;
-        const row = await shoppingCartRepository.removeItem(user_id, product_id);
+        const { id } = req.query;
+        const row = await shoppingCartRepository.removeItem(id);
         return res.json(row);
     }
 }
