@@ -57,6 +57,7 @@ class LoginController {
 
     async checkUserToken(req, res) {
         const userToken = req.cookies['user_token'];
+        console.log(userToken);
         if (userToken) {
             res.json({ message: 'successfully logged in', isLogginned: true });
         } else {
