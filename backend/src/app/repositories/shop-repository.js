@@ -3,10 +3,10 @@ import { consult } from "../database/connection.js";
 class ShoppingRepository {
     getDatasForProductGrid() {
         const sql = `SELECT id, description, images_path->> '$[0]' AS images_path, price, discount_percentage, number_of_interest_free_installments FROM sale_items`;
-        return consult(sql, 'It is not possible to query data for each product for the product grid');
+        return consult(sql, 'Unable to query the database.');
     }
 
-    getDataWithFiltersForTheProductGrid(options) {
+    getDatasForProductGridWithFilters(options) {
         const optionName = Object.keys(options)[0];
         const currentOption = options[optionName];
         let sql = `SELECT id, description, images_path->> '$[0]' AS images_path, price, discount_percentage, number_of_interest_free_installments FROM sale_items WHERE JSON_CONTAINS(filters, '["${currentOption}"]', '$.${optionName}')`;
@@ -21,7 +21,7 @@ class ShoppingRepository {
                 sql = sql + increment;
             }
         }
-        return consult(sql, 'Unable to query data with filters for product grid');
+        return consult(sql, 'Unable to query the database.');
     }    
 
     getAllFilters() {
@@ -29,9 +29,9 @@ class ShoppingRepository {
         return consult(sql, 'Unable to consult all available filters');
     }
     
-    getFilterOptions(option) {
+    getAllFilterOptions(option) {
         const sql = `SELECT GROUP_CONCAT(DISTINCT val ORDER BY val SEPARATOR ', ') AS ${option} FROM ( SELECT JSON_UNQUOTE(${option}) AS val FROM sale_items, JSON_TABLE(filters, '$.${option}[*]' COLUMNS (${option} JSON PATH '$')) AS jt) AS subquery`;
-        return consult(sql, 'It was not possible to consult the available options for each filter');
+        return consult(sql, 'Unable to query the database.');
     }
 
     getFiltersWithSelectedFilters(filters) {
@@ -75,17 +75,17 @@ class ShoppingRepository {
             }                
         }   
             
-        return consult(sql, 'Unable to check filters based on chosen filters')
+        return consult(sql, 'Unable to query the database.');
     }
     
     getTotalNumberOfPages() {
         const sql = 'SELECT COUNT(*) AS total_rows FROM sale_items';
-        return consult(sql, 'Unable to check the total number of pages for the product grid');
+        return consult(sql, 'Unable to query the database.');
     }    
 
     getProductData(productId) {
         const sql = `SELECT id, description, mark, size_by_quantity, price, discount_percentage, number_of_interest_free_installments, JSON_UNQUOTE(images_path) AS images_path FROM sale_items WHERE id = ${productId}`;
-        return consult(sql, 'Unable to check data for the selected product');
+        return consult(sql, 'Unable to query the database.');
     }    
 }
 

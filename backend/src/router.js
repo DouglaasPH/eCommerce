@@ -8,8 +8,8 @@ const router = Router();
 // ROUTES ABOUT LOGIN AND ACCOUNT
 router.post("/createAccount", loginController.createAccount);
 router.get("/login", loginController.login);
-router.put("/updatePassword", loginController.newPassword);
-router.get("/validateEmail", loginController.checkEmail);
+router.put("/updatePassword", loginController.updatePassword);
+router.get("/validateEmail", loginController.validateEmail);
 
 
 // QUERY COOKIES WITH httpOnly = true
@@ -17,13 +17,13 @@ router.get('/queryCookieUserToken', loginController.checkUserToken);
 
 
 // ROUTES ABOUT SHOPPING AND PRODUCT PAGE
-router.get('/getDatasForProductGrid', shopController.productGrid);
-router.get('/getDatasForProductGridWithFilters', shopController.productGridWithFilters);
-router.get('/getAllFilters', shopController.allFilters);
-router.get('/getAllFilterOptions', shopController.FilterOptions);
-router.get('/getTotalNumberOfPages', shopController.totalPages);
-router.get('/getFiltersWithSelectedFilters', shopController.FiltersWithSelectedFilters);
-router.get('/getProductData', shopController.productData);
+router.get('/getDatasForProductGrid', shopController.getDatasForProductGrid);
+router.get('/getDatasForProductGridWithFilters', shopController.getDatasForProductGridWithFilters);
+router.get('/getAllFilters', shopController.getAllFilters);
+router.get('/getAllFilterOptions', shopController.getAllFilterOptions);
+router.get('/getTotalNumberOfPages', shopController.getTotalNumberOfPages);
+router.get('/getFiltersWithSelectedFilters', shopController.getFiltersWithSelectedFilters);
+router.get('/getProductData', shopController.getProductData);
 
 
 // ROUTES ABOUT SHOPPING CART

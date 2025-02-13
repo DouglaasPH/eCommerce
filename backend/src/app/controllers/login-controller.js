@@ -5,7 +5,7 @@ class LoginController {
     async createAccount(req, res) {
         const { name, email, password, phone_number, } = req.body;
         const valuesObject = { name, email, password, phone_number };
-        const row = await loginRepository.create(valuesObject);
+        const row = await loginRepository.createAccount(valuesObject);
 
         if (row.affectedRows > 0) {
             return res.json({ message: 'Account created sucessfully', accountCreate: true });
@@ -14,7 +14,7 @@ class LoginController {
 
     async login(req, res) {
         const { email, password } = req.query;
-        const row = await loginRepository.confirmLogin(email, password);    
+        const row = await loginRepository.login(email, password);    
 
         if (row.length > 0) {
             const token = generateToken({
@@ -37,7 +37,7 @@ class LoginController {
         };
     }
 
-    async checkEmail(req, res) {
+    async validateEmail(req, res) {
         const { email } = req.query;
         const row = await loginRepository.validateEmail(email);
 
@@ -46,7 +46,7 @@ class LoginController {
         } else return res.json({ message: 'The email is not registered in the database', registeredEmail: false });        
     }    
 
-    async newPassword(req, res) {
+    async updatePassword(req, res) {
         const { password, email } = req.body;
         const row = await loginRepository.updatePassword(password, email);
 

@@ -1,36 +1,36 @@
 import shoppingRepository from "../repositories/shop-repository.js";
 
 class ShopController {
-    async productGrid(req, res) {
+    async getDatasForProductGrid(req, res) {
         const row = await shoppingRepository.getDatasForProductGrid();
         return res.json(row);
     }
 
-    async productGridWithFilters(req, res) {
+    async getDatasForProductGridWithFilters(req, res) {
         let { filters } = req.query;
-        const row = await shoppingRepository.getDataWithFiltersForTheProductGrid(filters);
+        const row = await shoppingRepository.getDatasForProductGridWithFilters(filters);
         return res.json(row);
     }    
 
-    async totalPages(req, res) {
+    async getTotalNumberOfPages(req, res) {
         const row = await shoppingRepository.getTotalNumberOfPages();
         const numberOfPages = Math.ceil(row[0].total_rows / 9);
         return res.json(numberOfPages);
     }
 
-    async allFilters(req, res) {
+    async getAllFilters(req, res) {
         const row = await shoppingRepository.getAllFilters();
         const filters = JSON.parse(row[0].filters);        
         return res.json(filters);
     }
 
-    async FilterOptions(req, res) {
+    async getAllFilterOptions(req, res) {
         const { options } = req.query;
 
         let result = {};
         for (let i = 0; i < options.length; i++) {
             const currentOption = options[i];
-            const row = await shoppingRepository.getFilterOptions(options[i]);
+            const row = await shoppingRepository.getAllFilterOptions(options[i]);
             const requestValue = row[0][currentOption];
             const array = requestValue.split(', ');
             result = {
@@ -41,7 +41,7 @@ class ShopController {
         return res.json(result);
     }
 
-    async FiltersWithSelectedFilters(req, res) {
+    async getFiltersWithSelectedFilters(req, res) {
         const { filters } = req.query;
         const row = await shoppingRepository.getFiltersWithSelectedFilters(filters);
         const nameFilters = Object.keys(row[0]);
@@ -71,7 +71,7 @@ class ShopController {
         return res.json(result);
     }
 
-    async productData(req, res) {
+    async getProductData(req, res) {
         const { productId } = req.query;
         let row = await shoppingRepository.getProductData(productId);
         const images_path = JSON.parse(row[0].images_path);  

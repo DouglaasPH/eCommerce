@@ -1,22 +1,22 @@
 import { consult } from "../database/connection.js";
 
 class LoginRepository {
-    create(datas) {
+    createAccount(datas) {
         const sql = "INSERT INTO users SET ?";
-        return consult(sql, datas, "Unable to request account registration!");
+        return consult(sql, datas, 'Unable to query the database.');
     }
-    confirmLogin(email, password) {
+    login(email, password) {
         const sql = "SELECT * FROM users WHERE email =? AND password =?";
-        return consult(sql, [email, password], "Unable to request login confirmaton!");
+        return consult(sql, [email, password], 'Unable to query the database.');
     }
     updatePassword(password, email) {
         const sql = "UPDATE users SET password=? WHERE email =?";
-        return consult(sql, [password, email], "Unable to request password update!");
+        return consult(sql, [password, email], 'Unable to query the database.');
     }
 
     validateEmail(email) {
         const sql = "SELECT * FROM users WHERE email =?";
-        return consult(sql, [email], "Unable to request email validation!");
+        return consult(sql, [email], 'Unable to query the database.');
     }
 }
 
