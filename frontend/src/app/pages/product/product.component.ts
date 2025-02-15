@@ -4,10 +4,13 @@ import { DealsOfTheMonth } from "../../shared/deals-of-the-month/deals-of-the-mo
 import { SubscribeToOurNewslatter } from "../../shared/subscribe-to-our-newslatter/subscribe-to-our-newslatter.component";
 import { FooterBar } from "../../shared/footer-bar/footer-bar.component";
 import { CommonModule, DecimalPipe, NgFor } from "@angular/common";
-import { ShoppingCart } from "../../shared/shopping-cart/shopping-cart.component";
 import { navBar } from "../../shared/nav-bar/nav-bar.component";
 import { getProductData } from "../../requests/shopRequests";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { shoppingCartService } from "../../services/shoppingCart.service";
+import { AuthGuard } from "../../guards/auth.guard";
+import { checkLoggined } from "../../requests/loginRequests";
+import { addItem } from "../../requests/shoppingCartRequests";
 
 interface ProductInterface {
 		id: number | undefined,
@@ -23,14 +26,14 @@ interface ProductInterface {
 @Component({
     selector: 'product',
     standalone: true,
-    imports: [CommonModule, NgFor, DecimalPipe, navBar, WomenCollection, DealsOfTheMonth, SubscribeToOurNewslatter, FooterBar, ShoppingCart],
+    imports: [CommonModule, NgFor, DecimalPipe, navBar, WomenCollection, DealsOfTheMonth, SubscribeToOurNewslatter, FooterBar],
     templateUrl: './product.component.html',
     styleUrl: './product.component.scss',
 })
 export class ProductPage implements OnInit {
     @ViewChild('scrollDiv') scrollDiv!: ElementRef;
     
-    constructor (private route: ActivatedRoute) {}
+    constructor (private route: ActivatedRoute, private shoppingcartservice: shoppingCartService, private router: Router, private authguard: AuthGuard) {}
     product: ProductInterface = {
         id: undefined,
         description: undefined,
@@ -52,7 +55,6 @@ export class ProductPage implements OnInit {
     async ngOnInit() {
         const productId = this.route.snapshot.paramMap.get('productId');
         this.product = await getProductData(productId);
-        console.log(this.product.images_path);
         this.mainImage = this.product.images_path[0];
 
         const allSizes = Object.keys(this.product.size_by_quantity!);        
@@ -86,8 +88,26 @@ export class ProductPage implements OnInit {
             this.currentQuantity = 1;        
     }
 
-    viewCart() {
-        this.addToCart = true;
+    async viewCart() {
+        const loginStatus = await checkLoggined();
+
+        if (loginStatus.isLogginned) {
+            const itemData = {
+                user_id: loginStatus.id,
+                product_id: this.product.id,
+                quantity: this.currentQuantity,
+                size: this.currentSize
+            };
+            
+            try {
+                const response = await addItem(itemData);
+                this.router.navigate(['/my-shopping-cart']);
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            this.router.navigate(['/login']);
+        }
     }
 
     changeMainImage(image_path: string) {

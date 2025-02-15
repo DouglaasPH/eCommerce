@@ -5,9 +5,9 @@
         <h1 class="logo">FASCO</h1>
     </div>
     <div class="container-redirect-buttons">
-            <a href="/" class="redirect-button" [ngClass]="{ 'currentPage': currentRoute === '/' }">Home</a>
-            <a href="/shop" class="redirect-button" [ngClass]="{ 'currentPage': currentRoute === '/shop' }">Shop</a>
-            <a href="" class="redirect-button">Products</a>
+            <a (click)="onHome()" class="redirect-button" [ngClass]="{ 'currentPage': currentRoute === '/' }">Home</a>
+            <a (click)="onShop()" class="redirect-button" [ngClass]="{ 'currentPage': currentRoute === '/shop' }">Shop</a>
+            <a class="redirect-button">Products</a>
     </div>
     <div class="container-user">
         <a href="" class="redirect-user">

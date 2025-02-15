@@ -12,11 +12,18 @@ import { Router } from "@angular/router";
 export class NavBarWithLogin implements OnInit {
     currentRoute = '';
 
-    constructor(private route: Router) { }
+    constructor(private router: Router) { }
     
     ngOnInit() {
-        this.currentRoute = this.route.url;
-        console.log(this.currentRoute);
+        this.currentRoute = this.router.url;
+    }
+
+    onHome() {
+        this.router.navigate(['/']);
+    }
+
+    onShop() {
+        this.router.navigate(['/shop']);
     }
 
 }

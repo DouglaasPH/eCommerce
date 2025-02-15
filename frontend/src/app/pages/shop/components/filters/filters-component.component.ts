@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { getAllFilterOptions, getAllFilters, getFiltersWithSelectedFilters } from "../../../../requests/shopRequests";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'filters',
@@ -11,19 +11,18 @@ import { ActivatedRoute, Router } from "@angular/router";
     styleUrl: './filters-component.component.scss',
 })
 export class FiltersComponent implements OnInit {
-    constructor(private router: Router, private activatedroute: ActivatedRoute) { }
+    constructor(private router: Router) { }
 
     allFilters: string[] = [];
     allFilterOptions: object = {}; 
     myFilters: { [key: string]: string } = {};
     filterStatus: { [key: string]: boolean } = {};
     filtersName: { [key: string]: string } = {};
-    selectedOptions: { [key: string]: string } = {}
 
     async ngOnInit() {
         try {
             this.allFilters = await getAllFilters();
-            this.allFilterOptions = await getAllFilterOptions(this.allFilters);     
+            this.allFilterOptions = await getAllFilterOptions(this.allFilters);
             this.allFilters.map(filter => {
                 this.myFilters = {
                     ...this.myFilters,
@@ -51,6 +50,30 @@ export class FiltersComponent implements OnInit {
         } catch (error) {
             window.location.reload();
         }
+
+        this.backToTheShoppingPath();
+    }
+    
+    backToTheShoppingPath() {
+        const path = this.router.url;
+
+        if (path !== '/shop') {
+            const paramsString = path.split('?')[1];
+            const searchParams = new URLSearchParams(paramsString);
+            const paramsObject: Record<string, string> = {};
+            searchParams.forEach((value, key) => {
+                paramsObject[key] = value;
+            });
+            this.myFilters = {
+                ...paramsObject,
+            };
+
+            this.allFilters.forEach(filter => {
+                if (this.myFilters[filter] !== '') {
+                    this.filterStatus[filter] = true;
+                }
+            })
+        } else return;
     }
 
     changeNewFilter(key: keyof { [key: string]: string } | string, value: string) {        

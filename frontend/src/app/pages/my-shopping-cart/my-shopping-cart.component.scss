@@ -1,15 +1,14 @@
 @use '../../../variables.scss';
 
 .container-my-shopping-cart {
-    height: 100vh;
+    height: 120vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
 }
 
 .container-title {
-    height: 20%;
+    height: 15%;
     width: 83%;    
     display: flex;
     flex-direction: column;
@@ -20,52 +19,200 @@
 
 .title-shopping-cart {
     @extend %font-volkhov;
-    font-weight: 100;
-}
-
-.container-route-description {
-    display: flex;
-    justify-content: space-between;
-    width: 17%;
-}
-
-.parent-route, .separator, .current-route {
-    @extend %font-poppins;
-    font-size: 70%;
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 2.5vw;
 }
 
 .main {
-    height: 55%;
-    width: 83%;
-    border-bottom: 0.1rem solid #8a8a8a;
+    height: 50%;
+    width: 75%;
     display: flex;
     flex-direction: column;
-    gap: 5%;
+    border: 0.1rem solid #c5c5c5;    
 }
 
 .container-classification {
-    height: 12%;
+    height: 20%;
     display: flex;
     justify-content: space-between;
-    align-items: start;
-    border-bottom: 0.1rem solid #8a8a8a;    
+    padding: 0vw 12vw 0 3vw;
+    align-items: center;
+    background-color: #b1b1b1;
+    border-bottom: 0.1rem solid #c5c5c5;    
 }
 
-.classification-product, .classification-price, .classification-quantity, .classification-total {
+.classification-product, .classification-size, .classification-quantity, .classification-total {
     @extend %font-poppins;
-    font-weight: 400;
+    font-weight: 500;
+    font-size: 1vw;
+    color: #1f1f1f;
+}
+
+.classification-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 40%;
 }
 
 .container-product {
-    background-color: red;
     width: 100%;
-    height: 75%;
+    height: 11vw;
+    position: relative;
+    overflow: scroll;
+    scroll-behavior: smooth;
 }
 
+.container-product::-webkit-scrollbar {
+    display: none;
+}
+
+.container-item {
+    width: 100%;
+    height: 11vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container-about-product {
+    display: flex;
+    flex-direction: row;
+    gap: 4%;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+}
+
+.image {
+    height: 80%;
+    width: 22%;
+    object-fit: cover;
+}
+
+.description {
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size: 0.9vw;    
+    width: 70%;
+}
+
+.container-size {
+    width: 8%;
+    height: 17%;
+}
+
+.select-size {
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size: 0.9vw;    
+    width: 100%;
+    height: 100%;    
+    border: #8a8a8a solid 0.1vw;
+    background-color: transparent;
+}
+
+.container-quantity {
+    width: 8%;
+    height: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;  
+    align-items: center;  
+    border: #8a8a8a solid 0.1vw;    
+}
+
+.decrease-quantity, .increase-quantity, .quantity {
+    background-color: transparent;
+    border: none;
+    @extend %font-poppins;
+    font-weight: 400;
+    color: #000000;
+}
+
+.decrease-quantity, .increase-quantity {
+    font-size: 1vw;
+}
+
+.quantity {
+    font-size: 0.9vw;    
+}
+
+.container-total {
+    height: 30%;
+    width: 10%;
+}
+
+.container-with-discount {
+    height: 100%;
+    width: 100%;
+}
+
+.container-discount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.full-price-of-the-item-without-discount {
+    @extend %font-poppins;
+    text-decoration: line-through;
+    color: #8a8a8a;
+    font-size: 1vw;
+}
+
+.discount {
+    @extend %font-poppins;
+    font-size: 0.8vw;
+    font-weight: 500;
+    padding: 0.1vw 0.3vw 0.1vw 0.3vw;
+    background-color: #d80000;
+    color: #ebebeb;
+}
+
+.full-value-with-discount {
+    @extend %font-poppins;
+    font-weight: 500;
+    color: #1f1f1f;
+    font-size: 1.5vw;
+}
+
+.container-without-discount {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.full-value-without-discount {
+    @extend %font-poppins;
+    font-weight: 500;
+    color: #1f1f1f;
+    font-size: 1.5vw;
+}
+
+.container-remove-item {
+    height: 13%;
+    width: 1.9%;
+}
+
+.remove-item {
+    height: 100%;
+    width: 100%;
+    @extend %font-poppins;
+    font-size: 0.8vw;
+    font-weight: 500;
+    color: #1f1f1f;
+    border: #1f1f1f solid 0.1vw;
+    border-radius: 1vw;
+}
+
+
 .container-finalize-purchase {
-    height: 25%;
-    width: 83%;
+    height: 20%;
+    width: 75%;
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -99,30 +246,35 @@ strong {
 }
 
 .container-subtotal-and-buttons {
-    border-top: 0.1rem solid #8a8a8a;
-    height: 70%;
+    height: 100%;
     width: 30%;
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 .container-subtotal {
-    width: 100%;
+    height: 25%;
+    width: 91%;
     display: flex;
     justify-content: space-between;
+    padding: 0 1vw 0 1vw;
     align-items: center;
+    background-color: #c5c5c5;
+    border-radius: 0.4vw;
 }
 
 .subtotal, .price {
-    @extend %font-volkhov;
-    font-size: 75%;
+    @extend %font-poppins;
+    font-weight: 600;
+    font-size: 1vw;
+    color: #1f1f1f;
 }
 
 .container-buttons {
     width: 100%;
-    height: 70%;
+    height: 55%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -131,20 +283,28 @@ strong {
 
 }
 
-.button-checkout {
+.button-finalize-purchase {
     @extend %font-poppins;
-    font-size: 65%;
+    font-size: 0.85vw;
     color: #ffffff;    
-    background-color: black;
+    background-color: #1f1f1f;
     width: 100%;
     height: 40%;
     border: none;
+    border-radius: 0.4vw;
+}
+
+.button-continue-shopping {
+    @extend %font-poppins;
+    font-weight: 500;
+    width: 100%;
+    height: 40%;
+    font-size: 0.85vw;
+    border: 0.1vw solid #1f1f1f;
+    color: #1f1f1f;
     border-radius: 0.3rem;
 }
 
-.button-view-cart {
-    @extend %font-poppins;
-    font-size: 75%;
-    font-weight: 5600;
-    text-decoration: underline;
+button:hover, input:hover, select:hover {
+    cursor: pointer;
 }

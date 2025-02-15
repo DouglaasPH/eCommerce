@@ -3,41 +3,64 @@
 <div class="container-my-shopping-cart">
     <div class="container-title">
         <h1 class="title-shopping-cart">Shopping Cart</h1>
-        <div class="container-route-description">
-            <p class="parent-route">Home</p>
-            <p class="separator">&gt;</p>
-            <p class="current-route">Your Shopping Cart</p>
-        </div>
     </div>
     <div class="main">
         <div class="container-classification">
             <p class="classification-product">Product</p>
-            <p class="classification-price">Price</p>
-            <p class="classification-quantity">Quantity</p>
-            <p class="classification-total">Total</p>
+            <div class="classification-group">
+                <p class="classification-size">Size</p>
+                <p class="classification-quantity">Quantity</p>
+                <p class="classification-total">Total</p>
+            </div>
         </div>
-        <div class="container-product">
-
+        <div class="container-product" [ngStyle]="{ 'height': (this.shoppingCart.length * 11) + 'vw' }">
+            <div class="container-item" *ngFor="let item of shoppingCart">
+                <div class="container-about-product">
+                    <img class="image"  src="../../../assets{{ productData[item.product_id].images_path[0] }}"  alt='image'>
+                    <h2 class="description">{{ productData[item.product_id].description }}</h2>
+                </div>
+                <div class="container-size">
+                    <select class="select-size" [(ngModel)]="item.size" (ngModelChange)="updateItem({ newSize: $event, currentSize: item.size }, item.id)">
+                        <option *ngFor="let size of objectKeys(productData[item.product_id].size_by_quantity)" [hidden]=" productData[item.product_id].size_by_quantity[size] === '0' "  [value]="size">
+                            {{ size }}
+                        </option>
+                    </select>
+                </div>
+                <div class="container-quantity">
+                    <button class="decrease-quantity" (click)="updateItem({ currentQuantity: item.quantity, type: 'decrement', maxLength: productData[item.product_id].size_by_quantity, currentSize: item.size}, item.id)">-</button>
+                    <p class="quantity">{{ item.quantity }}</p>
+                    <button class="increase-quantity" (click)="updateItem({ currentQuantity: item.quantity, type: 'increment', maxLength: productData[item.product_id].size_by_quantity, currentSize: item.size}, item.id)">+</button>                    
+                </div>
+                <div class="container-total">
+                    <div class="container-with-discount" *ngIf="productData[item.product_id].discount_percentage !== 0">
+                        <div class="container-discount">
+                            <p class="full-price-of-the-item-without-discount">$ {{ (productData[item.product_id].price *  item.quantity)| number:'1.2-2' }}</p>
+                            <p class="discount">- {{ productData[item.product_id].discount_percentage }}%</p>
+                        </div>
+                        <p class="full-value-with-discount">$ {{ ((productData[item.product_id].price *  item.quantity) * ((100 - productData[item.product_id].discount_percentage) / 100) )| number:'1.2-2' }} </p>                                                    
+                    </div>
+                    <div class="container-without-discount" *ngIf="productData[item.product_id].discount_percentage === 0">
+                        <p class="full-value-without-discount">$ {{ (productData[item.product_id].price *  item.quantity)| number:'1.2-2'  }} </p>
+                    </div>
+                </div>
+                <div class="container-remove-item">
+                    <button class="remove-item" (click)="updateItem( { remove: 'remove'}, item.id)">X</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="container-finalize-purchase">
-        <div class="container-wrap-product">
-            <input type="checkbox" class="checkbox">
-            <p class="description-wrap-product">For <strong>$10.00</strong> please wrap the product</p>
-        </div>
         <div class="container-subtotal-and-buttons">
             <div class="container-subtotal">
-                <h5 class="subtotal">Subtotal:</h5>
-                <h5 class="price">$100.00</h5>
+                <h5 class="subtotal">Order Total:</h5>
+                <h5 class="price">$ {{ orderTotal }}</h5>
             </div>
             <div class="container-buttons">
-                <button class="button-checkout">Checkout</button>
-                <a class="button-view-cart">View Cart</a>
+                <button class="button-finalize-purchase">Finalize Purchase</button>
+                <button class="button-continue-shopping" (click)="onContinueShopping()">Continue Shopping</button>
             </div>
         </div>
     </div>
 </div>
-
-<subscribe-to-our-newslatter></subscribe-to-our-newslatter>
 
 <footer-bar></footer-bar>

@@ -49,7 +49,6 @@ export class Shop implements OnInit {
     }
 
     loading() {
-        console.log(this.numberOfOtherPagesInTotal, this.numberOfPages, this.displayPages)        
         this.numberOfOtherPagesInTotal = Math.ceil(this.sales.length / 9);
         this.numberOfPages = Array.from({ length: this.numberOfOtherPagesInTotal }, (_, i) => i + 1);            
         this.displayPages = Array.from(this.numberOfPages, (_, i) => this.numberOfPages[i] >= this.currentPage && this.numberOfPages[i] - this.currentPage < 3 ? this.numberOfPages[i] : null).filter(page => page !== null);
