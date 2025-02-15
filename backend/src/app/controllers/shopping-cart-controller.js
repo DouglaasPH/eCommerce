@@ -14,8 +14,8 @@ class ShoppingCartController {
     }
 
     async updateItem(req, res) {
-        const { datas, user_id, product_id } = req.body;
-        const row = await shoppingCartRepository.updateItem(datas, user_id, product_id);
+        const { datas, id } = req.body;
+        const row = await shoppingCartRepository.updateItem(datas, id);
         return res.json(row);
     }
 

@@ -1,4 +1,4 @@
-import { generateToken } from "../jwt/jwt.js";
+import { generateToken, verifyToken } from "../jwt/jwt.js";
 import loginRepository from "../repositories/login-repository.js";
 
 class LoginController {
@@ -57,9 +57,10 @@ class LoginController {
 
     async checkUserToken(req, res) {
         const userToken = req.cookies['user_token'];
-        console.log(userToken);
+        const tokenData = await verifyToken(userToken);
+
         if (userToken) {
-            res.json({ message: 'successfully logged in', isLogginned: true });
+            res.json({ message: 'successfully logged in', isLogginned: true, id: tokenData.id });
         } else {
             res.json({ message: 'not logged in', isLogginned: false })
         }

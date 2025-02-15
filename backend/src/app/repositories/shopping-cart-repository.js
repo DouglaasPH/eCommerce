@@ -11,9 +11,9 @@ class ShoppingCartRepository {
         return consult(sql, item, 'Unable to query the database.');
     }
 
-    updateItem(datas, user_id, product_id) {
-        const sql = 'UPDATE cart_items SET ? WHERE user_id = ? AND product_id = ?';
-        return consult(sql, [datas, user_id, product_id], 'Unable to query the database.');
+    updateItem(datas, id) {
+        const sql = 'UPDATE cart_items SET ? WHERE id = ?';
+        return consult(sql, [datas, id], 'Unable to query the database.');
     }
 
     removeItem(id) {
