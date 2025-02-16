@@ -59,9 +59,10 @@ class LoginController {
         const userToken = req.cookies['user_token'];
         const tokenData = await verifyToken(userToken);
 
-        if (userToken) {
+        if (userToken && (tokenData !== 'TokenExpiredError' || tokenData !== 'JsonWebTokenError')) {
             res.json({ message: 'successfully logged in', isLogginned: true, id: tokenData.id });
         } else {
+            res.clearCookie('user_token');
             res.json({ message: 'not logged in', isLogginned: false })
         }
     }

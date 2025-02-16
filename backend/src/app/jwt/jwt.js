@@ -23,7 +23,11 @@ function generateToken(payload, expiresIn = '1h') {
  */
 
 function verifyToken(token) {
-    return jwt.verify(token, secretKey);
+    try {
+        return jwt.verify(token, secretKey);
+    } catch (error) {
+        return error.name;
+    }
 };
 
 export { generateToken, verifyToken };
