@@ -15,16 +15,17 @@ import { Checkout } from './pages/checkout/checkout.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ConfirmCodeGuard } from './guards/confirmCode.guard';
 import { EnterNewPasswordGuard } from './guards/enterNewPassword.guard';
+import { ShoppingCartGuard } from './guards/shoppingCart.guard';
 
 export const routes: Routes = [
     { path: "", component: HomePage },    
     {
         path: "login", component: LoginPageComponent, children: [
             { path: "", redirectTo: "sign-in", pathMatch: "full" },
-            { path: "sign-in", component: LoginSignIn, canActivate: [AuthGuard] },            
-            { path: "sign-up", component: LoginSignUp, canActivate: [AuthGuard] },
+            { path: "sign-in", component: LoginSignIn },            
+            { path: "sign-up", component: LoginSignUp },
             { path: "forget-password", children: [
-                { path: "", component: LoginForgetPassword, canActivate: [AuthGuard] },
+                { path: "", component: LoginForgetPassword },
                 {path: "confirm-code", children: [
                     { path: "", component: LoginConfirmCode, canActivate: [ConfirmCodeGuard] },
                     { path: "enter-new-password", component: LoginEnterNewPassword, canActivate: [EnterNewPasswordGuard] },
@@ -39,7 +40,7 @@ export const routes: Routes = [
             { path: 'shopping-cart', component: ShoppingCart }
         ]
     },
-    { path: 'my-shopping-cart', component: MyShoppingCart },
+    { path: 'my-shopping-cart', component: MyShoppingCart, canActivate: [ShoppingCartGuard] },
     { path: 'checkout', component: Checkout },
 ];
 

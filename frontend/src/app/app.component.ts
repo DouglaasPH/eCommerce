@@ -17,7 +17,10 @@ export class AppComponent {
           if (event instanceof NavigationEnd) {
             this.browsingHistory = JSON.parse(sessionStorage.getItem('browsingHistory') || '[]');
             this.browsingHistory.push(event.urlAfterRedirects);
-            sessionStorage.setItem('browsingHistory', JSON.stringify(this.browsingHistory))
+            sessionStorage.setItem('browsingHistory', JSON.stringify(this.browsingHistory));
+
+            // always redirects to the top of the page
+            window.scroll(0, 0);
             }
         });
       
