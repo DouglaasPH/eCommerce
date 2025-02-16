@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { NavBarWithLogin } from "./logged-in-user/nav-bar-with-login.component";
 import { NavBarWithoutLogin } from "./user-not-logged-in/nav-bar-without-login.component";
 import { checkLoggined } from "../../requests/loginRequests";
+import { NavigationEnd, Router } from "@angular/router";
 
 @Component({
     selector: 'nav-bar',
@@ -20,6 +21,7 @@ export class navBar implements OnInit {
 
     async displayNavBar() {
         const condition = await checkLoggined();
+        console.log(condition);
         this.isLogginned = condition.isLogginned;
     }
 }

@@ -100,6 +100,7 @@ export class ProductPage implements OnInit {
             };
             
             try {
+                console.log(itemData)
                 const response = await addItem(itemData);
                 this.router.navigate(['/my-shopping-cart']);
             } catch (error) {

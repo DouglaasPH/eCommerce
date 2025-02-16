@@ -9,21 +9,19 @@ import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'eCommerce';
+  browsingHistory: string[] = [];
 
-    browsingHistory: string[] = [];
+  constructor(private router: Router) { 
+    this.router.events.subscribe(async event => {
+      if (event instanceof NavigationEnd) {
+        this.browsingHistory = JSON.parse(sessionStorage.getItem('browsingHistory') || '[]');
+        this.browsingHistory.push(event.urlAfterRedirects);
+        sessionStorage.setItem('browsingHistory', JSON.stringify(this.browsingHistory));
 
-    constructor(private router: Router) { 
-        this.router.events.subscribe(event => {
-          if (event instanceof NavigationEnd) {
-            this.browsingHistory = JSON.parse(sessionStorage.getItem('browsingHistory') || '[]');
-            this.browsingHistory.push(event.urlAfterRedirects);
-            sessionStorage.setItem('browsingHistory', JSON.stringify(this.browsingHistory));
-
-            // always redirects to the top of the page
-            window.scroll(0, 0);
-            }
-        });
-      
-    }  
+        // always redirects to the top of the page
+        window.scroll(0, 0);
+      }
+    });
+  }
 }
 

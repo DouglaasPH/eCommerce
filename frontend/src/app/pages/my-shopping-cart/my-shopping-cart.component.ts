@@ -37,7 +37,14 @@ export class MyShoppingCart implements OnInit {
     shoppingCart: any[] = [];
     productData: Product[] = [];
     objectKeys = Object.keys;
-    orderTotal = 0;
+    orderSumary = {
+        fullPriceWithoutDiscount: 0,
+        discount: 0,
+        shipping: "undefined",
+        couponApplied: 0,
+        total: 0,
+        estimatedDelivery: "undefined",
+    };
 
 
     async ngOnInit(): Promise<void> {
@@ -52,8 +59,6 @@ export class MyShoppingCart implements OnInit {
                     allProductIds.push(item.product_id);
                 }
             })
-
-            let calculationOftheTotalValue = 0;
             
             allProductIds.forEach(async product_id => {
                 const response: Product = await getProductData(product_id);
@@ -61,13 +66,12 @@ export class MyShoppingCart implements OnInit {
                 
                 this.shoppingCart.forEach(item => {
                     if (item.product_id === product_id) {
-                        if (this.productData[product_id].discount_percentage > 0) {
-                            this.orderTotal = Math.round((this.orderTotal + ((item.quantity * this.productData[product_id].price) * ((100 - this.productData[product_id].discount_percentage) / 100))) * 100 ) / 100;
-                        } else {
-                            this.orderTotal = Math.round((this.orderTotal + (item.quantity * this.productData[product_id].price)) * 100) / 100;
-                        }
+                            this.orderSumary.fullPriceWithoutDiscount = Math.round((this.orderSumary.fullPriceWithoutDiscount + (item.quantity * this.productData[product_id].price)) * 100) / 100;
+                            this.orderSumary.discount = Math.round((this.orderSumary.discount + ((item.quantity * this.productData[product_id].price)  - (item.quantity * this.productData[product_id].price) * ((100 - this.productData[product_id].discount_percentage) / 100))) * 100) / 100;
+                            this.orderSumary.total = Math.round((this.orderSumary.total + ((item.quantity * this.productData[product_id].price) * ((100 - this.productData[product_id].discount_percentage) / 100))) * 100) / 100; 
                     }
                 })      
+                console.log(this.orderSumary)
                 
             })
         }
@@ -139,5 +143,10 @@ export class MyShoppingCart implements OnInit {
             });
             this.router.navigate(['/shop'], { queryParams: paramsObject });            
         }
+    }
+
+    onSubmitCoupomCode() {
+        // TODO
+        console.log("submit coupom code");
     }
 };
