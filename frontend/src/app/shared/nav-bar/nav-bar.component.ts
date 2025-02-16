@@ -20,6 +20,7 @@ export class navBar implements OnInit {
 
     async displayNavBar() {
         const condition = await checkLoggined();
-        this.isLogginned = condition.isLoggined;
+        this.isLogginned = condition.isLogginned;
+        console.log(this.isLogginned)
     }
 }

@@ -6,7 +6,6 @@ import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
   selector: 'app-root',
   imports: [RouterOutlet, FormsModule, ReactiveFormsModule],
   templateUrl: './app.component.html',
-//  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'eCommerce';
@@ -19,11 +18,9 @@ export class AppComponent {
             this.browsingHistory = JSON.parse(sessionStorage.getItem('browsingHistory') || '[]');
             this.browsingHistory.push(event.urlAfterRedirects);
             sessionStorage.setItem('browsingHistory', JSON.stringify(this.browsingHistory))
-                console.log('Histórico de navegação:', this.browsingHistory);
             }
         });
       
-      console.log(this.browsingHistory)
     }  
 }
 
