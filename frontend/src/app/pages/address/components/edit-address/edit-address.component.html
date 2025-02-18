@@ -1,0 +1,36 @@
+<div class="background">
+    <div class="container-edit-address">
+        <div class="container-title-and-back">
+            <h1 class="title"> Edit Address</h1>
+            <button class="button-back" (click)="updateStatusEditAddress()">✕</button>
+        </div>
+        <div class="main">
+            <p class="sender">Sender</p>
+            <input type="text" class="input-sender" placeholder="" [(ngModel)]="editAddress.sender" required disabled>            
+            <p class="contact">Contact</p>
+            <input type="text" class="input-contact" placeholder="" [(ngModel)]="editAddress.contact" required disabled>                        
+            <p class="cep">CEP</p>
+            <input type="text" class="input-cep" placeholder="" [(ngModel)]="editAddress.cep" required disabled>
+            <p class="uf">UF</p>
+            <input type="text" class="input-uf" placeholder="" [(ngModel)]="editAddress.uf" required disabled disabled>
+            <p class="city">City</p>
+            <input type="text" class="input-city" placeholder="" [(ngModel)]="editAddress.city" required disabled>
+            <p class="neighborhood">Neighborhood</p>
+            <input type="text" class="input-neighborhood" placeholder="" [(ngModel)]="editAddress.neighborhood" required disabled>
+            <p class="logradouro">Logradouro</p>
+            <input type="text" class="input-logradouro" placeholder="" [(ngModel)]="editAddress.logradouro" required disabled>
+            <p class="number">Number</p>
+            <input type="text" class="input-number" placeholder="" [(ngModel)]="editAddress.number" required disabled>
+            <p class="complement">Complement</p>
+            <input type="text" class="input-complement" placeholder="" [(ngModel)]="editAddress.complement" required [(ngModel)]="newAddress.complement">
+            <p class="reference">Reference</p>
+            <input type="text" class="input-reference" placeholder="" [(ngModel)]="editAddress.reference" required [(ngModel)]="newAddress.reference">
+        </div>
+
+        <div class="container-cancel-and-submit">
+            <button class="button-cancel" (click)="updateStatusEditAddress()">Cancel</button>
+            <button class="button-submit" (click)="onSubmitEditAddress()">Submit</button>
+        </div>
+    </div>
+</div>
+

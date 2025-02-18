@@ -1,0 +1,93 @@
+<nav-bar></nav-bar>
+
+<div class="container-address-page">
+    <div class="div-direction-row">
+        <div class="container-title">
+            <h2 class="title">Address</h2>
+            <h2 class="title-separator">></h2>
+            <h2 class="title">Shipping</h2>
+            <h2 class="title-separator">></h2>
+            <h2 class="title">Payment</h2>
+        </div>
+
+        <div class="main">
+            <div class="container-address">
+                <div class="container-all-address"  [ngStyle]="{ 'height': (this.allAddress.length * 10) + 'vw' }">
+                    <div class="container-address-data" *ngFor="let currentAddress of allAddress; let index = index">
+                        <edit-address *ngIf="statusEditAddress" (setStatusEditAddress)="setStatusEditAddress()" [address_position]="index" [user_id]="user_id"></edit-address>                        
+                        <div class="address-data">
+                            <div class="address-data-group-one">
+                                <div class="container-button-select-address">
+                                    <button class="select-address" (click)="setChooseAddress(index)" [ngStyle]="{ 'color': this.chosenAddress === index ? '#1f1f1f' : '#ebebeb', 'borderColor': this.chosenAddress === index ? '#1f1f1f' : '#808080' }">●</button>
+                                </div>
+                                <h2 class="sender">{{ currentAddress.sender }}</h2>
+                                <p class="complement">{{ currentAddress.complement }}</p>
+                            </div>
+                            <div class="address-data-group-two">
+                            <p class="address">{{ currentAddress.logradouro }}, {{ currentAddress.number }}, {{ currentAddress.neighborhood }},  {{ currentAddress.city }}, {{ currentAddress.uf }}, {{ currentAddress.cep }}</p>
+                            <p class="reference"><strong>Reference</strong> - {{ currentAddress.reference }}</p>
+                            <p class="contact"><strong>Contact</strong> - {{ currentAddress.contact }}</p>
+                            </div>
+                        </div>
+                        <div class="container-edit-and-remove">
+                            <button class="edit" (click)="onEditAddress(currentAddress)">Edit</button>
+                            <p class="separator">|</p>
+                            <button class="remove" (click)="onRemoveAddress(index)">Remove</button>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-add-new-address">
+            <button class="add-new-address" (click)="setStatusAddAddress()">+  Add New Address</button>
+        </div>
+    </div>
+
+    <div class="div-direction-column">
+        <div class="container-finalize-purchase">
+            <h2 class="finalize-purchase-title">Order Sumary</h2>
+            <div class="finalize-the-purchase-group-one">
+                <div class="container-price">
+                    <h4 class="group-one-specification">Price</h4>
+                    <h4 class="group-one-specification">${{ orderSumary.fullPriceWithoutDiscount }}</h4>
+                </div>
+                <div class="container-discount">
+                    <h4 class="group-one-specification">Discount</h4>
+                    <h4 class="group-one-specification">- ${{ orderSumary.discount }}</h4>
+                </div>
+                <div class="container-shipping">
+                    <h4 class="group-one-specification">Shipping</h4>
+                    <h4 class="group-one-specification">{{ orderSumary.shipping }}</h4>
+                </div>
+                <div class="container-coupon-applied">
+                    <h4 class="group-one-specification">Coupon Applied</h4>
+                    <h4 class="group-one-specification">${{ orderSumary.couponApplied }}</h4>
+                </div>                                  
+            </div>  
+            <div class="finalize-the-purchase-group-two">
+                <div class="container-total">
+                    <h5 class="group-two-specification">TOTAL</h5>
+                    <h5 class="group-two-specification">${{ orderSumary.total }}</h5>
+                </div>
+                <div class="container-estimated-delivery">
+                    <h5 class="group-two-specification">Estimated Delivery</h5>
+                    <h5 class="group-two-specification"> {{ orderSumary.estimatedDelivery }}</h5>
+                </div>                
+                <div class="container-insert-coupom-code">
+                    <input type="text" placeholder="Coupom Code" class="input-insert-coupom-code">
+                    <button>
+                        <img src="../../../assets/icons/trailing-icon.svg" alt="icon" class="submit-coupom-code">
+                    </button>
+                </div>
+            </div>
+            <div class="container-buttons">
+                <button class="button-continue-to-shipping" (click)="onContinueToShipping()">Continue to Shipping</button>
+            </div>                    
+        </div>                
+    </div>
+</div>
+
+<add-address *ngIf="statusAddAddress" (setStatusAddAddress)="setStatusAddAddress()" [user_id]="user_id"></add-address>
+
+<footer-bar></footer-bar>

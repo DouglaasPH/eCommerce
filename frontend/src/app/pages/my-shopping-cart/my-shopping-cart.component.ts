@@ -2,10 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { FooterBar } from "../../shared/footer-bar/footer-bar.component";
 import { navBar } from "../../shared/nav-bar/nav-bar.component";
 import { CommonModule } from "@angular/common";
-import { getAllUserItem, removeItem, updateItem } from "../../requests/shoppingCartRequests";
-import { getProductData } from "../../requests/shopRequests";
+import { removeItem, updateItem } from "../../requests/shoppingCartRequests";
 import { FormsModule } from "@angular/forms";
 import { Router } from "@angular/router";
+import { OrderSumaryService } from "../../services/orderSumary.service";
 
 interface Product {
     id: number;
@@ -17,11 +17,6 @@ interface Product {
     discount_percentage: number
 }
 
-interface userItem {
-    product_id: number
-    quantity: number
-}
-
 @Component({
     selector: 'my-shopping-cart',
     standalone: true,
@@ -30,7 +25,7 @@ interface userItem {
     styleUrl: './my-shopping-cart.component.scss',
 })
 export class MyShoppingCart implements OnInit {
-    constructor(private router: Router) { }
+    constructor(private router: Router, private orderSumaryService: OrderSumaryService) { }
     
     browsingHistory: string[] = JSON.parse(sessionStorage.getItem('browsingHistory') || '[]');
     
@@ -48,33 +43,14 @@ export class MyShoppingCart implements OnInit {
 
 
     async ngOnInit(): Promise<void> {
-        const response: userItem[] = await getAllUserItem(1); 
-        this.shoppingCart = response;
-        
-        const allProductIds: number[] = [];
+        await this.updateProperties();
+    }
 
-        if (response.length > 0) {
-            response.forEach(item => {
-                if (!allProductIds.includes(item.product_id)) {
-                    allProductIds.push(item.product_id);
-                }
-            })
-            
-            allProductIds.forEach(async product_id => {
-                const response: Product = await getProductData(product_id);
-                this.productData[product_id] = response;
-                
-                this.shoppingCart.forEach(item => {
-                    if (item.product_id === product_id) {
-                            this.orderSumary.fullPriceWithoutDiscount = Math.round((this.orderSumary.fullPriceWithoutDiscount + (item.quantity * this.productData[product_id].price)) * 100) / 100;
-                            this.orderSumary.discount = Math.round((this.orderSumary.discount + ((item.quantity * this.productData[product_id].price)  - (item.quantity * this.productData[product_id].price) * ((100 - this.productData[product_id].discount_percentage) / 100))) * 100) / 100;
-                            this.orderSumary.total = Math.round((this.orderSumary.total + ((item.quantity * this.productData[product_id].price) * ((100 - this.productData[product_id].discount_percentage) / 100))) * 100) / 100; 
-                    }
-                })      
-                console.log(this.orderSumary)
-                
-            })
-        }
+    async updateProperties() {
+        const response = await this.orderSumaryService.getAllProperties();
+        this.shoppingCart = response.shoppingCart;
+        this.productData = response.productData;
+        this.orderSumary = response.orderSumary;
     }
 
     async updateItem(datas: { newSize: string, currentSize: string } | {  currentQuantity: number, type: string, maxLength: { [key: string]: string}, currentSize: string } | { remove: string}, id: number) {
@@ -119,6 +95,7 @@ export class MyShoppingCart implements OnInit {
                 console.log(error);
             }
         }
+        await this.updateProperties();
     }
 
     onContinueShopping() {
@@ -148,5 +125,11 @@ export class MyShoppingCart implements OnInit {
     onSubmitCoupomCode() {
         // TODO
         console.log("submit coupom code");
+    }
+
+    onProceedToCheckout() {
+        if (this.shoppingCart.length > 0) {
+            this.router.navigate(['shopping-cart/address']);
+        } else return;
     }
 };

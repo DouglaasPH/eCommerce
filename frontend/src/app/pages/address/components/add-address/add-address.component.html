@@ -1,0 +1,36 @@
+<div class="background">
+    <div class="container-add-address">
+        <div class="container-title-and-back">
+            <h1 class="title"> Add New Address</h1>
+            <button class="button-back" (click)="updateStatusAddsAddress()">✕</button>
+        </div>
+        <div class="main">
+            <p class="sender">Sender</p>
+            <input type="text" class="input-sender" placeholder="Name and Surname" [(ngModel)]="address.sender" required>            
+            <p class="contact">Contact</p>
+            <input type="text" class="input-contact" placeholder="DDD 90000-0000" [(ngModel)]="address.contact" required>                        
+            <p class="cep">CEP</p>
+            <input type="text" class="input-cep" placeholder="00000000" [(ngModel)]="address.cep" (blur)="searchCep(address.cep)" required>
+            <p class="uf">UF</p>
+            <input type="text" class="input-uf" placeholder="*" [(ngModel)]="address.uf" required disabled>
+            <p class="city">City</p>
+            <input type="text" class="input-city" placeholder="*" [(ngModel)]="address.city" required disabled>
+            <p class="neighborhood">Neighborhood</p>
+            <input type="text" class="input-neighborhood" placeholder="*" [(ngModel)]="address.neighborhood" required disabled>
+            <p class="logradouro">Logradouro</p>
+            <input type="text" class="input-logradouro" placeholder="*" [(ngModel)]="address.logradouro" required disabled>
+            <p class="number">Number</p>
+            <input type="text" class="input-number" placeholder="00" [(ngModel)]="address.number" required>
+            <p class="complement">Complement</p>
+            <input type="text" class="input-complement" placeholder="Ex.: House" [(ngModel)]="address.complement" required>
+            <p class="reference">Reference</p>
+            <input type="text" class="input-reference" placeholder="Ex.: Main House" [(ngModel)]="address.reference" required>
+
+        </div>
+
+        <div class="container-cancel-and-submit">
+            <button class="button-cancel" (click)="updateStatusAddsAddress()">Cancel</button>
+            <button class="button-submit" (click)="onSubmitAddAddress()">Submit</button>
+        </div>
+    </div>
+</div>

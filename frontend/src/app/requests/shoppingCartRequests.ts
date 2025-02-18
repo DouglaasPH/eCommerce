@@ -5,9 +5,7 @@ const API_URL = 'http://localhost:3000';
 async function getAllUserItem(user_id: number) {
     try {
         const response = await axios.get(`${API_URL}/getAllUserItem`, {
-            params: {
-                user_id
-            }
+            params: {user_id}
         });
         return response.data;
     } catch (error) {
