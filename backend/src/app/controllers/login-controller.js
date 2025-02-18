@@ -60,7 +60,6 @@ class LoginController {
         const tokenData = await verifyToken(userToken);
 
         if (userToken && (tokenData !== 'TokenExpiredError' && tokenData !== 'JsonWebTokenError')) {
-            console.log('passou')
             res.json({ message: 'successfully logged in', isLogginned: true, id: tokenData.id });
         } else {
             console.log('nao passou')

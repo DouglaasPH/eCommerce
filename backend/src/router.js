@@ -2,6 +2,7 @@ import { Router } from "express";
 import loginController from "./app/controllers/login-controller.js";
 import shopController from "./app/controllers/shop-controller.js";
 import shoppingCartController from "./app/controllers/shopping-cart-controller.js";
+import processPurchaseController from "./app/controllers/process-purchase-controller.js";
 
 const router = Router();
 
@@ -33,6 +34,11 @@ router.put('/updateItem', shoppingCartController.updateItem);
 router.delete('/removeItem', shoppingCartController.removeItem);
 
 
+// ROUTES ABOUT PURCHASE PROCESS
+router.get('/getAllAddress', processPurchaseController.getAllAddress);
+router.post('/addNewAddress', processPurchaseController.addNewAddress);
+router.put('/updateAddress', processPurchaseController.updateAddress);
+router.put('/removeAddress', processPurchaseController.removeAddress);
 
 
 export default router;
