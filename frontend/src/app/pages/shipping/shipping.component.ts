@@ -55,6 +55,7 @@ export class Shipping implements OnInit {
 
     continueToPayment() {
         if (this.chosenDelivery > -1) {
+            sessionStorage.setItem('continueToPayment', 'true');
             this.router.navigate(['shopping-cart/address/shipping/payment']);
         } else return;
     }

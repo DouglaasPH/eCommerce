@@ -10,7 +10,6 @@ import { HomePage } from './pages/home/home-page.component';
 import { ShopPage } from './pages/shop/shop-page.component';
 import { ProductPage } from './pages/product/product.component';
 import { MyShoppingCart } from './pages/my-shopping-cart/my-shopping-cart.component';
-import { Checkout } from './pages/checkout/checkout.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ConfirmCodeGuard } from './guards/confirmCode.guard';
 import { EnterNewPasswordGuard } from './guards/enterNewPassword.guard';
@@ -18,6 +17,9 @@ import { ShoppingCartGuard } from './guards/shoppingCart.guard';
 import { Address } from './pages/address/address.component';
 import { Shipping } from './pages/shipping/shipping.component';
 import { Payment } from './pages/payment/payment.component';
+import { AddressGuard } from './guards/address.guard';
+import { ShippingGuard } from './guards/shipping.guard';
+import { PaymentGuard } from './guards/payment.guard';
 
 export const routes: Routes = [
     { path: "", component: HomePage },    
@@ -39,9 +41,9 @@ export const routes: Routes = [
     { path: 'shop', component: ShopPage },
     { path: 'shop/product/:productId', component: ProductPage },
     { path: 'shopping-cart', component: MyShoppingCart, canActivate: [ShoppingCartGuard] },
-    { path: 'shopping-cart/address', component: Address },
-    { path: 'shopping-cart/address/shipping', component: Shipping },    
-    { path: 'shopping-cart/address/shipping/payment', component: Payment },        
+    { path: 'shopping-cart/address', component: Address, canActivate: [AddressGuard] },
+    { path: 'shopping-cart/address/shipping', component: Shipping, canActivate: [ShippingGuard] },    
+    { path: 'shopping-cart/address/shipping/payment', component: Payment, canActivate: [PaymentGuard] },        
 ];
 
 @NgModule({

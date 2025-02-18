@@ -107,5 +107,14 @@ export class OrderSumaryService {
             allAddress: this.allAddress,
             user_id: this.user_id,
         };
-    }    
+    }
+    
+    // check if there is an item in the shopping cart
+    async checkShoppingCart() {
+        await this.updateOrderSumary();
+
+        if (this.shoppingCart.length > 0) {
+            return true
+        } else return false;
+    }
 };

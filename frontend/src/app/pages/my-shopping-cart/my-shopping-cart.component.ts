@@ -127,8 +127,9 @@ export class MyShoppingCart implements OnInit {
         console.log("submit coupom code");
     }
 
-    onProceedToCheckout() {
+    async onProceedToCheckout() {
         if (this.shoppingCart.length > 0) {
+            sessionStorage.setItem('proceedToChooseAddress', 'true');
             this.router.navigate(['shopping-cart/address']);
         } else return;
     }

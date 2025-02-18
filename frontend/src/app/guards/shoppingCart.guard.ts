@@ -24,9 +24,4 @@ export class ShoppingCartGuard implements CanActivate {
             return false;
         }
     }
-
-    setAuthentication(status: boolean) {
-        this.isLogginned = status;
-    }
-
 };

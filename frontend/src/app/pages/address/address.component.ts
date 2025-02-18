@@ -32,11 +32,6 @@ interface Product {
     discount_percentage: number
 }
 
-interface userItem {
-    product_id: number
-    quantity: number
-}
-
 @Component({
     selector: 'address',
     standalone: true,
@@ -98,8 +93,9 @@ export class Address implements OnInit {
         window.location.reload();
     }
 
-    onContinueToShipping() {
+    async onContinueToShipping() {
         if (this.chosenAddress > -1) {
+            sessionStorage.setItem('continueToShipping', 'true');
             this.router.navigate(['shopping-cart/address/shipping']);
         }
     }
