@@ -1,7 +1,103 @@
 <nav-bar></nav-bar>
 
 <div class="container-payment-page">
+    <div class="div-direction-row">
+        <div class="container-title">
+            <h2 class="title">Address</h2>
+            <h2 class="title-separator">></h2>
+            <h2 class="title">Shipping</h2>
+            <h2 class="title-separator">></h2>
+            <h2 class="title">Payment</h2>
+        </div>
 
+        <div class="main">
+            <div class="container-title-main">
+                <h2 class="title-main">Payment Method</h2>
+            </div>
+                <table class="table-payment" [ngStyle]="{ 'height': this.choosePaymentMethod === 'credit card' ? '25vw' : '7vw' }">
+                    <td class="row-table">
+                        <div class="table-row-group-one">
+                            <button class="button-select-payment-method" (click)="setChoosePaymentMethod('pix')" [ngStyle]="{ 'color': this.choosePaymentMethod === 'pix' ? '#1f1f1f' : '#ebebeb', 'borderColor': this.choosePaymentMethod === 'pix' ? '#1f1f1f' : '#808080' }">●</button>
+                            <p class="payment-method"> PIX </p>
+                        </div>
+                        <div class="table-row-group-two">
+                            <img src="../../../assets/icons/pix-icon.svg" alt="pix icon" class="payment-method-icons">
+                        </div>                        
+                    </td>
+                    <td class="row-table">
+                        <div class="table-row-group-one">
+                            <button class="button-select-payment-method" (click)="setChoosePaymentMethod('credit card')" [ngStyle]="{ 'color': this.choosePaymentMethod === 'credit card' ? '#1f1f1f' : '#ebebeb', 'borderColor': this.choosePaymentMethod === 'credit card' ? '#1f1f1f' : '#808080' }">●</button>
+                            <p class="payment-method"> Credit card </p>
+                        </div>
+                        <div class="table-row-group-two">
+                            <img src="../../../assets/icons/credit-card-icon.svg" alt="credit card icon" class="payment-method-icons">
+                        </div>
+                    </td>
+
+                    <td class="row-table-insert-credit-card-data" *ngIf="this.choosePaymentMethod === 'credit card'">
+                        <div class="div-row">
+                            <div class="table-row-group-insert-credit-card-data">
+                                <input type="text" placeholder="Card Number *" [(ngModel)]="creditCardDatas.card_number">
+                                <input type="text" placeholder="Name Printed on Card *" [(ngModel)]="creditCardDatas.namePrintedOrCard">
+                                <input type="text" placeholder="Validity *" [(ngModel)]="creditCardDatas.validity">
+                            </div>
+                            <div class="table-row-group-insert-credit-card-data">
+                                <input type="text" placeholder="Verification Code *" [(ngModel)]="creditCardDatas.verificationCade">
+                                <input type="text" placeholder="Holder's CPF/CNPJ *" [(ngModel)]="creditCardDatas.cpfOrCnpj">
+                                <input type="date" placeholder="Date of Birth" [(ngModel)]="creditCardDatas.dateOfBirth">
+                            </div>
+                        </div>
+                        <select name="Payment Method" class="select-installments"  [(ngModel)]="creditCardDatas.paymentMethod">
+                            <option value="">aaaaa</option>
+                        </select>
+                    </td>                                        
+                </table>
+
+        </div>
+    </div>
+
+    <div class="div-direction-column">
+        <div class="container-finalize-purchase">
+            <h2 class="finalize-purchase-title">Order Sumary</h2>
+            <div class="finalize-the-purchase-group-one">
+                <div class="container-price">
+                    <h4 class="group-one-specification">Price</h4>
+                    <h4 class="group-one-specification">${{ orderSumary.fullPriceWithoutDiscount }}</h4>
+                </div>
+                <div class="container-discount">
+                    <h4 class="group-one-specification">Discount</h4>
+                    <h4 class="group-one-specification">- ${{ orderSumary.discount }}</h4>
+                </div>
+                <div class="container-shipping">
+                    <h4 class="group-one-specification">Shipping</h4>
+                    <h4 class="group-one-specification">{{ orderSumary.shipping }}</h4>
+                </div>
+                <div class="container-coupon-applied">
+                    <h4 class="group-one-specification">Coupon Applied</h4>
+                    <h4 class="group-one-specification">${{ orderSumary.couponApplied }}</h4>
+                </div>                                  
+            </div>  
+            <div class="finalize-the-purchase-group-two">
+                <div class="container-total">
+                    <h5 class="group-two-specification">TOTAL</h5>
+                    <h5 class="group-two-specification">${{ orderSumary.total }}</h5>
+                </div>
+                <div class="container-estimated-delivery">
+                    <h5 class="group-two-specification">Estimated Delivery</h5>
+                    <h5 class="group-two-specification"> {{ orderSumary.estimatedDelivery }}</h5>
+                </div>                
+                <div class="container-insert-coupom-code">
+                    <input type="text" placeholder="Coupom Code" class="input-insert-coupom-code">
+                    <button>
+                        <img src="../../../assets/icons/trailing-icon.svg" alt="icon" class="submit-coupom-code">
+                    </button>
+                </div>
+            </div>
+            <div class="container-buttons">
+                <button class="button-continue-to-shipping" (click)="continueToConfirmation()">Continue to Payment</button>
+            </div>                    
+        </div>                
+    </div>
 </div>
 
 <footer-bar></footer-bar>
