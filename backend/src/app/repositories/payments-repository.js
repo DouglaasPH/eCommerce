@@ -1,4 +1,4 @@
-import { consult } from "../database/connection";
+import { consult } from "../database/connection.js";
 
 class PaymentsRepository {
     async getPayment(order_id) {
