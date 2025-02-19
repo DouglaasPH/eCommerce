@@ -6,8 +6,11 @@ import { removeAddress } from "../../requests/addressRequest";
 import { editAdress } from "./components/edit-address/edit-address.component";
 import { editAddressService } from "../../services/editAddress.service";
 import { AddAddress } from "./components/add-address/add-address.component";
-import { OrderSumaryService } from "../../services/orderSumary.service";
+import { ProcessPurchaseService } from "../../services/processPurchase.service";
 import { Router } from "@angular/router";
+import { FormsModule } from "@angular/forms";
+import { OrderSumaryService } from "../../services/orderSumary.service";
+import { orderSumary } from "../../shared/orderSumary/orderSumary.component";
 
 interface AddressInterface {
     cep: string;
@@ -22,35 +25,15 @@ interface AddressInterface {
     uf: string,    
 }
 
-interface Product {
-    id: number;
-    description: string;
-    mark: string;
-    price: number;
-    images_path: string[];
-    size_by_quantity: { [key: string]: string }
-    discount_percentage: number
-}
-
 @Component({
     selector: 'address',
     standalone: true,
-    imports: [navBar, FooterBar, CommonModule, editAdress, AddAddress],
+    imports: [navBar, FooterBar, CommonModule, FormsModule, editAdress, AddAddress, orderSumary],
     templateUrl: './address.component.html',
     styleUrl: './address.component.scss'
 })
 export class Address implements OnInit {
-    constructor(private editaddressservice: editAddressService, private orderSumaryService: OrderSumaryService, private router: Router) {}
-    shoppingCart: any[] = [];
-    productData: Product[] = [];
-    orderSumary = {
-        fullPriceWithoutDiscount: 0,
-        discount: 0,
-        shipping: "undefined",
-        couponApplied: 0,
-        total: 0,
-        estimatedDelivery: "undefined",        
-    }
+    constructor(private editaddressservice: editAddressService, private processPurchaseService: ProcessPurchaseService, private orderSumaryService: OrderSumaryService, private router: Router) {}
     allAddress: any[] = [];
     statusEditAddress = false;
     statusAddAddress = false;
@@ -58,21 +41,22 @@ export class Address implements OnInit {
 
     chosenAddress = -1;
 
+    valueCoupon: number = 0;
+    couponCodeInput: string = '';    
+
     async ngOnInit(): Promise<void> {
         await this.updateProperties();
     }
 
     async updateProperties() {
-        const response = await this.orderSumaryService.getAllProperties();
-        this.shoppingCart = response.shoppingCart;
-        this.productData = response.productData;
-        this.orderSumary = response.orderSumary;
+        const response = await this.processPurchaseService.getAllProperties();
         this.allAddress = response.allAddress;
         this.user_id = response.user_id;
     }
-
+    
     setChooseAddress(index: number) {
         this.chosenAddress = index;
+        this.orderSumaryService.setChooseAddress(index);
     }    
 
     onEditAddress(currentAddress: AddressInterface) {
@@ -91,12 +75,5 @@ export class Address implements OnInit {
     async onRemoveAddress(address_position: number) {
         await removeAddress(address_position, this.user_id);
         window.location.reload();
-    }
-
-    async onContinueToShipping() {
-        if (this.chosenAddress > -1) {
-            sessionStorage.setItem('continueToShipping', 'true');
-            this.router.navigate(['shopping-cart/address/shipping']);
-        }
     }
 }

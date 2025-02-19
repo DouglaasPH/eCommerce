@@ -2,30 +2,25 @@ import { Component } from "@angular/core";
 import { navBar } from "../../shared/nav-bar/nav-bar.component";
 import { FooterBar } from "../../shared/footer-bar/footer-bar.component";
 import { CommonModule } from "@angular/common";
-import { OrderSumaryService } from "../../services/orderSumary.service";
-import { Router } from "@angular/router";
 import { FormsModule } from "@angular/forms";
+import { OrderSumaryService } from "../../services/orderSumary.service";
+import { orderSumary } from "../../shared/orderSumary/orderSumary.component";
+
+interface creditCard {
+    [key: string]: string
+}
 
 @Component({
     selector: 'payment',
     standalone: true,
-    imports: [navBar, FooterBar, CommonModule, FormsModule],
+    imports: [navBar, FooterBar, orderSumary, CommonModule, FormsModule],
     templateUrl: './payment.component.html',
     styleUrl: './payment.component.scss',
 })
 export class Payment {
-    constructor(private orderSumaryService: OrderSumaryService, private router: Router) {}
-    shoppingCart: any[] = [];
-    orderSumary = {
-        fullPriceWithoutDiscount: 0,
-        discount: 0,
-        shipping: "undefined",
-        couponApplied: 0,
-        total: 0,
-        estimatedDelivery: "undefined",        
-    }
+    constructor(private orderSumaryService: OrderSumaryService) {}
 
-    creditCardDatas = {
+    creditCardDatas: creditCard = {
         card_number: '',
         namePrintedOrCard: '',
         validity: '',
@@ -36,25 +31,27 @@ export class Payment {
     }
 
     choosePaymentMethod = '';
-
-    async ngOnInit() {
-        await this.updateProperties();
-    }
-
-    async updateProperties() {
-        const response = await this.orderSumaryService.getAllProperties();
-        this.shoppingCart = response.shoppingCart;
-        this.orderSumary = response.orderSumary;
-    }
     
     setChoosePaymentMethod(paymentMethod: string) {
-        this.choosePaymentMethod = paymentMethod;
-    }
+        console.log(this.creditCardDatas)
+        if (paymentMethod === 'PIX') {
+            this.choosePaymentMethod = paymentMethod;
+            this.orderSumaryService.setChosenPayment(paymentMethod);            
+        } else if (paymentMethod === 'credit card') {
+            const keys = Object.keys(this.creditCardDatas);
+            let condition = false;
+            keys.forEach(key => this.creditCardDatas[key] !== '' ? condition = true : condition = false);
 
-    continueToConfirmation() {
-        if (this.choosePaymentMethod !== '') {
-            this.router.navigate(['shopping-cart/address/shipping/payment']);
-        } else return;
+            if (condition) {
+            this.choosePaymentMethod = paymentMethod;
+            this.orderSumaryService.setChosenPayment(paymentMethod);                            
+            } else {
+            this.choosePaymentMethod = paymentMethod;
+            this.orderSumaryService.setChosenPayment('');                            
+            }
+        } else {
+            this.choosePaymentMethod = '';
+            this.orderSumaryService.setChosenPayment('');                        
+        }
     }
-    
 }

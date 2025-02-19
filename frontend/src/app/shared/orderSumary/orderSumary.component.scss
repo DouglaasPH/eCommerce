@@ -1,0 +1,110 @@
+@use '../../../variables.scss';
+
+.container-finalize-purchase {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 0.1vw solid #cfcfcf;
+    padding: 8% 6% 6% 6%;
+}
+
+.finalize-purchase-title {
+    @extend %font-poppins;
+    font-size: 1.4vw;
+    font-weight: 500;
+    color: #1f1f1f;
+}
+
+.finalize-the-purchase-group-one {
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 5%;
+    border-bottom: 0.1vw solid #cfcfcf;    
+}
+
+.container-price, .container-discount, .container-shipping, .container-coupon-applied, .container-total, .container-estimated-delivery, .container-insert-coupom-code {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.group-one-specification, .group-two-specification {
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size: 0.9vw;
+    color: #1f1f1f;
+}
+
+.finalize-the-purchase-group-two {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5%;
+    border-bottom: 0.1vw solid #cfcfcf;        
+    height: 25%;
+}
+
+.container-insert-coupom-code {
+    height: 35%;
+    width: 100%;
+}
+
+.input-insert-coupom-code {
+    width: 100%;
+    height: 100%;
+    padding-left: 4%;
+    border: 0.1vw solid #808080;
+    background-color: transparent;
+    border-radius: 0.3vw;
+    @extend %font-poppins;
+    font-size: 1vw;
+    font-weight: 500;
+    color: #1f1f1f;
+}
+
+.input-insert-coupom-code::placeholder {
+    color: #808080;
+}
+
+.submit-coupom-code {
+    position: absolute;
+    right: 7vw;
+    height: 4%;
+    top: 32vw;
+}
+
+.container-buttons {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+button {
+    height: 45%;
+    border: none;
+    @extend %font-poppins;
+    font-size: 0.8vw;
+    font-weight: 500;
+    color: #1f1f1f;
+    border-radius: 0.3vw;
+}
+
+.button-proceed-to-checkout, .button-continue-to-shipping, .button-continue-to-payment, .button-continue-to-place-your-order-and-pay  {
+    background-color: #1f1f1f;
+    color: #ebebeb;
+}
+
+.button-continue-shopping {
+    background-color: #8a8a8a;
+    color: #ebebeb;
+}
+
+button:hover {
+    cursor: pointer;
+}

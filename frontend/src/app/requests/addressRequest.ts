@@ -3,7 +3,6 @@ import axios from "axios";
 const API_URL = 'http://localhost:3000';
 
 async function getAllAddress(user_id: number) {
-    console.log(user_id)
     try {
         const response = await axios.get(`${API_URL}/getAllAddress`, {
             params: {

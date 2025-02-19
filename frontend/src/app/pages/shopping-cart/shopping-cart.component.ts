@@ -5,7 +5,8 @@ import { CommonModule } from "@angular/common";
 import { removeItem, updateItem } from "../../requests/shoppingCartRequests";
 import { FormsModule } from "@angular/forms";
 import { Router } from "@angular/router";
-import { OrderSumaryService } from "../../services/orderSumary.service";
+import { ProcessPurchaseService } from "../../services/processPurchase.service";
+import { orderSumary } from "../../shared/orderSumary/orderSumary.component";
 
 interface Product {
     id: number;
@@ -20,37 +21,27 @@ interface Product {
 @Component({
     selector: 'my-shopping-cart',
     standalone: true,
-    imports: [CommonModule, FormsModule, FooterBar, navBar],
-    templateUrl: './my-shopping-cart.component.html',
-    styleUrl: './my-shopping-cart.component.scss',
+    imports: [CommonModule, FormsModule, FooterBar, navBar, orderSumary],
+    templateUrl: './shopping-cart.component.html',
+    styleUrl: './shopping-cart.component.scss',
 })
-export class MyShoppingCart implements OnInit {
-    constructor(private router: Router, private orderSumaryService: OrderSumaryService) { }
+export class ShoppingCart implements OnInit {
+    constructor(private router: Router, private processPurchaseService: ProcessPurchaseService) { }
     
     browsingHistory: string[] = JSON.parse(sessionStorage.getItem('browsingHistory') || '[]');
     
     shoppingCart: any[] = [];
     productData: Product[] = [];
     objectKeys = Object.keys;
-    orderSumary = {
-        fullPriceWithoutDiscount: 0,
-        discount: 0,
-        shipping: "undefined",
-        couponApplied: 0,
-        total: 0,
-        estimatedDelivery: "undefined",
-    };
-
 
     async ngOnInit(): Promise<void> {
         await this.updateProperties();
     }
 
     async updateProperties() {
-        const response = await this.orderSumaryService.getAllProperties();
+        const response = await this.processPurchaseService.getAllProperties();
         this.shoppingCart = response.shoppingCart;
         this.productData = response.productData;
-        this.orderSumary = response.orderSumary;
     }
 
     async updateItem(datas: { newSize: string, currentSize: string } | {  currentQuantity: number, type: string, maxLength: { [key: string]: string}, currentSize: string } | { remove: string}, id: number) {
@@ -96,41 +87,5 @@ export class MyShoppingCart implements OnInit {
             }
         }
         await this.updateProperties();
-    }
-
-    onContinueShopping() {
-        let lastRoutesOnTheWayShop: string[] = [];
-
-        this.browsingHistory.forEach(path => {
-            if (path.includes('/shop') && !path.includes('/shop/product')) {
-                lastRoutesOnTheWayShop.push(path);
-            }
-        });
-
-        const lastRoute: string = lastRoutesOnTheWayShop[lastRoutesOnTheWayShop.length - 1];
-
-        if (lastRoute === '/shop') {
-            this.router.navigate([lastRoute]);
-        } else {
-            const paramsString = lastRoute.split('?')[1]; 
-            const searchParams = new URLSearchParams(paramsString);
-            const paramsObject: Record<string, string> = {};
-            searchParams.forEach((value, key) => {
-                paramsObject[key] = value;
-            });
-            this.router.navigate(['/shop'], { queryParams: paramsObject });            
-        }
-    }
-
-    onSubmitCoupomCode() {
-        // TODO
-        console.log("submit coupom code");
-    }
-
-    async onProceedToCheckout() {
-        if (this.shoppingCart.length > 0) {
-            sessionStorage.setItem('proceedToChooseAddress', 'true');
-            this.router.navigate(['shopping-cart/address']);
-        } else return;
     }
 };

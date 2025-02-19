@@ -9,7 +9,7 @@ import { LoginSignUp } from './pages/login.sign-up/login-sign-up.component';
 import { HomePage } from './pages/home/home-page.component';
 import { ShopPage } from './pages/shop/shop-page.component';
 import { ProductPage } from './pages/product/product.component';
-import { MyShoppingCart } from './pages/my-shopping-cart/my-shopping-cart.component';
+import { ShoppingCart } from './pages/shopping-cart/shopping-cart.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ConfirmCodeGuard } from './guards/confirmCode.guard';
 import { EnterNewPasswordGuard } from './guards/enterNewPassword.guard';
@@ -40,7 +40,7 @@ export const routes: Routes = [
     },
     { path: 'shop', component: ShopPage },
     { path: 'shop/product/:productId', component: ProductPage },
-    { path: 'shopping-cart', component: MyShoppingCart, canActivate: [ShoppingCartGuard] },
+    { path: 'shopping-cart', component: ShoppingCart, canActivate: [ShoppingCartGuard] },
     { path: 'shopping-cart/address', component: Address, canActivate: [AddressGuard] },
     { path: 'shopping-cart/address/shipping', component: Shipping, canActivate: [ShippingGuard] },    
     { path: 'shopping-cart/address/shipping/payment', component: Payment, canActivate: [PaymentGuard] },        

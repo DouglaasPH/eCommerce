@@ -1,0 +1,44 @@
+<div class="container-finalize-purchase">
+    <h2 class="finalize-purchase-title">Order Sumary</h2>
+    <div class="finalize-the-purchase-group-one">
+        <div class="container-price">
+            <h4 class="group-one-specification">Price</h4>
+            <h4 class="group-one-specification">${{ orderSumary.fullPriceWithoutDiscount }}</h4>
+        </div>
+        <div class="container-discount">
+            <h4 class="group-one-specification">Discount</h4>
+            <h4 class="group-one-specification">- ${{ orderSumary.discount }}</h4>
+        </div>
+        <div class="container-shipping">
+            <h4 class="group-one-specification">Shipping</h4>
+            <h4 class="group-one-specification">{{ orderSumary.shipping }}</h4>
+        </div>
+        <div class="container-coupon-applied">
+            <h4 class="group-one-specification">Coupon Applied</h4>
+            <h4 class="group-one-specification">${{ orderSumary.couponDiscount }}</h4>
+        </div>                                  
+    </div>  
+    <div class="finalize-the-purchase-group-two">
+        <div class="container-total">
+            <h5 class="group-two-specification">TOTAL</h5>
+            <h5 class="group-two-specification">${{ orderSumary.total }}</h5>
+        </div>
+        <div class="container-estimated-delivery">
+            <h5 class="group-two-specification">Estimated Delivery</h5>
+            <h5 class="group-two-specification"> {{ orderSumary.estimatedDelivery }}</h5>
+        </div>                
+        <div class="container-insert-coupom-code">
+            <input type="text" placeholder="Coupom Code" class="input-insert-coupom-code" [(ngModel)]="orderSumary.couponCode">
+            <button (click)="validateCoupon()">
+                <img src="../../../assets/icons/trailing-icon.svg" alt="icon" class="submit-coupom-code">
+            </button>
+        </div>
+    </div>
+    <div class="container-buttons">
+        <button class="button-proceed-to-checkout" (click)="onProceedToCheckout()" *ngIf="currentPath === '/shopping-cart'">Proceed to Checkout</button>
+        <button class="button-continue-shopping" (click)="onContinueShopping()" *ngIf="currentPath === '/shopping-cart'">Continue Shopping</button>
+        <button class="button-continue-to-shipping" (click)="onContinueToShipping()" *ngIf="currentPath === '/shopping-cart/address'">Continue to Shipping</button>
+        <button class="button-continue-to-payment" (click)="continueToPayment()" *ngIf="currentPath === '/shopping-cart/address/shipping'">Continue to Payment</button>
+        <button class="button-continue-to-place-your-order-and-pay" (click)="continueToConfirmation()" *ngIf="currentPath === '/shopping-cart/address/shipping/payment'">Place Your Order and Pay</button>        
+    </div>                    
+</div> 
