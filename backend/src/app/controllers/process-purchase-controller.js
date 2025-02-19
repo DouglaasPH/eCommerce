@@ -26,6 +26,18 @@ class processPurchaseController {
         const row = await processPurchaseRepository.removeAddress(address_position, user_id);
         return res.json(row);
     }
+
+    async confirmCoupon(req, res) {
+        const { coupon_code } = req.query;
+        const row = await processPurchaseRepository.confirmCoupon(coupon_code);
+        return res.json(row);
+    }
+
+    async useCoupon(req, res) {
+        const { coupon_code } = req.query;
+        const row = await processPurchaseRepository.useCoupon(coupon_code);
+        return res.json(row);
+    }
 }
 
 export default new processPurchaseController();

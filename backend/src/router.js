@@ -39,6 +39,8 @@ router.get('/getAllAddress', processPurchaseController.getAllAddress);
 router.post('/addNewAddress', processPurchaseController.addNewAddress);
 router.put('/updateAddress', processPurchaseController.updateAddress);
 router.put('/removeAddress', processPurchaseController.removeAddress);
+router.get('/confirmCoupon', processPurchaseController.confirmCoupon);
+router.put('/useCoupon', processPurchaseController.useCoupon);
 
 
 export default router;

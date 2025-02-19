@@ -64,6 +64,15 @@ class processPurchase {
     }
 
 
+    confirmCoupon(coupon_code) {
+        const sql = `SELECT * FROM coupons WHERE coupon_code =?`;
+        return consult(sql, [coupon_code], 'Unable to query the database.');
+    }
+
+    useCoupon(coupon_code) {
+        const sql = `UPDATE coupons SET quantity_available = quantity_available - 1 WHERE coupon_code =?`;
+        return consult(sql, [coupon_code], 'Unable to query the database.');
+    }
 }
 
 export default new processPurchase();
