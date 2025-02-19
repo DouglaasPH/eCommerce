@@ -3,6 +3,8 @@ import loginController from "./app/controllers/login-controller.js";
 import shopController from "./app/controllers/shop-controller.js";
 import shoppingCartController from "./app/controllers/shopping-cart-controller.js";
 import processPurchaseController from "./app/controllers/process-purchase-controller.js";
+import orderController from "./app/controllers/order-controller.js";
+import paymentsController from "./app/controllers/payments-controller.js";
 
 const router = Router();
 
@@ -41,6 +43,21 @@ router.put('/updateAddress', processPurchaseController.updateAddress);
 router.put('/removeAddress', processPurchaseController.removeAddress);
 router.get('/confirmCoupon', processPurchaseController.confirmCoupon);
 router.put('/useCoupon', processPurchaseController.useCoupon);
+
+
+// ROUTES ABOUT ORDER AND ORDER_ITEMS
+router.get('/getAllOrder', orderController.getAllOrder);
+router.post('/addOrder', orderController.addOrder);
+router.put('/updateStatusOrder', orderController.updateStatusOrder);
+router.get('/getAllOrderItems', orderController.getAllOrderItems);
+router.post('/addOrderItems', orderController.addOrderItems);
+
+
+//ROUTES ABOUT PAYMENTS
+router.get('/getPayment', paymentsController.getPayment);
+router.post('/addPayment', paymentsController.addPayment);
+router.put('/updateStatusPayment', paymentsController.updateStatusPayment);
+
 
 
 export default router;
