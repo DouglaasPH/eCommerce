@@ -7,7 +7,7 @@ class OrderController {
         return res.json(row);
     }
 
-    async addOrder(data) {
+    async addOrder(req, res) {
         const { data } = req.body;
         const row = await orderRepository.addOrder(data);
         return res.json(row);

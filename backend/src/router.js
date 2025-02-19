@@ -5,6 +5,7 @@ import shoppingCartController from "./app/controllers/shopping-cart-controller.j
 import processPurchaseController from "./app/controllers/process-purchase-controller.js";
 import orderController from "./app/controllers/order-controller.js";
 import paymentsController from "./app/controllers/payments-controller.js";
+import installmentController from "./app/controllers/installment-controller.js";
 
 const router = Router();
 
@@ -53,11 +54,14 @@ router.get('/getAllOrderItems', orderController.getAllOrderItems);
 router.post('/addOrderItems', orderController.addOrderItems);
 
 
-//ROUTES ABOUT PAYMENTS
+// ROUTES ABOUT PAYMENTS
 router.get('/getPayment', paymentsController.getPayment);
 router.post('/addPayment', paymentsController.addPayment);
 router.put('/updateStatusPayment', paymentsController.updateStatusPayment);
 
+
+// ROUTES ABOUT INSTALLMENT
+router.get('/getInstallment', installmentController.getInstallment);
 
 
 export default router;
