@@ -4,6 +4,7 @@ import { FooterBar } from "../../shared/footer-bar/footer-bar.component";
 import { CommonModule } from "@angular/common";
 import { OrderSumaryService } from "../../services/orderSumary.service";
 import { orderSumary } from "../../shared/orderSumary/orderSumary.component";
+import { OrderDataService } from "../../services/orderDatas.service";
 
 @Component({
     selector: 'shipping',
@@ -13,7 +14,7 @@ import { orderSumary } from "../../shared/orderSumary/orderSumary.component";
     styleUrl: './shipping.component.scss'
 })
 export class Shipping {
-    constructor(private orderSumaryService: OrderSumaryService) {}
+    constructor(private orderSumaryService: OrderSumaryService, private orderDataService: OrderDataService) {}
 
     shipments = [
         {
@@ -32,5 +33,6 @@ export class Shipping {
 
     setChooseDelivery(index: number) {
         this.chosenDelivery = index;
+        this.orderDataService.updateShipping(this.shipments[index]);
         this.orderSumaryService.setChosenDelivery(this.chosenDelivery);
     }}

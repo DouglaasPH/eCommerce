@@ -7,10 +7,10 @@ import { editAdress } from "./components/edit-address/edit-address.component";
 import { editAddressService } from "../../services/editAddress.service";
 import { AddAddress } from "./components/add-address/add-address.component";
 import { ProcessPurchaseService } from "../../services/processPurchase.service";
-import { Router } from "@angular/router";
 import { FormsModule } from "@angular/forms";
 import { OrderSumaryService } from "../../services/orderSumary.service";
 import { orderSumary } from "../../shared/orderSumary/orderSumary.component";
+import { OrderDataService } from "../../services/orderDatas.service";
 
 interface AddressInterface {
     cep: string;
@@ -24,7 +24,6 @@ interface AddressInterface {
     city: string,
     uf: string,    
 }
-
 @Component({
     selector: 'address',
     standalone: true,
@@ -33,7 +32,7 @@ interface AddressInterface {
     styleUrl: './address.component.scss'
 })
 export class Address implements OnInit {
-    constructor(private editaddressservice: editAddressService, private processPurchaseService: ProcessPurchaseService, private orderSumaryService: OrderSumaryService, private router: Router) {}
+    constructor(private editaddressservice: editAddressService, private processPurchaseService: ProcessPurchaseService, private orderSumaryService: OrderSumaryService, private orderDataService: OrderDataService) {}
     allAddress: any[] = [];
     statusEditAddress = false;
     statusAddAddress = false;
@@ -56,6 +55,7 @@ export class Address implements OnInit {
     
     setChooseAddress(index: number) {
         this.chosenAddress = index;
+        this.orderDataService.updateAddress(this.allAddress[index]);
         this.orderSumaryService.setChooseAddress(index);
     }    
 

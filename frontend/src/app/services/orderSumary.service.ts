@@ -130,5 +130,5 @@ export class OrderSumaryService {
 
     setChosenPayment(paymentMethod: string) {
         this.choosePaymentMethod = paymentMethod;
-    }    
+    }
 };

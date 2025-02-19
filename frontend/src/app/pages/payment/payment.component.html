@@ -37,18 +37,18 @@
                     <td class="row-table-insert-credit-card-data" *ngIf="this.choosePaymentMethod === 'credit card'">
                         <div class="div-row">
                             <div class="table-row-group-insert-credit-card-data">
-                                <input type="text" placeholder="Card Number *" [(ngModel)]="creditCardDatas['card_number']">
-                                <input type="text" placeholder="Name Printed on Card *" [(ngModel)]="creditCardDatas['namePrintedOrCard']">
-                                <input type="text" placeholder="Validity *" [(ngModel)]="creditCardDatas['validity']">
+                                <input type="text" placeholder="Card Number *" [(ngModel)]="creditCardData['card_number']" (ngModelChange)="onChangeCreditCardData()">
+                                <input type="text" placeholder="Name Printed on Card *" [(ngModel)]="creditCardData['namePrintedOrCard']" (ngModelChange)="onChangeCreditCardData()">
+                                <input type="text" placeholder="Validity *" [(ngModel)]="creditCardData['validity']" (ngModelChange)="onChangeCreditCardData()">
                             </div>
                             <div class="table-row-group-insert-credit-card-data">
-                                <input type="text" placeholder="Verification Code *" [(ngModel)]="creditCardDatas['verificationCade']">
-                                <input type="text" placeholder="Holder's CPF/CNPJ *" [(ngModel)]="creditCardDatas['cpfOrCnpj']">
-                                <input type="date" placeholder="Date of Birth" [(ngModel)]="creditCardDatas['dateOfBirth']">
+                                <input type="text" placeholder="Verification Code *" [(ngModel)]="creditCardData['verificationCade']" (ngModelChange)="onChangeCreditCardData()">
+                                <input type="text" placeholder="Holder's CPF/CNPJ *" [(ngModel)]="creditCardData['cpfOrCnpj']" (ngModelChange)="onChangeCreditCardData()">
+                                <input type="date" placeholder="Date of Birth" [(ngModel)]="creditCardData['dateOfBirth']" (ngModelChange)="onChangeCreditCardData()">
                             </div>
                         </div>
-                        <select name="Payment Method" class="select-installments"  [(ngModel)]="creditCardDatas['paymentMethod']">
-                            <option value="">aaaaa</option>
+                        <select name="Payment Method" class="select-installments"  [(ngModel)]="creditCardData['paymentMethod']" (ngModelChange)="onChangeCreditCardData()">
+                            <option value="" *ngFor="let installment of installments">{{ installment[0] }}x of $ {{ installment[1] }} {{ installment[2] }}</option>
                         </select>
                     </td>                                        
                 </table>
