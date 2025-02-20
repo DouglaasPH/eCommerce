@@ -1,3 +1,8 @@
+<div class="background-loading-and-confirm" class="backgroundDivForLoadOrConfirm"  [ngClass]="{ 'active': backgroundDivForLoadOrConfirm, 'inactive': !backgroundDivForLoadOrConfirm }" *ngIf="backgroundDivForLoadOrConfirm">
+    <img src="../../../assets/icons/loading-icon.svg" alt="loading-icon" class="loading-icon" [ngClass]="{ 'active': onLoading, 'inactive': !onLoading }" *ngIf="onLoading">
+    <img src="../.././../assets/icons/confirm-icon.svg" alt="confirm-icon" class="confirm-icon" [ngClass]="{ 'active': onConfirm, 'inactive': !onConfirm }" *ngIf="onConfirm">
+</div>
+
 <div class="container-finalize-purchase">
     <h2 class="finalize-purchase-title">Order Sumary</h2>
     <div class="finalize-the-purchase-group-one">

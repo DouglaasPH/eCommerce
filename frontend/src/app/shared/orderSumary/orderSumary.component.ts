@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { Router } from "@angular/router";
 import { OrderSumaryService } from "../../services/orderSumary.service";
+import { addOrder, addOrderItem, addPayment, getOrderIdForAddPaymentRequest, removeItemFromShoppingCart } from "../../requests/finalizePurchaseRequests";
 
 @Component({
     selector: 'order-sumary',
@@ -26,6 +27,10 @@ export class orderSumary implements OnInit {
         total: 0,
         estimatedDelivery: "undefined",
     };
+
+    backgroundDivForLoadOrConfirm = false;
+    onLoading = false;
+    onConfirm = false;
 
     async ngOnInit(): Promise<void> {
         this.browsingHistory = JSON.parse(sessionStorage.getItem('browsingHistory') || '[]');
@@ -90,10 +95,74 @@ export class orderSumary implements OnInit {
         } else return;
     }    
 
-    continueToConfirmation() {
+    async continueToConfirmation() {
         const choosePaymentMethod = this.orderSumaryService.choosePaymentMethod;
         if (choosePaymentMethod !== '') {
-            // TODO
+            this.backgroundDivForLoadOrConfirm = true;            
+            this.onLoading = true;
+
+            try {
+                await this.finalizeToPurchase();
+                this.onLoading = false;
+
+                setTimeout(() => {
+                    this.onConfirm = true;       
+                    setTimeout(() => {
+                        window.location.href = '/';
+                    }, 500);
+                }, 500);
+
+            } catch (error) {
+                console.log(error);
+            }
+
         } else return;
-    }        
+    }
+    
+
+
+    async finalizeToPurchase() {
+        const dataForAddOrderRequest = {
+            user_id: this.orderSumaryService.user_id,
+            status: 'pending',
+            address: sessionStorage.getItem('address'),
+            subtotal: this.orderSumary.fullPriceWithoutDiscount,
+            shipping_price: 0,
+            discount: this.orderSumary.couponDiscount,
+            total: this.orderSumary.total,
+        };
+
+        await addOrder(dataForAddOrderRequest);        
+
+        const order_id = await getOrderIdForAddPaymentRequest(this.orderSumaryService.user_id);
+
+        const dataForAddPaymentRequest = {
+            order_id: await order_id.id,
+            payment_method: this.orderSumaryService.choosePaymentMethod,
+            status: 'pending',
+        }
+
+        await addPayment(dataForAddPaymentRequest);
+
+        const removeItem = this.orderSumaryService.shoppingCart;
+
+        removeItem.forEach(async item => await removeItemFromShoppingCart(item.id));
+
+
+        this.orderSumaryService.allProductIds.forEach(product_id => {
+            this.orderSumaryService.shoppingCart.forEach(async item => {
+                if (product_id === item.product_id) {
+                    const dataForAddOrderItemRequest = {
+                        order_id: order_id.id,
+                        product_id: product_id,
+                        quantity: item.quantity,
+                        size: item.size,
+                        price: Math.round((item.quantity * this.orderSumaryService.productData[product_id].price) * ((100 - this.orderSumaryService.productData[product_id].discount_percentage) / 100) * 100) / 100,
+                    }
+
+                    await addOrderItem(dataForAddOrderItemRequest);                    
+                } else return
+            })
+        }) 
+    }
 }

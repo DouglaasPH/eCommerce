@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
 import { navBar } from "../../shared/nav-bar/nav-bar.component";
 import { FooterBar } from "../../shared/footer-bar/footer-bar.component";
 import { CommonModule } from "@angular/common";
