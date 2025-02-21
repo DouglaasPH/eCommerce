@@ -1,3 +1,24 @@
-<nav-bar-without-login *ngIf="!isLogginned"></nav-bar-without-login>
-
-<nav-bar-with-login *ngIf="isLogginned"></nav-bar-with-login>
+<div class="nav-bar-component">
+    <div class="container-logo">
+        <h1 class="logo">FASCO</h1>
+    </div>
+    <div class="container-redirect-buttons-between-pages">
+            <a (click)="onHome()" class="redirect-to-home-button" [ngClass]="{ 'currentPage': currentRoute === '/' }">Home</a>
+            <a (click)="onShop()" class="redirect-to-shop-button" [ngClass]="{ 'currentPage': currentRoute === '/shop' }">Shop</a>
+    </div>
+    <div class="container-user" *ngIf="isLogginned">
+        <a href="" class="redirect-user">
+            <img src="../../../../assets/login/icons/my-purchases.svg" alt="my purchases">
+        </a>        
+        <a href="" class="redirect-user"> 
+            <img src="../../../../assets/login/icons/my-account.svg" alt="my account">
+        </a>
+        <a href="" class="redirect-user">
+            <img src="../../../../assets/login/icons/favorites.svg" alt="favorites">
+        </a>
+    </div>
+    <div class="container-redirect-buttons-login" *ngIf="!isLogginned">
+            <a href="login/sign-in" class="redirect-button-sign-in" (click)="onButtonSignIn()">Sign in</a>
+            <a href="login/sign-up" class="redirect-button-sign-up" (click)="onButtonSignUp()">Sign Up</a>
+    </div>    
+</div>
