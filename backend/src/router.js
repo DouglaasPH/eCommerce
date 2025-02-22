@@ -6,6 +6,7 @@ import processPurchaseController from "./app/controllers/process-purchase-contro
 import orderController from "./app/controllers/order-controller.js";
 import paymentsController from "./app/controllers/payments-controller.js";
 import installmentController from "./app/controllers/installment-controller.js";
+import userDataController from "./app/controllers/user-data-controller.js";
 
 const router = Router();
 
@@ -62,6 +63,13 @@ router.put('/updateStatusPayment', paymentsController.updateStatusPayment);
 
 // ROUTES ABOUT INSTALLMENT
 router.get('/getInstallment', installmentController.getInstallment);
+
+
+// ROUTES ABOUT USER DATA
+router.get('/getUserData', userDataController.getUserData);
+router.delete('/removeAccount', userDataController.removeAccount);
+router.put('/updateAccountDetails', userDataController.updateAccountDetails);
+router.get('/checkPassword', userDataController.checkPassword);
 
 
 export default router;
