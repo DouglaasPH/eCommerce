@@ -1,0 +1,99 @@
+<change-email *ngIf="statusChangeEmail" (setStatusChangeEmail)="setStatusChangeEmail()" [currentEmail]="userData.email"></change-email>
+<change-password *ngIf="statusChangePassword" (setStatusChangePassword)="setStatusChangePassword()" [currentEmail]="userData.email"></change-password>
+
+<div class="my-data">
+    <div class="container-title">
+        <img src="../../../../../assets/icons/user-icon-with-background.svg" alt="user icon" class="user-icon">
+        <h2 class="main-title">MY DATA</h2>
+    </div>
+    <div class="div-row-direction">
+        <div class="user-data">
+            <div class="user-data-title">
+                <img src="../../../../../assets/icons/data-icon.svg" alt="data icon" class="data-icon">
+                <h2 class="basic-data-title">BASIC DATA</h2>
+            </div>
+            <div class="div-row-direction-user-data">
+                <button class="change-email-button" (click)="setStatusChangeEmail()">CHANGE EMAIL</button>
+                <button class="change-password-button" (click)="setStatusChangePassword()">CHANGE PASSWORD</button>
+            </div>
+            <div class="div-column-direction-user-data">
+                <div class="container-input">
+                    <img src="../../../../../assets/icons/alert-icon.svg" alt="alert icon" class="alert-icon name-complete-alert-icon" *ngIf="onValidName">
+                    <label class="complete-name-label">Complete name</label>
+                    <input type="text" value="{{ userData.name }}" [(ngModel)]="userData.name" (ngModelChange)="onCheckInputName()">
+                </div>
+                <div class="container-input">
+                    <img src="../../../../../assets/icons/alert-icon.svg" alt="alert icon" class="alert-icon phone-number-alert-icon" *ngIf="onValidPhoneNumber">
+                    <label class="phone-number-label">Phone Number</label>
+                    <input type="text" (input)="onInputPhoneNumber($event)" [value]="userData.phone_number" maxlength="15">
+                </div>
+                <div class="container-input">
+                    <img src="../../../../../assets/icons/bottom-arrow-icon.svg" alt="bottom arrow icon" class="bottom-arrow-icon" *ngIf="!onValidGender">
+                    <img src="../../../../../assets/icons/alert-icon.svg" alt="alert icon" class="alert-icon gender-alert-icon" *ngIf="onValidGender">
+                    <label class="gender-label">Gender</label>
+                    <select [(ngModel)]="userData.gender" (ngModelChange)="onCheckInputGender()">
+                        <option *ngIf="userData.gender === null" hidden></option>
+                        <option value="man">Man</option>
+                        <option value="woman">Woman</option>
+                        <option value="others">Others</option>
+                        <option value="do not specify">Do not specify</option>
+                    </select>
+                </div>
+                <div class="container-input">
+                    <label class="email-label disabled-label">E-mail</label>
+                    <input type="text" class="disabled-input" value="{{ userData.email }}" disabled>
+                    <img src="../../../../../assets/icons/padlock-icon.svg" alt="padlock icon" class="padlock-icon padlock-icon-for-email">
+                </div>
+                <div class="container-input">
+                    <label class="cpf-label" class="disabled-label">CPF</label>
+                    <input type="text" class="disabled-input" value="{{userData.cpf}}" disabled>
+                    <img src="../../../../../assets/icons/padlock-icon.svg" alt="padlock icon" class="padlock-icon padlock-icon-for-cpf">
+                </div>
+                <div class="container-input">
+                    <label class="date-of-birth-label" class="disabled-label">Date of Birth</label>
+                    <input type="date" class="date_of_birth-input" class="disabled-input" value="{{ userData.date_of_birth }}" disabled>
+                    <img src="../../../../../assets/icons/padlock-icon.svg" alt="padlock icon" class="padlock-icon padlock-icon-for-date-of-birth">
+                </div>
+            </div>
+
+            <div class="div-row-direction-user-data">
+                <button class="delete-account-button" (click)="onRemoveAccount()">DELETE ACCOUNT</button>
+                <button class="save-changes-button" (click)="onSaveChanges()">SAVE CHANGES</button>
+            </div>
+        </div>
+
+        <div class="container-user-address">
+            <div class="container-address-title">
+                <img src="../../../../../assets/icons/location-icon.svg" alt="location icon" class="location-icon">
+                <h2 class="location-title">LOCATION</h2>
+            </div>
+            <div class="container-address">
+                <div class="container-all-address"  [ngStyle]="{ 'height': (this.allAddress.length * 11) + 'vw' }">
+                    <div class="container-address-data" *ngFor="let currentAddress of allAddress; let index = index">
+                        <edit-address *ngIf="statusEditAddress" (setStatusEditAddress)="setStatusEditAddress()" [address_position]="index" [user_id]="user_id"></edit-address>                        
+                        <div class="address-data">
+                            <div class="address-data-group-one">
+                                <h2 class="sender">{{ currentAddress.sender }}</h2>
+                                <p class="complement">{{ currentAddress.complement }}</p>
+                            </div>
+                            <p class="address">{{ currentAddress.logradouro }}, {{ currentAddress.number }}, {{ currentAddress.neighborhood }},  {{ currentAddress.city }}, {{ currentAddress.uf }}, {{ currentAddress.cep }}</p>
+                            <p class="reference"><strong>Reference</strong> - {{ currentAddress.reference }}</p>
+                            <p class="contact"><strong>Contact</strong> - {{ currentAddress.contact }}</p>
+                        </div>
+                        <div class="container-edit-and-remove">
+                            <button class="edit" (click)="onEditAddress(currentAddress)">Edit</button>
+                            <p class="separator">|</p>
+                            <button class="remove" (click)="onRemoveAddress(index)">Remove</button>
+                        </div>                        
+                    </div>
+
+                </div>
+                <div class="container-add-new-address">
+                    <button class="add-new-address" (click)="setStatusAddAddress()">+  Add New Address</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<add-address *ngIf="statusAddAddress" (setStatusAddAddress)="setStatusAddAddress()" [user_id]="user_id"></add-address>

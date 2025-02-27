@@ -41,5 +41,9 @@ export class navBar implements OnInit {
         this.router.navigate(['/shop']);
     }
 
+    onMyAccountMyData() {
+        this.router.navigate(['/my-account', 'my-data']);
+    }
+
 
 }

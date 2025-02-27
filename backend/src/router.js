@@ -70,6 +70,11 @@ router.get('/getUserData', userDataController.getUserData);
 router.delete('/removeAccount', userDataController.removeAccount);
 router.put('/updateAccountDetails', userDataController.updateAccountDetails);
 router.get('/checkPassword', userDataController.checkPassword);
+router.get('/getAllOrders', userDataController.getAllOrders);
+router.get('/getAllPaymentFromOrder', userDataController.getAllPaymentFromOrder)
+router.get('/getAllOrderItems', userDataController.getAllOrderItems);
+router.get('/getProductInformation', userDataController.getProductInformation);
+router.get('/getAllOrderInformation', userDataController.getAllOrderInformation);
 
 
 export default router;

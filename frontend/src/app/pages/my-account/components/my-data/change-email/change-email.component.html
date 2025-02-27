@@ -1,0 +1,22 @@
+<div class="background active">
+    <div class="container-change-email">
+        <div class="container-close-page">
+            <button class="close-icon-button" (click)="closePage()">
+                <img src="../../../../../../assets/icons/close-icon.svg" alt="close icon" class="close-icon">
+            </button>
+        </div>        
+        <div class="container-description">
+            <img src="../../../../../../assets/icons/user-icon-without-background.svg" alt="user icon" class="user-icon">
+            <h1 class="title">CHANGE EMAIL</h1>
+            <p class="paragraph">Fill in the fields below to change your email:</p>
+        </div>
+        <div class="container-inputs">
+            <input type="text" placeholder="Enter your new email" class="new-email-input" [(ngModel)]="newEmail">
+            <input type="text" placeholder="Confirm your new email" class="confirm-new-email-input" [(ngModel)]="confirmNewEmail">
+            <input type="text" placeholder="Enter your password" class="password-input" [(ngModel)]="password">
+        </div>
+        <div  class="container-button">
+            <button class="confirm-button" (click)="onConfirm()">CONFIRM</button>
+        </div>
+    </div>
+</div>

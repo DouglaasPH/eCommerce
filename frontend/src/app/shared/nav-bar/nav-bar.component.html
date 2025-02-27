@@ -7,14 +7,14 @@
             <a (click)="onShop()" class="redirect-to-shop-button" [ngClass]="{ 'currentPage': currentRoute === '/shop' }">Shop</a>
     </div>
     <div class="container-user" *ngIf="isLogginned">
-        <a href="" class="redirect-user">
-            <img src="../../../../assets/login/icons/my-purchases.svg" alt="my purchases">
+        <a class="redirect-user" (click)="onMyAccountMyData()"> 
+            <img src="../../../assets/icons/user-icon-without-background.svg" alt="my account">
         </a>        
-        <a href="" class="redirect-user"> 
-            <img src="../../../../assets/login/icons/my-account.svg" alt="my account">
-        </a>
-        <a href="" class="redirect-user">
-            <img src="../../../../assets/login/icons/favorites.svg" alt="favorites">
+        <a class="redirect-user">
+            <img src="../../../assets/icons/shopping-cart-icon.svg" alt="my purchases">
+        </a>        
+        <a class="redirect-user">
+            <img src="../../../assets/icons/favorite-unselected-icon.svg" alt="favorites">
         </a>
     </div>
     <div class="container-redirect-buttons-login" *ngIf="!isLogginned">

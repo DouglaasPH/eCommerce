@@ -1,0 +1,21 @@
+.main {
+    height: 50vw;
+    display: flex;
+    flex-direction: row;
+}
+
+.container-left-nav-bar {
+    width: 5vw;
+    height: 49vw;
+    position: absolute;
+}
+
+.container-left-nav-bar:hover {
+    width: 18vw;
+}
+
+.content-main {
+    padding-left: 10vw;
+    width: 85%;
+    height: 100%;
+}

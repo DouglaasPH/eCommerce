@@ -1,0 +1,386 @@
+@use '../../../../../variables.scss';
+
+.my-data {
+    height: 100%;
+}
+
+.container-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8vw;
+    height: 7%;
+}
+
+.main-title {
+    @extend %font-poppins;
+    font-weight: 700;
+    font-size: 1.5vw;
+    color: #282828;
+}
+
+.user-icon {
+    width: 2vw;
+}
+
+.div-row-direction {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-data {
+    width: 49%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 1vw;
+}
+
+.user-data-title {
+    display: flex;
+    align-items: center;
+    gap: 0.8vw;
+    width: 85%;
+    height: 3%;
+}
+
+.basic-data-title {
+    @extend %font-poppins;
+    font-weight: 700;
+    font-size: 1vw;
+    color: #3c3c3c;
+}
+
+.data-icon {
+    width: 0.8vw;
+}
+
+.div-row-direction-user-data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    height: 7%;
+}
+
+.change-email-button, .change-password-button {
+    height: 100%;
+    width: 49%;
+    background-color: transparent;
+    border: 0.1vw solid #3c3c3c;
+    border-radius: 0.5vw;
+    @extend %font-poppins;
+    font-weight: 700;
+    font-size: 1vw;
+    color: #3c3c3c;
+}
+
+.div-column-direction-user-data {
+    width: 95%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container-input {
+    height: 10%;
+}
+
+input, select {
+    width: 96%;
+    height: 100%;
+    background-color: transparent;
+    border: 0.1vw solid #8a8a8a;
+    border-radius: 0.3vw;
+    padding-left: 1.3vw;
+    @extend %font-poppins;
+    color: #1f1f1f;
+    font-weight: 400;
+    font-size: 1.1vw;
+    appearance: none;
+}
+
+.alert-icon {
+    position: absolute;
+    left: 47.5vw;
+}
+
+.bottom-arrow-icon {
+    position: fixed;
+    position: absolute;
+    left: 48vw;    
+    top: 32.2vw;
+    width: 1.2vw;
+}
+
+.name-complete-alert-icon {
+    top: 22.1vw;
+}
+
+.phone-number-alert-icon {
+    top: 26.9vw;
+}
+
+.gender-alert-icon {
+    top: 31.7vw;
+}
+
+.disabled-input{
+    border: 0.1vw solid #bbbbbb;    
+    color: #bbbbbb;
+}
+
+.date_of_birth-input:hover {
+    cursor: pointer;
+}
+
+.disabled-label {
+    color: #bbbbbb;
+}
+
+select {
+    width: 100%;
+}
+
+select:hover {
+    cursor: pointer ;
+}
+
+label {
+    position: absolute;
+    left: 12vw;
+    @extend %font-poppins;
+    font-size: 0.8vw;
+    font-weight: 500;
+    color: #1f1f1f;
+    background-color: #ffffff;
+    padding: 0 0.3vw 0 0.3vw;
+}
+
+.complete-name-label {
+    top: 21.1vw;
+}
+
+.phone-number-label {
+    top: 25.9vw;
+}
+
+.gender-label {
+    top: 30.8vw;
+}
+
+.email-label {
+    top: 35.6vw;
+}
+
+.cpf-label {
+    top: 40.5vw;
+}
+
+.date-of-birth-label {
+    top: 45.4vw;
+}
+
+.padlock-icon {
+    position: absolute;
+    width: 1vw;
+    left: 48vw;
+}
+
+.padlock-icon-for-email {
+    top: 37vw;
+}
+
+
+.padlock-icon-for-cpf {
+    top: 41.7vw;
+}
+
+.padlock-icon-for-date-of-birth {
+    top: 46.6vw;
+}
+
+
+.delete-account-button, .save-changes-button {
+    height: 100%;
+    width: 49%;
+    background-color: transparent;
+    border-radius: 0.5vw;
+    @extend %font-poppins;
+    font-weight: 700;
+    font-size: 1vw;
+    background-color: #3c3c3c;
+    border: none;
+    color: #ebebeb;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+
+
+
+.container-user-address {
+    background-color: #ffffff;
+    border-radius: 1vw;
+    width: 49%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vw;
+}
+
+.container-address-title {
+    margin-top: 1.5vw;
+    display: flex;
+    align-items: center;
+    gap: 0.8vw;
+    width: 90%;
+    height: 3%;
+}
+
+.location-title {
+    @extend %font-poppins;
+    font-weight: 700;
+    font-size: 1vw;
+    color: #3c3c3c;
+}
+
+.location-icon {
+    width: 1vw;
+}
+
+.container-address {
+    width: 100%;
+    height: 100%;    
+    position: relative;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-all-address {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vw;
+    width: 85%;
+}
+
+.container-address-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 11vw;
+    width: 100%;
+    background-color: #f6f6f6;
+    border: 0.1vw solid #8a8a8a;
+    border-left: 0.5vw solid #8a8a8a;
+    border-radius: 0.4vw;
+    padding: 1vw;
+}
+
+.address-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+}
+
+.address-data-group-one {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    align-items: center;    
+}
+
+.sender {
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size: 1.2vw;
+    color: #1f1f1f;
+}
+
+.complement {
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size: 0.7vw;
+    padding: 0vw 0.2vw 0vw 0.2vw;
+    border-radius: 0.2vw;
+    color: #1f1f1f;    
+    border: 0.1vw solid #1f1f1f;
+    text-transform: uppercase;
+}
+
+.address, .contact, .reference {
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size: 0.9vw;
+    width: 90%;
+    color: #1f1f1f;
+    background-color: transparent;
+
+    strong {
+        font-weight: 600;
+    }
+}
+
+.container-edit-and-remove {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: end;
+    gap: 1vw;
+}
+
+.edit, .remove {
+    @extend %font-poppins;
+    font-weight: 600;
+    font-size: 0.9vw;
+    color: #1f1f1f;
+    background-color: transparent;    
+    border: none;
+}
+
+.edit {
+    color: #1f1f1f;
+}
+
+.remove {
+    color: #ff2727;
+}
+
+.edit:hover, .remove:hover {
+    text-decoration: underline;
+}
+
+.container-add-new-address {
+    display: flex;
+    justify-content: end;
+    width: 90%;
+    height: 10%
+}
+
+.add-new-address {
+    @extend %font-poppins;
+    font-weight: 600;
+    font-size: 1vw;
+    color: #1f1f1f;
+    background-color: transparent;    
+    border: none;    
+}

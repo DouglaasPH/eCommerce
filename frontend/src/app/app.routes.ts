@@ -20,6 +20,7 @@ import { Payment } from './pages/payment/payment.component';
 import { AddressGuard } from './guards/address.guard';
 import { ShippingGuard } from './guards/shipping.guard';
 import { PaymentGuard } from './guards/payment.guard';
+import { MyAccountPage } from './pages/my-account/my-account.component';
 
 export const routes: Routes = [
     { path: "", component: HomePage },    
@@ -43,7 +44,9 @@ export const routes: Routes = [
     { path: 'shopping-cart', component: ShoppingCart, canActivate: [ShoppingCartGuard] },
     { path: 'shopping-cart/address', component: Address, canActivate: [AddressGuard] },
     { path: 'shopping-cart/address/shipping', component: Shipping, canActivate: [ShippingGuard] },    
-    { path: 'shopping-cart/address/shipping/payment', component: Payment, canActivate: [PaymentGuard] },        
+    { path: 'shopping-cart/address/shipping/payment', component: Payment, canActivate: [PaymentGuard] },
+
+    { path: 'my-account/:section', component: MyAccountPage}
 ];
 
 @NgModule({
