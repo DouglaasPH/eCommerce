@@ -13,7 +13,7 @@ import { addOrder, addOrderItem, addPayment, getOrderIdForAddPaymentRequest, rem
     styleUrl: './orderSumary.component.scss'
 })
 export class orderSumary implements OnInit {
-    constructor(private orderSumaryService: OrderSumaryService, private router: Router) {}
+    constructor(private orderSumaryService: OrderSumaryService, private router: Router) { }
 
     browsingHistory: string[] = [];
     currentPath: string = '';
@@ -33,6 +33,14 @@ export class orderSumary implements OnInit {
     onConfirm = false;
 
     async ngOnInit(): Promise<void> {
+        this.orderSumaryService.updateOrderSumaryCall$.subscribe(async (message) => {
+            const response = this.orderSumaryService.orderSumary;
+            this.orderSumary = response;
+            const response_process_purchase = this.orderSumaryService.shoppingCart.length;
+            this.shoppingCartLength = response_process_purchase;
+            await this.validateCoupon();
+        })
+
         this.browsingHistory = JSON.parse(sessionStorage.getItem('browsingHistory') || '[]');
         this.currentPath = this.browsingHistory[this.browsingHistory.length - 1];
         const response = await this.orderSumaryService.getOrderSumary();
@@ -40,7 +48,7 @@ export class orderSumary implements OnInit {
         const response_process_purchase = await this.orderSumaryService.getData();
         this.shoppingCartLength = response_process_purchase;
         await this.validateCoupon();
-    }       
+    }
 
     async validateCoupon() {
         if (this.orderSumary.couponCode !== '' && this.orderSumary.couponDiscount === 0) {
@@ -128,8 +136,9 @@ export class orderSumary implements OnInit {
             address: sessionStorage.getItem('address'),
             subtotal: this.orderSumary.fullPriceWithoutDiscount,
             shipping_price: 0,
-            discount: this.orderSumary.couponDiscount,
+            discount: this.orderSumary.discount + this.orderSumary.couponDiscount,
             total: this.orderSumary.total,
+            coupon_applied: this.orderSumary.couponCode,
         };
 
         await addOrder(dataForAddOrderRequest);        
@@ -163,6 +172,7 @@ export class orderSumary implements OnInit {
                     await addOrderItem(dataForAddOrderItemRequest);                    
                 } else return
             })
-        }) 
+        })         
+        this.orderSumaryService.clearOrderSumary();
     }
 }

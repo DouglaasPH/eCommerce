@@ -1,0 +1,208 @@
+@use '../../../../../variables.scss';
+
+.my-orders {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.8vw;
+    height: 7%;
+}
+
+.main-title {
+    @extend %font-poppins;
+    font-weight: 700;
+    font-size: 1.5vw;
+    color: #282828;
+}
+
+.order-icon {
+    width: 1.7vw;
+}
+
+.container-all-orders {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+}
+
+.container-order {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 1vw;    
+}
+
+.container-order-details-and-button {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 4vw;
+    border-bottom: 0.1vw solid #c5c5c5;
+}
+
+.order-details {
+    padding-left: 1vw;            
+    width: 88%;
+    display: flex;
+    align-items: center;
+    gap: 0.3vw;
+}
+
+.order-pargraph {
+    @extend %font-poppins;
+    font-weight: 800;
+    font-size: 1vw;
+    color: #4f4f4f;
+}
+
+.order-id, .separator, .order-date {
+    @extend %font-poppins;
+    font-weight: 400;
+    font-size: 1vw;
+    color: #636363;
+}
+
+.button-see-details {
+    margin-right: 1vw;
+    height: 60%;
+    width: 12%;
+    background-color: #282828;
+    border: none;
+    border-radius: 0.4vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8vw;
+}
+
+.paragraph-see-details {
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size: 0.9vw;
+    color: #ffffff;
+}
+
+.carret-right-icon {
+    width: 0.7vw;
+
+}
+
+
+.container-order-status, .container-method-purchase {
+    width: 100%;
+    height: 2vw;
+    display: flex;
+    align-items: center;
+    border-bottom: 0.1vw solid #c5c5c5;
+}
+
+.order-status {
+    margin-left: 1vw;
+    @extend %font-poppins;
+    font-weight: 600;
+    font-size: 1vw;
+    color: #282828;
+}
+
+.canceledOrder {
+    color: #ff0101;    
+}
+
+.container-method-purchase {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1vw;
+}
+
+.method-purchase {
+    margin-left: 1vw;    
+    @extend %font-poppins;
+    font-weight: 600;
+    font-size: 0.9vw;
+    color: #4f4f4f;
+}
+
+.pending-payment {
+    @extend %font-poppins;
+    font-weight: 700;
+    font-size: 0.8vw;
+    color: #ff0101;    
+}
+
+.container-all-order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    align-items: center;
+    width: 100%;
+}
+
+.order-item {
+    margin-top: 1vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;    
+    gap: 1vw;
+    width: 95%;
+    height: 5vw;
+}
+
+.item-image {
+    object-fit: cover;    
+    width: 5vw;
+    height: 5vw;
+    border: 0.1vw solid #c5c5c5;
+}
+
+.item-details {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;    
+}
+
+.item-name {
+    @extend %font-poppins;
+    font-weight: 600;
+    font-size: 1vw;
+    color: #282828;
+}
+
+.quantity {
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size: 0.9vw;
+    color: #454545;
+}
+
+.size {
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size: 0.9vw;
+    color: #454545;
+}
+
+strong {
+    @extend %font-poppins;
+    font-weight: 600;
+    font-size: 0.9vw;
+    color: #454545;    
+}
+
+button:hover {
+    cursor: pointer;
+}

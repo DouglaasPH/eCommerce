@@ -54,5 +54,71 @@ async function checkPassword(email: string, password: string) {
     }    
 }
 
+async function getAllOrders(user_id: number) {
+    try {
+        const response = await axios.get(`${API_URL}/getAllOrders`, {
+            params: {
+                user_id
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }    
+}
 
-export { getUserData, removeAccount, updateAccountDetails, checkPassword };
+async function getAllOrderItems(order_id: number) {
+    try {
+        const response = await axios.get(`${API_URL}/getAllOrderItems`, {
+            params: {
+                order_id
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }    
+}
+
+async function getAllPaymentFromOrder(order_id: number) {
+    try {
+        const response = await axios.get(`${API_URL}/getAllPaymentFromOrder`, {
+            params: {
+                order_id
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }    
+}
+
+async function getProductInformation(id: number) {
+    try {
+        const response = await axios.get(`${API_URL}/getProductInformation`, {
+            params: {
+                id
+            }
+        });
+        return response.data;
+    } catch (error) {
+        console.log(error);
+    }        
+}
+
+async function getAllOrderInformation(order_id: number) {
+    try {
+        const response = await axios.get(`${API_URL}/getAllOrderInformation`, {
+            params: {
+                order_id
+            }
+        });
+        return response.data[0];
+    } catch (error) {
+        console.log(error);
+    }        
+}
+
+
+
+export { getUserData, removeAccount, updateAccountDetails, checkPassword, getAllOrders, getAllPaymentFromOrder, getAllOrderItems, getProductInformation, getAllOrderInformation };

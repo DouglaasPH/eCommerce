@@ -3,6 +3,7 @@ import { getAllUserItem } from "../requests/shoppingCartRequests";
 import { getProductData } from "../requests/shopRequests";
 import { checkLoggined } from "../requests/loginRequests";
 import { confirmCoupon } from "../requests/couponsRequests";
+import { Subject } from "rxjs";
 
 interface Product {
     id: number;
@@ -41,6 +42,9 @@ export class OrderSumaryService {
     chosenDelivery = -1;
     choosePaymentMethod = '';
 
+    updateOrderSumaryCall = new Subject<string>();
+    updateOrderSumaryCall$ = this.updateOrderSumaryCall.asObservable();
+
     async updateOrderSumary() {
         const response_user_id = await checkLoggined();
         this.user_id = await response_user_id.id;
@@ -76,11 +80,13 @@ export class OrderSumaryService {
                         this.orderSumary.discount = Math.round((this.orderSumary.discount + ((item.quantity * this.productData[product_id].price) - (item.quantity * this.productData[product_id].price) * ((100 - this.productData[product_id].discount_percentage) / 100))) * 100) / 100;
                         this.orderSumary.total = Math.round((this.orderSumary.total + ((item.quantity * this.productData[product_id].price) * ((100 - this.productData[product_id].discount_percentage) / 100))) * 100) / 100; 
                     }
-                })                
-            })
-
+                })      
+            })            
             this.getCoupon();
+            this.orderSumary.total = this.orderSumary.total - this.orderSumary.couponDiscount;
         }
+
+        this.updateOrderSumaryCall.next('Call function');
     }
 
     async getOrderSumary() {
@@ -131,4 +137,25 @@ export class OrderSumaryService {
     setChosenPayment(paymentMethod: string) {
         this.choosePaymentMethod = paymentMethod;
     }
+
+    clearOrderSumary() {
+        this.shoppingCart = [];
+        this.productData = [];
+        this.orderSumary = {
+            fullPriceWithoutDiscount: 0,
+            couponCode: '',
+            discount: 0,
+            shipping: "undefined",
+            couponDiscount: 0,
+            total: 0,
+            estimatedDelivery: "undefined",        
+        }
+        this.user_id = -1;
+        this.allProductIds = [];
+        this.chosenAddress = -1;
+        this.chosenDelivery = -1;
+        this.choosePaymentMethod = '';        
+        sessionStorage.clear();
+    }
+
 };

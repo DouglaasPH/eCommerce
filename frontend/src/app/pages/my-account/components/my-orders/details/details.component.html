@@ -1,0 +1,127 @@
+
+<div class="container-details">
+    <div class="container-title">
+        <img src="../../../../../assets/icons/my-orders-icon-with-background.svg" alt="order icon" class="order-icon">
+        <h2 class="main-title">MY ORDERS</h2>
+    </div>
+    <div class="container-order-info">
+        <div class="order-details">
+            <strong class="order-pargraph">Order:</strong>
+            <p class="order-id">{{ order.id }}</p>
+            <p class="separator">-</p>
+            <p class="order-date">{{ order.created_at | date: 'medium' }}</p>
+        </div>
+        <h3 class="order-status" [ngClass]="{ 'pending-order-or-canceled-order': order.status === 'Pending' || order.status === 'Canceled order' }">{{ order.status }}.</h3>
+    </div>
+    <div class="div-row-direction">
+        <div class="container-order" [ngStyle]="{ 'height': ((allOrderItems.length * 6) + 10) + 'vw' }">
+            <div class="container-all-order-items">
+                <ng-container *ngFor="let item of allOrderItems">
+                    <div class="order-item">
+                        <ng-container *ngFor="let product of allProductsFromOrders">
+                            <img src="../../../../../assets{{ product.images_path }}" alt="" class="item-image" *ngIf="product.id === item.product_id">
+                        </ng-container>
+                        <div class="container-item-details-and-price">
+                            <div class="item-details">
+                                <ng-container *ngFor="let product of allProductsFromOrders">
+                                    <p class="item-name" *ngIf="product.id === item.product_id">{{ product.description }}</p>
+                                </ng-container>
+                                <p class="quantity" >Quantity: <strong>{{ item.quantity }}</strong></p>
+                                <p class="size">Size: <strong>{{ item.size }}</strong></p>
+                            </div>
+                            <div class="container-item-price">
+                                <h2 class="item-price">${{ item.price }}</h2>
+                            </div>
+
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="container-delivery-status">
+                <div class="container-status-and-date">
+                    <p class="status" [ngClass]="{ 'toUpdateStatusAndDate': order.status !== 'Pending' }">Order received</p>
+                    <ng-container *ngFor="let date of order.status_history">
+                        <p class="date toUpdateStatusAndDate" *ngIf="date.status === 'Order received'">{{ date.updated_at | date: 'dd/MM/yyyy HH:mm:ss'  }}</p>
+                    </ng-container>
+                </div>
+                <div class="container-feature">
+                    <img src="../../../../../../assets/icons/feature-icon.svg" alt="feature icon" class="feature-icon" *ngIf="order.status === 'Pending'">
+                    <img src="../../../../../../assets/icons/feature-update-icon.svg" alt="feature icon" class="feature-icon" *ngIf="order.status !== 'Pending' && (order.status === 'Order received' || order.status === 'Sent to the carrier' || order.status === 'Received by the carrier' || order.status === 'Goods in transit' || order.status === 'Canceled order' || order.status === 'Delayed order')">
+                </div>
+                <div class="container-status-and-date">
+                    <p class="status" [ngClass]="{ 'toUpdateStatusAndDate': order.status !== 'Pending' && order.status !== 'Order received' }">Sent to the carrier</p>
+                    <ng-container *ngFor="let date of order.status_history">
+                        <p class="date toUpdateStatusAndDate" *ngIf="date.status === 'Sent to the carrier'">{{ date.updated_at | date: 'dd/MM/yyyy HH:mm:ss' }}</p>
+                    </ng-container>
+                </div>
+                <div class="container-feature">
+                    <img src="../../../../../../assets/icons/feature-icon.svg" alt="feature icon" class="feature-icon" *ngIf="order.status === 'Pending' || order.status === 'Order received'">
+                    <img src="../../../../../../assets/icons/feature-update-icon.svg" alt="feature icon" class="feature-icon" *ngIf="order.status !== 'Pending' && order.status !== 'Order received' && (order.status === 'Sent to the carrier' || order.status === 'Received by the carrier' || order.status === 'Goods in transit' || order.status === 'Canceled order' || order.status === 'Delayed order')">
+                </div>
+                <div class="container-status-and-date">
+                    <p class="status" [ngClass]="{ 'toUpdateStatusAndDate': order.status !== 'Pending' && order.status !== 'Order received' && order.status !== 'Sent to the carrier' }">Received by the carrier</p>
+                    <ng-container *ngFor="let date of order.status_history">
+                        <p class="date toUpdateStatusAndDate" *ngIf="date.status === 'Received by the carrier'">{{ date.updated_at | date: 'dd/MM/yyyy HH:mm:ss'  }}</p>
+                    </ng-container>
+                </div>
+                <div class="container-feature">
+                    <img src="../../../../../../assets/icons/feature-icon.svg" alt="feature icon" class="feature-icon" *ngIf="order.status === 'Pending' || order.status === 'Order received' || order.status === 'Sent to the carrier'">
+                    <img src="../../../../../../assets/icons/feature-update-icon.svg" alt="feature icon" class="feature-icon" *ngIf="order.status !== 'Pending' && order.status !== 'Order received' && order.status !== 'Sent to the carrier' && (order.status === 'Received by the carrier' || order.status === 'Goods in transit' || order.status === 'Canceled order' || order.status === 'Delayed order')">
+                </div>                
+                <div class="container-status-and-date">
+                    <p class="status" [ngClass]="{ 'toUpdateStatusAndDate': order.status !== 'Pending' && order.status !== 'Order received' && order.status !== 'Sent to the carrier' && order.status !== 'Received by the carrier' }">Goods in transit</p>
+                    <ng-container *ngFor="let date of order.status_history">
+                        <p class="date toUpdateStatusAndDate" *ngIf="date.status === 'Goods in transit'">{{ date.updated_at | date: 'dd/MM/yyyy HH:mm:ss'  }}</p>
+                    </ng-container>
+                </div>
+                <div class="container-feature">
+                    <img src="../../../../../../assets/icons/feature-icon.svg" alt="feature icon" class="feature-icon" *ngIf="order.status === 'Pending' || order.status === 'Order received' || order.status === 'Sent to the carrier' || order.status === 'Received by the carrier'">
+                    <img src="../../../../../../assets/icons/feature-update-icon.svg" alt="feature icon" class="feature-icon" *ngIf="order.status !== 'Pending' && order.status !== 'Order received' && order.status !== 'Sent to the carrier' && order.status !== 'Received by the carrier' && (order.status === 'Goods in transit' || order.status === 'Order delivered' || order.status === 'Canceled order' || order.status === 'Delayed order')">
+                </div>                
+                <div class="container-status-and-date">
+                    <p class="status" [ngClass]="{ 'toUpdateStatusAndDate': order.status !== 'Pending' && order.status !== 'Order received' && order.status !== 'Sent to the carrier' && order.status !== 'Received by the carrier' && order.status !== 'Goods in transit' }">{{ order.status ===  'Delayed order' ? 'Delayed order' : order.status ===  'Canceled order' ? 'Canceled order' : 'Order delivered'}}</p>
+                    <ng-container *ngFor="let date of order.status_history | filterStatus:['Order delivered', 'Canceled order', 'Delayed order'] | slice:-1">
+                        <p class="date toUpdateStatusAndDate">{{ date.updated_at | date: 'dd/MM/yyyy HH:mm:ss'  }}</p>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        <div class="container-delivery-and-price-information">
+            <div class="container-delivery-information">
+                <p class="sender">{{ order.address.sender }}</p>
+                <p class="address">{{order.address.logradouro}}, {{order.address.number}}, {{order.address.complement}}, {{order.address.city}}, {{order.address.uf}}</p>
+            </div>
+            <div class="container-payment-method">
+                <h2 class="payment-method"> Payment via {{ paymentsFromOrder.payment_method }}</h2>
+            </div>
+            <div class="container-price-information">
+                <div class="container-subtotal">
+                    <h4 class="subtotal-title">Product(s) total:</h4>
+                    <h4 class="subtotal-value">${{ order.subtotal }}</h4>
+                </div>
+                <div class="container-shipping">
+                    <h4 class="shipping-title">Shipping:</h4>
+                    <h4 class="shipping-value">undefined</h4>
+                </div>
+                <div class="container-discount">
+                    <h4 class="discount-title">Discount</h4>
+                    <h4 class="discount-value">- ${{ order.discount }}</h4>
+                </div>
+                <div class="container-coupon-applied">
+                    <h4 class="coupon-applied-title">Coupon Applied</h4>
+                    <h4 class="coupon-applied-value">{{ order.coupon_applied }}</h4>
+                </div>
+                <div class="container-total">
+                    <h5 class="total-title">Order total:</h5>
+                    <h5 class="total-value">${{ order.total }}</h5>
+                </div>
+            </div>
+            <div class="container-return-to-my-orders-button">
+                <button class="return-button" (click)="returnToMyOrders()">
+                    <img src="../../../../../../assets/icons/carret-left-icon-with-background-black.svg" alt="carret left icon" class="carret-left-icon">
+                    <p class="paragraph-return-to-my-orders">RETURN TO MY ORDERS</p>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

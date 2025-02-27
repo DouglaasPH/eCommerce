@@ -2,22 +2,56 @@ import { Component, OnInit } from "@angular/core";
 import { navBar } from "../../shared/nav-bar/nav-bar.component";
 import { LeftNavBar } from "./left-nav-bar/left-nav-bar.component";
 import { FooterBar } from "../../shared/footer-bar/footer-bar.component";
-import { MyData } from "./components/my-data/my-data.component";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, RouterOutlet } from "@angular/router";
+import { CommonModule } from "@angular/common";
+import { checkLoggined } from "../../requests/loginRequests";
+import { getAllOrderItems, getAllOrders } from "../../requests/userDataRequests";
+
+interface Order {
+    id: number
+    created_at: string
+    status: string
+}
 
 @Component({
     selector: 'my-account',
     standalone: true,
-    imports: [navBar, LeftNavBar, FooterBar, MyData],
+    imports: [CommonModule, navBar, LeftNavBar, FooterBar, RouterOutlet],
     templateUrl: './my-account.component.html',
     styleUrl: './my-account.component.scss'
 })
 export class MyAccountPage implements OnInit {
     constructor(private route: ActivatedRoute) { }
     currentSection = '';
+    ordersQuantity = 0;
+    itemsOrdersQuantity = 0;
+    currentOrderIdFromDetails = 0;
+    quantityOfItemsForDetails = 0;
 
     async ngOnInit() {
-        this.currentSection = this.route.snapshot.paramMap.get('section')!;
-        console.log(this.currentSection)
+        this.route.children.forEach(async child => {
+            console.log(child.snapshot.url)
+            if (child.snapshot.url[1]?.path === 'details') {
+                this.currentSection = 'details';
+                this.currentOrderIdFromDetails = Number(child.snapshot.url[2]?.path);
+                const response = await getAllOrderItems(this.currentOrderIdFromDetails);
+                this.quantityOfItemsForDetails = response.length;
+            } else {
+                this.currentSection = child.snapshot.url[0]?.path;                
+        }
+    });        
+
+        if (this.currentSection === 'my-orders') {
+            const first_response = await checkLoggined();
+            const user_id = first_response.id;
+        
+            const second_response: Order[] = await getAllOrders(user_id);
+            this.ordersQuantity = second_response.length;
+
+            second_response.forEach(async order => {
+                const third_response = await getAllOrderItems(order.id);
+                this.itemsOrdersQuantity = third_response.length + this.itemsOrdersQuantity;
+            });
+        }
     }
 }

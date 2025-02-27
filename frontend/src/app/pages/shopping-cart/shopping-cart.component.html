@@ -1,6 +1,6 @@
 <nav-bar></nav-bar>
 
-<div class="container-my-shopping-cart">
+<div class="container-my-shopping-cart" *ngIf="shoppingCart.length !== 0">
     <div class="div-direction-row">
         <div class="container-title">
             <h1 class="title-shopping-cart">Cart</h1>
@@ -52,6 +52,15 @@
     <div class="div-direction-column">
         <order-sumary></order-sumary>
     </div>
+</div>
+
+<div class="shopping-cart-without-shopping" *ngIf="shoppingCart.length === 0">
+    <h1 class="title">Your cart this empty.</h1>
+    <p class="paragraph">Want to look at other similar products?</p>
+    <button class="redirect-to-shopping-button" (click)="onShopping()">
+        <img src="../../../assets/icons/shopping-cart-icon-with-background-white.svg" alt="shopping cart icon" class="shopping-cart-icon">
+        <p>CONTINUE SHOPPING</p>
+    </button>
 </div>
 
 <footer-bar></footer-bar>

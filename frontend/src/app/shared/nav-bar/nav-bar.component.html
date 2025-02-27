@@ -1,6 +1,6 @@
 <div class="nav-bar-component">
     <div class="container-logo">
-        <h1 class="logo">FASCO</h1>
+        <h1 class="logo" (click)="onHome()">FASCO</h1>
     </div>
     <div class="container-redirect-buttons-between-pages">
             <a (click)="onHome()" class="redirect-to-home-button" [ngClass]="{ 'currentPage': currentRoute === '/' }">Home</a>
@@ -9,13 +9,16 @@
     <div class="container-user" *ngIf="isLogginned">
         <a class="redirect-user" (click)="onMyAccountMyData()"> 
             <img src="../../../assets/icons/user-icon-without-background.svg" alt="my account">
-        </a>        
-        <a class="redirect-user">
-            <img src="../../../assets/icons/shopping-cart-icon.svg" alt="my purchases">
-        </a>        
+        </a>
+        <a class="redirect-user" (click)="onMyOrders()">
+            <img src="../../../assets/icons/my-orders-icon-without-background.svg" alt="my orders">
+        </a>
         <a class="redirect-user">
             <img src="../../../assets/icons/favorite-unselected-icon.svg" alt="favorites">
         </a>
+        <a class="redirect-user" (click)="onShoppingCart()">
+            <img src="../../../assets/icons/shopping-cart-icon-without-background.svg" alt="">
+        </a>        
     </div>
     <div class="container-redirect-buttons-login" *ngIf="!isLogginned">
             <a href="login/sign-in" class="redirect-button-sign-in" (click)="onButtonSignIn()">Sign in</a>

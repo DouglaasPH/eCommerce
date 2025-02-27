@@ -1,0 +1,46 @@
+<div class="my-orders">
+    <div class="container-title">
+        <img src="../../../../../assets/icons/my-orders-icon-with-background.svg" alt="order icon" class="order-icon">
+        <h2 class="main-title">MY ORDERS</h2>
+    </div>
+    <div class="container-all-orders">
+        <div class="container-order" *ngFor="let order of allOrders; let i = index" [ngStyle]="{ 'height': (((setHeight(order)) * 8) + 9) + 'vw' }">
+            <div class="container-order-details-and-button">
+                <div class="order-details">
+                    <strong class="order-pargraph">Order:</strong>
+                    <p class="order-id">{{ order.id }}</p>
+                    <p class="separator">-</p>
+                    <p class="order-date">{{ order.created_at | date: 'medium' }}</p>
+                </div>
+                <button class="button-see-details" (click)="seeDetails(order.id)">
+                    <p class="paragraph-see-details">SEE DETAILS</p>
+                    <img src="../../../../../assets/icons/carret-right-icon-with-background-white.svg" alt="carret righ icon" class="carret-right-icon">
+                </button> 
+            </div>
+            <div class="container-order-status">
+                <h2 class="order-status" [ngClass]="{ 'canceledOrder': order.status === 'Canceled order' }">{{ order.status }}.</h2>
+            </div>
+            <div class="container-method-purchase">
+                <p class="method-purchase">Payment via {{ allPaymentsFromOrders[i]?.payment_method}}.</p>
+                <p class="pending-payment" *ngIf="allPaymentsFromOrders[i]?.status === 'pending'">(Pending Payment)</p>
+            </div>
+            <div class="container-all-order-items" [ngStyle]="{ 'height': (setHeight(order) * 8) + 'vw' }">
+                <ng-container *ngFor="let item of allOrdersItems">
+                    <div class="order-item" *ngIf="order.id === item.order_id">
+                        <ng-container *ngFor="let product of allProductsFromOrders">
+                            <img src="../../../../../assets{{ product.images_path }}" alt="" class="item-image" *ngIf="product.id === item.product_id">
+                        </ng-container>
+                        <div class="item-details">
+                            <ng-container *ngFor="let product of allProductsFromOrders">
+                                <p class="item-name" *ngIf="product.id === item.product_id">{{ product.description }}</p>
+                            </ng-container>
+                            <p class="quantity" >Quantity: <strong>{{ item.quantity }}</strong></p>
+                            <p class="size">Size: <strong>{{ item.size }}</strong></p>
+                        </div>
+                    </div>
+                </ng-container>
+
+            </div>
+        </div>
+    </div>
+</div>

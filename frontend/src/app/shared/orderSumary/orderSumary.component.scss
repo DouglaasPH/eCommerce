@@ -74,8 +74,8 @@
 .submit-coupom-code {
     position: absolute;
     right: 7vw;
-    height: 4%;
-    top: 32vw;
+    height: 2vw;
+    top: 29.6vw;
 }
 
 .container-buttons {
@@ -124,14 +124,14 @@ button:hover {
     justify-content: center;
     color: #1f1f1f;
     
-    opacity: 0;  /* Começa invisível */
-    visibility: hidden; /* Oculta para não ser clicável */
+    opacity: 0;
+    visibility: hidden;
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 
 .loading-icon, .confirm-icon {
     z-index: 999999999;
-    opacity: 0;  /* Começa invisível */
+    opacity: 0;
     visibility: hidden;
     transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
 }
@@ -139,14 +139,14 @@ button:hover {
 .backgroundDivForLoadOrConfirm.active,
 .loading-icon.active,
 .confirm-icon.active {
-    opacity: 1; /* Torna visível */
+    opacity: 1;
     visibility: visible;
 }
 
 .backgroundDivForLoadOrConfirm.inactive,
 .loading-icon.inactive,
 .confirm-icon.inactive {
-    opacity: 0; /* Desvanece ao sumir */
+    opacity: 0;
     visibility: hidden;
 }
 

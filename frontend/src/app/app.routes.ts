@@ -21,6 +21,9 @@ import { AddressGuard } from './guards/address.guard';
 import { ShippingGuard } from './guards/shipping.guard';
 import { PaymentGuard } from './guards/payment.guard';
 import { MyAccountPage } from './pages/my-account/my-account.component';
+import { Details } from './pages/my-account/components/my-orders/details/details.component';
+import { MyData } from './pages/my-account/components/my-data/my-data.component';
+import { MyOrders } from './pages/my-account/components/my-orders/my-orders.component';
 
 export const routes: Routes = [
     { path: "", component: HomePage },    
@@ -46,7 +49,12 @@ export const routes: Routes = [
     { path: 'shopping-cart/address/shipping', component: Shipping, canActivate: [ShippingGuard] },    
     { path: 'shopping-cart/address/shipping/payment', component: Payment, canActivate: [PaymentGuard] },
 
-    { path: 'my-account/:section', component: MyAccountPage}
+    {
+        path: 'my-account', component: MyAccountPage, children: [
+            { path: 'my-data', component: MyData },
+            { path: 'my-orders', component: MyOrders },
+            { path: 'my-orders/details/:order_id', component: Details }
+    ] },
 ];
 
 @NgModule({

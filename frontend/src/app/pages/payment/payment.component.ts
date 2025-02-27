@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy } from "@angular/core";
 import { navBar } from "../../shared/nav-bar/nav-bar.component";
 import { FooterBar } from "../../shared/footer-bar/footer-bar.component";
 import { CommonModule } from "@angular/common";
@@ -19,8 +19,12 @@ interface creditCard {
     templateUrl: './payment.component.html',
     styleUrl: './payment.component.scss',
 })
-export class Payment {
-    constructor(private orderSumaryService: OrderSumaryService, private orderDataService: OrderDataService) {}
+export class Payment implements OnDestroy {
+    constructor(private orderSumaryService: OrderSumaryService, private orderDataService: OrderDataService) { }
+    
+    ngOnDestroy(): void {
+        this.orderSumaryService.clearOrderSumary();
+    }
 
     creditCardData: creditCard = {
         card_number: '',

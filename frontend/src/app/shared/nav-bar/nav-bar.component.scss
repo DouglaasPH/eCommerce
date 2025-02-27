@@ -102,7 +102,7 @@
 
 .container-user {
     height: 100%;    
-    width: 8%;
+    width: 9vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,7 +114,11 @@
 }
 
 .redirect-user:last-child > img {
-    width: 1.4vw;
+    width: 1.7vw;
+}
+
+.redirect-user:nth-child(3) > img {
+    width: 1.6vw;
 }
 
 .redirect-user:hover {

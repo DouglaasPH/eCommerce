@@ -1,12 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { FooterBar } from "../../shared/footer-bar/footer-bar.component";
 import { navBar } from "../../shared/nav-bar/nav-bar.component";
-import { CommonModule } from "@angular/common";
+import { CommonModule, Location } from "@angular/common";
 import { removeItem, updateItem } from "../../requests/shoppingCartRequests";
 import { FormsModule } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ProcessPurchaseService } from "../../services/processPurchase.service";
 import { orderSumary } from "../../shared/orderSumary/orderSumary.component";
+import { OrderSumaryService } from "../../services/orderSumary.service";
 
 interface Product {
     id: number;
@@ -26,8 +27,9 @@ interface Product {
     styleUrl: './shopping-cart.component.scss',
 })
 export class ShoppingCart implements OnInit {
-    constructor(private router: Router, private processPurchaseService: ProcessPurchaseService) { }
+    constructor(private router: Router, private processPurchaseService: ProcessPurchaseService, private location: Location, private orderSumaryService: OrderSumaryService) { }
     
+
     browsingHistory: string[] = JSON.parse(sessionStorage.getItem('browsingHistory') || '[]');
     
     shoppingCart: any[] = [];
@@ -87,5 +89,12 @@ export class ShoppingCart implements OnInit {
             }
         }
         await this.updateProperties();
+        await this.orderSumaryService.updateOrderSumary();        
+        console.log(this.orderSumaryService.getOrderSumary());
+    }
+
+    onShopping() {
+        this.location.replaceState('/shop');
+        window.location.reload();
     }
 };

@@ -1,4 +1,4 @@
-import { CommonModule } from "@angular/common";
+import { CommonModule, Location } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { checkLoggined } from "../../requests/loginRequests";
 import { Router } from "@angular/router";
@@ -11,7 +11,7 @@ import { Router } from "@angular/router";
     styleUrl: './nav-bar.component.scss',
 })
 export class navBar implements OnInit {
-    constructor(private router: Router) { }
+    constructor(private router: Router, private location: Location) { }
     isLogginned = false;
     currentRoute = '';
 
@@ -26,23 +26,38 @@ export class navBar implements OnInit {
     }
 
     onButtonSignIn() {
-        this.router.navigate(['/login/sign-in']);
+        this.location.replaceState('/login/sign-in');
+        window.location.reload();
     }
 
     onButtonSignUp() {
-        this.router.navigate(['/login/sign-up']);
+        this.location.replaceState('/login/sing-up');
+        window.location.reload();
     }
 
     onHome() {
-        this.router.navigate(['/']);
+        this.location.replaceState('/');
+        window.location.reload();
     }
 
     onShop() {
-        this.router.navigate(['/shop']);
+        this.location.replaceState('/shop');
+        window.location.reload();
     }
 
     onMyAccountMyData() {
-        this.router.navigate(['/my-account', 'my-data']);
+        this.location.replaceState('/my-account/my-data');
+        window.location.reload();
+    }
+
+    onMyOrders() {
+        this.location.replaceState('/my-account/my-orders');
+        window.location.reload();
+    }
+
+    onShoppingCart() {
+        this.location.replaceState('/shopping-cart');        
+        window.location.reload();
     }
 
 
