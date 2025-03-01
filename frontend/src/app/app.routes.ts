@@ -24,6 +24,7 @@ import { MyAccountPage } from './pages/my-account/my-account.component';
 import { Details } from './pages/my-account/components/my-orders/details/details.component';
 import { MyData } from './pages/my-account/components/my-data/my-data.component';
 import { MyOrders } from './pages/my-account/components/my-orders/my-orders.component';
+import { Favorites } from './pages/my-account/components/favorites/favorites.component';
 
 export const routes: Routes = [
     { path: "", component: HomePage },    
@@ -53,8 +54,9 @@ export const routes: Routes = [
         path: 'my-account', component: MyAccountPage, children: [
             { path: 'my-data', component: MyData },
             { path: 'my-orders', component: MyOrders },
-            { path: 'my-orders/details/:order_id', component: Details }
-    ] },
+            { path: 'my-orders/details/:order_id', component: Details },
+            { path: 'favorites', component: Favorites }
+    ], /*canActivate: [AuthGuard]*/ },
 ];
 
 @NgModule({

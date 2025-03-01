@@ -16,7 +16,7 @@
 button {
     display: flex;
     align-items: center;
-    height: 10%;
+    height: 5vw;
     padding-left: 1vw;
     gap: 2vw;
     border: none;
@@ -45,7 +45,7 @@ img {
 p {
     padding-left: 5vw;
     @extend %font-poppins;
-    font-size: 1vw;
-    font-weight: 400;
+    font-size: 1.1vw;
+    font-weight: 500;
     color: #1f1f1f;
 }

@@ -23,4 +23,10 @@ export class LeftNavBar {
         history.replaceState(null, '', '/my-account/my-orders');
         window.location.reload()
     }    
+
+    onFavorites() {
+        this.router.navigate(['/my-account', 'favorites']);
+        history.replaceState(null, '', '/my-account/favorites');
+        window.location.reload()
+    }
 }

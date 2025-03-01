@@ -6,6 +6,7 @@ import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { checkLoggined } from "../../requests/loginRequests";
 import { getAllOrderItems, getAllOrders } from "../../requests/userDataRequests";
+import { getAllFavoritesFromUser } from "../../requests/favoritesRequest";
 
 interface Order {
     id: number
@@ -27,10 +28,10 @@ export class MyAccountPage implements OnInit {
     itemsOrdersQuantity = 0;
     currentOrderIdFromDetails = 0;
     quantityOfItemsForDetails = 0;
+    quantityOfFavoriteProducts = 0;
 
     async ngOnInit() {
         this.route.children.forEach(async child => {
-            console.log(child.snapshot.url)
             if (child.snapshot.url[1]?.path === 'details') {
                 this.currentSection = 'details';
                 this.currentOrderIdFromDetails = Number(child.snapshot.url[2]?.path);
@@ -39,7 +40,7 @@ export class MyAccountPage implements OnInit {
             } else {
                 this.currentSection = child.snapshot.url[0]?.path;                
         }
-    });        
+    });
 
         if (this.currentSection === 'my-orders') {
             const first_response = await checkLoggined();
@@ -52,6 +53,15 @@ export class MyAccountPage implements OnInit {
                 const third_response = await getAllOrderItems(order.id);
                 this.itemsOrdersQuantity = third_response.length + this.itemsOrdersQuantity;
             });
+        }
+
+        if (this.currentSection === 'favorites') {
+            const first_response = await checkLoggined();
+            const user_id = first_response.id;
+
+            const second_response = await getAllFavoritesFromUser(user_id);
+            const isArray = JSON.parse(second_response.favorites);
+            this.quantityOfFavoriteProducts = isArray.length;
         }
     }
 }

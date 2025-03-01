@@ -1,0 +1,42 @@
+<div class="favorites" *ngIf="allFavoriteProducts.length > 0">
+    <div class="container-title">
+        <img src="../../../../../assets/icons/favorite-selected-icon.svg" alt="favorite icon" class="favorite-icon">
+        <h2 class="main-title">FAVORITES</h2>
+    </div>
+    <div class="container-all-favorites">
+        <div class="container-favorite" *ngFor="let product of allFavoriteProducts">
+            <div class="container-image">
+                <img src="../../../../../assets{{ product.images_path }}" alt="product image" class="product-image">
+            </div>
+            <div class="container-product-description">
+                <p class="product-description">{{ product.description }}</p>
+            </div>
+            <div class="container-product-price">
+                <div class="container-price-discount">
+                    <p class="previous-price" *ngIf="product.discount_percentage !== 0">Of $ {{product.price}}</p>
+                    <p class="discount" *ngIf="product.discount_percentage !== 0">- {{product.discount_percentage}}%</p>
+                </div>
+                <p class="current-price">For $ {{(product.discount_percentage !== 0 ? product.price * (1 - product.discount_percentage / 100) : product.price) | number: '1.2-2'}}</p>
+                <p class="interest-free-installments">{{ product.number_of_interest_free_installments }}x of $ {{(product.discount_percentage !== 0 ? product.price * (1 - product.discount_percentage / 100) / product.number_of_interest_free_installments : product.price / product.number_of_interest_free_installments) | number: '1.2-2' }} interest free</p>                
+            </div>
+            <div class="container-buy-button-and-favorite-button">
+                <button class="favorite-button" (click)="onUnfavorite(product)">
+                    <img src="../../../../../assets/icons/favorite-selected-icon.svg" alt="favorite button" class="favorite-icon">
+                </button>
+                <button class="buy-button" (click)="onBuy(product.id!)">
+                    <img src="../../../../../assets/icons/shopping-cart-icon-with-background-white.svg" alt="shopping cart icon" class="shopping-cart-icon">
+                    <p class="button-paragraph">BUY</p>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="favorite-without-favorites" *ngIf="allFavoriteProducts.length === 0">
+    <h1 class="title">Your favorites list is empty.</h1>
+    <p class="paragraph">But don't worry, just click on the heart icon and the product will be added to your favorites list.</p>
+    <button class="redirect-to-shopping-button" (click)="onShopping()">
+        <img src="../../../../../assets/icons/shopping-cart-icon-with-background-white.svg" alt="shopping cart icon" class="shopping-cart-icon">
+        <p>CONTINUE SHOPPING</p>
+    </button>
+</div>
