@@ -1,4 +1,4 @@
-<div class="my-orders">
+<div class="my-orders" *ngIf="allOrders.length !== 0">
     <div class="container-title">
         <img src="../../../../../assets/icons/my-orders-icon-with-background.svg" alt="order icon" class="order-icon">
         <h2 class="main-title">MY ORDERS</h2>
@@ -43,4 +43,8 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="my-orders-without-orders" *ngIf="allOrders.length === 0">
+    <h1 class="title">You have no orders.</h1>
 </div>

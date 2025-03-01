@@ -1,6 +1,6 @@
 <nav-bar></nav-bar>
 
-<div class="main" [ngStyle]="{ 'height': currentSection === 'my-orders' ? ((itemsOrdersQuantity * 12) + (ordersQuantity * 6) ) + 'vw' : currentSection === 'details' ? ((quantityOfItemsForDetails * 8) + 32) + 'vw'  : currentSection === 'my-data' ? '50vw' : null  }">
+<div class="main" [ngStyle]="{ 'height': currentSection === 'my-orders' && ordersQuantity > 0 ? ((itemsOrdersQuantity * 12) + (ordersQuantity * 6) ) + 'vw' :    currentSection === 'my-orders' && ordersQuantity === 0 ? 30 + 'vw' :  currentSection === 'details' ? ((quantityOfItemsForDetails * 8) + 32) + 'vw'  : currentSection === 'my-data' ? '50vw' : null  }">
     <div class="container-left-nav-bar" [ngStyle]="{ 'height': currentSection === 'my-orders' ? ((itemsOrdersQuantity * 11) + (ordersQuantity * 5)) + 'vw' : currentSection === 'details' ? ((quantityOfItemsForDetails * 8) + 28) + 'vw'  : currentSection === 'my-data' ? '50vw' : null  }">
         <left-nav-bar></left-nav-bar>
     </div>
