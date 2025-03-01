@@ -7,6 +7,7 @@ import orderController from "./app/controllers/order-controller.js";
 import paymentsController from "./app/controllers/payments-controller.js";
 import installmentController from "./app/controllers/installment-controller.js";
 import userDataController from "./app/controllers/user-data-controller.js";
+import favoritesController from "./app/controllers/favorites-controller.js";
 
 const router = Router();
 
@@ -75,6 +76,13 @@ router.get('/getAllPaymentFromOrder', userDataController.getAllPaymentFromOrder)
 router.get('/getAllOrderItems', userDataController.getAllOrderItems);
 router.get('/getProductInformation', userDataController.getProductInformation);
 router.get('/getAllOrderInformation', userDataController.getAllOrderInformation);
+
+
+// ROUTES ABOUT FAVORITES FROM USER
+router.get('/getAllFavoritesFromUser', favoritesController.getAllFavoritesFromUser);
+router.put('/updateFavoritesFromUser', favoritesController.updateFavoritesFromUser);
+router.get('/getAllProductFavorite', favoritesController.getAllProductFavorite);
+
 
 
 export default router;
