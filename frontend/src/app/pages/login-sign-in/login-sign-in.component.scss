@@ -12,14 +12,14 @@
 }
 
 .description {
-    @extend %font-volkhov;
-    font-weight: 100;
-    font-size: 1.2rem;
-    color: #0a0a0a;
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size: 1.2vw;
+    color: #1f1f1f;
 }
 
 .button-log-in-with-google-or-gmail {
-    height: 20%;
+    height: 6vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -27,30 +27,31 @@
 }
 
 .button-log-in-with-google, .button-log-in-with-gmail {
-    background-color: #d7d7d7;
+    background-color: transparent;
     border: none;
-    width: 45%;
-    height: 48%;
+    width: 13vw;
+    height: 3vw;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 4%;
-    border-radius: 0.5rem;
+    gap: 1vw;
+    border-radius: 0.5vw;
+    border: 0.1vw solid #8a8a8a;
 }
 
 .button-description-google, .button-description-gmail {
     @extend %font-poppins;
-    font-size: 80%;
+    font-size: 0.8vw;
     font-weight: 500;
 }
 
 .google-mark, .gmail-mark {
-    height: 60%;
+    height: 1.5vw;
 }
 
 .container-or {
-    height: 10%;
+    height: 4vw;
     display: flex;
     justify-content: center;
 }
@@ -59,10 +60,11 @@
     @extend %font-poppins;
     font-weight: 600;
     color: #838383;
+    font-size: 1.8vw;
 }
 
 .data-entry-container {
-    height: 20%;
+    height: 5vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -71,13 +73,13 @@
 .input-email, .input-password {
     @extend %font-poppins;
     font-weight: 500;
-    font-size: 75%;
+    font-size: 0.9vw;
     color: #000000;
-    height: 50%;
+    height: 5vw;
     border: none;
     background-color: transparent;
-    border-bottom: 0.1rem solid #9d9d9d;
-    padding: 1%;
+    border-bottom: 0.1vw solid #9d9d9d;
+    padding: 0.1vw;
 }
 
 input::placeholder {
@@ -85,7 +87,7 @@ input::placeholder {
 }
 
 .container-redirect-buttons {
-    height: 30%;
+    height: 9vw;
     display: flex;
     flex-direction: column;    
     justify-content: space-between;
@@ -94,9 +96,9 @@ input::placeholder {
 .button-sign-in, .button-register-now {
     @extend %font-poppins;
     font-weight: 400;
-    font-size: 75%;
-    height: 30%;
-    border-radius: 0.4rem;
+    font-size: 0.8vw;
+    height: 2.7vw;
+    border-radius: 0.6vw;
 }
 
 .button-sign-in {
@@ -113,7 +115,7 @@ input::placeholder {
 }
 
 .container-button-forget-password {
-    height: 30%;
+    height: 2.6vw;
     display: flex;
     justify-content: end;
 }
@@ -121,7 +123,7 @@ input::placeholder {
 .button-forget-password {
     @extend %font-poppins;
     font-weight: 600;
-    font-size: 70%;
+    font-size: 0.8vw;
     text-align: start;
     border: none;
     background-color: transparent;

@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { Router, RouterModule } from "@angular/router";
-import { createAccount, validateEmail } from "../../requests/loginRequests";
+import { createAccount, validateEmail } from "../../requests/forLogin";
 import { CommonModule } from "@angular/common";
 
 @Component({
@@ -21,6 +21,7 @@ export class LoginSignUp {
     password = '';
     confirmPassword = '';
     invalidEmail = false;
+    differentPasswords = false;
 
 
     onInputPhoneNumber(event: Event): void {
@@ -48,18 +49,16 @@ export class LoginSignUp {
     }
 
     async onSubmit() {
-        const regexForEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         const regexForPhoneNumber = /^\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$/;
 
-        if (regexForEmail.test(this.email) && regexForPhoneNumber.test(this.phoneNumber) && this.firstName !== '' && this.lastName !== '' && this.email !== '' && this.password === this.confirmPassword) {
-            const requestValidateEmail = await validateEmail(this.email);            
-            console.log('passou')
+        if (!this.invalidEmail && regexForPhoneNumber.test(this.phoneNumber) && this.firstName !== '' && this.lastName !== '' && !this.differentPasswords) {
+            const requestValidateEmail = await validateEmail(this.email);
             if (!requestValidateEmail.registeredEmail) {
                 const request = await createAccount({ name: this.firstName + ' ' + this.lastName, email: this.email, phone_number: this.phoneNumber, password: this.password });
             
                 if (request.accountCreate) {
                     this.router.navigate(['/login/sign-in']);
-                } else return;   
+                } else return;
             } else {
                 this.invalidEmail = true;
             }
@@ -68,8 +67,23 @@ export class LoginSignUp {
     }
 
     changeInvalidEmailState() {
-        if (this.invalidEmail) {
+        const regexForEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (regexForEmail.test(this.email)) {
             this.invalidEmail = false;
-        } else return;
-    }    
+        } else {
+            this.invalidEmail = true;
+        };
+    }
+    
+    changeConfirmPassword() {
+        if (this.password !== this.confirmPassword) {
+            this.differentPasswords = true;
+        } else {
+            this.differentPasswords = false;
+        }
+    }
+
+    onButtonLogin() {
+        this.router.navigate(['login/sign-in']);
+    }
 };

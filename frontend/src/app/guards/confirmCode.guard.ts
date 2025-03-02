@@ -8,17 +8,14 @@ import { AuthGuard } from "./auth.guard";
 export class ConfirmCodeGuard implements CanActivate {
     private goToConfirmCode = false;
     
-    constructor(private router: Router, private authguard: AuthGuard) { }
+    constructor(private router: Router, private authGuard: AuthGuard) { }
     
     async canActivate() {
-        const authGuardState = await this.authguard.canActivate();
-        console.log(authGuardState);
+        const authGuardState = await this.authGuard.canActivate();
         if (authGuardState && this.goToConfirmCode) {
-            console.log(authGuardState, this.goToConfirmCode);
             return true
         }
         else {
-            console.log(authGuardState, this.goToConfirmCode);            
             this.router.navigate(['/']);            
             return false;
         }

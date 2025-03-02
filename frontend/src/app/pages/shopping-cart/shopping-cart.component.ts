@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FooterBar } from "../../shared/footer-bar/footer-bar.component";
 import { navBar } from "../../shared/nav-bar/nav-bar.component";
 import { CommonModule, Location } from "@angular/common";
-import { removeItem, updateItem } from "../../requests/shoppingCartRequests";
+import { removeItem, updateItem } from "../../requests/forShoppingCart";
 import { FormsModule } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ProcessPurchaseService } from "../../services/processPurchase.service";

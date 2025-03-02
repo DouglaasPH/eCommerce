@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, Router } from "@angular/router";
-import { checkLoggined } from "../requests/loginRequests";
+import { checkLoggined } from "../requests/forLogin";
 
 @Injectable({
     providedIn: "root"

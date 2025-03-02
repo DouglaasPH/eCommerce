@@ -5,11 +5,11 @@
     </div>    
     <div class="button-log-in-with-google-or-gmail">
         <button class="button-log-in-with-google">
-            <img class="google-mark" src="../../../assets/login/icons/google-logo.svg" alt="Google mark">
+            <img class="google-mark" src="../../../assets/icons/google-logo.svg" alt="Google mark">
             <p class="button-description-google">Sign up with Google </p>
         </button>
         <button class="button-log-in-with-gmail">
-            <img class="gmail-mark" src="../../../assets/login/icons/gmail-logo.svg" alt="Email mark">
+            <img class="gmail-mark" src="../../../assets/icons/gmail-logo.svg" alt="Email mark">
             <p class="button-description-gmail">Sign up with Gmail </p>
         </button>        
     </div>    
@@ -22,9 +22,9 @@
     </div>
     <div class="container-redirect-buttons">
         <button class="button-sign-in" type="submit" (click)="onSubmit()">Sign In</button>
-        <button class="button-register-now" [routerLink]="['/login/sign-up']">Register Now</button>
+        <button class="button-register-now" (click)="onButtonRegisterNow()">Register Now</button>
         <div class="container-button-forget-password">
-            <button class="button-forget-password" routerLink="/login/forget-password">Forget Password?</button>
+            <button class="button-forget-password" (click)="onButtonForgetPassowrd()">Forget Password?</button>
         </div>
     </div>
     </div>

@@ -1,7 +1,7 @@
 import { CommonModule, Location } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
-import { checkLoggined } from "../../../../requests/loginRequests";
-import { getAllFavoritesFromUser, getAllProductFavorite, updateFavoritesFromUser } from "../../../../requests/favoritesRequest";
+import { checkLoggined } from "../../../../requests/forLogin";
+import { getAllFavoritesFromUser, getAllProductFavorite, updateFavoritesFromUser } from "../../../../requests/forFavorites";
 
 interface ProductInterface {
 		id: number | undefined,

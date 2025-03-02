@@ -1,7 +1,7 @@
 import { CommonModule, DecimalPipe, NgFor } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { getDatasForProductGrid, getDatasForProductGridWithFilters } from "../../../../requests/shopRequests";
+import { getDatasForProductGrid, getDatasForProductGridWithFilters } from "../../../../requests/forShop";
 
 interface salesInterface {
     id: number,

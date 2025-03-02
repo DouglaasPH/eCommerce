@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
-import { getAllFilterOptions, getAllFilters, getFiltersWithSelectedFilters } from "../../../../requests/shopRequests";
+import { getAllFilterOptions, getAllFilters, getFiltersWithSelectedFilters } from "../../../../requests/forShop";
 import { Router } from "@angular/router";
 
 @Component({

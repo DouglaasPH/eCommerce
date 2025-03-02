@@ -1,9 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { addAddress } from "../../../../requests/addressRequest";
-import { getAddress } from "../../../../requests/searchCepRequest";
-//import { searchAddress } from "../../../../services/searchAddress.service";
+import { addAddress } from "../../../../requests/forAddress";
+import { getAddress } from "../../../../requests/forSearchCep";
 
 interface addressInterface {
     cep: string,
@@ -26,7 +25,6 @@ interface addressInterface {
     styleUrl: './add-address.component.scss',
 })
 export class AddAddress {
-    //constructor(private searchAddressSerive: searchAddress) {}
     @Input() user_id: number = 0; 
     @Output() setStatusAddAddress =  new EventEmitter();     
     address: addressInterface = {
@@ -48,14 +46,11 @@ export class AddAddress {
 
     async onSubmitAddAddress() {
         await addAddress(this.address, this.user_id);
-        //this.setStatusAddAddress.emit();
         window.location.reload();   
     }
 
     async searchCep(cep: string) {
-        console.log(this.user_id)
         const cepAddress = await getAddress(cep);
-        console.log(cepAddress)
         this.address = {
             ...this.address,
             logradouro: cepAddress.logradouro,
@@ -66,7 +61,5 @@ export class AddAddress {
             city: cepAddress.localidade,
             uf: cepAddress.uf,
         };
-        console.log(this.address);
-        //console.log( this.searchAddressSerive.searchCep(cep));
     }
 }

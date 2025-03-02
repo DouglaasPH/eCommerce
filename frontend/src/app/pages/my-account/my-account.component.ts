@@ -4,9 +4,9 @@ import { LeftNavBar } from "./left-nav-bar/left-nav-bar.component";
 import { FooterBar } from "../../shared/footer-bar/footer-bar.component";
 import { ActivatedRoute, RouterOutlet } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { checkLoggined } from "../../requests/loginRequests";
-import { getAllOrderItems, getAllOrders } from "../../requests/userDataRequests";
-import { getAllFavoritesFromUser } from "../../requests/favoritesRequest";
+import { checkLoggined } from "../../requests/forLogin";
+import { getAllOrderItems, getAllOrders } from "../../requests/forUserData";
+import { getAllFavoritesFromUser } from "../../requests/forFavorites";
 
 interface Order {
     id: number

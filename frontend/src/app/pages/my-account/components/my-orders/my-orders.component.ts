@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { getAllOrderItems, getAllOrders, getAllPaymentFromOrder, getProductInformation } from "../../../../requests/userDataRequests";
-import { checkLoggined } from "../../../../requests/loginRequests";
+import { getAllOrderItems, getAllOrders, getAllPaymentFromOrder, getProductInformation } from "../../../../requests/forUserData";
+import { checkLoggined } from "../../../../requests/forLogin";
 import { CommonModule, Location } from "@angular/common";
 import { Router } from "@angular/router";
 

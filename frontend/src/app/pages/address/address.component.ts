@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { navBar } from "../../shared/nav-bar/nav-bar.component";
 import { CommonModule } from "@angular/common";
 import { FooterBar } from "../../shared/footer-bar/footer-bar.component";
-import { removeAddress } from "../../requests/addressRequest";
+import { removeAddress } from "../../requests/forAddress";
 import { editAdress } from "./components/edit-address/edit-address.component";
 import { editAddressService } from "../../services/editAddress.service";
 import { AddAddress } from "./components/add-address/add-address.component";

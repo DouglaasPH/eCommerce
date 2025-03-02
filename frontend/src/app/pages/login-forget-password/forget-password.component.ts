@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { Router, RouterModule } from "@angular/router";
-import { ForgetPasswordSingletonService } from "../../services/auth.service";
+import { ForgetPasswordService } from "../../services/forgetPassword.service";
 import { ConfirmCodeGuard } from "../../guards/confirmCode.guard";
-import { validateEmail } from "../../requests/loginRequests";
+import { validateEmail } from "../../requests/forLogin";
 import { CommonModule } from "@angular/common";
 
 @Component({
@@ -14,24 +14,21 @@ import { CommonModule } from "@angular/common";
     styleUrl: './forget-password.component.scss',
 })
 export class LoginForgetPassword {
-    constructor(private forgetpasswordsingletonservice: ForgetPasswordSingletonService, private router: Router, private confirmcodeguard: ConfirmCodeGuard) {}
+    constructor(private forgetPasswordsService: ForgetPasswordService, private router: Router, private confirmCodeGuard: ConfirmCodeGuard) {}
 
     email = '';
     invalidEmail = false;
 
     async onSubmit() {
-        const regexForEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-        if (regexForEmail.test(this.email)) {
+        if (!this.invalidEmail) {
             const requestValidateEmail = await validateEmail(this.email);
 
             if (requestValidateEmail.registeredEmail) {
-                this.forgetpasswordsingletonservice.setDataEmail(this.email);
-                this.confirmcodeguard.setgoToConfirmCode(true);
-                const condition = await this.confirmcodeguard.canActivate();
+                this.forgetPasswordsService.setDataEmail(this.email);
+                this.confirmCodeGuard.setgoToConfirmCode(true);
+                const condition = await this.confirmCodeGuard.canActivate();
 
                 if (condition) {
-                    console.log('goToConfirmCode:', condition)
                     this.router.navigate(['/login/forget-password/confirm-code']);
                 } else return;
             } else {
@@ -41,8 +38,11 @@ export class LoginForgetPassword {
     }
     
     changeInvalidEmailState() {
-        if (this.invalidEmail) {
+        const regexForEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (regexForEmail.test(this.email)) {
             this.invalidEmail = false;
-        } else return;
+        } else {
+            this.invalidEmail = true;
+        };
     }
 }

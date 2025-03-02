@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { Router } from "@angular/router";
 import { OrderSumaryService } from "../../services/orderSumary.service";
-import { addOrder, addOrderItem, addPayment, getOrderIdForAddPaymentRequest, removeItemFromShoppingCart } from "../../requests/finalizePurchaseRequests";
+import { addOrder, addOrderItem, addPayment, getOrderIdForAddPaymentRequest, removeItemFromShoppingCart } from "../../requests/forFinalizePurchase";
 
 @Component({
     selector: 'order-sumary',

@@ -1,8 +1,8 @@
 import { Injectable} from "@angular/core";
-import { getAllAddress } from "../requests/addressRequest";
-import { getAllUserItem } from "../requests/shoppingCartRequests";
-import { getProductData } from "../requests/shopRequests";
-import { checkLoggined } from "../requests/loginRequests";
+import { getAllAddress } from "../requests/forAddress";
+import { getAllUserItem } from "../requests/forShoppingCart";
+import { getProductData } from "../requests/forShop";
+import { checkLoggined } from "../requests/forLogin";
 
 interface Product {
     id: number;

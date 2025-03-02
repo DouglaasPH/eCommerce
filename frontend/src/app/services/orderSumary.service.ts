@@ -1,8 +1,8 @@
 import { Injectable } from "@angular/core";
-import { getAllUserItem } from "../requests/shoppingCartRequests";
-import { getProductData } from "../requests/shopRequests";
-import { checkLoggined } from "../requests/loginRequests";
-import { confirmCoupon } from "../requests/couponsRequests";
+import { getAllUserItem } from "../requests/forShoppingCart";
+import { getProductData } from "../requests/forShop";
+import { checkLoggined } from "../requests/forLogin";
+import { confirmCoupon } from "../requests/forCoupons";
 import { Subject } from "rxjs";
 
 interface Product {

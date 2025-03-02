@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { CommonModule, Location } from "@angular/common";
-import { getAllOrderInformation, getAllOrderItems, getAllPaymentFromOrder, getProductInformation } from "../../../../../requests/userDataRequests";
+import { getAllOrderInformation, getAllOrderItems, getAllPaymentFromOrder, getProductInformation } from "../../../../../requests/forUserData";
 import { ActivatedRoute, Router } from "@angular/router";
-import { checkLoggined } from "../../../../../requests/loginRequests";
+import { checkLoggined } from "../../../../../requests/forLogin";
 
 interface Address {
     cep: string,

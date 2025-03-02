@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { editAddressService } from "../../../../services/editAddress.service";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
-import { updateAddress } from "../../../../requests/addressRequest";
+import { updateAddress } from "../../../../requests/forAddress";
 
 interface address {
     cep: string,

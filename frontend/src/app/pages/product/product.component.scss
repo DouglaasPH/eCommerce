@@ -1,7 +1,7 @@
 @use '../../../variables.scss';
 
 .container-product {
-    height: 100vh;
+    height: 40vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -293,18 +293,23 @@
 }
 
 .container-carts {
-    background-color: #e2e2e2;
+    border: 0.1vw solid #e2e2e2;
     border-radius: 0.6vw;
-    height: 15%;
+    height: 5vw;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
 }
 
+.carts-image {
+    height: 2vw;
+}
+
 .carts-description {
     @extend %font-poppins;
-    font-weight: 400;
+    font-weight: 500;
+    color: #1f1f1f;
     font-size: 0.8vw;
 }
 

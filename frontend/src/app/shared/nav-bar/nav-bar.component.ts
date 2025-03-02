@@ -1,6 +1,6 @@
 import { CommonModule, Location } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
-import { checkLoggined } from "../../requests/loginRequests";
+import { checkLoggined } from "../../requests/forLogin";
 import { Router } from "@angular/router";
 
 @Component({
@@ -64,6 +64,4 @@ export class navBar implements OnInit {
         this.location.replaceState('/my-account/favorites');
         window.location.reload();        
     }
-
-
 }

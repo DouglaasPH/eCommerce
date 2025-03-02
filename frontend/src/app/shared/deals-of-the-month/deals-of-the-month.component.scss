@@ -1,7 +1,7 @@
 @use '../../../variables.scss';
 
 .container-component-deals-of-the-month {
-    height: 70vh;
+    height: 30vw;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -26,24 +26,24 @@
 .title {
     @extend %font-volkhov;
     @extend %logo-brand-style;
-    font-size: 2.1rem;
+    font-size: 2vw;
 }
 
 .paragraph {
     @extend %font-poppins;
-    font-size: 75%;
+    font-size: 0.9vw;
     font-weight: 500;
     color: #484848;
 }
 
 .button-buy-now {
     @extend %font-poppins;
-    font-size: 70%;
-    width: 40%;
-    height: 8%;
+    font-size: 0.8vw;
+    width: 8vw;
+    height: 3vw;
     border: none;
-    border-radius: 0.6rem;
-    background-color: #000000;
+    border-radius: 0.6vw;
+    background-color: #1f1f1f;
     color: #ffffff;
 }
 
@@ -57,7 +57,7 @@
 .title-group-timer {
     @extend %font-poppins;
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1.5vw;
     color: #484848;
 }
 
@@ -82,19 +82,19 @@
     @extend %font-russo-one;
     color: #666666;
     font-weight: 100;
-    font-size: 1.3rem;
+    font-size: 1.6vw;
     height: 50%;
     width: 100%;
     text-align: center;
-    padding-top: 25%;
+    padding: 1vw 0.2vw 1vw 0.2vw;
     background-color: #e1e1e1;
-    border-radius: 20%;
+    border-radius: 0.6vw;
 }
 
 .description-time {
     @extend %font-poppins;
     font-weight: 500;
-    font-size: 85%;
+    font-size: 1vw;
     color: #666666;
 }
 
@@ -110,9 +110,9 @@
 
 .left-arrow, .right-arrow {
     @extend %font-poppins;
-    font-size: 1.3rem;
+    font-size: 1.3vw;
     color: #484848;
-    width: 45%;
+    width: 4vw;
     border: none;
     background-color: #e1e1e1;
     border-radius: 100%;
@@ -166,11 +166,12 @@
     font-size: 80%;
     font-weight: 500;
     color: #484848;
+    font-size: 1vw;
 }
 
 .discount-percentage {
     @extend %font-poppins;
-    font-size: 1.5rem;
+    font-size: 1.8vw;
     font-weight: 500;
     color: #484848;    
 }
@@ -189,17 +190,17 @@
 
 .container-on-display {
     width: 12%;
-    border-radius: 5rem;
+    border-radius: 5vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #000000; 
+    border: 0.1vw solid #1f1f1f; 
     transition: transform 0.5s ease-in-out;
 }
 
 .container-off-display {
     width: 12%;
-    border-radius: 5rem;
+    border-radius: 5vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -209,21 +210,21 @@
 .image-on-display {
     display: inline-block;
     text-align: center;
-    font-size: 3rem;
-    color: #000000;
-    margin-bottom: 1.6rem;
+    font-size: 4vw;
+    color: #1f1f1f;
+    margin-bottom: 2.2vw;
 }
 
 .image-off-display {
     display: inline-block;
     text-align: center;
-    font-size: 3rem;
+    font-size: 4vw;
     color: #b6b6b6;   
-    margin-bottom: 1.6rem; 
+    margin-bottom: 2.2vw; 
 }
 
 img {
-    height: 10rem;
+    height: 10vw;
 }
 
 button:hover {

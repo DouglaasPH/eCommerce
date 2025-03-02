@@ -1,17 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { WomenCollection } from "../../shared/women-collection/women-collection.component";
-import { DealsOfTheMonth } from "../../shared/deals-of-the-month/deals-of-the-month.component";
-import { SubscribeToOurNewslatter } from "../../shared/subscribe-to-our-newslatter/subscribe-to-our-newslatter.component";
 import { FooterBar } from "../../shared/footer-bar/footer-bar.component";
 import { CommonModule, DecimalPipe, NgFor } from "@angular/common";
 import { navBar } from "../../shared/nav-bar/nav-bar.component";
-import { getProductData } from "../../requests/shopRequests";
+import { getProductData } from "../../requests/forShop";
 import { ActivatedRoute, Router } from "@angular/router";
-import { shoppingCartService } from "../../services/shoppingCart.service";
-import { AuthGuard } from "../../guards/auth.guard";
-import { checkLoggined } from "../../requests/loginRequests";
-import { addItem } from "../../requests/shoppingCartRequests";
-import { getAllFavoritesFromUser, updateFavoritesFromUser } from "../../requests/favoritesRequest";
+import { checkLoggined } from "../../requests/forLogin";
+import { addItem } from "../../requests/forShoppingCart";
+import { getAllFavoritesFromUser, updateFavoritesFromUser } from "../../requests/forFavorites";
 
 interface ProductInterface {
 		id: number | undefined,
@@ -27,14 +22,14 @@ interface ProductInterface {
 @Component({
     selector: 'product',
     standalone: true,
-    imports: [CommonModule, NgFor, DecimalPipe, navBar, WomenCollection, DealsOfTheMonth, SubscribeToOurNewslatter, FooterBar],
+    imports: [CommonModule, NgFor, DecimalPipe, navBar, FooterBar],
     templateUrl: './product.component.html',
     styleUrl: './product.component.scss',
 })
 export class ProductPage implements OnInit {
     @ViewChild('scrollDiv') scrollDiv!: ElementRef;
     
-    constructor (private route: ActivatedRoute, private shoppingcartservice: shoppingCartService, private router: Router, private authguard: AuthGuard) {}
+    constructor (private route: ActivatedRoute, private router: Router) {}
     product: ProductInterface = {
         id: undefined,
         description: undefined,

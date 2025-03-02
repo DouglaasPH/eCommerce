@@ -4,10 +4,10 @@ import { editAddressService } from "../../../../services/editAddress.service";
 import { ProcessPurchaseService } from "../../../../services/processPurchase.service";
 import { editAdress } from "../../../address/components/edit-address/edit-address.component";
 import { AddAddress } from "../../../address/components/add-address/add-address.component";
-import { removeAddress } from "../../../../requests/addressRequest";
-import { getUserData, removeAccount, updateAccountDetails } from "../../../../requests/userDataRequests";
+import { removeAddress } from "../../../../requests/forAddress";
+import { getUserData, removeAccount, updateAccountDetails } from "../../../../requests/forUserData";
 import { FormsModule } from "@angular/forms";
-import { checkLoggined } from "../../../../requests/loginRequests";
+import { checkLoggined } from "../../../../requests/forLogin";
 import { ChangeEmail } from "./change-email/change-email.component";
 import { ChangePassword } from "./change-password/change-password.component";
 

@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3000';
 
-async function requestSignIn(datas: {email: string, password: string}) {
+async function login(datas: {email: string, password: string}) {
     try {
         const response = await axios.get(`${API_URL}/login`, {
             params: {
@@ -63,4 +63,4 @@ async function updatePassword(datas: { email: string; password: string; }) {
     }
 }
 
-export { requestSignIn, checkLoggined, createAccount, validateEmail, updatePassword };
+export { login, checkLoggined, createAccount, validateEmail, updatePassword };

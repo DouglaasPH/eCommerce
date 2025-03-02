@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AuthGuard } from "../app/guards/auth.guard";
-import { checkLoggined } from "../app/requests/loginRequests";
+import { checkLoggined } from "../app/requests/forLogin";
 
 @Injectable({
     providedIn: "root",
@@ -10,7 +10,6 @@ export class checkLoginCondition {
     
     async giveRoutePermission() {
         const loginStatus = await checkLoggined();
-        console.log(loginStatus.isLogginned)
         if (loginStatus) {
             this.authguard.setAuthentication(true);
             this.authguard.canActivate();

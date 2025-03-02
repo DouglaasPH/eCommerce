@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, Router } from "@angular/router";
-import { checkLoggined } from "../requests/loginRequests";
+import { checkLoggined } from "../requests/forLogin";
 
 @Injectable({
     providedIn: "root"
@@ -22,9 +22,4 @@ export class MyAccountGuard implements CanActivate {
             return false;
         }
     }
-
-    setAuthentication(status: boolean) {
-        this.isLogginned = status;
-    }
-
 };

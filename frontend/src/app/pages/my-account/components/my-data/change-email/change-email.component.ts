@@ -1,8 +1,8 @@
 import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FormsModule } from "@angular/forms";
-import { checkLoggined } from "../../../../../requests/loginRequests";
-import { checkPassword, updateAccountDetails } from "../../../../../requests/userDataRequests";
+import { checkLoggined } from "../../../../../requests/forLogin";
+import { checkPassword, updateAccountDetails } from "../../../../../requests/forUserData";
 
 @Component({
     selector: 'change-email',

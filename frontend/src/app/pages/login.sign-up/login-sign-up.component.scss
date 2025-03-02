@@ -14,45 +14,48 @@
 };
 
 .description {
-    @extend %font-volkhov;
-    font-weight: 400;
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size: 1.2vw;
+    color: #1f1f1f;
 }
 
 .button-create-with-google-or-gmail {
-    height: 10%;
+    height: 6vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: start;
 }
 
 .button-create-with-google, .button-create-with-gmail {
-    width: 45%;
-    height: 90%;
+    background-color: transparent;
+    border: none;
+    width: 13vw;
+    height: 3vw;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    gap: 4%;
-    border: none;
-    border-radius: 0.5rem;
-    background-color: #d7d7d7;
-    border: none;
+    justify-content: center;
+    gap: 1vw;
+    border-radius: 0.5vw;
+    border: 0.1vw solid #8a8a8a;
 }
-
-.google-mark, .gmail-mark {
-    height: 65%;
-} 
 
 .button-description-google, .button-description-gmail {
     @extend %font-poppins;
+    font-size: 0.8vw;
     font-weight: 500;
-    font-size: 80%;
+}
+
+.google-mark, .gmail-mark {
+    height: 1.5vw;
 }
 
 .container-or {
-    height: 5%;
+    height: 5vw;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 }
 
@@ -63,7 +66,7 @@
 }
 
 .container-row-data-entry {
-    height: 33%;
+    height: 14vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -71,7 +74,7 @@
 
 .first-row-inputs, .second-row-inputs, .three-row-inputs {
     width: 100%;
-    height: 25%;
+    height: 3vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -80,30 +83,30 @@
 .input-first-name, .input-last-name, .input-email, .input-phone-number, .input-password, .input-confirm-password {
     @extend %font-poppins;
     font-weight: 600;
-    font-size: 70%;
+    font-size: 0.8vw;
     width: 48%;
     border: none;
-    border-bottom: 0.1rem solid #838383;
+    color: #1f1f1f;
+    border-bottom: 0.1vw solid #838383;
     background-color: transparent;
+}
+
+.four-row-warning {
+    height: 2.6vw;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
 }
 
 .invalid-email-warning {
     @extend %font-poppins;
     font-weight: 600;
     color: #ff1414;
-    font-size: 69%;
-}
-
-.seeWarning {
-    opacity: 1;
-}
-
-.doNotSeeWarning {
-    opacity: 0;
+    font-size: 0.8vw;
 }
 
 .container-redirect-buttons {
-    height: 20%;
+    height: 7vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -112,19 +115,20 @@
 
 .button-sign-up {
     @extend %font-poppins;
-    font-size: 75%;
-    height: 50%;
+    font-size: 0.9vw;
+    height: 3vw;
     width: 100%;
-    background-color: black;
+    background-color: #1f1f1f;
     border: none;
-    border-radius: 0.4rem;
+    border-radius: 0.4vw;
     color: #ffffff;
 }
 
 .paragraph-login {
     @extend %font-poppins;
-    font-size: 70%;
-    font-weight: 400;
+    font-size: 0.8vw;
+    font-weight: 600;
+    color: #454545;
 }
 
 .link-login {
@@ -134,6 +138,7 @@
 
 .link-login:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 button:hover {

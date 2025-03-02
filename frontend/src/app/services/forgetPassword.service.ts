@@ -5,11 +5,10 @@ interface forgetPasswordServiceInterface {
     password: string,
 }
 
-// Service to store create account data
 @Injectable({
     providedIn: 'root',
 })
-export class ForgetPasswordSingletonService {
+export class ForgetPasswordService {
     private data: forgetPasswordServiceInterface = {
         email: '',
         password: '',

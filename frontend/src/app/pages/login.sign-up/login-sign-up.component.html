@@ -5,11 +5,11 @@
         </div>    
         <div class="button-create-with-google-or-gmail">
             <button class="button-create-with-google">
-                <img class="google-mark" src="../../../assets/login/icons/google-logo.svg" alt="Google mark">
+                <img class="google-mark" src="../../../assets/icons/google-logo.svg" alt="Google mark">
                 <p class="button-description-google">Sign up with Google </p>
             </button>
             <button class="button-create-with-gmail">
-                <img class="gmail-mark" src="../../../assets/login/icons/gmail-logo.svg" alt="Gmail mark">
+                <img class="gmail-mark" src="../../../assets/icons/gmail-logo.svg" alt="Gmail mark">
                 <p class="button-description-gmail">Sign up with Gmail </p>
             </button>        
         </div>    
@@ -28,17 +28,18 @@
             </div>
             <div class="three-row-inputs">
                 <input type="text" class="input-password" placeholder="Password" [(ngModel)]="password" required>
-                <input type="text" class="input-confirm-password" placeholder="Confirm Password" [(ngModel)]="confirmPassword" required>
+                <input type="text" class="input-confirm-password" placeholder="Confirm Password" [(ngModel)]="confirmPassword" (keyup)="changeConfirmPassword()" required>
             </div>
             <div class="four-row-warning">
-                <p class="invalid-email-warning" [ngClass]="{ 'seeWarning': invalidEmail, 'doNotSeeWarning': !invalidEmail }">This email is already registered in an account. Try another or log in.</p>
+                <p class="invalid-email-warning" *ngIf="invalidEmail">This email is already registered in an account. Try another or log in.</p>
+                <p class="invalid-email-warning" *ngIf="differentPasswords">Passwords are different.</p>                
             </div>                        
         </div>
 
         <div class="container-redirect-buttons">
             <button class="button-sign-up" (click)="onSubmit()">Create Account</button>
             <div class="container-paragraph-login">
-                <p class="paragraph-login">Already have an account? <a class="link-login" routerLink="/login/sign-in">Login</a></p>
+                <p class="paragraph-login">Already have an account? <a class="link-login" (click)="onButtonLogin()">Login</a></p>
             </div>            
         </div>
     </div>

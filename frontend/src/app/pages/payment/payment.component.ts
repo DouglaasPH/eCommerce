@@ -6,7 +6,7 @@ import { FormsModule } from "@angular/forms";
 import { OrderSumaryService } from "../../services/orderSumary.service";
 import { orderSumary } from "../../shared/orderSumary/orderSumary.component";
 import { OrderDataService } from "../../services/orderDatas.service";
-import { getInstallment } from "../../requests/installmentRequest";
+import { getInstallment } from "../../requests/forInstallment";
 
 interface creditCard {
     [key: string]: string
@@ -68,7 +68,6 @@ export class Payment implements OnDestroy {
                     this.installments.push([i, value, 'without fees']);
                 } else {
                     const fees = Math.floor((valueTotal * (response[0].fees / 100) * i) * 100) / 100;
-                    console.log(fees);
                     const value = Math.floor(((fees + valueTotal) / i) * 100) / 100;
                     this.installments.push([i, value, 'with fees']);                    
                 }

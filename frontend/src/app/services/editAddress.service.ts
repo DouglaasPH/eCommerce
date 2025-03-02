@@ -13,7 +13,6 @@ interface address {
     uf: string,    
 }
 
-// Service to store create account data
 @Injectable({
     providedIn: 'root',
 })
