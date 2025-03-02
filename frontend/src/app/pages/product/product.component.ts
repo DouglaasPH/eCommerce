@@ -11,6 +11,7 @@ import { shoppingCartService } from "../../services/shoppingCart.service";
 import { AuthGuard } from "../../guards/auth.guard";
 import { checkLoggined } from "../../requests/loginRequests";
 import { addItem } from "../../requests/shoppingCartRequests";
+import { getAllFavoritesFromUser, updateFavoritesFromUser } from "../../requests/favoritesRequest";
 
 interface ProductInterface {
 		id: number | undefined,
@@ -51,10 +52,13 @@ export class ProductPage implements OnInit {
     currentQuantity = 1;
     addToCart = false;
     installments = "";
+    productIsFavorite = false;
+    currentProductId = 0;
 
     async ngOnInit() {
-        const productId = this.route.snapshot.paramMap.get('productId');
-        this.product = await getProductData(productId);
+        this.currentProductId = Number(this.route.snapshot.paramMap.get('productId'));
+        this.checkIfTheProductIsFavorite();
+        this.product = await getProductData(this.currentProductId);
         this.mainImage = this.product.images_path[0];
 
         const allSizes = Object.keys(this.product.size_by_quantity!);        
@@ -124,5 +128,49 @@ export class ProductPage implements OnInit {
                 this.scrollDiv.nativeElement.scrollTop += 90;
             }
         }
+    }
+
+    async checkIfTheProductIsFavorite() {
+        const checkLogin = await checkLoggined();
+        
+        if (checkLogin.isLogginned) {
+            try {
+                const allFavoriteProductIDs = await getAllFavoritesFromUser(checkLogin.id);                
+                const isArray = JSON.parse(allFavoriteProductIDs.favorites);
+                if (isArray.includes(this.currentProductId)) {
+                    this.productIsFavorite = true;
+                } else {
+                    this.productIsFavorite = false;
+                }
+                console.log(this.currentProductId, allFavoriteProductIDs)
+            } catch (error) {
+                console.log(error);
+            }
+        } else {
+            this.productIsFavorite = false;            
+        }
+    }
+
+    async onButtonFavorite() {
+        const checkLogin = await checkLoggined();
+
+        if (checkLogin.isLogginned) {
+            const allFavoriteProductIDs = await getAllFavoritesFromUser(checkLogin.id);                
+            const isArray = JSON.parse(allFavoriteProductIDs.favorites);
+
+            if (this.productIsFavorite) {
+                const newFavoriteListId = isArray.filter((productId: number) => productId !== this.currentProductId);
+                await updateFavoritesFromUser(newFavoriteListId, checkLogin.id);
+                this.productIsFavorite = false;
+            } else {
+                const newFavoriteListId = [...isArray, this.currentProductId];
+                await updateFavoritesFromUser(newFavoriteListId, checkLogin.id);
+                this.productIsFavorite = true;                
+            }
+        }
+    }
+
+    redirectToLogin() {
+        this.router.navigate(['login/sign-in']);
     }
 }

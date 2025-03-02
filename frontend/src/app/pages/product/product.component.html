@@ -26,7 +26,8 @@
                     <div class="container-product-name-and-favorite-button">
                         <h2 class="product-name">{{ product.description}}</h2>
                         <button class="favorite-button">
-                            <img src="../../../assets/login/icons/favorites.svg" alt="favorites" class="favorite-image">
+                            <img src="../../../assets/icons/favorite-selected-icon.svg" alt="favorites" class="favorite-image" *ngIf="productIsFavorite" (click)="onButtonFavorite()">
+                            <img src="../../../assets/icons/favorite-unselected-icon.svg" alt="favorites" class="favorite-image" *ngIf="!productIsFavorite" (click)="redirectToLogin()">
                         </button>
                     </div>
                 </div>

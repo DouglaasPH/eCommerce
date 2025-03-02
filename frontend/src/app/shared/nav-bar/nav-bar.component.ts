@@ -60,5 +60,10 @@ export class navBar implements OnInit {
         window.location.reload();
     }
 
+    onFavorites() {
+        this.location.replaceState('/my-account/favorites');
+        window.location.reload();        
+    }
+
 
 }
