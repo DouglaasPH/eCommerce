@@ -6,15 +6,18 @@
     <div class="container-choose-{{currentFilter.key}}" *ngFor="let currentFilter of allFilterOptions | keyvalue">
         <h4 class="filter-title"> {{ filtersName[currentFilter.key] }} </h4>
         <div class="container-options-{{ currentFilter.key }}">
-            <ng-container *ngFor="let currentOption of currentFilter.value">
-            <button 
-            class="{{ currentFilter.key }}" 
-            [ngClass]="{ 'selected': currentFilter.key !== 'sizes' && filterStatus[currentFilter.key], 'sizeSelected': currentFilter.key === 'sizes' && filterStatus[currentFilter.key], }"            
-            (click)="changeNewFilter(currentFilter.key, currentOption)"
-            *ngIf="!filterStatus[currentFilter.key] || myFilters[currentFilter.key] === currentOption"> {{ currentOption }} </button>
+            <ng-container *ngFor="let currentOption of currentFilter.value; let i = index">
+                <button
+                class="{{ currentFilter.key }}" 
+                [ngClass]="{ 'selected': currentFilter.key !== 'sizes' && filterStatus[currentFilter.key], 'sizeSelected': currentFilter.key === 'sizes' && filterStatus[currentFilter.key], }"            
+                (click)="changeNewFilter(currentFilter.key, currentOption)"
+                *ngIf="(!filterStatus[currentFilter.key] || myFilters[currentFilter.key] === currentOption) && ((currentFilter.key !== 'sizes' && i <= 4) || (currentFilter.key === 'sizes' && i < 15))">{{ currentOption }}</button>
+                <button *ngIf="(!filterStatus[currentFilter.key] || myFilters[currentFilter.key] === currentOption) && ((currentFilter.key !== 'sizes' && i > 4) || (currentFilter.key === 'sizes' && i > 15))" class="show-more-button" (click)="buttonSeeAllOptions(currentFilter.key)">Show more</button>
             </ng-container>
 
         </div>
     </div>
-
 </div>
+
+
+<tab-see-all-options-of-a-filter (onSelectOption)="changeNewFilter($event[0], $event[1])"  (closeTab)="onCloseTab()" [filter]="onSeeFilterOptions" [filterOptions]="allFilterOptions[onSeeFilterOptions[0]]" *ngIf="onSeeAllOptions"></tab-see-all-options-of-a-filter>

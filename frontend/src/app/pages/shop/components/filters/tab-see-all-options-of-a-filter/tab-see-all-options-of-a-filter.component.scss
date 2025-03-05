@@ -1,0 +1,94 @@
+@use '../../../../../../variables.scss';
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-tab {
+    background-color: #ebebeb;
+    width: 50vw;
+    height: 35vw;
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    position: relative;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+
+.container-title-and-close-tab {
+    display: flex;
+    justify-content: space-between;
+    margin: 1vw 3vw 1vw 3vw;
+    align-items: center;
+    flex-direction: row;
+}
+
+.title {
+    @extend %font-poppins;
+    font-weight: 500;
+    font-size: 2vw;
+    color: #1f1f1f;
+}
+
+
+.button-close-tab {
+    border: none;
+    background-color: transparent;
+}
+
+.icon-close-page {
+    width: 1.5vw;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.container-all-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: start;
+    margin: 0 3vw 0 3vw;
+    height: 4vw;
+    gap: 0.5vw;
+}
+
+
+.sizeOption {
+    @extend %font-poppins;
+    font-size: 0.8vw;
+    font-weight: 500;
+    color: #5c5c5c;
+    height: 1.9vw;
+    width: 2vw;
+    border-radius: 0.4vw;
+    border: none;
+    border: 0.1rem solid #5c5c5c;
+    background-color: transparent;
+}
+
+.option {
+    @extend %font-poppins;
+    font-size: 1vw;
+    font-weight: 500;
+    color: #5c5c5c;    
+    border: none;
+    background-color: transparent;
+    height: 1vw;
+}
+
+.option:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

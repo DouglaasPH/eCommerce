@@ -21,7 +21,7 @@
                 <h2 class="order-status" [ngClass]="{ 'canceledOrder': order.status === 'Canceled order' }">{{ order.status }}.</h2>
             </div>
             <div class="container-method-purchase">
-                <p class="method-purchase">Payment via {{ allPaymentsFromOrders[i]?.payment_method}}.</p>
+                <p class="method-purchase">Payment via {{ allPaymentsFromOrders[i].payment_method}}.</p>
                 <p class="pending-payment" *ngIf="allPaymentsFromOrders[i]?.status === 'pending'">(Pending Payment)</p>
             </div>
             <div class="container-all-order-items" [ngStyle]="{ 'height': (setHeight(order) * 8) + 'vw' }">

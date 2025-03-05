@@ -1,0 +1,16 @@
+<div class="background">
+    <div class="container-tab">
+        <div class="container-title-and-close-tab">
+            <h2 class="title">{{ filter[1] }}</h2>
+            <button class="button-close-tab">
+                <img src="../../../../../../assets/icons/icon-close-page.svg" alt="icon close tab" class="icon-close-page" (click)="onCloseTab()">
+            </button>
+        </div>
+        <div class="container-all-options" [ngStyle]="{ 'height': getHeight() }">
+            <button class="optionButon" *ngFor="let option of filterOptions" [ngClass]=" filter[0] !== 'sizes' ? 'option' : 'sizeOption' " (click)="selectOption(filter[0], option)">
+                <p class="option">{{ option }}</p>
+            </button>
+
+        </div>
+    </div>
+</div>

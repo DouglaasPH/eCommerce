@@ -1,31 +1,31 @@
 <div class="container-component-sign-in">
     <div class="component-sign-in">
-    <div class="container-description">
-        <p class="description">Sign In To FASCO</p>
-    </div>    
-    <div class="button-log-in-with-google-or-gmail">
-        <button class="button-log-in-with-google">
-            <img class="google-mark" src="../../../assets/icons/google-logo.svg" alt="Google mark">
-            <p class="button-description-google">Sign up with Google </p>
-        </button>
-        <button class="button-log-in-with-gmail">
-            <img class="gmail-mark" src="../../../assets/icons/gmail-logo.svg" alt="Email mark">
-            <p class="button-description-gmail">Sign up with Gmail </p>
-        </button>        
-    </div>    
-    <div class="container-or">
-        <h2 class="or">— OR —</h2>
-    </div>    
-    <div class="data-entry-container">
-        <input type="text" class="input-email" placeholder="Email" [(ngModel)]="datas.email" required>
-        <input type="text" class="input-password" placeholder="Password" [(ngModel)]="datas.password" required>
-    </div>
-    <div class="container-redirect-buttons">
-        <button class="button-sign-in" type="submit" (click)="onSubmit()">Sign In</button>
-        <button class="button-register-now" (click)="onButtonRegisterNow()">Register Now</button>
-        <div class="container-button-forget-password">
-            <button class="button-forget-password" (click)="onButtonForgetPassowrd()">Forget Password?</button>
+        <div class="container-description">
+            <p class="description">Sign In To FASCO</p>
+        </div>    
+        <div class="button-log-in-with-google-or-gmail">
+            <button class="button-log-in-with-google">
+                <img class="google-mark" src="../../../assets/icons/google-logo.svg" alt="Google mark">
+                <p class="button-description-google">Sign up with Google </p>
+            </button>
+            <button class="button-log-in-with-gmail">
+                <img class="gmail-mark" src="../../../assets/icons/gmail-logo.svg" alt="Email mark">
+                <p class="button-description-gmail">Sign up with Gmail </p>
+            </button>        
+        </div>    
+        <div class="container-or">
+            <h2 class="or">— OR —</h2>
+        </div>    
+        <div class="data-entry-container">
+            <input type="text" class="input-email" placeholder="Email" [(ngModel)]="datas.email" required>
+            <input type="text" class="input-password" placeholder="Password" [(ngModel)]="datas.password" required>
         </div>
-    </div>
+        <div class="container-redirect-buttons">
+            <button class="button-sign-in" type="submit" (click)="onSubmit()">Sign In</button>
+            <button class="button-register-now" (click)="onButtonRegisterNow()">Register Now</button>
+            <div class="container-button-forget-password">
+                <button class="button-forget-password" (click)="onButtonForgetPassowrd()">Forget Password?</button>
+            </div>
+        </div>
     </div>
 </div>

@@ -2,11 +2,17 @@ import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { getAllFilterOptions, getAllFilters, getFiltersWithSelectedFilters } from "../../../../requests/forShop";
 import { Router } from "@angular/router";
+import { TabSeeAllOptionsOfAFilter } from "./tab-see-all-options-of-a-filter/tab-see-all-options-of-a-filter.component";
+
+interface allFiltersInterface {
+    [key: string]: string[];
+}
+
 
 @Component({
     selector: 'filters',
     standalone: true,
-    imports: [CommonModule],
+    imports: [CommonModule, TabSeeAllOptionsOfAFilter],
     templateUrl: './filters-component.component.html',
     styleUrl: './filters-component.component.scss',
 })
@@ -14,10 +20,13 @@ export class FiltersComponent implements OnInit {
     constructor(private router: Router) { }
 
     allFilters: string[] = [];
-    allFilterOptions: object = {}; 
+    allFilterOptions: allFiltersInterface = {}; 
     myFilters: { [key: string]: string } = {};
     filterStatus: { [key: string]: boolean } = {};
     filtersName: { [key: string]: string } = {};
+
+    onSeeAllOptions: boolean = false;
+    onSeeFilterOptions: string[] = [];
 
     async ngOnInit() {
         try {
@@ -111,5 +120,17 @@ export class FiltersComponent implements OnInit {
                 };
             }
         })
+    }
+
+    buttonSeeAllOptions(currentFilter: string) {
+        this.onSeeAllOptions = true;
+        this.onSeeFilterOptions = [currentFilter, this.filtersName[currentFilter]];
+        console.log(this.onSeeFilterOptions)
+        console.log(this.filtersName)
+    }
+
+    onCloseTab() {
+        this.onSeeAllOptions = false;
+        this.onSeeFilterOptions = [];
     }
 }

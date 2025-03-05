@@ -8,18 +8,24 @@
 .component-sign-in {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+
+.container-description {
+    height: 3vw;
+    display: flex;
+    justify-content: center;    
 }
 
 .description {
     @extend %font-poppins;
     font-weight: 500;
-    font-size: 1.2vw;
+    font-size: 2vw;
     color: #1f1f1f;
 }
 
 .button-log-in-with-google-or-gmail {
-    height: 6vw;
+    height: 3vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -51,9 +57,10 @@
 }
 
 .container-or {
-    height: 4vw;
+    height: 2vw;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .or {
@@ -102,7 +109,7 @@ input::placeholder {
 }
 
 .button-sign-in {
-    background-color: #000000;
+    background-color: #1f1f1f;
     color: #ffffff;
     border: none;    
 }

@@ -8,6 +8,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: end;
+    //background-color: red;
 }
 
 .container-main-title {
@@ -16,6 +17,7 @@
     display: flex;
     align-items: start;
     justify-content: start;
+    //background-color: blue;    
 }
 
 .title-filters {
@@ -37,23 +39,24 @@
 
 .container-choose-sizes, .container-choose-price_range, .container-choose-product_category, .container-choose-promotions, .container-choose-styles {
     width: 60%;
-    height: 18%;
+    height: 13vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 1vw;
 }
 
 .container-options-price_range, .container-options-product_category, .container-options-promotions, .container-options-styles {
-    height: 80%;
+    height: 88%;
     display: flex;
     flex-direction: column;
     gap: 0.4vw;
 }
 
 .container-options-sizes {
-    height: 85%;
+    height: 11vw;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
     gap: 0.3vw;
 }
 
@@ -93,4 +96,19 @@ button:hover {
     color: #ebebeb;
     background-color: #292929;
     border: 0.1vw solid #292929;
+}
+
+.show-more-button {
+    background-color: transparent;
+    border: none;
+    @extend %font-poppins;
+    font-size: 0.85vw;
+    font-weight: 700;
+    color: #3c3c3c;
+    text-align: start;
+    width: 100%;
+}
+
+.show-more-button:hover {
+    text-decoration: underline;    
 }
