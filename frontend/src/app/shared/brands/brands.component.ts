@@ -4,7 +4,7 @@ import { Component } from "@angular/core";
     selector: 'brands',
     standalone: true,
     templateUrl: './brands.component.html',
-    styleUrl: './brands.component.scss',
+    styleUrls: ['./brands.component.scss', './media-queries-for-brands.component.scss'],
 })
 export class Brands {
 

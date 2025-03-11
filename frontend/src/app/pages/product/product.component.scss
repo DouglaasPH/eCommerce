@@ -45,7 +45,7 @@
 
 .container-return-image, .container-next-image {
     width: 30%;
-    height: 6%;
+    height: 10%;
     display: flex;
     align-items: center;
     justify-content: center;    
@@ -55,23 +55,15 @@
     display: flex;
     align-items: center;
     justify-content: center;    
-    @extend %font-poppins;
-    font-size: 1.7vw;
-    font-size: 100;
-    color: #4f4f4f;
-    height: 100%;
-    width: 100%;
     border-radius: 10vw;
     border: none;
-    background-color: #e2e2e2;
+    background-color: #d8d8d8;
+    height: 2.1vw;
+    width: 3vw;
 }
 
-.next-image {
-    transform: rotate(90deg);    
-}
-
-.return-image {
-    transform: rotate(-90deg);
+.top-arrow-icon, .bottom-arrow-icon {
+    width: 1.2vw;
 }
 
 .container-choose-images {
@@ -100,11 +92,11 @@
 }
 
 .image-unselected {
-    border: 0.1rem solid #ebebeb;    
+    border: 0.1vw solid #ebebeb;    
 }
 
 .image-selected {
-    border: 0.1rem solid #3c3c3c;    
+    border: 0.1vw solid #3c3c3c;    
 }
 
 .div-choose-image:hover {
@@ -229,12 +221,13 @@
 .size {
     @extend %font-poppins;
     font-weight: 400;
+    font-size: 0.9vw;
     color: #8A8A8A;
     height: 100%;
     width: 7%;
     background-color: #ebebeb;
-    border: 0.1rem solid #EEEEEE;
-    border-radius: 0.3rem;
+    border: 0.1vw solid #EEEEEE;
+    border-radius: 0.3vw;
 }
 
 .container-quantity {
@@ -264,7 +257,7 @@
     flex-direction: row;
     justify-content: space-between;
     border: 0.1vw solid #adadad;    
-    border-radius: 0.3rem;    
+    border-radius: 0.3vw;    
 }
 
 .decrease-quantity, .increase-quantity, .quantity {

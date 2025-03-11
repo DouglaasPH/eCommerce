@@ -1,7 +1,6 @@
 <nav-bar></nav-bar>
-
-<div class="main" [ngStyle]="{ 'height': currentSection === 'my-orders' && ordersQuantity > 0 ? ((itemsOrdersQuantity * 12) + (ordersQuantity * 6) ) + 'vw' : currentSection === 'my-orders' && ordersQuantity === 0 ? 30 + 'vw' :  currentSection === 'details' ? ((quantityOfItemsForDetails * 8) + 32) + 'vw'  : currentSection === 'my-data' ? '50vw' : currentSection === 'favorites' && quantityOfFavoriteProducts > 0 ? ((quantityOfFavoriteProducts * 10) + 10) + 'vw' : currentSection === 'favorites' && quantityOfFavoriteProducts === 0 ? 30 + 'vw' : null }">
-    <div class="container-left-nav-bar" [ngStyle]="{ 'height': currentSection === 'my-orders' ? ((itemsOrdersQuantity * 11) + (ordersQuantity * 5)) + 'vw' : currentSection === 'details' ? ((quantityOfItemsForDetails * 8) + 28) + 'vw'  : currentSection === 'my-data' ? '50vw' : currentSection === 'favorites' && quantityOfFavoriteProducts > 0 ? ((quantityOfFavoriteProducts * 10) + 8) + 'vw' : null }" *ngIf="currentSection !== 'favorites' || (currentSection === 'favorites' && quantityOfFavoriteProducts > 0 )">
+<div class="main" [ngStyle]="{ 'height': getHeightForMain() }">
+    <div class="container-left-nav-bar" [ngStyle]="{ 'height': getHeightForLeftNavBar(), 'width': getWidthForNavBar() }" (mouseenter)="isHoveringOverTheNavBar = true" (mouseleave)="isHoveringOverTheNavBar = false">
         <left-nav-bar></left-nav-bar>
     </div>
     <div class="content-main">

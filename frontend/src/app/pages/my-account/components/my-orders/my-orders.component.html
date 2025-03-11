@@ -4,7 +4,7 @@
         <h2 class="main-title">MY ORDERS</h2>
     </div>
     <div class="container-all-orders">
-        <div class="container-order" *ngFor="let order of allOrders; let i = index" [ngStyle]="{ 'height': (((setHeight(order)) * 8) + 9) + 'vw' }">
+        <div class="container-order" *ngFor="let order of allOrders; let i = index" [ngStyle]="{ 'height': setHeightForContainerOrder(order) }">
             <div class="container-order-details-and-button">
                 <div class="order-details">
                     <strong class="order-pargraph">Order:</strong>
@@ -24,7 +24,7 @@
                 <p class="method-purchase">Payment via {{ allPaymentsFromOrders[i].payment_method}}.</p>
                 <p class="pending-payment" *ngIf="allPaymentsFromOrders[i]?.status === 'pending'">(Pending Payment)</p>
             </div>
-            <div class="container-all-order-items" [ngStyle]="{ 'height': (setHeight(order) * 8) + 'vw' }">
+            <div class="container-all-order-items" [ngStyle]="{ 'height': setHeightAllOrderItems(order) }">
                 <ng-container *ngFor="let item of allOrdersItems">
                     <div class="order-item" *ngIf="order.id === item.order_id">
                         <ng-container *ngFor="let product of allProductsFromOrders">

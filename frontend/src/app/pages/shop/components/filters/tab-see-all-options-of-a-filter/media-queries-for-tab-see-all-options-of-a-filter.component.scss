@@ -1,0 +1,35 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+    .container-tab {
+        height: 70vw;
+        width: 80vw;
+    }
+
+    .title {
+        font-size: 4.5vw;
+    }
+
+    .icon-close-page {
+        width: 4vw;
+    }
+
+    .container-all-options {
+        gap: 2.5vw;
+    }
+
+    .sizeOption {
+        height: 6vw;
+        width: 6vw;
+        font-size: 2vw;
+        border-radius: 1vw;
+    }
+
+    .option {
+        font-size: 2.5vw;
+        height: 5vw;
+    }
+}

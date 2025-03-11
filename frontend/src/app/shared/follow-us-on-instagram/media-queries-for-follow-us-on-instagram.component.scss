@@ -1,0 +1,30 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) { 
+    .container-follow-us-on-instagram {
+        height: 70vw;
+    }
+
+    .container-title-and-description { 
+        height: 22vw;
+        width: 95%;
+        align-items: center;
+    }
+
+    .title { 
+        font-size: 6vw;
+    }
+
+    .description { 
+        font-size: 2.5vw;
+        width: 77%;
+    }
+
+    .container-modelers-wall { 
+        height: 25vw;
+    }
+
+}

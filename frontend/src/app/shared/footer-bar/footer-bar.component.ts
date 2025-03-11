@@ -4,7 +4,7 @@ import { Component } from "@angular/core";
     selector: 'footer-bar',
     standalone: true,
     templateUrl: './footer-bar.component.html',
-    styleUrl: './footer-bar.component.scss',
+    styleUrls: ['./footer-bar.component.scss', './media-queries-for-footer-bar.component.scss'],
 })
 export class FooterBar {
 

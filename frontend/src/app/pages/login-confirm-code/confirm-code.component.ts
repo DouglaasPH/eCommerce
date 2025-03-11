@@ -6,7 +6,7 @@ import { EnterNewPasswordGuard } from "../../guards/enterNewPassword.guard";
     selector: "login-confirm-code",
     standalone: true,
     templateUrl: "./confirm-code.component.html",
-    styleUrl: "./confirm-code.component.scss",
+    styleUrls: ["./confirm-code.component.scss", "./media-queries-for-confim-code.component.scss"],
 })
 export class LoginConfirmCode {
     constructor(private enterNewPasswordGuard: EnterNewPasswordGuard, private router: Router) { }

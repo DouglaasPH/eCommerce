@@ -2,16 +2,17 @@ import { CommonModule, Location } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { checkLoggined } from "../../requests/forLogin";
 import { Router } from "@angular/router";
+import { ScreenSizeService } from "../../services/screnSize.service";
 
 @Component({
     selector: 'nav-bar',
     standalone: true,
     imports: [CommonModule],
     templateUrl: './nav-bar.component.html',
-    styleUrl: './nav-bar.component.scss',
+    styleUrls: ['./nav-bar.component.scss', './media-queries-for-nav-bar.component.scss'],
 })
 export class navBar implements OnInit {
-    constructor(private router: Router, private location: Location) { }
+    constructor(private router: Router, private location: Location, public screenSizeService: ScreenSizeService) { }
     isLogginned = false;
     currentRoute = '';
 
@@ -25,13 +26,8 @@ export class navBar implements OnInit {
         this.isLogginned = condition.isLogginned;
     }
 
-    onButtonSignIn() {
+    onButtonLogin() {
         this.location.replaceState('/login/sign-in');
-        window.location.reload();
-    }
-
-    onButtonSignUp() {
-        this.location.replaceState('/login/sing-up');
         window.location.reload();
     }
 

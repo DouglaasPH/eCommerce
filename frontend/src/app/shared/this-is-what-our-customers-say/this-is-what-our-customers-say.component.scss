@@ -77,6 +77,24 @@
     transition: height 0.8s ease-in-out, left 1s ease-in-out;
 }
 
+.first-block {
+    left: 25vw;
+    height: 25vw;
+    z-index: 1;
+}
+
+.second-block {
+    left: 8vw;
+    height: 20vw;    
+    z-index: 0;
+}
+
+.third-block {
+    left: 43vw;
+    height: 20vw;    
+    z-index: 0;
+}
+
 .first-group {
     width: 15vw;
 }
@@ -107,7 +125,7 @@
 }
 
 .gray-line-style {
-    border-top: 0.12rem solid #484848;
+    border-top: 0.1vw solid #484848;
     width: 26vw;
 }
 

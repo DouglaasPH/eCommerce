@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output, output } from "@angular/core";
     standalone: true,
     imports: [CommonModule],
     templateUrl: './tab-see-all-options-of-a-filter.component.html',
-    styleUrl: './tab-see-all-options-of-a-filter.component.scss'
+    styleUrls: ['./tab-see-all-options-of-a-filter.component.scss', './media-queries-for-tab-see-all-options-of-a-filter.component.scss'],
 })
 export class TabSeeAllOptionsOfAFilter {
     @Input() filterOptions: string[] = [];

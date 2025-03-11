@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, HostListener } from "@angular/core";
 import { editAddressService } from "../../../../services/editAddress.service";
 import { ProcessPurchaseService } from "../../../../services/processPurchase.service";
 import { editAdress } from "../../../address/components/edit-address/edit-address.component";
@@ -38,7 +38,7 @@ interface userDataInterface {
     standalone: true,
     imports: [CommonModule, FormsModule, editAdress, AddAddress, ChangeEmail, ChangePassword],
     templateUrl: './my-data.component.html',
-    styleUrl: './my-data.component.scss',
+    styleUrls: ['./my-data.component.scss', './media-queries-for-my-data.component.scss'],
 })
 export class MyData {
     constructor(private processPurchaseService: ProcessPurchaseService, private editAddressService: editAddressService) { }
@@ -59,6 +59,25 @@ export class MyData {
     onValidName = false;
     onValidPhoneNumber = false;
     onValidGender = false;
+
+
+    @HostListener('window:resize', ['$event '])
+
+    getHeightForContainerAllAddress() {
+        /* Tweaks for desktop  */
+        if (window.innerWidth > 850) {
+            return (this.allAddress.length * 11) + 'vw';
+        }
+        /* Tweaks for cell phones */
+        else if (window.innerWidth <= 500) {
+            return (this.allAddress.length * 30) + 'vw';
+        }
+        // TODO
+        /* Tweaks for tablets */
+        else {
+            return (this.allAddress.length * 11) + 'vw';
+        };
+    }
 
 
 

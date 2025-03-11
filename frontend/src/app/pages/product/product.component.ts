@@ -24,7 +24,7 @@ interface ProductInterface {
     standalone: true,
     imports: [CommonModule, NgFor, DecimalPipe, navBar, FooterBar],
     templateUrl: './product.component.html',
-    styleUrl: './product.component.scss',
+    styleUrls: ['./product.component.scss', './media-queries-for-product.component.scss'],
 })
 export class ProductPage implements OnInit {
     @ViewChild('scrollDiv') scrollDiv!: ElementRef;

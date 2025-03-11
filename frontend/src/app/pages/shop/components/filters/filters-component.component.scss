@@ -8,7 +8,6 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: end;
-    //background-color: red;
 }
 
 .container-main-title {
@@ -17,7 +16,6 @@
     display: flex;
     align-items: start;
     justify-content: start;
-    //background-color: blue;    
 }
 
 .title-filters {
@@ -34,8 +32,6 @@
     color: #292929;
     font-size: 1.05vw;
 }
-
-
 
 .container-choose-sizes, .container-choose-price_range, .container-choose-product_category, .container-choose-promotions, .container-choose-styles {
     width: 60%;
@@ -69,7 +65,7 @@
     width: 2vw;
     border-radius: 0.4vw;
     border: none;
-    border: 0.1rem solid #5c5c5c;
+    border: 0.1vw solid #5c5c5c;
     background-color: transparent;
 }
 

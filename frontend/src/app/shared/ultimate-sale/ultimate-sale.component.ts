@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
     selector: 'ultimate-sale',
     standalone: true,
     templateUrl: './ultimate-sale.component.html',
-    styleUrl: './ultimate-sale.component.scss',
+    styleUrls: ['./ultimate-sale.component.scss', './media-queries-for-ultimate-sale.component.scss'],
 })
 export class ultimateSale {
     constructor(private router: Router) {}

@@ -1,0 +1,85 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+    .container-description {
+        height: 6vw;
+    }    
+
+    .description {
+        font-size: 6vw;
+    }
+
+    .button-create-with-google-or-gmail {
+        height: 28vw;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .button-create-with-google, .button-create-with-gmail {
+        height: 12vw;
+        width: 80%;
+        border-radius: 1.4vw;
+        justify-content: space-between;
+        padding: 0 13vw 0 13vw;
+    }
+
+    .button-description-google, .button-description-gmail {
+        font-size: 3.5vw;
+    }
+
+    .google-mark, .gmail-mark {
+        height: 5vw;
+    }
+    
+    .container-or {
+        height: 7vw;
+    }
+
+    .or {
+        font-size: 7vw;
+    } 
+
+    .container-row-data-entry {
+        height: 55vw;
+    }
+
+    .first-row-inputs, .second-row-inputs, .three-row-inputs {
+        width: 100%;
+        height: 12vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }    
+
+    .input-first-name, .input-last-name, .input-email, .input-phone-number, .input-password, .input-confirm-password {
+        font-size: 3.5vw;
+        padding-left: 2vw;
+        height: 12vw;
+        width: 42vw;
+        border-radius: 0vw;
+    }
+
+    .four-row-warning {
+        height: 12vw;
+    }
+
+    .container-redirect-buttons {   
+        height: 21vw;
+     }
+
+     .button-sign-up {
+        width: 80%;
+        height: 12vw;
+        border-radius: 1.8vw;
+        font-size: 3.5vw;
+     }
+
+     .paragraph-login {
+        font-size: 3.5vw;
+     }
+
+
+ }

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, HostListener } from "@angular/core";
 import { CommonModule, Location } from "@angular/common";
 import { getAllOrderInformation, getAllOrderItems, getAllPaymentFromOrder, getProductInformation } from "../../../../../requests/forUserData";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -74,7 +74,7 @@ export class FilterStatusPipe implements PipeTransform {
     standalone: true,
     imports: [CommonModule, FilterStatusPipe],
     templateUrl: './details.component.html',
-    styleUrl: './details.component.scss'
+    styleUrls: ['./details.component.scss', './media-queries-for-details.component.scss'],
 })
 export class Details {
     constructor (private route: ActivatedRoute, private router: Router, private location: Location) {}
@@ -113,6 +113,24 @@ export class Details {
         status: ""
     };
     productsId: number[] = [];
+
+    @HostListener('window:resize', ['$event '])
+        
+    setHeightForContainerOrder() {
+        /* Tweaks for desktop  */
+        if (window.innerWidth > 850) {
+            return ((this.allOrderItems.length * 6) + 10) + 'vw'
+        }
+        /* Tweaks for cell phones */
+        else if (window.innerWidth <= 500) {
+            return ((this.allOrderItems.length * 14) + 13) + 'vw'
+        }
+        // TODO
+        /* Tweaks for tablets */
+        else {
+            return ((this.allOrderItems.length * 6) + 10) + 'vw'
+        };        
+    }
 
     async ngOnInit() {
         this.currentOrderId = Number(this.route.snapshot.paramMap.get('order_id')!);

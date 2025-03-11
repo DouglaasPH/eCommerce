@@ -8,7 +8,7 @@ import { login } from "../../requests/forLogin";
     standalone: true,
     imports: [FormsModule, RouterModule],
     templateUrl: './login-sign-in.component.html',    
-    styleUrl: './login-sign-in.component.scss',
+    styleUrls: ['./login-sign-in.component.scss', './media-queries-for-sign-in.component.scss'],
 })
 export class LoginSignIn {
     constructor(private router: Router) {}

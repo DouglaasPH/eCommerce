@@ -5,7 +5,9 @@
         <div class="container-images">
             <div class="container-choose-images-and-buttons">
                 <div class="container-return-image">
-                    <button class="return-image" (click)="onScroll('up')">&gt;</button>
+                    <button class="return-image" (click)="onScroll('up')">
+                        <img src="../../../assets/icons/top-arrow-icon.svg" alt="top arrow icon" class="top-arrow-icon">
+                    </button>
                 </div>
                 <div class="container-choose-images" #scrollDiv>
                     <div class="div-choose-image" *ngFor="let image of product.images_path" (click)="changeMainImage(image)">
@@ -13,7 +15,9 @@
                     </div>
                 </div>
                 <div class="container-next-image">
-                    <button class="next-image" (click)="onScroll('down')">&gt;</button>
+                    <button class="return-image" (click)="onScroll('down')">
+                        <img src="../../../assets/icons/bottom-arrow-icon.svg" alt="down arrow icon" class="bottom-arrow-icon">
+                    </button>                    
                 </div>                
             </div>
             <div class="container-see-image">

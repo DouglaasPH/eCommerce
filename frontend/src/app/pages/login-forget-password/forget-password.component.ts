@@ -11,7 +11,7 @@ import { CommonModule } from "@angular/common";
     standalone: true,
     imports: [FormsModule, RouterModule, CommonModule],
     templateUrl: './forget-password.component.html',
-    styleUrl: './forget-password.component.scss',
+    styleUrls: ['./forget-password.component.scss', './media-queries-for-forget-password.component.scss'],
 })
 export class LoginForgetPassword {
     constructor(private forgetPasswordsService: ForgetPasswordService, private router: Router, private confirmCodeGuard: ConfirmCodeGuard) {}

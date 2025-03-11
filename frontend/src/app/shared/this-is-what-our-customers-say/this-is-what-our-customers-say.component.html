@@ -5,7 +5,7 @@
     </div>
 
     <div class="container-customer-wall">
-        <div class="container-first-customer-feedback" [ngStyle]="{ 'left': (containerOrder[0] === 'first') ? '25vw' : (containerOrder[1] === 'first') ? '8vw' : '43vw', 'height': (containerOrder[0] === 'first') ? '25vw' : '20vw', 'z-index': (containerOrder[0] === 'first') ? '1' : '0' }">
+        <div class="container-first-customer-feedback" [ngClass]="{ 'first-block': containerOrder[0] === 'first', 'second-block': containerOrder[1] === 'first', 'third-block': containerOrder[2] === 'first'  }">
             <div class="first-group">
                 <img src="../../../assets/this-is-what-our-customers-say/james-k.png" class="client-image" alt="client">
             </div>
@@ -18,7 +18,7 @@
             </div>
         </div>
 
-        <div class="container-second-customer-feedback" [ngStyle]="{ 'left': (containerOrder[0] === 'second') ? '25vw' : (containerOrder[1] === 'second') ? '8vw' : '43vw', 'height': (containerOrder[0] === 'second') ? '25vw' : '20vw', 'z-index': (containerOrder[0] === 'second') ? '1' : '0'  }">
+        <div class="container-second-customer-feedback" [ngClass]="{ 'first-block': containerOrder[0] === 'second', 'second-block': containerOrder[1] === 'second', 'third-block': containerOrder[2] === 'second'  }">
             <div class="first-group">
                 <img src="../../../assets/this-is-what-our-customers-say/suzan-b.png" class="client-image" alt="client">
             </div>
@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="container-third-customer-feedback" [ngStyle]="{ 'left': (containerOrder[0] === 'third') ? '25vw' : (containerOrder[1] === 'third') ? '8vw' : '43vw', 'height': (containerOrder[0] === 'third') ? '25vw' : '20vw', 'z-index': (containerOrder[0] === 'third') ? '1' : '0'  }">
+        <div class="container-third-customer-feedback" [ngClass]="{ 'first-block': containerOrder[0] === 'third', 'second-block': containerOrder[1] === 'third', 'third-block': containerOrder[2] === 'third'  }">
             <div class="first-group">
                 <img src="../../../assets/this-is-what-our-customers-say/megan-w.png" class="client-image" alt="client">
             </div>

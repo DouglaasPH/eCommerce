@@ -1,0 +1,26 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) { 
+    .container-footer-bar {
+        height: 25vw;
+    }
+
+    .title {
+        font-size: 5.5vw;
+    }
+
+    .subgroup-2 { 
+        width: 65%;
+    }
+
+    .link { 
+        font-size: 1.8vw;
+    }
+
+    .copyright { 
+        font-size: 2vw;
+    }
+}

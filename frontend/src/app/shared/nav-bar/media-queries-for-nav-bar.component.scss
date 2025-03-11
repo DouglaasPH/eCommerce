@@ -1,0 +1,55 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) { 
+    .nav-bar-component { 
+        height: 20vw;
+    }
+
+    .logo {
+        font-size: 8vw;
+    }
+
+    .container-redirect-buttons-between-pages { 
+        width: 20vw;
+    }
+
+    .redirect-to-home-button, .redirect-to-shop-button {
+        font-size: 3vw;
+        height: 5vw;
+        width: 9vw;
+    }
+
+    .container-redirect-button-login {
+        width: 22vw;
+    }
+
+    .redirect-button-login {
+        height: 8vw;
+        width: 100%;
+        border-radius: 2vw;
+        font-size: 2vw;
+        color: #1f1f1f;
+        background-color: transparent;
+        border: 0.1vw solid #1f1f1f;
+    }
+
+    .user-icon {
+        height: 5vw;
+    }
+
+    .paragraph-button {
+        font-size: 1.8vw;
+        width: 9vw;
+     }
+
+     .container-user {
+        width: 5vw;
+     }
+
+     .redirect-user-for-mobile-devices > img {
+        width: 5vw;
+    }    
+}

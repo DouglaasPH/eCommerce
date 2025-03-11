@@ -1,0 +1,82 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) {}
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+    .container-description {
+        height: 5.5vw;
+    }
+    .description {
+        font-size: 5.5vw;
+    }
+
+    .button-log-in-with-google-or-gmail {
+        height: 27vw;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .button-log-in-with-google, .button-log-in-with-gmail {
+        height: 11vw;
+        width: 70%;
+        border-radius: 1.4vw;
+        justify-content: space-between;
+        padding: 0 12vw 0 12vw;
+    }
+
+    .button-description-google, .button-description-gmail {
+        font-size: 3vw;
+        color: #1f1f1f;
+    }
+
+    .google-mark, .gmail-mark {
+        height: 5.5vw;
+    }
+
+    .container-or {
+        height: 7vw;
+    }
+
+    .or {
+        font-size: 7vw;
+    }    
+
+    .data-entry-container {
+        height: 20vw;
+        width: 100%;
+        align-items: center;
+    }
+
+    .input-email, .input-password {
+        height: 8vw;
+        font-size: 3vw;
+        padding-left: 2vw;
+        width: 80%;
+    }        
+
+    .container-redirect-buttons {
+        height: 30vw;
+        align-items: center;
+    }
+
+    .button-sign-in, .button-register-now {
+        height: 10vw;
+        font-size: 3.5vw;
+        border-radius: 3vw;
+        width: 80%;
+    }    
+
+
+    .container-button-forget-password {
+        height: 5vw;
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        align-items: end;
+    }
+
+    .button-forget-password {
+        font-size: 3vw;       
+    }    
+}

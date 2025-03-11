@@ -16,6 +16,7 @@
 .container-description {
     display: flex;
     justify-content: center;
+    align-items: center
 }
 
 .description {
@@ -45,12 +46,14 @@
     gap: 1vw;
     border-radius: 0.5vw;
     border: 0.1vw solid #8a8a8a;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 }
 
 .button-description-google, .button-description-gmail {
     @extend %font-poppins;
     font-size: 0.8vw;
     font-weight: 500;
+    color: #1f1f1f;
 }
 
 .google-mark, .gmail-mark {
@@ -129,6 +132,7 @@
     border: none;
     border-radius: 0.4vw;
     color: #ffffff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);        
 }
 
 .paragraph-login {
@@ -139,13 +143,8 @@
 }
 
 .link-login {
-    text-decoration: none;
-    color: #5b86e5;
-}
-
-.link-login:hover {
     text-decoration: underline;
-    cursor: pointer;
+    color: #5b86e5;
 }
 
 button:hover {

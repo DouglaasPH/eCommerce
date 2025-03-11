@@ -1,0 +1,42 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+    .container-title-and-route {
+        height: 20vw;
+    }
+
+    .container-title-and-route-specification {
+        width: 50%;
+        height: 65%;
+    }
+
+    .title {
+        font-size: 6vw;
+    }
+
+    .container-route-specification{ 
+        width: 39%;
+    }
+
+    .parent-route, .separation, .current-route {
+        font-size: 2.5vw;
+    }
+
+    .content {
+        justify-content: space-between;
+        gap: 0vw;
+        height: 320vw;
+    }
+
+    .container-component-shop {
+        width: 70%;
+    }
+
+    .container-component-filters { 
+        height: 190vw;
+        width: 30%;
+    }
+}

@@ -1,0 +1,49 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) {
+    .login-page-container {
+        justify-content: center;
+        gap: 12vh;
+    }
+
+    .mark {
+        font-size: 5vw;
+    }
+
+    .terms-and-conditions {
+        font-size: 1.7vw;
+    }
+
+    .container-router-outlet {
+        height: 65vw;
+        width: 60vw;
+    }
+}
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+
+    .login-page-container {
+        justify-content: space-around;
+        //background-color: blue;
+        height: 100vh;
+        gap: 0vw;
+        //background-color: red;
+    }
+
+    .mark {
+        font-size: 6vw;
+    }
+
+    .terms-and-conditions {
+        font-size: 3vw;
+    }
+
+    .container-router-outlet {
+        height: 90vh;
+        width: 90vw;
+        box-shadow: none;
+        background-color: transparent;
+        //background-color: blue;
+    }    
+}

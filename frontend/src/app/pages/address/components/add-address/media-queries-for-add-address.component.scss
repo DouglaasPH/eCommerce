@@ -1,0 +1,81 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+    .container-add-address {
+        height: 100%;
+        width: 100%;
+        border-radius: 0vw;
+    }
+
+    .title {
+        font-size: 4.5vw;
+    }
+
+    .button-back {
+        font-size: 5vw;
+    }
+
+    .main {
+        height: 75%;
+    }
+
+    input {
+        font-size: 2.5vw;
+        border-radius: 1vw;
+        padding-left: 2vw;
+    }
+
+    p {
+        font-size: 2vw;
+        left: 9vw;        
+        background-color: #ebebeb;
+    }
+
+    .sender {
+        top: 10.9%;
+    }
+
+    .contact {
+        top: 18.7%;
+    }
+
+    .cep {
+        top: 26.3%;
+    }
+
+    .uf {
+        top: 34.2%;
+    }
+
+    .city {
+        top: 41.6%;
+    }
+
+    .neighborhood {
+        top: 49.3%;
+    }
+
+    .logradouro {
+        top: 56.8%;
+    }
+
+    .number {
+        top: 64.5%;
+    }
+
+    .complement {
+        top: 72.2%;
+    }
+
+    .reference {
+        top: 79.8%;
+    }
+
+    .button-cancel, .button-submit {
+        font-size: 2.5vw;
+        border-radius: 1vw;
+    }
+}

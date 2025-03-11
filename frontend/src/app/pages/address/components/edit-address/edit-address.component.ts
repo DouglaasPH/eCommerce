@@ -23,7 +23,7 @@ interface address {
     standalone: true,
     imports: [CommonModule, FormsModule],
     templateUrl: './edit-address.component.html',
-    styleUrl: './edit-address.component.scss',
+    styleUrls: ['./edit-address.component.scss', './media-queries-for-edit-address.component.scss'],
 })
 export class editAdress implements OnInit {
     @Input() user_id: number = 0; 

@@ -14,7 +14,7 @@ interface allFiltersInterface {
     standalone: true,
     imports: [CommonModule, TabSeeAllOptionsOfAFilter],
     templateUrl: './filters-component.component.html',
-    styleUrl: './filters-component.component.scss',
+    styleUrls: ['./filters-component.component.scss', './media-queries-for-filters-component.component.scss'],
 })
 export class FiltersComponent implements OnInit {
     constructor(private router: Router) { }
@@ -125,8 +125,6 @@ export class FiltersComponent implements OnInit {
     buttonSeeAllOptions(currentFilter: string) {
         this.onSeeAllOptions = true;
         this.onSeeFilterOptions = [currentFilter, this.filtersName[currentFilter]];
-        console.log(this.onSeeFilterOptions)
-        console.log(this.filtersName)
     }
 
     onCloseTab() {

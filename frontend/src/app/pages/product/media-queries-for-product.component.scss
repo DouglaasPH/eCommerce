@@ -1,0 +1,136 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+    .container-product {
+        height: 180vw;        
+    }
+
+    .product {
+        width: 95%;
+        flex-direction: column;
+        justify-content: space-between;        
+    }
+
+    .container-images {
+        width: 100%;
+        height: 90vw;
+    }
+
+    .container-return-image, .container-next-image {
+        width: 80%;
+        height: 10%;
+    }
+
+    .return-image, .next-image {
+        height: 100%;
+        width: 40%;
+    }
+
+    .top-arrow-icon, .bottom-arrow-icon {
+        width: 2.8vw;
+    }
+
+    .container-choose-images {
+        height: 110%;
+    }
+
+    .div-choose-image {
+        width: 15vw;
+        height: 15vw;
+    }
+
+
+    .container-details {
+        height: 90vw;
+        width: 100%;
+    }
+
+    .details {
+        width: 100%;
+    }
+
+    .product-name {
+        font-size: 3vw;
+        width: 85%;
+    }
+
+    .favorite-button {
+        width: 15%;
+
+    }
+
+    .container-price-discount {
+        width: 40%;
+    }
+
+    .previous-price {
+        font-size: 2.5vw;
+    }
+
+    .discount {
+        font-size: 2.3vw;
+        padding: 0.3vw 0.9vw 0.3vw 0.9vw;
+    }
+
+    .current-price {
+        font-size: 3vw;
+    }
+
+    .interest-free-installments {
+        font-size: 2vw;
+    }
+
+    .favorite-image {
+        width: 5vw;
+    }
+
+    .container-size {
+        height: 14%;
+    }
+
+    .size-title {
+        font-size: 2.5vw;
+    }
+
+    .size {
+        width: 8%;
+        font-size: 2.5vw;
+        border-radius: 1vw;
+    }
+
+    .container-quantity {
+        height: 15%;
+    }
+
+    .quantity-title {
+        font-size: 2vw;
+    }
+
+    .container-select-quantity {
+        border-radius: 1vw;
+    }
+
+    .decrease-quantity, .increase-quantity, .quantity {
+        font-size: 2.5vw;
+    }
+
+    .button-add-to-cart {
+        font-size: 2.5vw;
+    }
+
+    .container-carts {
+        width: 60%;
+        height: 10vw;
+    }
+
+    .carts-image {
+        height: 4vw;
+    }
+
+    .carts-description {
+        font-size: 1.8vw;
+    }
+}

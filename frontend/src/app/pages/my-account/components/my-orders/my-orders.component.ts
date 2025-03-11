@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, HostListener, OnInit } from "@angular/core";
 import { getAllOrderItems, getAllOrders, getAllPaymentFromOrder, getProductInformation } from "../../../../requests/forUserData";
 import { checkLoggined } from "../../../../requests/forLogin";
 import { CommonModule, Location } from "@angular/common";
@@ -37,7 +37,7 @@ interface Product {
     standalone: true,
     imports: [CommonModule],
     templateUrl: './my-orders.component.html',
-    styleUrl: './my-orders.component.scss',
+    styleUrls: ['./my-orders.component.scss', './media-queries-for-my-orders.component.scss'],
 })
 export class MyOrders implements OnInit {
     constructor(private router: Router, private location: Location) {}
@@ -71,13 +71,61 @@ export class MyOrders implements OnInit {
         });
     }
 
-    setHeight(order: Order) {
+    @HostListener('window:resize', ['$event '])
+
+    setHeightAllOrderItems(order: Order) {
         let quantity = 0;
-        for (const item of this.allOrdersItems) {
-            if (item.order_id === order.id) quantity = quantity + 1;
+
+        /* Tweaks for desktop  */
+        if (window.innerWidth > 850) {
+            for (const item of this.allOrdersItems) {
+                if (item.order_id === order.id) quantity = quantity + 1;
+            }
+            return (quantity * 8) + 'vw';
         }
-        return quantity
+        /* Tweaks for cell phones */
+        else if (window.innerWidth <= 500) {
+            for (const item of this.allOrdersItems) {
+                if (item.order_id === order.id) quantity = quantity + 1;
+            }
+            return (quantity * 15) + 'vw';
+        }
+        // TODO
+        /* Tweaks for tablets */
+        else {
+            for (const item of this.allOrdersItems) {
+                if (item.order_id === order.id) quantity = quantity + 1;
+            }
+            return (quantity * 8) + 'vw';
+        };
     }
+
+    setHeightForContainerOrder(order: Order) {
+        let quantity = 0;
+
+        /* Tweaks for desktop  */
+        if (window.innerWidth > 850) {
+            for (const item of this.allOrdersItems) {
+                if (item.order_id === order.id) quantity = quantity + 1;
+            }
+            return ((quantity * 8) + 9) + 'vw';
+        }
+        /* Tweaks for cell phones */
+        else if (window.innerWidth <= 500) {
+            for (const item of this.allOrdersItems) {
+                if (item.order_id === order.id) quantity = quantity + 1;
+            }
+            return ((quantity * 15) + 20) + 'vw';
+        }
+        // TODO
+        /* Tweaks for tablets */
+        else {
+            for (const item of this.allOrdersItems) {
+                if (item.order_id === order.id) quantity = quantity + 1;
+            }
+            return ((quantity * 8) * 9) + 'vw';
+        };
+    }    
 
     seeDetails(order_id: number) {
         this.location.replaceState('my-account/my-orders/details/' + order_id);

@@ -1,0 +1,132 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+    .container-title { 
+        height: 4%;
+    }
+    .main-title {
+        font-size: 4vw;
+    }
+
+    .user-icon {
+        width: 4vw;
+    }
+
+    .div-row-direction {
+        flex-direction: column;
+        justify-content: space-between;
+        height: 96%;
+    }
+
+    .user-data, .container-user-address {
+        width: 100%;
+        height: 49%;
+    }
+
+    .basic-data-title {
+        font-size: 3vw;
+    }
+
+    .data-icon {
+        width:2.5vw;
+    }
+
+    .change-email-button, .change-password-button {
+        font-size: 2.5vw;
+    }
+
+    input, select {
+        padding-left: 2.3vw;
+        font-size: 2.5vw;
+        height: 9vw;
+        border-radius: 1vw;
+    }
+
+    select {
+        width: 98%;
+    }
+
+    .input-with-padlock, .select-with-arrow-icon, .alert-icon {
+    background-position: right 2vw center;
+        background-size: 2.5vw;
+    }
+
+    label {
+        font-size: 2vw;
+        left: 14vw;
+    }
+
+    .complete-name-label {
+        top: 61.6vw;
+    }
+
+    .phone-number-label {    
+        top: 75.6vw;
+    }
+
+    .gender-label {
+        top: 90vw;
+    }
+
+    .email-label {
+        top: 104.5vw;
+    }
+
+    .cpf-label {
+        top: 118.7vw;
+    }
+
+    .date-of-birth-label {
+        top: 132.8vw;
+    }
+
+    .delete-account-button, .save-changes-button {
+        border-radius: 1vw;
+        font-size: 2.5vw;
+    }
+
+    .container-address-title {
+        height: 4vw;
+    }
+
+    .location-title {
+        font-size: 3vw;
+    }
+
+    .location-icon {
+        width: 2.5vw;
+    }
+
+    .container-all-address {
+        width: 86%;
+        gap: 2vw;
+    }
+
+    .container-address-data {
+        height: 30vw;
+    }
+
+    .sender {
+        font-size: 3vw;
+    }
+
+    .complement {
+        font-size: 1.8vw;
+    }
+
+    .address, .contact, .reference {
+        font-size: 2vw;
+    }
+
+    .edit, .remove {
+        font-size: 2vw;
+    }
+
+    .add-new-address {
+        font-size: 2.5vw;
+    }
+
+}

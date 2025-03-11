@@ -18,20 +18,16 @@
             </div>
             <div class="div-column-direction-user-data">
                 <div class="container-input">
-                    <img src="../../../../../assets/icons/alert-icon.svg" alt="alert icon" class="alert-icon name-complete-alert-icon" *ngIf="onValidName">
                     <label class="complete-name-label">Complete name</label>
-                    <input type="text" value="{{ userData.name }}" [(ngModel)]="userData.name" (ngModelChange)="onCheckInputName()">
+                    <input type="text" value="{{ userData.name }}" [ngClass]="{ 'alert-icon': onValidName }" [(ngModel)]="userData.name" (ngModelChange)="onCheckInputName()">
                 </div>
                 <div class="container-input">
-                    <img src="../../../../../assets/icons/alert-icon.svg" alt="alert icon" class="alert-icon phone-number-alert-icon" *ngIf="onValidPhoneNumber">
                     <label class="phone-number-label">Phone Number</label>
-                    <input type="text" (input)="onInputPhoneNumber($event)" [value]="userData.phone_number" maxlength="15">
+                    <input type="text" (input)="onInputPhoneNumber($event)" [ngClass]="{ 'alert-icon': onValidPhoneNumber }" [value]="userData.phone_number" maxlength="15">
                 </div>
                 <div class="container-input">
-                    <img src="../../../../../assets/icons/bottom-arrow-icon.svg" alt="bottom arrow icon" class="bottom-arrow-icon" *ngIf="!onValidGender">
-                    <img src="../../../../../assets/icons/alert-icon.svg" alt="alert icon" class="alert-icon gender-alert-icon" *ngIf="onValidGender">
                     <label class="gender-label">Gender</label>
-                    <select [(ngModel)]="userData.gender" (ngModelChange)="onCheckInputGender()">
+                    <select [(ngModel)]="userData.gender" (ngModelChange)="onCheckInputGender()" [ngClass]="{ 'select-with-arrow-icon': !onValidGender, 'alert-icon': onValidGender }">
                         <option *ngIf="userData.gender === null" hidden></option>
                         <option value="man">Man</option>
                         <option value="woman">Woman</option>
@@ -41,18 +37,15 @@
                 </div>
                 <div class="container-input">
                     <label class="email-label disabled-label">E-mail</label>
-                    <input type="text" class="disabled-input" value="{{ userData.email }}" disabled>
-                    <img src="../../../../../assets/icons/padlock-icon.svg" alt="padlock icon" class="padlock-icon padlock-icon-for-email">
+                    <input type="text" class="disabled-input input-with-padlock" value="{{ userData.email }}" disabled>
+                 </div>
+                <div class="container-input">
+                    <label class="cpf-label disabled-label">CPF</label>
+                    <input type="text" class="disabled-input input-with-padlock" value="{{userData.cpf}}" disabled>
                 </div>
                 <div class="container-input">
-                    <label class="cpf-label" class="disabled-label">CPF</label>
-                    <input type="text" class="disabled-input" value="{{userData.cpf}}" disabled>
-                    <img src="../../../../../assets/icons/padlock-icon.svg" alt="padlock icon" class="padlock-icon padlock-icon-for-cpf">
-                </div>
-                <div class="container-input">
-                    <label class="date-of-birth-label" class="disabled-label">Date of Birth</label>
-                    <input type="date" class="date_of_birth-input" class="disabled-input" value="{{ userData.date_of_birth }}" disabled>
-                    <img src="../../../../../assets/icons/padlock-icon.svg" alt="padlock icon" class="padlock-icon padlock-icon-for-date-of-birth">
+                    <label class="date-of-birth-label disabled-label">Date of Birth</label>
+                    <input type="date" class="date_of_birth-input" class="disabled-input input-with-padlock" value="{{ userData.date_of_birth }}" disabled>
                 </div>
             </div>
 
@@ -68,7 +61,7 @@
                 <h2 class="location-title">LOCATION</h2>
             </div>
             <div class="container-address">
-                <div class="container-all-address"  [ngStyle]="{ 'height': (this.allAddress.length * 11) + 'vw' }">
+                <div class="container-all-address"  [ngStyle]="{ 'height': getHeightForContainerAllAddress()}">
                     <div class="container-address-data" *ngFor="let currentAddress of allAddress; let index = index">
                         <edit-address *ngIf="statusEditAddress" (setStatusEditAddress)="setStatusEditAddress()" [address_position]="index" [user_id]="user_id"></edit-address>                        
                         <div class="address-data">

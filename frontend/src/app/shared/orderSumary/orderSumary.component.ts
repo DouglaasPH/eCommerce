@@ -10,7 +10,7 @@ import { addOrder, addOrderItem, addPayment, getOrderIdForAddPaymentRequest, rem
     standalone: true,
     imports: [CommonModule, FormsModule],
     templateUrl: './orderSumary.component.html',
-    styleUrl: './orderSumary.component.scss'
+    styleUrls: ['./orderSumary.component.scss', './media-queries-for-orderSumary.component.scss'],
 })
 export class orderSumary implements OnInit {
     constructor(private orderSumaryService: OrderSumaryService, private router: Router) { }

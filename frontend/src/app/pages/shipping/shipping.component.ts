@@ -11,7 +11,7 @@ import { OrderDataService } from "../../services/orderDatas.service";
     standalone: true,
     imports: [navBar, FooterBar, orderSumary, CommonModule],
     templateUrl: './shipping.component.html',
-    styleUrl: './shipping.component.scss'
+    styleUrls: ['./shipping.component.scss', './media-queries-for-shipping.component.scss']
 })
 export class Shipping {
     constructor(private orderSumaryService: OrderSumaryService, private orderDataService: OrderDataService) {}

@@ -1,3 +1,5 @@
+/* Base styles (desktop) */
+
 @use '../../../variables.scss';
 
 .login-page-container {
@@ -5,7 +7,8 @@
     height: 100vh;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center; 
+    align-items: center;
+    gap: 0vw; 
 }
 
 .container-router-outlet {

@@ -9,7 +9,7 @@ import { updatePassword } from "../../requests/forLogin";
     standalone: true,
     imports: [FormsModule],
     templateUrl: './login-enter-new-password.component.html',
-    styleUrl: './login-enter-new-password.component.scss'
+    styleUrls: ['./login-enter-new-password.component.scss', './media-queries-enter-new-password.component.scss'],
 })      
 export class LoginEnterNewPassword {
     constructor(private forgetPasswordService: ForgetPasswordService, private router: Router) {}

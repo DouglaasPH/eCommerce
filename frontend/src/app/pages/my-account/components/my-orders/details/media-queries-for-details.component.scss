@@ -1,0 +1,133 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+    .container-details {
+        gap: 1vw;
+    }
+
+    .container-title {
+        height: 7vw;
+    }
+
+    .main-title {
+        font-size: 3vw;
+    }
+
+    .order-icon {
+        width: 2.7vw;
+    }
+
+    .container-order-info {
+        height: 8vw;
+    }
+
+    .order-details {
+        gap: 1vw;
+    }
+
+    .order-pargraph, .order-id, .separator, .order-date, .order-status {
+        font-size: 1.9vw;
+    }
+
+    .div-row-direction {
+        flex-direction: column;
+        justify-content: start;
+        gap: 4vw;
+    }
+
+
+    .container-order {
+        width: 100%;
+    }
+
+    .container-all-order-items {
+        gap: 1.5vw;
+    }
+
+    .order-item {
+        height: 12vw;
+    }
+
+    .item-image {
+        width: 12vw;
+        height: 12vw;
+    }
+
+    .item-name {
+        font-size: 1.5vw;
+    }
+
+    .quantity, .size, strong {
+        font-size: 1.5vw;
+    }
+
+    .item-price {
+        font-size: 2vw;
+    }
+
+    .container-delivery-status {
+        height: 10vw;
+        align-items: center;
+    }
+
+    .container-status-and-date {
+        height: 100%;
+    }
+    .status, .date {
+        font-size: 1.2vw;
+    }
+
+    .container-feature {
+        height: 10vw;
+    }
+
+    .container-delivery-and-price-information {
+        height: 95vw;
+        width: 100%;
+        border-radius: 1vw;
+    }
+
+    .sender {
+        font-size: 2.5vw;
+    }
+
+    .address {
+        font-size: 2vw;
+    }
+
+    .payment-method {
+        font-size: 2.5vw;
+    }
+
+    .subtotal-title, .shipping-title, .discount-title, .coupon-applied-title {
+        font-size: 2.5vw;
+    }
+
+    .total-title {
+        font-size: 2.7vw;
+    }
+
+    .subtotal-value, .shipping-value, .discount-value, .coupon-applied-value {
+        font-size: 2.5vw;
+    }
+
+    .total-value {
+        font-size: 2.7vw;
+    }
+
+    .return-button {
+        border-radius: 1.5vw;
+        gap: 1.5vw;
+    }
+
+    .paragraph-return-to-my-orders {
+        font-size: 2.8vw;
+    }
+
+    .carret-left-icon {
+        width: 2.3vw;
+    }
+}

@@ -1,0 +1,85 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+    .container-title {
+        height: 8vw;
+    }
+
+    .main-title {
+        font-size: 3.5vw;
+    }
+
+    .order-icon {
+        width: 3vw;
+    }
+
+    .container-order-details-and-button {
+        height: 8vw;
+    }
+
+    .order-details {
+        gap: 0.8vw;
+        width: 75%;
+    }
+
+    .order-pargraph, .order-id, .separator, .order-date {
+        font-size: 2.5vw;
+    }
+
+    .button-see-details {
+        font-size: 2vw;
+        width: 25%;
+        height: 5vw;
+        border-radius: 1vw;
+    }
+
+    .paragraph-see-details {
+        font-size: 2vw;
+    }
+
+    .carret-right-icon {
+        width: 1.8vw;
+    }
+
+    .container-order-status, .container-method-purchase {
+        height: 4vw;
+    }
+
+    .order-status, .method-purchase, .pending-payment {
+        font-size: 2vw;
+    }
+
+    .pending-payment {
+        font-size: 1.5vw;
+    }    
+
+
+    .order-item {
+        height: 11vw;
+    }
+
+    .item-image {
+        width: 11vw;
+        height: 11vw;
+    }
+
+    .item-name {
+        font-size: 1.5vw;
+    }
+
+    .quantity, strong, .size {
+        font-size: 1.7vw;
+    }
+
+    .my-orders-without-orders { 
+        height: 100%;
+    }
+
+    .my-orders-without-orders > .title {
+        font-size: 5vw;
+    }
+
+}

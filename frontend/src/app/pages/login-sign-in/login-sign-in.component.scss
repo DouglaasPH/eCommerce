@@ -14,7 +14,8 @@
 .container-description {
     height: 3vw;
     display: flex;
-    justify-content: center;    
+    justify-content: center;
+    align-items: center
 }
 
 .description {
@@ -44,6 +45,7 @@
     gap: 1vw;
     border-radius: 0.5vw;
     border: 0.1vw solid #8a8a8a;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);    
 }
 
 .button-description-google, .button-description-gmail {
@@ -106,6 +108,7 @@ input::placeholder {
     font-size: 0.8vw;
     height: 2.7vw;
     border-radius: 0.6vw;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);            
 }
 
 .button-sign-in {
@@ -135,9 +138,6 @@ input::placeholder {
     border: none;
     background-color: transparent;
     color: #1e51c0;
-}
-
-.button-forget-password:hover {
     text-decoration: underline;
 }
 

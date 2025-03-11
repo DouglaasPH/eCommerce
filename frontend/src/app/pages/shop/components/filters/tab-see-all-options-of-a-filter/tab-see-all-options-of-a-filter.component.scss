@@ -57,11 +57,11 @@ button:hover {
 .container-all-options {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: start;
+    flex-direction: row;
+    justify-content: start;
     margin: 0 3vw 0 3vw;
-    height: 4vw;
-    gap: 0.5vw;
+    gap: 1vw;
+    height: 10%;
 }
 
 

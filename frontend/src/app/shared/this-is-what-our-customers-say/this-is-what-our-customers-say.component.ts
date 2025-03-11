@@ -6,7 +6,7 @@ import { Component } from "@angular/core";
     standalone: true,
     imports: [CommonModule],
     templateUrl: './this-is-what-our-customers-say.component.html',
-    styleUrl: './this-is-what-our-customers-say.component.scss',
+    styleUrls: ['./this-is-what-our-customers-say.component.scss', './media-queries-for-this-is-what-our-customers.component.scss'],
 })
 export class ThisIsWhatOurCustomersSay {
     currentIndex = 1;
@@ -22,8 +22,10 @@ export class ThisIsWhatOurCustomersSay {
 
     onLeftDirection() {
         this.containerOrder = [this.containerOrder[1], this.containerOrder[2], this.containerOrder[0]];
+        console.log(this.containerOrder);
     }
     onRightDirection() {
         this.containerOrder = [this.containerOrder[2], this.containerOrder[0], this.containerOrder[1]];
+        console.log(this.containerOrder);
     }    
 }

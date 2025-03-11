@@ -1,0 +1,47 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+    .container-ultimate-sale { 
+        height: 65vw;
+    }
+
+    .ultimate-sale { 
+        width: 90%;
+        height: 65vw;
+    }
+
+    .first-block, .third-block { 
+        width: 27vw;
+    }
+
+    .image-1, .image-4 {
+        height: 40vw;
+    }
+
+    .second-block { 
+        width: 33vw;
+    }
+
+    .title-ultimate { 
+        font-size: 7vw;
+    }
+
+    .title-sale { 
+        font-size: 14vw;
+    }
+
+    .title-new-collection { 
+        font-size: 3vw;
+    }
+
+    .button-shop-now { 
+        height: 7.5vw;
+        width: 80%;
+        font-size: 2.5vw;
+        font-weight: 600;
+        border-radius: 2vw;
+    }
+}

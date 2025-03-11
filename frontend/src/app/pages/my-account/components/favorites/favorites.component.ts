@@ -18,7 +18,7 @@ interface ProductInterface {
     standalone: true,
     imports: [CommonModule],
     templateUrl: './favorites.component.html',
-    styleUrl: './favorites.component.scss',
+    styleUrls: ['./favorites.component.scss', './media-queries-for-favorites.component.scss'],
 })
 export class Favorites implements OnInit {
     constructor (private location: Location) {}

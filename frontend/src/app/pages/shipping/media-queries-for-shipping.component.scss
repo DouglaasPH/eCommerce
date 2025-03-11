@@ -1,0 +1,25 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+    .container-shipping-page {
+        height: 100%;
+        width: 100%;
+        border-radius: 0vw;
+        justify-content: space-between;
+    }
+
+    .div-direction-row {
+        width: 57%;
+    }
+
+    .div-direction-column {
+        width: 40%;
+    }
+
+    .title, .title-separator {
+        font-size: 3vw;
+    }    
+}

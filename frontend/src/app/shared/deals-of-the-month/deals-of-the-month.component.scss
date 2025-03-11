@@ -23,7 +23,7 @@
     justify-content: space-evenly;
 }
 
-.title {
+.first-block {
     @extend %font-volkhov;
     @extend %logo-brand-style;
     font-size: 2vw;
@@ -39,6 +39,7 @@
 .button-buy-now {
     @extend %font-poppins;
     font-size: 0.8vw;
+    font-weight: 600;
     width: 8vw;
     height: 3vw;
     border: none;

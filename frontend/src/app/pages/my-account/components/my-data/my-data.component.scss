@@ -105,9 +105,25 @@ input, select {
     appearance: none;
 }
 
+.input-with-padlock {
+    background-image: url('../../../../../assets/icons/padlock-icon.svg');
+    background-repeat: no-repeat;
+    background-position: right 1vw center;
+    background-size: 1vw;    
+}
+
+.select-with-arrow-icon {
+    background-image: url('../../../../../assets/icons/bottom-arrow-icon.svg');
+    background-repeat: no-repeat;
+    background-position: right 1vw center;
+    background-size: 1vw;    
+}
+
 .alert-icon {
-    position: absolute;
-    left: 47.5vw;
+    background-image: url('../../../../../assets/icons/alert-icon.svg');
+    background-repeat: no-repeat;
+    background-position: right 1vw center;
+    background-size: 1vw;
 }
 
 .bottom-arrow-icon {
@@ -116,18 +132,6 @@ input, select {
     left: 48vw;    
     top: 32.2vw;
     width: 1.2vw;
-}
-
-.name-complete-alert-icon {
-    top: 22.1vw;
-}
-
-.phone-number-alert-icon {
-    top: 26.9vw;
-}
-
-.gender-alert-icon {
-    top: 31.7vw;
 }
 
 .disabled-input{
@@ -163,7 +167,7 @@ label {
 }
 
 .complete-name-label {
-    top: 21.1vw;
+    top: 21vw;
 }
 
 .phone-number-label {
@@ -171,7 +175,7 @@ label {
 }
 
 .gender-label {
-    top: 30.8vw;
+    top: 30.7vw;
 }
 
 .email-label {
@@ -179,32 +183,12 @@ label {
 }
 
 .cpf-label {
-    top: 40.5vw;
+    top: 40.4vw;
 }
 
 .date-of-birth-label {
-    top: 45.4vw;
+    top: 45.3vw;
 }
-
-.padlock-icon {
-    position: absolute;
-    width: 1vw;
-    left: 48vw;
-}
-
-.padlock-icon-for-email {
-    top: 37vw;
-}
-
-
-.padlock-icon-for-cpf {
-    top: 41.7vw;
-}
-
-.padlock-icon-for-date-of-birth {
-    top: 46.6vw;
-}
-
 
 .delete-account-button, .save-changes-button {
     height: 100%;

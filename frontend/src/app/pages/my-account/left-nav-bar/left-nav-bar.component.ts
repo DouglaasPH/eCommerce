@@ -7,7 +7,7 @@ import { Router } from "@angular/router";
     standalone: true,
     imports: [CommonModule],
     templateUrl: './left-nav-bar.component.html',
-    styleUrl: './left-nav-bar.component.scss'
+    styleUrls: ['./left-nav-bar.component.scss', './media-queries-for-left-nav-bar.component.scss']
 })
 export class LeftNavBar {
     constructor(private router: Router) {}

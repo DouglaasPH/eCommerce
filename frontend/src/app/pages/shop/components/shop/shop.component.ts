@@ -17,7 +17,7 @@ interface salesInterface {
     standalone: true,
     imports: [NgFor, CommonModule, DecimalPipe],
     templateUrl: './shop.component.html',
-    styleUrl: './shop.component.scss',
+    styleUrls: ['./shop.component.scss', './media-queries-for-shop.component.scss'],
 })  
 export class Shop implements OnInit {
     constructor(private router: Router, private activatedroute: ActivatedRoute) { }
@@ -40,6 +40,7 @@ export class Shop implements OnInit {
             }, {});
             if (Object.keys(filtersWithOptions).length > 0) {
                 this.sales = await getDatasForProductGridWithFilters(filtersWithOptions);
+                console.log(filtersWithOptions)
             } else {
                 this.sales = await getDatasForProductGrid();                
             }

@@ -1,0 +1,52 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+    .container-sales {
+        height: 310vw;
+        width: 100%;
+    }
+
+    .sale {
+        width: 34vw;
+        height: 60vw;
+    }
+
+    .container-description {
+        height: 20vw;
+    }
+
+    .description { 
+        font-size: 2vw;
+    }
+
+    .price-without-discount {
+        font-size: 3vw;
+    }
+
+    .price {
+        font-size: 3vw;
+    }
+
+    .price-with-installments {
+        font-size: 2.5vw;
+    }
+
+    .container-others-pages {
+        height: 8vw;
+    }
+
+    .others-pages { 
+        width: 50%;
+        height: 80%;
+    }
+
+    .page-number, .button-double-next-arrow, .button-double-back-arrow {
+        font-size: 2.5vw;
+        width: 5vw;
+        height: 5vw;
+        border-radius: 5vw;
+    }
+}

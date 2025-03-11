@@ -22,7 +22,7 @@ interface addressInterface {
     standalone: true,
     imports: [CommonModule, FormsModule],
     templateUrl: './add-address.component.html',
-    styleUrl: './add-address.component.scss',
+    styleUrls: ['./add-address.component.scss', './media-queries-for-add-address.component.scss'],
 })
 export class AddAddress {
     @Input() user_id: number = 0; 

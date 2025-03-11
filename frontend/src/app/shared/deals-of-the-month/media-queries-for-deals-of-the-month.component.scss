@@ -1,0 +1,117 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) { 
+    .container-component-deals-of-the-month { 
+        height: 150vw;
+        margin-top: 3vw;
+    }
+
+    .component-deals-of-the-month { 
+        width: 95.5%;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .first-block {
+        width: 95%;
+        height: 65vw;
+        justify-content: space-between;
+    }
+
+    .title { 
+        font-size: 6vw;
+    }
+
+    .paragraph { 
+        font-size: 3vw;
+    }
+
+    .button-buy-now {
+        width: 28vw;
+        height: 10vw;
+        font-size: 3vw;
+        border-radius: 2vw;
+    }
+
+    .group-timer { 
+        height: 20vw;
+    }
+
+    .title-group-timer { 
+        font-size: 4vw;
+    }
+
+    .container-timer { 
+        width: 82%;
+    }
+
+    .time { 
+        font-size: 5vw;
+        border-radius: 1vw;
+    }
+
+    .description-time { 
+        font-size: 3.5vw;
+    }
+
+    .absolute-block { 
+        height: 10vw;
+        width: 25vw;
+        align-items: center;
+        padding: 0vw;
+    }
+
+    .left-arrow, .right-arrow { 
+        height: 10vw;
+        width: 10vw;
+        font-size: 4vw;
+    }
+
+    .second-block { 
+        height: 70vw;
+        width: 100%;
+    }
+
+    .container-images { 
+        width: 160%;
+        height: 100%;
+    }
+
+    .container-images > img {
+        height: 20%;
+    }
+
+    .about-the-discount { 
+        left: 10%;
+        top: 71%;        
+        height: 18vw;
+        width: 27vw;
+        border-radius: 2vw;
+    }
+
+    .type-of-promotion {
+        font-size: 3vw;
+    }
+
+    .discount-percentage { 
+        font-size: 5vw;
+    }
+
+    .group-current-image-flag {
+        left: 60%;
+        width: 25%;
+    }
+
+    .container-on-display, .container-off-display { 
+        width: 4vw;
+        height: 4vw;
+    }
+
+    .image-on-display, .image-off-display {
+        font-size: 10vw;
+        height: 15vw;
+    }
+}

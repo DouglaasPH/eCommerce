@@ -1,0 +1,80 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) { 
+    .container-this-is-what-our-customers-say { 
+        height: 80vw;
+    }
+
+    .container-title-and-description {
+        height: 10vw;
+    }
+
+    .title { 
+        font-size: 5vw;
+    }
+
+    .description { 
+        font-size: 2vw;
+        width: 79%;
+    }
+
+    .first-block {
+        left: 10vw;
+        height: 35vw;
+        width: 80vw;
+    }
+
+    .second-block {
+        left: 3vw;
+        height: 30vw;    
+        width: 50vw;
+    }
+
+    .third-block {
+        left: 38vw;
+        height: 30vw;    
+        width: 60vw;
+    }
+
+    .first-group {
+        width: 18vw;
+    }    
+
+    .second-group { 
+        width: 70%;
+        height: 70%;
+    }
+
+    .report {
+        font-size: 2vw;
+    }
+
+    .five-stars {
+        width: 13vw;
+    }
+
+    .gray-line-style {
+        width: 97%;
+    }
+
+    .customer-name {
+        font-size: 3vw;
+    }
+
+    .profession {
+        font-size: 2vw;
+    }
+
+    .container-buttons {
+        width: 20%;
+        height: 9%;
+    }
+
+    .button-left, .button-right {
+        font-size: 4vw;
+    }
+}
+

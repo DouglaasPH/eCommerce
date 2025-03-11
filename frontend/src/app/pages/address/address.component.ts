@@ -29,7 +29,7 @@ interface AddressInterface {
     standalone: true,
     imports: [navBar, FooterBar, CommonModule, FormsModule, editAdress, AddAddress, orderSumary],
     templateUrl: './address.component.html',
-    styleUrl: './address.component.scss'
+    styleUrls: ['./address.component.scss', './media-queries-for-address.component.scss'],
 })
 export class Address implements OnInit {
     constructor(private editaddressservice: editAddressService, private processPurchaseService: ProcessPurchaseService, private orderSumaryService: OrderSumaryService, private orderDataService: OrderDataService) {}

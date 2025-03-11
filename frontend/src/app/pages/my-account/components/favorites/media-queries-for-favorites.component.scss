@@ -1,0 +1,108 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+    .favorites {
+    }
+
+    .container-title {
+        height: 10vw;
+    }
+
+    .main-title {
+        font-size: 3vw;
+    }
+
+    .favorite-icon {
+        width: 3.5vw;
+    }
+
+    .container-all-favorites { 
+        gap: 1.5vw;
+    }
+
+    .container-favorite {
+        height: 16vw;
+    }
+
+    .container-image {
+        width: 13vw;
+        height: 13vw;
+    }
+
+    .container-product-description {
+        height: 13vw;
+        width: 40%;
+    }
+
+    .product-description {
+        font-size: 2vw;
+    }
+
+    .container-product-price {
+        width: 20%;
+    }
+
+    .previous-price {
+        font-size: 1.8vw;
+    }
+
+    .discount {
+        font-size: 1vw;
+    }
+
+    .current-price {
+        font-size: 2vw;
+    }
+
+    .interest-free-installments {
+        font-size: 1vw;
+    }
+
+    .container-buy-button-and-favorite-button {
+        width: 15%;
+    }
+
+
+
+    .buy-button {
+        height: 5vw;
+        border-radius: 1vw;
+    }
+
+    .button-paragraph {
+        font-size: 2vw;
+    }
+
+    .shopping-cart-icon {
+        width: 3vw;
+    }
+
+    .favorite-without-favorites {
+        height: 100%;
+    }
+
+    .favorite-without-favorites > .title {
+        font-size: 5vw;
+    }
+
+    .favorite-without-favorites > .paragraph {
+        font-size: 1.7vw;
+    }
+
+    .favorite-without-favorites > .redirect-to-shopping-button {
+        height: 9vw;
+        width: 35vw;
+        border-radius: 1.5vw;
+    }
+
+    .favorite-without-favorites > .redirect-to-shopping-button > p {
+        font-size: 2vw;
+    }
+
+    .favorite-without-favorites > .redirect-to-shopping-button > .shopping-cart-icon {
+        width: 3vw;
+    }
+}

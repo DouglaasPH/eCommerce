@@ -9,7 +9,7 @@ import { CommonModule } from "@angular/common";
     standalone: true,
     imports: [FormsModule, RouterModule, CommonModule],
     templateUrl: './login-sign-up.component.html',
-    styleUrl: './login-sign-up.component.scss'
+    styleUrls: ['./login-sign-up.component.scss', './media-queries-for-sign-up.component.scss']
 })
 export class LoginSignUp {
     constructor(private router: Router) { }

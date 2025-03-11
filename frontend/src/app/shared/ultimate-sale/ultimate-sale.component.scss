@@ -38,7 +38,7 @@
 
 .group-1, .group-3 {
     background-color: #E0E0E0;
-    border-radius: 0.6rem;
+    border-radius: 0.6vw;
     height: 21.2%;
     width: 100%;
     display: flex;
@@ -91,7 +91,7 @@
     background-color: #000000;
     border-radius: 1vw;
     @extend %font-poppins;
-    font-weight: 400;
+    font-weight: 600;
     color: #ebebeb;
     font-size: 0.9vw;
     display: flex;

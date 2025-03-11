@@ -24,7 +24,7 @@ interface Product {
     standalone: true,
     imports: [CommonModule, FormsModule, FooterBar, navBar, orderSumary],
     templateUrl: './shopping-cart.component.html',
-    styleUrl: './shopping-cart.component.scss',
+    styleUrls: ['./shopping-cart.component.scss', './media-queries-for-shopping-cart.component.scss'],
 })
 export class ShoppingCart implements OnInit {
     constructor(private router: Router, private processPurchaseService: ProcessPurchaseService, private location: Location, private orderSumaryService: OrderSumaryService) { }

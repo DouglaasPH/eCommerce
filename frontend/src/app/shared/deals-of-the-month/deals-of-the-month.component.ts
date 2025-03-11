@@ -1,12 +1,12 @@
 import { CommonModule } from "@angular/common";
-import { Component, NgModule } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
     selector: 'deals-of-the-month',
     standalone: true,
     imports: [CommonModule],
     templateUrl: './deals-of-the-month.component.html',
-    styleUrl: './deals-of-the-month.component.scss',
+    styleUrls: ['./deals-of-the-month.component.scss', './media-queries-for-deals-of-the-month.component.scss'],
 })
 export class DealsOfTheMonth {
     currentIndex: number = 1;

@@ -17,7 +17,7 @@ interface creditCard {
     standalone: true,
     imports: [navBar, FooterBar, orderSumary, CommonModule, FormsModule],
     templateUrl: './payment.component.html',
-    styleUrl: './payment.component.scss',
+    styleUrls: ['./payment.component.scss', './media-queries-for-payment.component.scss'],
 })
 export class Payment implements OnDestroy {
     constructor(private orderSumaryService: OrderSumaryService, private orderDataService: OrderDataService) { }

@@ -5,6 +5,6 @@ import { RouterOutlet } from "@angular/router";
     selector: 'login-component',
     imports: [RouterOutlet],
     templateUrl: './login-component.component.html',
-    styleUrl: './login-component.component.scss',
+    styleUrls: ['./login-component.component.scss', './media-queries-for-login.component.scss'],
 })
 export class LoginPageComponent {};

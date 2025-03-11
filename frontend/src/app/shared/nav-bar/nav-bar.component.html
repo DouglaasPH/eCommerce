@@ -7,21 +7,26 @@
             <a (click)="onShop()" class="redirect-to-shop-button" [ngClass]="{ 'currentPage': currentRoute === '/shop' }">Shop</a>
     </div>
     <div class="container-user" *ngIf="isLogginned">
-        <a class="redirect-user" (click)="onMyAccountMyData()"> 
+        <a class="redirect-user-for-mobile-devices" (click)="onMyAccountMyData()" *ngIf="screenSizeService.width <  850"> 
             <img src="../../../assets/icons/user-icon-without-background.svg" alt="my account">
         </a>
-        <a class="redirect-user" (click)="onMyOrders()">
+        <a class="redirect-user" (click)="onMyAccountMyData()" *ngIf="screenSizeService.width >  850"> 
+            <img src="../../../assets/icons/user-icon-without-background.svg" alt="my account">
+        </a>
+        <a class="redirect-user" (click)="onMyOrders()" *ngIf="screenSizeService.width >  850">
             <img src="../../../assets/icons/my-orders-icon-without-background.svg" alt="my orders">
         </a>
-        <a class="redirect-user" (click)="onFavorites()">
+        <a class="redirect-user" (click)="onFavorites()" *ngIf="screenSizeService.width >  850">
             <img src="../../../assets/icons/favorite-unselected-icon.svg" alt="favorites">
         </a>
-        <a class="redirect-user" (click)="onShoppingCart()">
+        <a class="redirect-user" (click)="onShoppingCart()" *ngIf="screenSizeService.width >  850">
             <img src="../../../assets/icons/shopping-cart-icon-without-background.svg" alt="">
         </a>        
     </div>
-    <div class="container-redirect-buttons-login" *ngIf="!isLogginned">
-            <a href="login/sign-in" class="redirect-button-sign-in" (click)="onButtonSignIn()">Sign in</a>
-            <a href="login/sign-up" class="redirect-button-sign-up" (click)="onButtonSignUp()">Sign Up</a>
+    <div class="container-redirect-button-login" *ngIf="!isLogginned">
+        <a class="redirect-button-login" (click)="onButtonLogin()">
+            <img src="../../../assets/icons/user-icon-with-background.svg" alt="user icon" class="user-icon">
+            <p class="paragraph-button">Login or Register</p>
+        </a>
     </div>    
 </div>

@@ -10,7 +10,7 @@ import { navBar } from "../../shared/nav-bar/nav-bar.component";
     standalone: true,
     imports: [navBar, FiltersComponent, Shop, FooterBar, CommonModule],
     templateUrl: './shop-page.component.html',
-    styleUrl: './shop-page.component.scss',
+    styleUrls: ['./shop-page.component.scss', './media-queries-for-shop-page.component.scss'],
 })
 export class ShopPage {
 }

@@ -1,0 +1,60 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+    .container-filters {
+        align-items: center;
+    }
+
+    .container-main-title {
+        width: 95%;
+        height: 6vw;
+        align-items: center;
+    }
+
+    .title-filters {
+        font-size: 5vw;
+    }
+
+    .filter-title { 
+        font-size: 2.8vw;
+    }
+
+    .sizes {
+        height: 6vw;
+        width: 6vw;
+        font-size: 2vw;
+        border-radius: 1vw;
+    }
+
+    .show-more-button {
+        font-size: 2vw;
+    }
+
+    .price_range, .product_category, .promotions, .styles {
+        font-size: 2vw;
+    }
+
+    .container-choose-sizes, .container-choose-price_range, .container-choose-product_category, .container-choose-promotions, .container-choose-styles {
+        width: 95%;
+        height: 35vw;
+    }
+
+    .container-choose-sizes {
+        height: 40vw;
+    }
+
+    .container-options-price_range, .container-options-product_category, .container-options-promotions, .container-options-styles {
+        width: 100%;
+        gap: 1vw;
+    }
+
+    .container-options-sizes {
+        width: 100%;
+        height: 30vw;
+        justify-content: start;
+        gap: 1.5vw;
+    }
+}

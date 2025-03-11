@@ -1,0 +1,45 @@
+/* Tweaks for tablets */
+@media (max-width: 850px ) { }
+
+
+/* Tweaks for cell phones */
+@media (max-width: 500px ) {
+    .container-my-shopping-cart {
+        height: 100vw;
+    }
+
+    .div-direction-row {
+        width: 57%;
+    }
+
+    .div-direction-column {
+        width: 38%;
+    }    
+
+    .container-title {
+        gap: 2vw;
+    }
+
+    .title-shopping-cart {
+        font-size: 5vw;
+    }
+
+    .quantity-of-items {
+        font-size: 2vw;
+    }
+
+    .select-size {
+        border: 0.1vw solid #8a8a8a;
+        border-radius: 0vw;
+        height: 2vw;
+        width: 5.3vw;
+        padding: 0 0.4vw 0 0.4vw;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        background-image: url("../../../assets/icons/bottom-arrow-icon.svg");
+        background-repeat: no-repeat;
+        background-position: right 0.5vw center; /* Ajusta a posição da seta */
+        background-size: 1vw; /* Ajusta o tamanho da seta */
+    }
+}
