@@ -62,7 +62,6 @@ class LoginController {
         if (userToken && (tokenData !== 'TokenExpiredError' && tokenData !== 'JsonWebTokenError')) {
             res.json({ message: 'successfully logged in', isLogginned: true, id: tokenData.id });
         } else {
-            console.log('nao passou')
             res.clearCookie('user_token');
             res.json({ message: 'not logged in', isLogginned: false })
         }
