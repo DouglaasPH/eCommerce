@@ -6,30 +6,30 @@
 Este projeto tem o potencial de expandir e tornar mais acessíveis pequenas lojas de roupas femininas, proporcionando uma experiência de compra mais fluida e eficiente para os clientes. O objetivo é criar uma plataforma completa que inclua funcionalidades essenciais para a gestão de produtos, pedidos e pagamentos. Embora algumas funcionalidades ainda estejam pendentes, como autenticação e integração com gateways de pagamento, este projeto está em desenvolvimento contínuo.
 
 ## Funcionalidades Pendentes ❌
-- [ ] Autenticação via Google/Gmail
-- [ ] Envio de e-mail de confirmação para redefinição de senha
-- [ ] Gestão de frete
-- [ ] Integração com pagamentos via Pix e cartão
-- [ ] Responsividade para tablets
+- Autenticação via Google/Gmail
+- Envio de e-mail de confirmação para redefinição de senha
+- Gestão de frete
+- Integração com pagamentos via Pix e cartão
+- Responsividade para tablets
 
 A intenção é melhorar essas funcionalidades e garantir uma plataforma mais robusta e segura para lojas de roupas femininas de pequeno porte.
 
 ---
 
 ## 🚀 Tecnologias Utilizadas  
-- [ ] Vite  
-- [ ] TypeScript  
-- [ ] Angular  
-- [ ] Axios  
-- [ ] SCSS  
-- [ ] JavaScript  
-- [ ] Node.js  
-- [ ] Express  
-- [ ] MySQL  
-- [ ] CORS  
-- [ ] JSON Web Token (JWT)  
-- [ ] Cookie-Parser  
-- [ ] dotenv  
+- Vite  
+- TypeScript  
+- Angular  
+- Axios  
+- SCSS  
+- JavaScript  
+- Node.js  
+- Express  
+- MySQL  
+- CORS  
+- JSON Web Token (JWT)  
+- Cookie-Parser  
+- dotenv  
 
 ---
 
@@ -198,13 +198,11 @@ Crie um arquivo `.env` na raiz do projeto e adicione as variáveis de ambiente n
 
 ```env
 DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=root
-DB_NAME=eCommerce
+DB_USER=user
+DB_PASSWORD=password
+DB_NAME=name
 
-GOOGLE_CLIENT_ID=seu_client_id_google
-PIX_KEY=chave_pix
-JWT_SECRET=seu_segredo_jwt
+JWT_SECRET=your_secret_jwt
 ```
 
 ---
