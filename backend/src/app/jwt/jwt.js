@@ -11,7 +11,7 @@ const secretKey = process.env.JWT_SECRET || 'tWOhy77qJST+VfLxe/85bpPIUwI2xB+ke8f
  * @returns {string} = Generated JWT token.
  */
 
-function generateToken(payload, expiresIn = '1h') {
+function generateToken(payload, expiresIn = '24h') {
     return jwt.sign(payload, secretKey, { expiresIn });
 };
 
@@ -31,8 +31,3 @@ function verifyToken(token) {
 };
 
 export { generateToken, verifyToken };
-
-/*
-        const result = verifyToken(row.token);
-        console.log(result)
-*/
